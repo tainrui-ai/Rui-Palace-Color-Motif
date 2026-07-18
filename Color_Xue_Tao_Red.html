@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>薛涛红笺 · 桃花绯红美学色卡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif;
+            background-color: #FAFBFD; 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23E05263' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+        /* 其余样式保持不变[cite: 14] */
+        .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #E05263; cursor: pointer;
+            border: 2px solid #FAFBFD;
+            box-shadow: 0 4px 10px rgba(224, 82, 99, 0.25);
+            transition: transform 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 8px; margin-bottom: 1.5rem;
+            background: #f1f1f1; display: flex; align-items: center; justify-content: center;
+        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        .chinese-border {
+            border: 1px solid rgba(224, 82, 99, 0.15);
+            outline: 3px double rgba(224, 82, 99, 0.08);
+            outline-offset: -8px;
+        }
+    </style>
+</head>
+<body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#E05263]/20">
+
+    <header class="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col items-center text-center border-b border-neutral-200/50 relative">
+        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+            <span class="vertical-text text-[10px] text-neutral-500 tracking-[0.3em] font-light">浣花溪畔 · 红笺格物</span>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-[0.3em] text-neutral-900 mb-4 pl-[0.3em]">
+            浣花笺纸，桃花红笺
+        </h1>
+        <p class="text-xs text-neutral-400 tracking-[0.5em] uppercase font-light pl-[0.5em] mb-4">
+            Peach Blossom Crimson Spectrum
+        </p>
+        
+        <div class="max-w-xl mx-auto">
+            <p class="text-sm text-neutral-600 leading-relaxed tracking-widest font-light">
+                “浣花笺纸桃花色，好好题诗咏玉钩。”<br>
+                以木芙蓉为魂，调浣花清溪为骨，熬出一抹傲骨绯红。
+            </p>
+        </div>
+
+        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="vertical-text text-[10px] text-neutral-500 tracking-[0.3em] font-light">傲骨绯红 · 扫眉才子</span>
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+        </div>
+    </header>
+
+    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+        
+        <section class="chinese-border bg-white/40 backdrop-blur-md p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
+            <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
+                <h2 class="text-md font-semibold tracking-[0.2em] text-neutral-900 flex items-center">
+                    <span class="inline-block w-2.5 h-2.5 bg-[#E05263] rounded-full mr-2.5"></span>
+                    西阁 · 桃花绯红谱
+                </h2>
+                <span class="text-[10px] text-neutral-500 tracking-wider">点击色块复制 HEX 并唤醒诗意</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 flex-grow content-center" id="color-grid"></div>
+
+            <div class="pt-4 border-t border-neutral-100 flex justify-between items-center text-[10px] text-neutral-400 tracking-widest">
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="chinese-border bg-white/40 backdrop-blur-md p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
+            <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
+                <h2 class="text-md font-semibold tracking-[0.2em] text-neutral-900 flex items-center">
+                    <span class="inline-block w-2.5 h-2.5 bg-[#F47A82] rounded-full mr-2.5"></span>
+                    东阁 · 浣花红笺台
+                </h2>
+                <span class="text-[10px] text-neutral-500 tracking-wider">滑动以融合绯红</span>
+            </div>
+
+            <div class="border border-neutral-200/40 p-4 rounded-xl space-y-4 bg-white/20">
+                <div class="video-wrapper">
+                    <div class="text-xs text-neutral-400 tracking-widest">视频暂无连接</div>
+                </div>
+
+                <a href="Color Mu Shan Lila.html" class="flex items-center justify-between group p-3.5 border border-[#8670A0]/20 hover:border-[#8670A0]/50 bg-gradient-to-r from-white/10 to-[#8670A0]/5 rounded-lg transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-2 h-2 rounded-full bg-[#8670A0] group-hover:animate-ping"></span>
+                        <div>
+                            <h4 class="text-[11px] font-semibold tracking-widest text-neutral-800">回到：暮山落，月独白</h4>
+                            <p class="text-[9px] text-neutral-400 tracking-wider mt-0.5">从绯红傲骨，回到极冷月白的深沉克制</p>
+                        </div>
+                    </div>
+                    <span class="text-xs text-[#8670A0] font-bold transform group-hover:-translate-x-1 transition-transform">➔</span>
+                </a>
+            </div>
+
+            <div class="space-y-6 flex-grow flex flex-col justify-center">
+                <div id="dynamic-pad" class="w-full h-32 rounded-xl shadow-inner flex flex-col justify-end p-4 text-white color-transition" style="background-color: #EA6672;">
+                    <div class="backdrop-blur-md bg-black/15 p-3 rounded-lg flex justify-between items-end border border-white/10">
+                        <div>
+                            <p id="dynamic-name" class="text-xs font-semibold tracking-[0.2em]">桃花初绽</p>
+                            <p id="dynamic-rgb" class="text-[9px] font-mono tracking-widest opacity-80 mt-1">RGB(234, 102, 114)</p>
+                        </div>
+                        <button onclick="copyDynamicValue()" class="text-[10px] bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded transition-colors tracking-widest border border-white/10">
+                            复制 <span id="dynamic-hex" class="font-mono font-medium">#EA6672</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <input type="range" id="color-slider" min="0" max="100" value="50" class="w-full h-1 bg-neutral-200/80 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-neutral-500 tracking-widest font-light">
+                        <span>#F47A82 (桃花粉)</span>
+                        <span id="blend-percentage" class="font-mono text-neutral-600">50%</span>
+                        <span>#E05263 (薛涛红)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-neutral-200/40 p-5 rounded-xl space-y-2 relative overflow-hidden bg-white/20" id="poetry-card">
+                <div class="absolute right-3 top-2 opacity-[0.02] select-none text-6xl font-black text-[#E05263]">红笺</div>
+                <div class="border-l border-[#E05263]/30 pl-3">
+                    <p id="poetry-text" class="text-sm leading-relaxed tracking-widest text-neutral-700 transition-opacity duration-500">
+                        “浣花笺纸桃花色，好好题诗咏玉钩。”
+                    </p>
+                    <p id="poetry-author" class="text-[10px] text-neutral-500 tracking-widest text-right mt-1.5 transition-opacity duration-500">
+                        —— 李商隐 《送崔珏往西川》
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-neutral-100 flex justify-end">
+                    <button id="next-poetry" class="text-[10px] text-[#E05263]/80 hover:text-[#E05263] hover:underline tracking-widest transition-colors">
+                        换一首诗 ➔
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-neutral-900/90 text-[#FAF6F0] text-xs tracking-widest rounded-full opacity-0 pointer-events-none transition-all duration-300 shadow-lg flex items-center space-x-2">
+        <span class="w-1.5 h-1.5 bg-[#E05263] rounded-full animate-ping"></span>
+        <span id="toast-text">已成功复制色值</span>
+    </div>
+
+    <footer class="w-full max-w-7xl mx-auto px-6 py-8 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[10px] text-neutral-500 tracking-widest font-light">
+        <p>© 2026 蕊宫 · 薛涛红笺美学馆</p>
+        <p class="mt-2 sm:mt-0">不迎合繁华，用极致打磨唤醒同类</p>
+    </footer>
+
+    <script>
+        const colors = [
+            { hex: '#F47A82', rgb: 'RGB(244, 122, 130)', name: '桃花粉', desc: '微醺温润，如清晨带露之早桃。', pIndex: 0 },
+            { hex: '#F0717B', rgb: 'RGB(240, 113, 123)', name: '初绽红', desc: '芙蓉破瓣，生命力蓄势待发。', pIndex: 1 },
+            { hex: '#EA6672', rgb: 'RGB(234, 102, 114)', name: '木芙蓉', desc: '草木本色，融化于清澈溪流。', pIndex: 2 },
+            { hex: '#E7606E', rgb: 'RGB(231, 96, 110)', name: '流霞绯', desc: '长波散射，交融天地交界微光。', pIndex: 3 },
+            { hex: '#E35868', rgb: 'RGB(227, 88, 104)', name: '十色笺', desc: '文人唱和，落笔之处皆为深情。', pIndex: 4 },
+            { hex: '#E05263', rgb: 'RGB(224, 82, 99)', name: '薛涛红', desc: '傲骨绯红，风尘不染的本真色彩。', pIndex: 5 }
+        ];
+
+        const poetries = [
+            { text: '“浣花笺纸桃花色，好好题诗咏玉钩。”', author: '李商隐 · 《送崔珏往西川》' },
+            { text: '“长教碧玉藏深处，总向红笺写自随。”', author: '薛涛 · 《寄旧诗与元微之》' },
+            { text: '“万里桥边女校书，枇杷花里闭门居。”', author: '王建 · 《寄蜀国女校书薛涛》' },
+            { text: '“欲寄彩笺兼尺素，山长水阔知何处。”', author: '晏殊 · 《蝶恋花》' },
+            { text: '“别后书题在红笺，忆君相思泪如泉。”', author: '温庭筠 · 《怨歌行》' }
+        ];
+
+        // Helper functions (same as original to ensure compatibility)
+        const renderColorGrid = () => {
+            document.getElementById('color-grid').innerHTML = colors.map((color, index) => `
+                <div onclick="selectColor(${index})" class="group cursor-pointer bg-white/70 border border-neutral-200/50 p-4 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-500">
+                    <div class="w-full h-20 rounded-lg color-transition mb-3 relative overflow-hidden" style="background-color: ${color.hex};"></div>
+                    <div class="flex justify-between items-start">
+                        <div><h4 class="font-semibold tracking-widest text-neutral-900 text-xs">${color.name}</h4><p class="text-[9px] font-mono text-neutral-400 mt-0.5">${color.hex}</p></div>
+                        <span class="text-[9px] text-neutral-300 italic font-mono">0${index+1}</span>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        window.selectColor = (index) => {
+            const color = colors[index];
+            copyToClipboard(color.hex);
+            const p = poetries[color.pIndex % poetries.length];
+            poetryText.style.opacity = 0;
+            poetryAuthor.style.opacity = 0;
+            setTimeout(() => {
+                poetryText.innerText = p.text;
+                poetryAuthor.innerText = `—— ${p.author}`;
+                poetryText.style.opacity = 1;
+                poetryAuthor.style.opacity = 1;
+            }, 300);
+        };
+
+        const interpolateColor = (color1, color2, factor) => {
+            const r1 = parseInt(color1.substring(1, 3), 16), g1 = parseInt(color1.substring(3, 5), 16), b1 = parseInt(color1.substring(5, 7), 16);
+            const r2 = parseInt(color2.substring(1, 3), 16), g2 = parseInt(color2.substring(3, 5), 16), b2 = parseInt(color2.substring(5, 7), 16);
+            const r = Math.round(r1 + factor * (r2 - r1)), g = Math.round(g1 + factor * (g2 - g1)), b = Math.round(b1 + factor * (b2 - b1));
+            return { hex: "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase(), rgb: `RGB(${r}, ${g}, ${b})` };
+        };
+
+        const updateInkMixer = () => {
+            const factor = document.getElementById('color-slider').value / 100;
+            const mixed = interpolateColor('#F47A82', '#E05263', factor);
+            document.getElementById('blend-percentage').innerText = `${document.getElementById('color-slider').value}%`;
+            document.getElementById('dynamic-pad').style.backgroundColor = mixed.hex;
+            document.getElementById('dynamic-hex').innerText = mixed.hex;
+            document.getElementById('dynamic-rgb').innerText = mixed.rgb;
+        };
+
+        const copyToClipboard = (text) => {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            setTimeout(() => { toast.classList.remove('opacity-100'); toast.classList.add('opacity-0', 'pointer-events-none'); }, 2000);
+        };
+
+        window.copyDynamicValue = () => copyToClipboard(document.getElementById('dynamic-hex').innerText);
+        document.getElementById('color-slider').addEventListener('input', updateInkMixer);
+        document.getElementById('next-poetry').addEventListener('click', () => {
+            let nextIdx = (poetries.indexOf(poetries.find(p => p.text === document.getElementById('poetry-text').innerText)) + 1) % poetries.length;
+            document.getElementById('poetry-text').innerText = poetries[nextIdx].text;
+            document.getElementById('poetry-author').innerText = `—— ${poetries[nextIdx].author}`;
+        });
+
+        window.onload = () => { renderColorGrid(); updateInkMixer(); };
+    </script>
+    <footer style="text-align: center; padding: 20px; font-size: 0.8rem; color: #8c8c8c; margin-top: 40px; border-top: 1px solid #e0e0e0;">
+        <div style="margin-bottom: 10px;">
+            <a href="impressum.html" style="text-decoration: none; color: #8c8c8c; margin: 0 10px;">法律声明 (Impressum)</a>
+            | 
+            <a href="Datenschutz.html" style="text-decoration: none; color: #8c8c8c; margin: 0 10px;">隐私政策 (Datenschutz)</a>
+        </div>
+        <p>© 2026 蕊宫 - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。</p>
+    </footer>
+</body>
+</html>
