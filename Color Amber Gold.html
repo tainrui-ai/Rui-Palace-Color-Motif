@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>琥珀金 · 金泽流光美学色卡</title>
+    
+    <!-- 引入高奢艺术级英文字体：Cinzel 用于艺术标题，Playfair Display 用于优雅自然的大小写意境诗词及卡片文字，Montserrat 用于现代正文与小标签 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            font-family: "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif; 
+            background-color: #FDFBF8; 
+            /* 完美复原原版如意云纹暗花背景 - 琥珀金专属定制色 */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23D4A017' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            user-select: none;
+        }
+        .chinese-border { border: 1px solid rgba(212, 160, 23, 0.15); outline: 3px double rgba(212, 160, 23, 0.08); outline-offset: -8px; background: rgba(255, 255, 255, 0.6); }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #D4A017; cursor: pointer; }
+        
+        /* ================= 中英文独立控制与字距隔离体系 ================= */
+        
+        /* 1. 主大标题字距 */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
+        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+
+        /* 2. 副标题与小标签字距 */
+        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+
+        /* 3. 正文与描述性文本字距 */
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
+        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+
+        /* 4. 意境诗词文本：使用支持自然大小写的人文衬线体 Playfair Display（结合斜体） */
+        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; text-transform: none !important; }
+        .poetry-text-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; text-transform: none !important; }
+        
+        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; text-transform: none !important; }
+        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: none !important; color: #737373; }
+
+        /* 🌟 核心修复：大卡片内部颜色名称字体样式（防止英文状态下回退为无衬线体） */
+        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
+        .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+
+        /* 5. 侧边竖排文本 */
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+
+        /* 6. 语言切换按键样式 */
+        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(212, 160, 23, 0.08); border: 1px solid rgba(212, 160, 23, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn:hover { background: #D4A017; color: white; border-color: #D4A017; }
+    </style>
+</head>
+
+<body class="text-neutral-800 min-h-screen flex flex-col justify-between">
+
+    <!-- 顶部导航：简约雅致的归隐返回按钮 -->
+    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
+        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#D4A017] transition-colors duration-300 group">
+            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
+            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+        </button>
+        
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600">
+            EN / 中
+        </button>
+    </div>
+
+    <!-- 顶头画卷 -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b border-neutral-200/50 relative">
+        <!-- 左侧翼：动态竖排声明 -->
+        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 琥珀格物" data-en="RUI PALACE · AMBER">蕊宫 · 琥珀格物</span>
+        </div>
+
+        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="琥珀金 · 金泽流光" data-en="Amber Gold & Timeless Glow">琥珀金 · 金泽流光</h1>
+        <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Amber Gold & Timeless Glow Spectrum" data-en="Amber Gold & Timeless Glow Spectrum">Amber Gold & Timeless Glow Spectrum</p>
+        
+        <div class="max-w-2xl mx-auto px-4">
+            <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words" 
+               data-zh="“流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀中，寻得那份历经风霜后愈发纯粹的内敛光华。" 
+               data-en="&ldquo;Time cannot obscure the true essence, while passing years distill pure inner grace.&rdquo;<br>Deep within the amber of time, discovering that introverted brilliance which grows more pristine after weathering the world.">
+                “流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀中，寻得那份历经风霜后愈发纯粹的内敛光华。
+            </p>
+        </div>
+
+        <!-- 右侧翼：动态竖排声明 -->
+        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="仙骨怀真 · 金泽长存" data-en="IMMORTAL SPIRIT · TIMELESS GLOW">仙骨怀真 · 金泽长存</span>
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+        </div>
+    </header>
+
+    <!-- 核心双阁布局 -->
+    <main class="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow">
+        <!-- 左阁：色彩网格 -->
+        <section class="chinese-border p-8 rounded-2xl">
+            <h2 class="text-md font-semibold mb-6 flex items-center dynamic-text" data-zh="西阁 · 琥珀流光色卡" data-en="West Pavilion &bull; Amber Palette">
+                <span class="w-2.5 h-2.5 bg-[#D4A017] rounded-full mr-2"></span>西阁 · 琥珀流光色卡
+            </h2>
+            <div id="color-grid" class="grid grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- 右阁 -->
+        <section class="chinese-border p-8 rounded-2xl flex flex-col space-y-6">
+            <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/r89BAG_5Tu0" allowfullscreen></iframe>
+            </div>
+            
+            <a href="Color Distant Mountain.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2 h-2 rounded-full bg-[#4A5D6B] group-hover:animate-ping"></span>
+                    <div>
+                        <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="下一站：远山如黛 眉眼如烟" data-en="Next Station: Distant Mountains Like Indigo Mist">下一站：远山如黛 眉眼如烟</h4>
+                        <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="“山色空蒙雨亦奇，黛色千重入望迷。”" data-en="&ldquo;The mountains look beautiful in rain or shine, thousand layers of indigo enchant the eyes.&rdquo;">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
+                    </div>
+                </div>
+                <span class="text-xs text-[#E05263] font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
+            </a>
+            
+            <!-- 动态交互大卡片 -->
+            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer hover:opacity-90 active:scale-[0.99]" style="background-color: #D4A017;">
+                <!-- 🌟 完美修正：应用 pad-name-style 确保中英文衬线体风格完全统一 -->
+                <p id="dynamic-name" class="text-xs font-bold pad-name-style">琥珀金</p>
+                <div class="flex items-center space-x-2">
+                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-80">#D4A017</p>
+                    <span id="copy-badge" class="text-[8px] border border-white/30 px-1 rounded font-light dynamic-sub" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+                </div>
+            </div>
+            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-300 rounded-lg appearance-none cursor-pointer">
+            
+            <!-- 意境山水诗词 -->
+            <div class="border-t border-neutral-200 pt-4">
+                <div id="poetry-container" class="mb-2 min-h-[75px] flex flex-col justify-between break-words">
+                    <p id="poetry-text" class="text-sm text-neutral-600 poetry-text-style">“金石千载蕴流光，清气氤氲满室香。”</p>
+                    <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">—— 蕊宫原创</p>
+                </div>
+                <button id="next-poetry" class="text-[10px] text-[#D4A017] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚布局 -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
+        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p class="space-x-1">
+            <a href="#" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+            <span>|</span> 
+            <a href="#" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+        </p>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        // 色彩配置列表
+        const colors = [
+            { hex: '#D4A017', name_zh: '琥珀金', name_en: 'Amber Gold' },
+            { hex: '#E5B73E', name_zh: '暖阳金', name_en: 'Warm Solar Gold' },
+            { hex: '#F1C40F', name_zh: '秋实黄', name_en: 'Autumn Harvest Yellow' },
+            { hex: '#F7DC6F', name_zh: '晨曦金', name_en: 'Dawn Glow Gold' },
+            { hex: '#F9E79F', name_zh: '流光影', name_en: 'Shimmering Shadow' },
+            { hex: '#FCF3CF', name_zh: '凝金白', name_en: 'Gilded Alabaster' }
+        ];
+
+        // 完美保留大小写自然排版的双语诗词数据
+        const poetries = [
+            { text_zh: "金石千载蕴流光，清气氤氲满室香。", text_en: "Gold and jade embrace timeless glow through thousands of years; the refined spirit diffuses fragrance throughout the sanctuary.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
+            { text_zh: "时光凝作琥珀暖，万物静好映流年。", text_en: "Time condenses into the warmth of golden amber; all creations dwell in peaceful grace, reflecting the passing years.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
+            { text_zh: "一点真金藏底色，岁月如歌自成晖。", text_en: "A trace of genuine gold lies deep within the foundation; as life unfolds like a melody, it radiates its own intrinsic splendor.", source_zh: "—— 瑞宫诗集", source_en: "— Rui Palace Anthology" }
+        ];
+
+        function copyHex() {
+            const hexText = document.getElementById('dynamic-hex').innerText;
+            navigator.clipboard.writeText(hexText);
+            alert(currentLang === 'zh' ? `已复制色号: ${hexText}` : `Hex copied: ${hexText}`);
+        }
+
+        function renderGrid() {
+            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
+                <div onclick="navigator.clipboard.writeText('${c.hex}'); alert('${currentLang === 'zh' ? '已复制: ' + c.hex : 'Copied: ' + c.hex}')" 
+                     class="cursor-pointer p-4 bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#D4A017]/50 transition duration-300">
+                    <div class="h-24 mb-3 rounded shadow-inner" style="background-color:${c.hex}"></div>
+                    <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                    <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('color-slider').oninput = function() {
+            const c = colors[this.value];
+            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
+            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            document.getElementById('dynamic-hex').innerText = c.hex;
+        };
+
+        document.getElementById('next-poetry').onclick = () => {
+            const p = poetries[Math.floor(Math.random() * poetries.length)];
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            
+            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        };
+
+        function returnToPrevious() {
+            window.location.href = `index.html?lang=${currentLang}`;
+        }
+
+        function toggleLanguage(targetLang) {
+            if (targetLang) {
+                currentLang = targetLang;
+            } else {
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            }
+
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+                el.setAttribute('data-lang', currentLang); 
+            });
+
+            const channelLink = document.getElementById('channel-link');
+            if (channelLink) channelLink.href = `Color Distant Mountain.html?lang=${currentLang}`;
+
+            renderGrid();
+            const currentIdx = document.getElementById('color-slider').value;
+            
+            const nameEl = document.getElementById('dynamic-name');
+            nameEl.innerText = currentLang === 'zh' ? colors[currentIdx].name_zh : colors[currentIdx].name_en;
+            nameEl.setAttribute('data-lang', currentLang); // 确保卡片名称的 data-lang 属性同步刷新
+            
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            toggleLanguage(langParam === 'en' ? 'en' : 'zh');
+        });
+    </script>
+</body>
+</html>

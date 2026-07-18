@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远山黛 · 烟岚入画美学色卡</title>
+    
+    <!-- 引入高奢艺术级英文字体群 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            font-family: "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif;  
+            background-color: #F7F9FA; 
+            /* 完美复原原版如意云纹暗花背景 - 远山黛专属定制色 */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234A5D6B' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            user-select: none;
+        }
+        .chinese-border { border: 1px solid rgba(74, 93, 107, 0.15); outline: 3px double rgba(74, 93, 107, 0.08); outline-offset: -8px; background: rgba(247, 249, 250, 0.6); }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #4A5D6B; cursor: pointer; }
+        
+        /* ================= 中英文独立控制与字距隔离体系 ================= */
+        
+        /* 1. 主大标题字距 */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
+        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+
+        /* 2. 副标题与小标签字距 */
+        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+
+        /* 3. 正文与描述性文本字距 */
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
+        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+
+        /* 4. 意境诗词文本：支持自然大小写的人文衬线体 Playfair Display */
+        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; text-transform: none !important; }
+        .poetry-text-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; text-transform: none !important; }
+        
+        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; text-transform: none !important; }
+        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: none !important; color: #737373; }
+
+        /* 大卡片内部颜色名称字体样式 */
+        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
+        .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+
+        /* 5. 侧边竖排文本 */
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+
+        /* 6. 语言切换按键样式 */
+        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(74, 93, 107, 0.08); border: 1px solid rgba(74, 93, 107, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn:hover { background: #4A5D6B; color: white; border-color: #4A5D6B; }
+    </style>
+</head>
+
+<body class="text-neutral-800 min-h-screen flex flex-col justify-between">
+
+    <!-- 顶部导航：归隐与语言切换 -->
+    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
+        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#4A5D6B] transition-colors duration-300 group">
+            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
+            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+        </button>
+        
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600">
+            EN / 中
+        </button>
+    </div>
+
+    <!-- 顶头画卷 -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b border-neutral-200/50 relative">
+        <!-- 左侧翼：动态竖排声明 -->
+        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 远山格物" data-en="RUI PALACE · MOUNTAIN">蕊宫 · 远山格物</span>
+        </div>
+
+        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="远山黛 · 烟岚入画" data-en="Distant Mountain & Ink Mist">远山黛 · 烟岚入画</h1>
+        <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Distant Mountain Indigo & Mist Painting" data-en="Distant Mountain Indigo & Mist Painting">Distant Mountain Indigo & Mist Painting</p>
+        
+        <div class="max-w-2xl mx-auto px-4">
+            <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words" 
+               data-zh="“烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。" 
+               data-en="&ldquo;Where the mountain mist rises, thoughts connect across a thousand autumns.&rdquo;<br>Deep within the vast indigo haze, glimpsing the distant clarity and poetry among overlapping peaks.">
+                “烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。
+            </p>
+        </div>
+
+        <!-- 右侧翼：动态竖排声明 -->
+        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
+            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="仙骨怀真 · 黛色长存" data-en="IMMORTAL SPIRIT · INDIGO FOREVER">仙骨怀真 · 黛色长存</span>
+            <span class="w-[1px] h-12 bg-neutral-300"></span>
+        </div>
+    </header>
+
+    <!-- 核心双阁布局 -->
+    <main class="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow">
+        <!-- 左阁：色彩网格 -->
+        <section class="chinese-border p-8 rounded-2xl">
+            <h2 class="text-md font-semibold mb-6 flex items-center dynamic-text" data-zh="西阁 · 远山黛色卡" data-en="West Pavilion &bull; Mountain Palette">
+                <span class="w-2.5 h-2.5 bg-[#4A5D6B] rounded-full mr-2"></span>西阁 · 远山黛色卡
+            </h2>
+            <div id="color-grid" class="grid grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- 右阁：观象台与动态卡片 -->
+        <section class="chinese-border p-8 rounded-2xl flex flex-col space-y-6">
+            <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/lXYTTG5sK1c" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 下一站链接：流转至暮山紫落 -->
+            <a href="Color Mu Shan Lila.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2 h-2 rounded-full bg-[#4A5D6B] group-hover:animate-ping"></span>
+                    <div>
+                        <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="下一站：暮山紫落 烟霞微茫" data-en="Next Station: Mu Shan Lila & Twilight Haze">下一站：暮山紫落 烟霞微茫</h4>
+                        <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="“夕阳虽衔山，紫气自东来。”" data-en="&ldquo;Though the evening sun dips behind mountains, a purple grace rises naturally from the east.&rdquo;">“夕阳虽衔山，紫气自东来。”</p>
+                    </div>
+                </div>
+                <span class="text-xs text-[#4A5D6B] font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
+            </a>
+            
+            <!-- 动态交互大卡片 -->
+            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer hover:opacity-90 active:scale-[0.99]" style="background-color: #4A5D6B;">
+                <p id="dynamic-name" class="text-xs font-bold pad-name-style">远山黛</p>
+                <div class="flex items-center space-x-2">
+                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-80">#4A5D6B</p>
+                    <span id="copy-badge" class="text-[8px] border border-white/30 px-1 rounded font-light dynamic-sub" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+                </div>
+            </div>
+            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-300 rounded-lg appearance-none cursor-pointer">
+            
+            <!-- 意境山水诗词 -->
+            <div class="border-t border-neutral-200 pt-4">
+                <div id="poetry-container" class="mb-2 min-h-[75px] flex flex-col justify-between break-words">
+                    <p id="poetry-text" class="text-sm text-neutral-600 poetry-text-style">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
+                    <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">—— 蕊宫原创</p>
+                </div>
+                <button id="next-poetry" class="text-[10px] text-[#4A5D6B] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚布局 -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
+        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p class="space-x-1">
+            <a href="impressum.html" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+            <span>|</span> 
+            <a href="Datenschutz.html" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+        </p>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        // 远山黛六色色谱配置
+        const colors = [
+            { hex: '#4A5D6B', name_zh: '远山黛', name_en: 'Distant Mountain' },
+            { hex: '#5D7382', name_zh: '烟岚灰', name_en: 'Mist Gray' },
+            { hex: '#738999', name_zh: '云影黛', name_en: 'Cloud Indigo' },
+            { hex: '#8FA2B0', name_zh: '暮色浅', name_en: 'Pale Twilight' },
+            { hex: '#B0C0CC', name_zh: '清风隐', name_en: 'Hidden Breeze' },
+            { hex: '#D6E0E6', name_zh: '晨雾白', name_en: 'Morning Mist' }
+        ];
+
+        // 完美保留大小写自然排版的双语诗词库
+        const poetries = [
+            { text_zh: "山色空蒙雨亦奇，黛色千重入望迷。", text_en: "The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
+            { text_zh: "借得远山烟雨色，点染丹青入画屏。", text_en: "Borrowing the misty hues of distant ranges, to paint the colors of nature onto the unfolding screen.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
+            { text_zh: "空山新雨后，天气晚来秋。", source_zh: "—— 王维", text_en: "After fresh rain on the empty mountain, autumn evening brings its gentle chill.", source_en: "— Wang Wei" }
+        ];
+
+        function copyHex() {
+            const hexText = document.getElementById('dynamic-hex').innerText;
+            navigator.clipboard.writeText(hexText);
+            alert(currentLang === 'zh' ? `已复制色号: ${hexText}` : `Hex copied: ${hexText}`);
+        }
+
+        function renderGrid() {
+            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
+                <div onclick="navigator.clipboard.writeText('${c.hex}'); alert('${currentLang === 'zh' ? '已复制: ' + c.hex : 'Copied: ' + c.hex}')" 
+                     class="cursor-pointer p-4 bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#4A5D6B]/50 transition duration-300">
+                    <div class="h-24 mb-3 rounded shadow-inner" style="background-color:${c.hex}"></div>
+                    <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                    <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('color-slider').oninput = function() {
+            const c = colors[this.value];
+            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
+            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            document.getElementById('dynamic-hex').innerText = c.hex;
+        };
+
+        document.getElementById('next-poetry').onclick = () => {
+            const p = poetries[Math.floor(Math.random() * poetries.length)];
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            
+            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        };
+
+        function returnToPrevious() {
+            window.location.href = `index.html?lang=${currentLang}`;
+        }
+
+        function toggleLanguage(targetLang) {
+            if (targetLang) {
+                currentLang = targetLang;
+            } else {
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            }
+
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+                el.setAttribute('data-lang', currentLang); 
+            });
+
+            const channelLink = document.getElementById('channel-link');
+            if (channelLink) channelLink.href = `Color Mu Shan Lila.html?lang=${currentLang}`;
+
+            renderGrid();
+            const currentIdx = document.getElementById('color-slider').value;
+            
+            const nameEl = document.getElementById('dynamic-name');
+            nameEl.innerText = currentLang === 'zh' ? colors[currentIdx].name_zh : colors[currentIdx].name_en;
+            nameEl.setAttribute('data-lang', currentLang); 
+            
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            toggleLanguage(langParam === 'en' ? 'en' : 'zh');
+        });
+    </script>
+</body>
+</html>
