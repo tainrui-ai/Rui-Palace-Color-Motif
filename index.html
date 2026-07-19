@@ -72,6 +72,101 @@
             font-weight: 500;
         }
 
+        /* 隐私弹窗遮罩及卡片样式 */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+        }
+        .modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            font-family: "Montserrat", "Songti SC", serif;
+            color: #262626;
+            animation: modalPop 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        @keyframes modalPop {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-content h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            color: #B22222;
+        }
+        .modal-content p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .button-group button {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #B22222;
+            color: #B22222;
+        }
+        .btn-outline:hover {
+            background: rgba(178, 34, 34, 0.05);
+        }
+        .btn-solid {
+            background: #B22222;
+            border: 1px solid #B22222;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+        .btn-solid:hover {
+            background: #901B1B;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding-top: 1rem;
+            letter-spacing: 0.1em;
+        }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #B22222;
+        }
+
         /* 侧边弹窗 */
         .side-panel {
             position: absolute;
@@ -159,6 +254,22 @@
 
 <body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
 
+    <!-- 隐私说明弹窗：置于最前端，需点击选择后方可进入主页 -->
+    <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
+        <div class="modal-content">
+            <h3>蕊宫隐私说明</h3>
+            <p>蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
+            <div class="button-group">
+                <button id="reject-btn" class="btn-outline">全部拒绝</button>
+                <button id="accept-btn" class="btn-solid">全部同意</button>
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html">法律声明 (Impressum)</a>
+                <a href="datenschutz.html">隐私政策 (Datenschutz)</a>
+            </div>
+        </div>
+    </div>
+
     <!-- 舞台核心区 -->
     <div id="stage-container">
         <img id="baoxiang-img" src="images/baoxianghua.jpg" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1000&auto=format&fit=crop';" alt="核心纹样">
@@ -240,8 +351,7 @@
         </div>
     </div>
 
-   
-<!-- 彻底扁平化底座：控制面板居中，法律、版权、隐私在最底部完全平行 -->
+    <!-- 彻底扁平化底座：控制面板居中，法律、版权、隐私在最底部完全平行 -->
     <footer class="w-full fixed bottom-0 left-0 z-10 px-12 pb-6 flex flex-col items-center space-y-4" onclick="event.stopPropagation()">
         
         <div class="w-full max-w-6xl flex justify-center items-center relative">
@@ -281,6 +391,14 @@
     </footer>
 
     <script>
+        // 隐私弹窗交互逻辑：点击同意或拒绝后隐藏弹窗并进入主页
+        document.getElementById('accept-btn').addEventListener('click', () => {
+            document.getElementById('cookie-consent').classList.add('hidden');
+        });
+        document.getElementById('reject-btn').addEventListener('click', () => {
+            document.getElementById('cookie-consent').classList.add('hidden');
+        });
+
         const canvas = document.getElementById('inkCanvas');
         const ctx = canvas.getContext('2d');
         let currentLang = 'zh';
@@ -296,7 +414,7 @@
             },
             {
                 name_zh: "敦煌大藻井", name_en: "Dunhuang Caisson", img: "images/zaojing.jpg",
-                
+                backup: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=1000&auto=format&fit=crop", 
                 desc_zh: "高昌及盛唐莫高窟窟顶核心华彩，层叠方井演化宇宙秩序。",
                 desc_en: "The core masterwork of Dunhuang cave ceilings, forming cosmic order via square structures.",
                 poetry_zh: "宛转回莲层叠影，丹青画壁步天台。", poetry_en: "Layered lotuses rotate in shadows; painted murals pave paths to heaven."
@@ -421,6 +539,8 @@
         }
 
         window.addEventListener('click', (e) => {
+            // 如果弹窗处于激活状态，点击不触发canvas水滴效果
+            if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
             if (e.clientY < window.innerHeight - 120 && e.clientX > 430 && e.clientX < window.innerWidth - 430) {
                 const randomColor = orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)];
                 drops.push(new WaterDrop(e.clientX, e.clientY, randomColor));
@@ -451,7 +571,7 @@
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
             document.querySelectorAll('[data-zh]').forEach(el => {
                 el.innerText = el.getAttribute(`data-${currentLang}`);
-                el.setAttribute('data-lang', currentLang); // 动态改变属性让 Tailwind 控制间距
+                el.setAttribute('data-lang', currentLang);
             });
             renderPatternPool();
             renderColorPool();
