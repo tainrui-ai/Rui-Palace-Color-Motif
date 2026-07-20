@@ -268,27 +268,7 @@
             <div class="button-group">
                 <button id="reject-btn" class="btn-outline" data-zh="全部拒绝" data-en="REJECT ALL">全部拒绝</button>
                 <button id="accept-btn" class="btn-solid" data-zh="全部同意" data-en="ACCEPT ALL">全部同意</button>
-            // 页面加载时检查是否已经做过隐私选择
-window.addEventListener('DOMContentLoaded', () => {
-    const consent = localStorage.getItem('rui_palace_cookie_consent');
-    if (consent) {
-        document.getElementById('cookie-consent').classList.add('hidden');
-    }
-});
-
-// 隐私弹窗交互逻辑：点击同意或拒绝后隐藏弹窗、记录状态并进入主页
-document.getElementById('accept-btn').addEventListener('click', () => {
-    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
-    document.getElementById('cookie-consent').classList.add('hidden');
-});
-document.getElementById('reject-btn').addEventListener('click', () => {
-    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
-    document.getElementById('cookie-consent').classList.add('hidden');
-});
-            
-            
-            
-            
+           
             
             </div>
             <div class="footer-links">
