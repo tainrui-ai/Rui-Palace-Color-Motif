@@ -259,7 +259,16 @@
 
 <body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
 
-// 页面加载时检查是否已经做过隐私选择
+
+    <!-- 隐私说明弹窗：置于最前端，需点击选择后方可进入主页 -->
+    <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
+        <div class="modal-content">
+            <h3 data-zh="蕊宫隐私说明" data-en="RUI PALACE PRIVACY NOTICE">蕊宫隐私说明</h3>
+            <p data-zh="蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。" data-en="Rui Palace respects and values your privacy. To ensure a seamless experience, we use essential cookies and third-party technologies. Clicking 'Accept All' grants permission for us to deliver an optimized experience. You may update your preferences at any time within the Privacy Policy.">蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
+            <div class="button-group">
+                <button id="reject-btn" class="btn-outline" data-zh="全部拒绝" data-en="REJECT ALL">全部拒绝</button>
+                <button id="accept-btn" class="btn-solid" data-zh="全部同意" data-en="ACCEPT ALL">全部同意</button>
+            // 页面加载时检查是否已经做过隐私选择
 window.addEventListener('DOMContentLoaded', () => {
     const consent = localStorage.getItem('rui_palace_cookie_consent');
     if (consent) {
@@ -276,16 +285,11 @@ document.getElementById('reject-btn').addEventListener('click', () => {
     localStorage.setItem('rui_palace_cookie_consent', 'rejected');
     document.getElementById('cookie-consent').classList.add('hidden');
 });
-
-  
-    <!-- 隐私说明弹窗：置于最前端，需点击选择后方可进入主页 -->
-    <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
-        <div class="modal-content">
-            <h3 data-zh="蕊宫隐私说明" data-en="RUI PALACE PRIVACY NOTICE">蕊宫隐私说明</h3>
-            <p data-zh="蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。" data-en="Rui Palace respects and values your privacy. To ensure a seamless experience, we use essential cookies and third-party technologies. Clicking 'Accept All' grants permission for us to deliver an optimized experience. You may update your preferences at any time within the Privacy Policy.">蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
-            <div class="button-group">
-                <button id="reject-btn" class="btn-outline" data-zh="全部拒绝" data-en="REJECT ALL">全部拒绝</button>
-                <button id="accept-btn" class="btn-solid" data-zh="全部同意" data-en="ACCEPT ALL">全部同意</button>
+            
+            
+            
+            
+            
             </div>
             <div class="footer-links">
                 <a href="impressum.html" data-zh="法律声明 (Impressum)" data-en="Impressum">法律声明 (Impressum)</a>
