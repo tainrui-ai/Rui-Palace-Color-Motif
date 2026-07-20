@@ -259,6 +259,25 @@
 
 <body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
 
+// 页面加载时检查是否已经做过隐私选择
+window.addEventListener('DOMContentLoaded', () => {
+    const consent = localStorage.getItem('rui_palace_cookie_consent');
+    if (consent) {
+        document.getElementById('cookie-consent').classList.add('hidden');
+    }
+});
+
+// 隐私弹窗交互逻辑：点击同意或拒绝后隐藏弹窗、记录状态并进入主页
+document.getElementById('accept-btn').addEventListener('click', () => {
+    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
+    document.getElementById('cookie-consent').classList.add('hidden');
+});
+document.getElementById('reject-btn').addEventListener('click', () => {
+    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
+    document.getElementById('cookie-consent').classList.add('hidden');
+});
+
+  
     <!-- 隐私说明弹窗：置于最前端，需点击选择后方可进入主页 -->
     <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
         <div class="modal-content">
