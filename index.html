@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕊宫 · 灵犀鉴大千色域 | RUI PALACE</title>
     
-    <!-- 完全本地化/系统级字体栈，无任何外部网络请求，符合欧盟 GDPR 隐私标准 -->
+    <!-- 100% 纯本地系统级安全字体，零外链、零外发请求，完全符合 GDPR 与版权合规标准 -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
@@ -16,9 +16,9 @@
             height: 100%;
             overflow: hidden;
             background-color: #B22222; /* 大唐朱砂红 */
-            /* 采用更具高级感与克制美感的西文衬线搭配系统宋体 */
-            font-family: "Baskerville", "Playfair Display", "Times New Roman", "Songti SC", "SimSun", serif;
+            font-family: "Kaiti SC", "STKaiti", "KaiTi", "Baskerville", "Palatino", "Georgia", serif;
             user-select: none;
+            -webkit-font-smoothing: antialiased; 
         }
 
         #stage-container {
@@ -57,22 +57,21 @@
         }
 
         .brand-logo {
-            font-family: "Baskerville", "Playfair Display", "Songti SC", serif;
-            font-size: 2.8rem; 
-            font-weight: 400;
-            line-height: 1.1;
+            font-family: "Baskerville", "Palatino", "Kaiti SC", "STKaiti", serif;
+            font-size: 3rem; 
+            font-weight: 500; 
+            line-height: 1.15;
             text-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            /* 収紧英文大写字母间距，使其紧凑而高级 */
-            letter-spacing: -0.02em;
+            letter-spacing: -0.02em; 
         }
 
         .sub-brand {
-            font-family: "Baskerville", "Playfair Display", serif;
-            font-weight: 500;
-            letter-spacing: -0.015em;
+            font-family: "Baskerville", "Palatino", "Kaiti SC", serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
         }
 
-        /* 隐私弹窗遮罩及卡片样式 */
+        /* 隐私弹窗遮罩及卡片样式：默认加上 hidden，由 JS 根据状态决定是否移除 */
         .modal {
             position: fixed;
             inset: 0;
@@ -167,7 +166,6 @@
             color: #B22222;
         }
 
-        /* 侧边弹窗 */
         .side-panel {
             position: absolute;
             top: 0;
@@ -200,24 +198,26 @@
         .color-card:hover { transform: translateX(-5px); }
 
         .poetry-reflection {
-            font-family: "KaiTi", "STKaiti", "Songti SC", serif;
+            font-family: "Palatino", "Baskerville", "Kaiti SC", "STKaiti", serif;
+            font-size: 1.15rem !important; 
+            letter-spacing: -0.01em !important; 
+            line-height: 1.6 !important;
             transition: all 0.8s ease-in-out;
         }
 
-        /* 切换按钮字体与紧凑间距 */
         .lang-switch {
-            font-family: "Baskerville", serif;
+            font-family: "Palatino", "Baskerville", "Kaiti SC", cursive;
+            font-size: 0.9rem;
             background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             transition: all 0.4s;
-            letter-spacing: -0.01em;
         }
         .lang-switch:hover {
             background: rgba(255, 255, 255, 0.95);
             color: #B22222;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .smart-glass-dock {
@@ -229,7 +229,6 @@
         }
         .smart-glass-dock button {
             transition: all 0.3s;
-            letter-spacing: -0.01em;
         }
         .smart-glass-dock button:hover {
             color: #FDEBC7;
@@ -251,18 +250,12 @@
             color: #FDEBC7;
             text-shadow: 0 0 8px rgba(253, 235, 199, 0.4);
         }
-
-        /* 针对英文模式的专属紧凑控制：彻底压窄英文单词间距，告别松散 */
-        [data-lang="en"] {
-            letter-spacing: -0.02em !important;
-            word-spacing: -0.03em;
-        }
     </style>
 </head>
 
 <body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
 
-    <!-- 隐私说明弹窗：仅首次访问时展现 -->
+    <!-- 隐私说明弹窗：默认隐藏，通过 JS 根据 localStorage 严格精准控制 -->
     <div id="cookie-consent" class="modal hidden" onclick="event.stopPropagation()">
         <div class="modal-content">
             <h3>蕊宫隐私说明</h3>
@@ -291,21 +284,21 @@
                 <span data-zh="蕊宫 · 灵犀鉴" data-en="RUI PALACE · LINGXI">蕊宫 · 灵犀鉴</span>
             </h1>
             <div class="flex space-x-6 text-sm tracking-[0.1em] text-amber-100/70 font-light transition-colors duration-1000">
-                <span id="current-pattern-name" data-zh="当前境象：经典宝相花" data-en="Pattern: Sacred Flower">当前境象：经典宝相花</span>
+                <span id="current-pattern-name" data-zh="当前境象：经典宝相花" data-en="Pattern: Sacred Baoxiang">当前境象：经典宝相花</span>
                 <span>|</span>
                 <span id="current-color-name" data-zh="当前色域：宝相大红底蕴" data-en="Current Realm: Vermilion Resonance">当前色域：宝相大红底蕴</span>
             </div>
         </div>
         
-        <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch text-xs px-6 py-2.5 rounded-full font-light shadow-md">
+        <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch px-6 py-2 rounded-full font-light shadow-md">
             EN / 中
         </button>
     </header>
 
     <!-- 动态诗词 -->
     <main class="w-full max-w-7xl mx-auto px-12 flex-grow flex items-end pb-36 z-10 pointer-events-none">
-        <div id="poem-container" class="max-w-xl w-full transition-all duration-500">
-            <p id="left-poem" class="poetry-reflection text-xs tracking-[0.2em] text-amber-100/90 font-light leading-relaxed"
+        <div id="poem-container" class="max-w-2xl w-full transition-all duration-500">
+            <p id="left-poem" class="poetry-reflection text-amber-100/90 font-light leading-relaxed"
                 data-zh="金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。"
                 data-en="Golden threads define the bones; the sacred flower blooms in quiet splendor. The grand gates open to the world.">
                 金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。
@@ -394,10 +387,30 @@
     </footer>
 
     <script>
+        // ==========================================
+        // 刚性 Cookie 权限弹窗控制逻辑（防止返回/跳转重复弹出）
+        // ==========================================
         const consentModal = document.getElementById('cookie-consent');
-        if (!localStorage.getItem('rui_palace_cookie_consent')) {
-            consentModal.classList.remove('hidden');
+        
+        // 每次页面加载（包括从子页面返回、前进、或重新载入）时立即严格检查本地存储
+        function checkCookieConsentState() {
+            const consentStatus = localStorage.getItem('rui_palace_cookie_consent');
+            if (consentStatus === 'accepted' || consentStatus === 'rejected') {
+                // 如果已经做过选择，强制、立刻、永远隐藏弹窗，不予显示
+                consentModal.classList.add('hidden');
+            } else {
+                // 如果从未选择过，则首次展现
+                consentModal.classList.remove('hidden');
+            }
         }
+
+        // 初始化立刻执行
+        checkCookieConsentState();
+
+        // 监听浏览器历史记录返回事件（pageshow 的 persisted 属性可判断是否是从往返缓存bfcache中恢复）
+        window.addEventListener('pageshow', (event) => {
+            checkCookieConsentState();
+        });
 
         document.getElementById('accept-btn').addEventListener('click', () => {
             localStorage.setItem('rui_palace_cookie_consent', 'accepted');
@@ -409,6 +422,9 @@
             consentModal.classList.add('hidden');
         });
 
+        // ==========================================
+        // 画布与纹样色池核心交互逻辑
+        // ==========================================
         const canvas = document.getElementById('inkCanvas');
         const ctx = canvas.getContext('2d');
         let currentLang = 'zh';
@@ -549,6 +565,7 @@
         }
 
         window.addEventListener('click', (e) => {
+            // 如果 Cookie 弹窗还未做选择且处于开启状态，禁止穿透触发背景水滴
             if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
             if (e.clientY < window.innerHeight - 120 && e.clientX > 430 && e.clientX < window.innerWidth - 430) {
                 const randomColor = orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)];
