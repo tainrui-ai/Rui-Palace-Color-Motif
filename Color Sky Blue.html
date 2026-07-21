@@ -6,22 +6,69 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>祈年殿 · 涌帝青美学色卡</title>
     
-    <!-- 引入高奢艺术级英文字体群 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Serif+SC:wght@300;400;600;900&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入本地高奢艺术级英文字体群与中文字体规则 -->
     <style>
+        @font-face {
+          font-family: 'Cinzel';
+          font-style: normal;
+          font-weight: 400;
+          src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Cinzel';
+          font-style: normal;
+          font-weight: 500;
+          src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Cinzel';
+          font-style: normal;
+          font-weight: 600;
+          src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
+        }
+
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 200;
+          src: url('fonts/montserrat-v31-latin-200.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 300;
+          src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 500;
+          src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2');
+        }
+
+        @font-face {
+          font-family: 'Playfair Display';
+          font-style: italic;
+          font-weight: 400;
+          src: url('fonts/playfair-display-v37-latin-italic.woff2') format('woff2');
+        }
+
         body { 
-            font-family: 'Noto Serif SC', "Songti SC", "SimSun", serif; 
+            font-family: "Cinzel", "Montserrat", "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif; 
             background-color: #0F172A; 
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%233B82F6' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%233B82F6' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.2'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
+            -webkit-font-smoothing: antialiased;
         }
         .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .chinese-border { border: 1px solid rgba(59, 130, 246, 0.15); outline: 3px double rgba(59, 130, 246, 0.08); outline-offset: -8px; background: rgba(15, 23, 42, 0.6); }
+        .chinese-border { border: 1px solid rgba(59, 130, 246, 0.2); outline: 3px double rgba(59, 130, 246, 0.1); outline-offset: -8px; background: rgba(15, 23, 42, 0.7); }
         
         input[type="range"]::-webkit-slider-thumb { 
             -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #3B82F6; cursor: pointer; border: 2px solid #0F172A; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); transition: transform 0.2s;
@@ -39,7 +86,7 @@
         .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
         /* 完美同步的高奢艺术级英文斜体 */
-        .poetry-text-style { font-family: 'Noto Serif SC', serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
+        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
         .poetry-text-style[data-lang="en"] { 
             font-family: "Playfair Display", Georgia, serif !important; 
             font-style: italic !important; 
@@ -49,10 +96,10 @@
             color: #93C5FD !important;            /* 优雅的晴空蓝灰意境色 */
         }
         
-        .poetry-source-style { font-family: 'Noto Serif SC', serif; letter-spacing: 0.1em; }
+        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; }
         .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #94A3B8; }
 
-        .pad-name-style { font-family: 'Noto Serif SC', serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
+        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
         .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
@@ -61,6 +108,7 @@
         .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
         .lang-switch-btn:hover { background: #3B82F6; color: white; border-color: #3B82F6; }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="text-white min-h-screen flex flex-col justify-between selection:bg-[#3B82F6]/20">
 
@@ -221,8 +269,7 @@
             { text_zh: '“三重飞檐接紫气，琉璃映月洗尘心。”', author_zh: '—— 蕊宫原创', text_en: '"Triple eaves catch the auspicious mist, as moonlit glass purifies the earthly mind."', author_en: '— Rui Palace Original' },
             { text_zh: '“顺应天道无狂傲，自得真诚待岁长。”', author_zh: '—— 蕊宫原创', text_en: '"Align with the natural law without arrogance, remaining true through the passage of time."', author_en: '— Rui Palace Original' },
             { text_zh: '“万物静观皆自得，草木青青显正气。”', author_zh: '—— 程颢《秋日偶成》', text_en: '"All things quietly observed possess self-fulfillment; the green grass reflects the vibrant essence."', author_en: '— Cheng Hao' },
-            { text_zh: '“心存敬畏苍穹下，历尽风霜骨亦青。”', author_zh: '—— 蕊宫原创', text_en: '"Stand with awe beneath the infinite sky; though worn by storms, the inner character remains unyielding."', author_en: '— Rui Palace Original' },
-            { text_zh: '“采药归来山月高，艾香入梦魂亦销。”', author_zh: '—— 蕊宫原创', text_en: '"Returning from gathering herbs as the mountain moon rises, the scent of mugwort melts into dreams."', author_en: '— Rui Palace Original' }
+            { text_zh: '“心存敬畏苍穹下，历尽风霜骨亦青。”', author_zh: '—— 蕊宫原创', text_en: '"Stand with awe beneath the infinite sky; though worn by storms, the inner character remains unyielding."', author_en: '— Rui Palace Original' }
         ];
 
         let currentPoetryIndex = 0;
