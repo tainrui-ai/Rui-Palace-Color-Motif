@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>杏花天 · 春色入梦美学色卡</title>
     
-    <!-- 引入高奢艺术级英文字体：Cinzel 用于艺术标题，Playfair Display 用于优雅自然的大小写意境诗词及卡片文字，Montserrat 用于现代正文与小标签 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <!-- 彻底移除外部 Google Fonts 依赖，改用安全、原生且跨平台的优雅内置/系统字库堆栈 -->
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -23,37 +20,37 @@
         .chinese-border { border: 1px solid rgba(233, 166, 141, 0.15); outline: 3px double rgba(233, 166, 141, 0.08); outline-offset: -8px; background: rgba(255, 251, 249, 0.6); }
         input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #E9A68D; cursor: pointer; }
         
-        /* ================= 中英文独立控制与字距隔离体系 ================= */
+        /* ================= 中英文独立控制与字距隔离体系（纯本地字库栈） ================= */
         
         /* 1. 主大标题字距 */
         .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
-        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        .dynamic-title[data-lang="en"] { font-family: "Georgia", "Times New Roman", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
         /* 2. 副标题与小标签字距 */
-        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.4em; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
         /* 3. 正文与描述性文本字距 */
         .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text[data-lang="en"] { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        /* 4. 意境诗词文本：使用支持自然大小写的人文衬线体 Playfair Display */
+        /* 4. 意境诗词文本：本地优雅衬线/衬体栈 */
         .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; text-transform: none !important; }
-        .poetry-text-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; text-transform: none !important; }
+        .poetry-text-style[data-lang="en"] { font-family: "Georgia", "Times New Roman", serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; text-transform: none !important; }
         
         .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; text-transform: none !important; }
-        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: none !important; color: #737373; }
+        .poetry-source-style[data-lang="en"] { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: none !important; color: #737373; }
 
         /* 大卡片内部颜色名称字体样式 */
         .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
-        .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style[data-lang="en"] { font-family: "Georgia", "Times New Roman", serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
         /* 5. 侧边竖排文本 */
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Georgia", serif; font-size: 9px; }
 
         /* 6. 语言切换按键样式 */
-        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(233, 166, 141, 0.08); border: 1px solid rgba(233, 166, 141, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn { font-family: "Georgia", serif; background: rgba(233, 166, 141, 0.08); border: 1px solid rgba(233, 166, 141, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
         .lang-switch-btn:hover { background: #E9A68D; color: white; border-color: #E9A68D; }
     </style>
 </head>
