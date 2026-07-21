@@ -5,6 +5,7 @@
   - https://scripts.sil.org/OFL
 -->
 
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -12,249 +13,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕊宫 · 灵犀鉴大千色域 | RUI PALACE</title>
     
-    <!-- 引入艺术与高奢级别 Google Fonts 字体库 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    
+    <!-- 引入外部的 style.css 文件 -->
+    <link rel="stylesheet" href="style.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #B22222; /* 大唐朱砂红 */
-            /* 融合第一个文档的中文字体（楷书/宋体）与英文字体，完美兼顾东西方气韵 */            
-            font-family: "Cinzel", "Montserrat", "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;            
-            user-select: none;
-            -webkit-font-smoothing: antialiased;         
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              cinzel: ['Cinzel', 'serif'],
+              montserrat: ['Montserrat', 'sans-serif'],
+            }
+          }
         }
-
-        #stage-container {            
-            position: absolute;            
-            inset: 0;            
-            display: flex;            
-            justify-content: center;            
-            align-items: center;            
-            z-index: 0;        
-        }
-
-        #baoxiang-img {            
-            position: absolute;            
-            width: 70vmin;            
-            height: 70vmin;            
-            object-fit: contain;            
-            pointer-events: none;            
-            animation: slowRotate 140s linear infinite;            
-            z-index: 1;            
-            box-shadow: 0 0 60px rgba(0,0,0,0.35);            
-            border-radius: 50%;            
-            transition: all 0.8s ease-in-out;        }
-
-        #inkCanvas {            
-            position: absolute;            
-            inset: 0;            
-            z-index: 2;            
-            pointer-events: none;            
-            mix-blend-mode: screen;         }
-
-        @keyframes slowRotate {            
-            from { transform: rotate(0deg); }            
-            to { transform: rotate(360deg); }        
-        }
-
-        .brand-logo {            
-            font-family: "Cinzel", "Kaiti SC", "STKaiti", serif;            
-            font-size: 2.8rem;             
-            font-weight: 400;            
-            line-height: 1.1;            
-            text-shadow: 0 4px 20px rgba(0,0,0,0.4);        }
-
-        .sub-brand {            
-            font-family: "Cinzel", "Songti SC", serif;            
-            font-weight: 500;        }
-
-        /* 隐私弹窗遮罩及卡片样式 */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
-        }
-        .modal.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .modal-content {
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(212, 160, 23, 0.3);
-            border-radius: 20px;
-            padding: 2.5rem;
-            max-width: 480px;
-            width: 90%;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            font-family: "Montserrat", "Songti SC", serif;
-            color: #262626;
-            animation: modalPop 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        @keyframes modalPop {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-content h3 {
-            font-size: 1.25rem;
-            font-weight: 400;
-            letter-spacing: 0.3em;
-            margin-bottom: 1rem;
-            color: #B22222;
-        }
-        .modal-content p {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-        .button-group button {
-            flex: 1;
-            padding: 0.8rem;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #B22222;
-            color: #B22222;
-        }
-        .btn-outline:hover {
-            background: rgba(178, 34, 34, 0.05);
-        }
-        .btn-solid {
-            background: #B22222;
-            border: 1px solid #B22222;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
-        }
-        .btn-solid:hover {
-            background: #901B1B;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            padding-top: 1rem;
-            letter-spacing: 0.1em;
-        }
-        .footer-links a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: #B22222;
-        }
-
-        /* 侧边弹窗 */
-        .side-panel {
-            position: absolute;
-            top: 0;
-            width: 420px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.93);
-            backdrop-filter: blur(40px);
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
-            z-index: 30;
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        
-        .pattern-panel { left: -450px; border-right: 1px solid rgba(255, 255, 255, 0.6); }
-        .pattern-panel.open { left: 0; }
-
-        .color-pool-panel { right: -450px; border-left: 1px solid rgba(255, 255, 255, 0.6); }
-        .color-pool-panel.open { right: 0; }
-
-        .pool-card {
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
-        }
-        .pool-card:hover {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-        .pattern-card:hover { transform: translateX(5px); }
-        .color-card:hover { transform: translateX(-5px); }
-
-        .poetry-reflection {
-            font-family: "Montserrat", "KaiTi", "Songti SC", serif;
-            transition: all 0.8s ease-in-out;
-        }
-
-        .lang-switch {
-            font-family: "Cinzel", serif;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s;
-        }
-        .lang-switch:hover {
-            background: rgba(255, 255, 255, 0.95);
-            color: #B22222;
-            font-weight: bold;
-        }
-
-        .smart-glass-dock {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-        }
-        .smart-glass-dock button {
-            transition: all 0.3s;
-        }
-        .smart-glass-dock button:hover {
-            color: #FDEBC7;
-            transform: translateY(-1px);
-        }
-
-        /* 法律声明侧边链接样式 */
-        .legal-wing-link {
-            text-decoration: none;
-            color: #E8C3A7;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            font-weight: 300;
-            opacity: 0.75;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .legal-wing-link:hover {
-            opacity: 1;
-            color: #FDEBC7;
-            text-shadow: 0 0 8px rgba(253, 235, 199, 0.4);
-        }
-    </style>
+      }
+    </script>
 </head>
 
 <body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
