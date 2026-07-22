@@ -1,5 +1,3 @@
-
-
 <!-- 
   Fonts used:
   - Cinzel, Montserrat, Playfair Display (Copyright Font Authors)
@@ -241,7 +239,7 @@
         /* 英文状态专属紧凑间距适配规则（核心极致压缩） */
         .lang-en-mode .brand-logo { letter-spacing: 0.08em !important; font-size: 1.9rem; }
         .lang-en-mode .sub-info { letter-spacing: 0.05em !important; font-size: 0.7rem; }
-        .lang-en-mode #left-poem { letter-spacing: 0.04em !important; font-weight: 300; word-spacing: 0.05em; } /* 将英文诗句字间距大幅压缩，恢复正常优雅排版 */
+        .lang-en-mode #left-poem { letter-spacing: 0.04em !important; font-weight: 300; word-spacing: 0.05em; } 
         .lang-en-mode .smart-glass-dock { letter-spacing: 0.06em !important; }
         .lang-en-mode .legal-footer { letter-spacing: 0.04em !important; }
         .lang-en-mode .trigger-btn { letter-spacing: 0.08em !important; }
@@ -358,64 +356,15 @@
     </footer>
 
     <script>
-       // 1. 初始化时检查用户的 Cookie 同意状态
+        // 1. 初始化时检查用户的 Cookie 同意状态
         function checkConsentStatus() {
             return localStorage.getItem('rui_palace_cookie_consent');
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const consent = checkConsentStatus();
-            if (consent) {
-                const consentBanner = document.getElementById('cookie-consent');
-                if (consentBanner) consentBanner.classList.add('hidden');
-                if (consent === 'rejected') {
-                    enforcePrivacyLockdown();
-                }
-            }
-
-            // 2. 点击“同意”按钮的逻辑
-            const acceptBtn = document.getElementById('accept-btn');
-            if (acceptBtn) {
-                acceptBtn.addEventListener('click', () => {
-                    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
-                    const consentBanner = document.getElementById('cookie-consent');
-                    if (consentBanner) consentBanner.classList.add('hidden');
-                });
-            }
-
-            // 3. 点击“拒绝”按钮的逻辑（包含真正的阻断与清理）
-            const rejectBtn = document.getElementById('reject-btn');
-            if (rejectBtn) {
-                rejectBtn.addEventListener('click', () => {
-                    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
-                    const consentBanner = document.getElementById('cookie-consent');
-                    if (consentBanner) consentBanner.classList.add('hidden');
-                    
-                    // 执行严格的隐私阻断与清理
-                    enforcePrivacyLockdown();
-                });
-            }
-        });
-
-        // 4. 隐私锁定执行函数：当用户点击拒绝时，主动清除并加固拦截
-        function enforcePrivacyLockdown() {
-            const keysToRemove = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                // 保留拒绝状态本身，清理其他所有本地缓存项
-                if (key !== 'rui_palace_cookie_consent') {
-                    keysToRemove.push(key);
-                }
-            }
-            keysToRemove.forEach(key => localStorage.removeItem(key));
-
-            // 设置内存级全局锁，阻断非必要行为
-            window.__RUI_PRIVACY_LOCKED__ = true;
-            console.log("Privacy Lockdown Enforced: Non-essential storage wiped and tracking locked.");
-        }
-
-        const canvas = document.getElementById('inkCanvas');
-        const ctx = canvas.getContext('2d');
+        // 定义受控的全局变量及动画控制句柄
+        let animationId = null;
+        let canvas, ctx;
+        let drops = [], ripples = [], backgroundFlows = [];
         let currentLang = 'zh';
 
         const uiTexts = {
@@ -483,10 +432,33 @@
             { name_zh: "琥珀金 · 金泽流光", name_en: "Amber Gold", hex: "#D4A017", origin_zh: "流光不掩本真，岁月沉淀清气。", origin_en: "Time’s shifting light cannot veil the true self.", url: "Color Amber Gold.html" }
         ];
 
-        let drops = [], ripples = [], backgroundFlows = [];
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        // 页面核心功能初始化（仅在用户同意后触发）
+        function initializeApp() {
+            canvas = document.getElementById('inkCanvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            renderUIStrings();
+            renderPatternPool();
+            renderColorPool();
+            selectPattern(0);
+            animate();
+
+            window.addEventListener('click', (e) => {
+                if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
+                if (window.__RUI_PRIVACY_LOCKED__) return; // 拒绝锁定状态下禁止交互
+                if (e.clientY < window.innerHeight - 120 && e.clientX > 450 && e.clientX < window.innerWidth - 450) {
+                    drops.push(new WaterDrop(e.clientX, e.clientY, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
+                }
+            });
+        }
+
+        function resizeCanvas() { 
+            if (!canvas) return;
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
 
         function renderUIStrings() {
             const t = uiTexts[currentLang];
@@ -587,14 +559,8 @@
             document.getElementById('current-color-name').innerText = currentLang === 'zh' ? `当前色域：${colorData.name_zh}` : `Current Realm: ${colorData.name_en}`;
         }
 
-        window.addEventListener('click', (e) => {
-            if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
-            if (e.clientY < window.innerHeight - 120 && e.clientX > 450 && e.clientX < window.innerWidth - 450) {
-                drops.push(new WaterDrop(e.clientX, e.clientY, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
-            }
-        });
-
         function triggerManualDrop() {
+            if (window.__RUI_PRIVACY_LOCKED__) return;
             drops.push(new WaterDrop(window.innerWidth / 2, window.innerHeight / 2, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
         }
 
@@ -615,18 +581,72 @@
             selectPattern(0);
         }
 
-        renderUIStrings();
-        renderPatternPool();
-        renderColorPool();
-
         function animate() {
+            if (!ctx) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             backgroundFlows = backgroundFlows.filter(f => { let a = f.update(); if (a) f.draw(); return a; });
-            ripples = ripples.filter(r => { let a = r.update(); if (a) r.draw(); return a; });
+            ripples = ripples.filter(r => { let a = r.update(); if (a) r.draw(); return r; });
             drops = drops.filter(d => { let a = d.update(); if (a) d.draw(); return a; });
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         }
-        animate();
+
+        // DOM 加载完成后的分流监听
+        window.addEventListener('DOMContentLoaded', () => {
+            const consent = checkConsentStatus();
+            const consentBanner = document.getElementById('cookie-consent');
+
+            if (consent) {
+                if (consentBanner) consentBanner.classList.add('hidden');
+                if (consent === 'accepted') {
+                    initializeApp();
+                } else {
+                    enforcePrivacyLockdown();
+                }
+            } else {
+                // 未做选择：渲染基础静态界面，挂起动态渲染
+                renderUIStrings();
+                renderPatternPool();
+                renderColorPool();
+            }
+
+            // 同意按钮逻辑
+            const acceptBtn = document.getElementById('accept-btn');
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', () => {
+                    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
+                    if (consentBanner) consentBanner.classList.add('hidden');
+                    initializeApp();
+                });
+            }
+
+            // 拒绝按钮逻辑
+            const rejectBtn = document.getElementById('reject-btn');
+            if (rejectBtn) {
+                rejectBtn.addEventListener('click', () => {
+                    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
+                    if (consentBanner) consentBanner.classList.add('hidden');
+                    enforcePrivacyLockdown();
+                });
+            }
+        });
+
+        // 隐私锁定执行函数：清除缓存并终止循环
+        function enforcePrivacyLockdown() {
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key !== 'rui_palace_cookie_consent') {
+                    keysToRemove.push(key);
+                }
+            }
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+
+            window.__RUI_PRIVACY_LOCKED__ = true;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            console.log("Privacy Lockdown Enforced: Non-essential storage wiped and tracking locked.");
+        }
     </script>
 </body>
 </html>
