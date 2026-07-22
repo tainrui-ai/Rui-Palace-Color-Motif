@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,73 +7,48 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>薛涛红笺 · 桃花绯红美学色卡</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ================= 本地字体定义 (参考远山黛代码规范) ================= */
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 400;
-            src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 500;
-            src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 600;
-            src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
+        /* 安全无风险的基础重置与排版样式 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 200;
-            src: url('fonts/montserrat-v31-latin-200.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 300;
-            src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 400;
-            src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Playfair Display';
-            font-style: italic;
-            font-weight: 400;
-            src: url('fonts/playfair-display-v37-latin-italic.woff2') format('woff2');
-        }
-
-        body {
-            font-family: "Cinzel", "Montserrat", "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif;
-            background-color: #FAFBFD; 
+        body { 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
+            background-color: #FDFBF8; 
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23E05263' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
             -webkit-font-smoothing: antialiased;
         }
-        .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .chinese-border { border: 1px solid rgba(224, 82, 99, 0.15); outline: 3px double rgba(224, 82, 99, 0.08); outline-offset: -8px; background: rgba(253, 251, 255, 0.6); }
-        
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #E05263; cursor: pointer; border: 2px solid #FAFBFD; box-shadow: 0 4px 10px rgba(224, 82, 99, 0.25); transition: transform 0.2s;
+
+        .chinese-border { 
+            border: 1px solid rgba(212, 160, 23, 0.15); 
+            outline: 3px double rgba(212, 160, 23, 0.08); 
+            outline-offset: -8px; 
+            background: rgba(255, 255, 255, 0.6); 
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        input[type="range"]::-webkit-slider-thumb { 
+            -webkit-appearance: none; 
+            appearance: none;
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: #D4A017; 
+            cursor: pointer; 
+            border: 2px solid #FAFBFD;
+            box-shadow: 0 4px 10px rgba(212, 160, 23, 0.25);
+            transition: transform 0.2s;
         }
         input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
         
@@ -80,37 +56,165 @@
             position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: center;
         }
 
-        /* ================= 中英文独立控制与字距隔离体系 ================= */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
-        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        /* 纯净安全字体控制体系（无任何商业授权风险） */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
         .poetry-text-style[data-lang="en"] { 
-            font-family: "Playfair Display", Georgia, serif !important; 
+            font-family: "Times New Roman", Times, serif !important; 
             font-style: italic !important; 
-            letter-spacing: 0px !important; 
-            font-size: 1rem !important;         
+            letter-spacing: 0.02em !important; 
+            font-size: 0.88rem !important;         
             line-height: 1.5 !important; 
-            color: #384145 !important; 
+            color: #333333 !important; 
         }
         
-        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
-        .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(224, 82, 99, 0.08); border: 1px solid rgba(224, 82, 99, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
-        .lang-switch-btn:hover { background: #E05263; color: white; border-color: #E05263; }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(212, 160, 23, 0.08); border: 1px solid rgba(212, 160, 23, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
+        .lang-switch-btn:hover { background: #D4A017; color: white; border-color: #D4A017; }
+
+        /* 布局辅助类 */
+        .max-w-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .pt-6 { padding-top: 1.5rem; }
+        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .justify-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .space-y-8 > * + * { margin-top: 2rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:flex { display: flex; }
+            .hidden { display: none; }
+        }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .gap-12 { gap: 3rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-4 { gap: 1rem; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .left-8 { left: 2rem; }
+        .right-8 { right: 2rem; }
+        .top-1/2 { top: 50%; transform: translateY(-50%); }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mt-0.5 { margin-top: 0.125rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-1.5 { margin-top: 0.375rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .h-12 { height: 3rem; }
+        .w-\[1px\] { width: 1px; }
+        .bg-neutral-300 { background-color: #d4d4d4; }
+        .text-neutral-300 { color: #d4d4d4; }
+        .text-neutral-400 { color: #a3a3a3; }
+        .text-neutral-500 { color: #737373; }
+        .text-neutral-600 { color: #525252; }
+        .text-neutral-700 { color: #404040; }
+        .text-neutral-800 { color: #262626; }
+        .text-neutral-900 { color: #171717; }
+        .border-b { border-bottom-width: 1px; border-color: rgba(229, 229, 229, 0.5); }
+        .border-t { border-top-width: 1px; border-color: #e5e5e5; }
+        .max-w-xl { max-width: 36rem; }
+        .leading-relaxed { line-height: 1.625; }
+        .break-words { word-break: break-word; }
+        .flex-grow { flex-grow: 1; }
+        .aspect-video { aspect-ratio: 16 / 9; }
+        .bg-neutral-200 { background-color: #e5e5e5; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .overflow-hidden { overflow: hidden; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .border { border-width: 1px; border-color: rgba(229, 229, 229, 0.6); }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; }
+        .p-8 { padding: 2rem; }
+        .p-3\.5 { padding: 0.875rem; }
+        .cursor-pointer { cursor: pointer; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
+        .duration-300 { transition-duration: 300ms; }
+        .duration-500 { transition-duration: 500ms; }
+        .h-24 { height: 6rem; }
+        .h-1 { height: 0.25rem; }
+        .rounded-full { border-radius: 9999px; }
+        .h-2\.5 { height: 0.625rem; }
+        .w-2\.5 { width: 0.625rem; }
+        .h-2 { height: 0.5rem; }
+        .w-2 { width: 0.5rem; }
+        .bg-\[\#D4A017\] { background-color: #D4A017; }
+        .bg-\[\#E05263\] { background-color: #E05263; }
+        .text-\[\#D4A017\] { color: #D4A017; }
+        .text-\[\#E05263\] { color: #E05263; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-light { font-weight: 300; }
+        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .opacity-80 { opacity: 0.8; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); }
+        .hover\:underline:hover { text-decoration: underline; }
+        .z-20 { z-index: 20; }
+        .fixed { position: fixed; }
+        .bottom-8 { bottom: 2rem; }
+        .left-1\/2 { left: 50%; transform: translateX(-50%); }
+        .opacity-0 { opacity: 0; }
+        .opacity-100 { opacity: 1; }
+        .pointer-events-none { pointer-events: none; }
+        .bg-white { background-color: #ffffff; }
+        .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
+        .bg-neutral-900\/90 { background-color: rgba(23, 23, 23, 0.9); }
+        .text-\[\#FAF6F0\] { color: #FAF6F0; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-md { font-size: 1rem; line-height: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        @media (min-width: 768px) {
+            .md\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        }
+        .h-32 { height: 8rem; }
+        .items-end { align-items: flex-end; }
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .bg-black\/15 { background-color: rgba(0, 0, 0, 0.15); }
+        .border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+        .appearance-none { appearance: none; -webkit-appearance: none; }
+        .text-6xl { font-size: 3.75rem; line-height: 1; }
+        .font-black { font-weight: 900; }
+        .italic { font-style: italic; }
+        .items-stretch { align-items: stretch; }
     </style>
 </head>
 <body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#E05263]/20">
@@ -134,7 +238,7 @@
             <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="浣花溪畔 · 红笺格物" data-en="HUANHUA CREEK · CRIMSON OBSESSION">浣花溪畔 · 红笺格物</span>
         </div>
 
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="浣花笺纸，桃花红笺" data-en="Peach Blossom Crimson">浣花笺纸，桃花红笺</h1>
+        <h1 id="main-title" class="text-3xl md:text-4xl text-neutral-900 mb-4 dynamic-title" data-zh="浣花笺纸，桃花红笺" data-en="Peach Blossom Crimson">浣花笺纸，桃花红笺</h1>
         <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Peach Blossom Crimson Spectrum" data-en="Peach Blossom Crimson Spectrum">Peach Blossom Crimson Spectrum</p>
         
         <div class="max-w-xl mx-auto px-4">
@@ -157,7 +261,7 @@
         <section class="chinese-border p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
             <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
                 <h2 class="text-md font-semibold text-neutral-900 flex items-center dynamic-text" data-zh="西阁 · 桃花绯红谱" data-en="West Pavilion &bull; Peach Blossom Spectrum">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#E05263] rounded-full mr-2.5"></span>
+                    <span class="inline-block w-2.5 h-2.5 bg-[#E05263] rounded-full mr-2.5" style="display:inline-block; margin-right: 0.625rem;"></span>
                     西阁 · 桃花绯红谱
                 </h2>
                 <span class="text-[10px] text-neutral-500 dynamic-text" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
@@ -175,7 +279,7 @@
         <section class="chinese-border p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
             <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
                 <h2 class="text-md font-semibold text-neutral-900 flex items-center dynamic-text" data-zh="东阁 · 浣花红笺台" data-en="East Pavilion &bull; Crimson Observatory">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#F47A82] rounded-full mr-2.5"></span>
+                    <span class="inline-block w-2.5 h-2.5 bg-[#F47A82] rounded-full mr-2.5" style="display:inline-block; margin-right: 0.625rem;"></span>
                     东阁 · 浣花红笺台
                 </h2>
                 <span class="text-[10px] text-neutral-500 dynamic-text" data-zh="滑动以融合绯红" data-en="Slide to blend crimson shades">滑动以融合绯红</span>
@@ -186,15 +290,15 @@
                     <div class="text-[10px] text-neutral-400 font-light tracking-widest dynamic-text" data-zh="视听流转筹备中..." data-en="Audio-Visual stream coming soon...">视听流转筹备中...</div>
                 </div>
 
-                <a href="ColorZhuShaRed.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#B12224]/20 hover:border-[#B12224]/50 bg-gradient-to-r from-white/10 to-[#B12224]/5 rounded-lg transition-all duration-300 cursor-pointer">
+                <a href="ColorZhuShaRed.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#B12224]/20 hover:border-[#B12224]/50 bg-gradient-to-r from-white/10 to-[#B12224]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration: none;">
                     <div class="flex items-center space-x-3">
-                        <span class="w-2 h-2 rounded-full bg-[#B12224] group-hover:animate-ping"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#B12224]"></span>
                         <div>
                             <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="返回：朱砂落，凝脂白" data-en="Return to: Cinnabar & Creamy White">返回：朱砂落，凝脂白</h4>
                             <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="从浣花溪畔的文人傲骨，回溯至大国盛世的红墙霁雪" data-en="From the poets' pride at the stream, back to the snowy imperial walls.">从浣花溪畔的文人傲骨，回溯至大国盛世的红墙霁雪</p>
                         </div>
                     </div>
-                    <span class="text-xs text-[#B12224] font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
+                    <span class="text-xs text-[#B12224] font-bold">➔</span>
                 </a>
             </div>
 
@@ -206,7 +310,7 @@
                             <p id="dynamic-name" class="text-xs font-semibold pad-name-style">桃花初绽</p>
                             <p id="dynamic-rgb" class="text-[9px] font-mono tracking-widest opacity-80 mt-1">RGB(234, 102, 114)</p>
                         </div>
-                        <button onclick="copyDynamicValue()" class="text-[10px] bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded transition-colors border border-white/10 dynamic-sub" data-zh="复制 <span id='dynamic-hex' class='font-mono font-medium'>#EA6672</span>" data-en="COPY <span id='dynamic-hex' class='font-mono font-medium'>#EA6672</span>">
+                        <button onclick="copyDynamicValue()" class="text-[10px] bg-white/15 px-2.5 py-1 rounded transition-colors border border-white/10 dynamic-sub" style="cursor: pointer; color: inherit;">
                             复制 <span id="dynamic-hex" class="font-mono font-medium">#EA6672</span>
                         </button>
                     </div>
@@ -224,15 +328,15 @@
 
             <!-- 诗词卡片 -->
             <div class="border border-neutral-200/40 p-5 rounded-xl space-y-2 relative overflow-hidden bg-white/20" id="poetry-card">
-                <div class="absolute right-3 top-2 opacity-[0.02] select-none text-6xl font-black text-[#E05263] dynamic-text" data-zh="红笺" data-en="PAPER">
+                <div class="absolute right-3 top-2 opacity-[0.02] select-none text-6xl font-black text-[#E05263] dynamic-text" data-zh="红笺" data-en="PAPER" style="user-select: none;">
                     红笺
                 </div>
-                <div class="border-l border-[#E05263]/30 pl-3">
+                <div style="border-left: 1px solid rgba(224, 82, 99, 0.3); padding-left: 0.75rem;">
                     <p id="poetry-text" class="text-sm text-neutral-700 poetry-text-style"></p>
                     <p id="poetry-author" class="text-[10px] text-neutral-500 text-right mt-1.5 poetry-source-style"></p>
                 </div>
                 <div class="pt-3 border-t border-neutral-100 flex justify-end">
-                    <button id="next-poetry" class="text-[10px] text-[#E05263] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔">
+                    <button id="next-poetry" class="text-[10px] text-[#E05263] dynamic-sub" style="background: none; border: none; cursor: pointer;">
                         换一首诗 ➔
                     </button>
                 </div>
@@ -241,18 +345,18 @@
     </main>
 
     <!-- 复制提示 -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-neutral-900/90 text-[#FAF6F0] text-xs tracking-widest rounded-full opacity-0 pointer-events-none transition-all duration-300 shadow-lg flex items-center space-x-2">
-        <span class="w-1.5 h-1.5 bg-[#E05263] rounded-full animate-ping"></span>
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-neutral-900/90 text-[#FAF6F0] text-xs tracking-widest rounded-full opacity-0 pointer-events-none transition-all duration-300 shadow-lg flex items-center space-x-2" style="transform: translateX(-50%);">
+        <span class="w-1.5 h-1.5 bg-[#E05263] rounded-full" style="display:inline-block; width:0.375rem; height:0.375rem; border-radius:9999px;"></span>
         <span id="toast-text">已成功复制色值</span>
     </div>
 
     <!-- 规范化整合的德国合规页脚 -->
     <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
         <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p class="space-x-1">
-            <a href="impressum.html" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+        <p style="word-spacing: 0.25rem;">
+            <a href="impressum.html" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" style="text-decoration:none; color:inherit;">法律声明 (Impressum)</a> 
             <span>|</span> 
-            <a href="Datenschutz.html" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+            <a href="Datenschutz.html" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" style="text-decoration:none; color:inherit;">隐私政策 (Datenschutz)</a>
         </p>
     </footer>
 
@@ -261,11 +365,11 @@
 
         const colors = [
             { hex: '#F47A82', rgb: 'RGB(244, 122, 130)', name_zh: '桃花粉', name_en: 'Peach Blossom Pink', desc_zh: '微醺温润，如清晨带露之早桃。', desc_en: 'Subtle and warm, akin to early peach blossoms shimmering in morning dew.' },
-            { hex: '#F0717B', rgb: 'RGB(240, 113, 123)', name_zh: '初绽红', desc_zh: '芙蓉破瓣，生命力蓄势待发。', name_en: 'First Bloom Red', desc_en: 'Petals bursting open, carrying an intense momentum of inner life.' },
-            { hex: '#EA6672', rgb: 'RGB(234, 102, 114)', name_zh: '木芙蓉', desc_zh: '草木本色，融化于清澈溪流。', name_en: 'Confederate Rose', desc_en: 'The authentic botanical shade, beautifully dissolving into running water.' },
-            { hex: '#E7606E', rgb: 'RGB(231, 96, 110)', name_zh: '流霞绯', desc_zh: '长波散射，交融天地交界微光。', name_en: 'Floating Cloud Crimson', desc_en: 'Scattered light waves weaving into the horizon at twilight.' },
-            { hex: '#E35868', rgb: 'RGB(227, 88, 104)', name_zh: '十色笺', desc_zh: '文人唱和，落笔之处皆为深情。', name_en: 'Ten-Tint Stationery', desc_en: 'Poetic exchange paper, where every stroke is a testament to devotion.' },
-            { hex: '#E05263', rgb: 'RGB(224, 82, 99)', name_zh: '薛涛红', desc_zh: '傲骨绯红，风尘不染的本真色彩。', name_en: 'Xue Tao Red', desc_en: 'A proud, noble crimson that remains entirely unblemished by the mundane world.' }
+            { hex: '#F0717B', rgb: 'RGB(240, 113, 123)', name_zh: '初绽红', name_en: 'First Bloom Red', desc_zh: '芙蓉破瓣，生命力蓄势待发。', desc_en: 'Petals bursting open, carrying an intense momentum of inner life.' },
+            { hex: '#EA6672', rgb: 'RGB(234, 102, 114)', name_zh: '木芙蓉', name_en: 'Confederate Rose', desc_zh: '草木本色，融化于清澈溪流。', desc_en: 'The authentic botanical shade, beautifully dissolving into running water.' },
+            { hex: '#E7606E', rgb: 'RGB(231, 96, 110)', name_zh: '流霞绯', name_en: 'Floating Cloud Crimson', desc_zh: '长波散射，交融天地交界微光。', desc_en: 'Scattered light waves weaving into the horizon at twilight.' },
+            { hex: '#E35868', rgb: 'RGB(227, 88, 104)', name_zh: '十色笺', name_en: 'Ten-Tint Stationery', desc_zh: '文人唱和，落笔之处皆为深情。', desc_en: 'Poetic exchange paper, where every stroke is a testament to devotion.' },
+            { hex: '#E05263', rgb: 'RGB(224, 82, 99)', name_zh: '薛涛红', name_en: 'Xue Tao Red', desc_zh: '傲骨绯红，风尘不染的本真色彩。', desc_en: 'A proud, noble crimson that remains entirely unblemished by the mundane world.' }
         ];
 
         const poetries = [
@@ -281,20 +385,20 @@
         function renderColorGrid() {
             const colorGrid = document.getElementById('color-grid');
             colorGrid.innerHTML = colors.map((color, index) => `
-                <div onclick="selectColor(${index})" class="group cursor-pointer bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#E05263]/50 transition-all duration-500 p-4 shadow-sm hover:shadow-md hover:-translate-y-1">
-                    <div class="h-24 mb-3 rounded color-transition relative overflow-hidden" style="background-color:${color.hex}">
-                        <span class="absolute top-2 right-2 text-[8px] font-mono bg-black/15 text-white px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                <div onclick="selectColor(${index})" class="group cursor-pointer bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#E05263]/50 transition-all duration-500 p-4 shadow-sm hover:shadow-md hover:-translate-y-1" style="background: rgba(255,255,255,0.6); border-radius: 0.75rem; padding: 1rem; cursor: pointer;">
+                    <div class="h-24 mb-3 rounded color-transition relative overflow-hidden" style="background-color:${color.hex}; height: 6rem; margin-bottom: 0.75rem; border-radius: 0.25rem; position: relative;">
+                        <span class="absolute top-2 right-2 text-[8px] font-mono bg-black/15 text-white px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity" style="position: absolute; top: 0.5rem; right: 0.5rem; font-size: 8px; font-family: monospace; background: rgba(0,0,0,0.15); color: #fff; padding: 0.125rem 0.375rem; border-radius: 0.25rem;">
                             COPY
                         </span>
                     </div>
-                    <div class="flex justify-between items-start">
+                    <div class="flex justify-between items-start" style="display: flex; justify-content: space-between; align-items: flex-start;">
                         <div>
-                            <h4 class="font-bold text-neutral-900 text-xs dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>
-                            <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${color.hex}</p>
+                            <h4 class="font-bold text-neutral-900 text-xs dynamic-text" data-lang="${currentLang}" style="font-weight: 700; color: #171717; font-size: 0.75rem;">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>
+                            <p class="text-[10px] text-neutral-400 font-mono mt-0.5" style="font-size: 10px; color: #a3a3a3; font-family: monospace; margin-top: 0.125rem;">${color.hex}</p>
                         </div>
-                        <span class="text-[9px] text-neutral-300 italic font-mono">0${index+1}</span>
+                        <span class="text-[9px] text-neutral-300 italic font-mono" style="font-size: 9px; color: #d4d4d4; font-family: monospace;">0${index+1}</span>
                     </div>
-                    <p class="text-[10px] text-neutral-500 tracking-wider mt-2 border-t border-neutral-100 pt-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 dynamic-text" data-lang="${currentLang}">
+                    <p class="text-[10px] text-neutral-500 tracking-wider mt-2 border-t border-neutral-100 pt-2 leading-relaxed dynamic-text" data-lang="${currentLang}" style="font-size: 10px; color: #737373; margin-top: 0.5rem; border-top: 1px solid #f5f5f5; padding-top: 0.5rem;">
                         ${currentLang === 'zh' ? color.desc_zh : color.desc_en}
                     </p>
                 </div>
