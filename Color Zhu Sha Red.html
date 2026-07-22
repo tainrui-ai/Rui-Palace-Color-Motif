@@ -7,9 +7,8 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>朱砂落 · 凝脂白中国红美学色卡</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 纯原生安全样式，彻底剔除所有外来在线框架与外部字体，符合合规要求 -->
     <style>
-        /* ================= 安全无风险的基础重置与排版样式 ================= */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -19,336 +18,387 @@
         body { 
             font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
             background-color: #FBF2F1; 
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.45'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
-            -webkit-font-smoothing: antialiased;
         }
-        .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .chinese-border { border: 1px solid rgba(177, 34, 36, 0.15); outline: 3px double rgba(177, 34, 36, 0.08); outline-offset: -8px; background: rgba(253, 251, 255, 0.6); }
-        
-        input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #B12224; cursor: pointer; border: 2px solid #FAFBFD; box-shadow: 0 4px 10px rgba(177, 34, 36, 0.25); transition: transform 0.2s;
-        }
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
-        /* ================= 纯净安全字体控制体系（无任何商业授权风险） ================= */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .chinese-border { 
+            border: 1px solid rgba(177, 34, 36, 0.15); 
+            outline: 3px double rgba(177, 34, 36, 0.08); 
+            outline-offset: -8px; 
+            background: rgba(253, 251, 255, 0.6); 
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 48px 0;
+        }
+        @media (min-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* 纯净排版控制体系 */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
         .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; }
-        .dynamic-sub[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; font-weight: 300; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #B12224; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; font-weight: 300; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
-        .poetry-text-style[data-lang="en"] { 
-            font-family: "Times New Roman", Times, serif !important; 
-            font-style: italic !important; 
-            letter-spacing: 0.02em !important; 
-            font-size: 0.88rem !important;          
-            line-height: 1.5 !important; 
-            color: #384145 !important; 
-        }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
         
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; font-weight: 300; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
         .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-family: "Songti SC", "SimSun", serif; }
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #B12224; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(177, 34, 36, 0.08); border: 1px solid rgba(177, 34, 36, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(177, 34, 36, 0.08); border: 1px solid rgba(177, 34, 36, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
         .lang-switch-btn:hover { background: #B12224; color: white; border-color: #B12224; }
+
+        /* 布局与组件细节 */
+        .color-grid-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .color-card {
+            cursor: pointer;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #B12224;
+            box-shadow: 0 4px 12px rgba(177, 34, 36, 0.15);
+        }
+        .color-block {
+            height: 64px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(15, 15, 15, 0.85);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #B12224;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.05); }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid rgba(177, 34, 36, 0.2);
+            background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(177,34,36,0.05));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: rgba(177, 34, 36, 0.5); }
+
+        .dynamic-pad {
+            width: 100%;
+            height: 96px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            position: relative;
+            background-color: #B12224;
+            transition: background-color 0.5s;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-thumb { 
+            appearance: none; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: #B12224; 
+            cursor: pointer; 
+        }
+
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
+        @media(min-width: 640px) { footer.footer { flex-direction: row; } }
     </style>
 </head>
-<body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#B12224]/20">
+<body style="selection-background-color: rgba(177, 34, 36, 0.25);">
 
-    <!-- 顶部导航 -->
-    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
-        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#B12224] transition-colors duration-300 group">
-            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
-            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+    <!-- 顶部导航：归隐与语言切换 -->
+    <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
+        <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#a3a3a3;">
+            <span style="font-size:12px;">⇠</span>
+            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
         
-        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600">
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
             EN / 中
         </button>
     </div>
 
     <!-- 顶头画卷 -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b border-neutral-200/50 relative">
-        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 宫红格物" data-en="RUI PALACE · CINNABAR SPECTRUM">蕊宫 · 宫红格物</span>
+    <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative;">
+        <!-- 左侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+            <span class="vertical-wing" data-zh="蕊宫 · 宫红格物" data-en="RUI PALACE · CINNABAR SPECTRUM">蕊宫 · 宫红格物</span>
         </div>
 
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="朱砂落，凝脂白" data-en="Cinnabar Red & Creamy White">朱砂落，凝脂白</h1>
-        <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Cinnabar Red & Creamy White Spectrum" data-en="Cinnabar Red & Creamy White Spectrum">Cinnabar Red & Creamy White Spectrum</p>
+        <h1 id="main-title" class="dynamic-title" style="margin-bottom: 16px;" data-zh="朱砂落，凝脂白" data-en="Cinnabar Red & Creamy White">朱砂落，凝脂白</h1>
+        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="Cinnabar Red & Creamy White Spectrum" data-en="Cinnabar Red & Creamy White Spectrum">Cinnabar Red & Creamy White Spectrum</p>
         
-        <div class="max-w-xl mx-auto px-4">
-            <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words" 
+        <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
+            <p id="main-desc" class="dynamic-text" 
                data-zh="“朱砂染就大国色，凝脂和光守本真。”<br>于故宫红墙与霁雪初下之刹那，碰撞出既热烈澎湃、又克制深沉的东方风骨。" 
                data-en="&ldquo;Cinnabar dyes the great national color, while creamy white softens light to hold inner essence.&rdquo;<br>At the split second when the forbidden walls meet the first dawn snow, a spirit both passionate and restrained is born.">
                 “朱砂染就大国色，凝脂和光守本真。”<br>于故宫红墙与霁雪初下之刹那，碰撞出既热烈澎湃、又克制深沉的东方风骨。
             </p>
         </div>
 
-        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="赤子怀真 · 守白知黑" data-en="INNER ESSENCE · RETAIN WHITENESS">赤子怀真 · 守白知黑</span>
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
+        <!-- 右侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span class="vertical-wing" data-zh="赤子怀真 · 守白知黑" data-en="INNER ESSENCE · RETAIN WHITENESS">赤子怀真 · 守白知黑</span>
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
         </div>
     </header>
 
     <!-- 核心双阁布局 -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <main class="container grid-2">
         <!-- 左阁：色彩网格 -->
-        <section class="chinese-border p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
-            <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
-                <h2 class="text-md font-semibold text-neutral-900 flex items-center dynamic-text" data-zh="西阁 · 朱砂凝脂色卡" data-en="West Pavilion &bull; Cinnabar Palette">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#B12224] rounded-full mr-2.5"></span>
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 朱砂凝脂色卡" data-en="West Pavilion &bull; Cinnabar Palette">
+                    <span style="display:inline-block; width:10px; height:10px; background:#B12224; border-radius:50%;"></span>
                     西阁 · 朱砂凝脂色卡
                 </h2>
-                <span class="text-[10px] text-neutral-500 dynamic-text" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
             </div>
-
-            <div class="grid grid-cols-2 gap-6 flex-grow content-center" id="color-grid"></div>
-
-            <div class="pt-4 border-t border-neutral-100 flex justify-between items-center text-[10px] text-neutral-400 tracking-widest">
-                <span></span>
-                <span></span>
+            <div id="color-grid" class="color-grid-box"></div>
+            <div style="padding-top:16px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
+                <span></span><span></span>
             </div>
         </section>
 
-        <!-- 右阁：听风听雨观象台 -->
-        <section class="chinese-border p-8 rounded-2xl flex flex-col justify-between space-y-8 color-transition">
-            <div class="flex justify-between items-end border-b border-neutral-200/60 pb-4">
-                <h2 class="text-md font-semibold text-neutral-900 flex items-center dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Audio Observatory">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#F9F3EB] rounded-full mr-2.5"></span>
-                    东阁 · 听风听雨观象台
-                </h2>
+        <!-- 右阁：观象台与动态卡片 -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Audio Observatory">东阁 · 听风听雨观象台</h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="朱砂流光 · 视听长青" data-en="Cinnabar Glow & Eternal Vision">朱砂流光 · 视听长青</span>
             </div>
-
-            <div class="border border-neutral-200/40 p-4 rounded-xl space-y-4 bg-white/20">
-                <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden relative">
-                    <iframe class="w-full h-full absolute top-0 left-0" src="https://www.youtube-nocookie.com/embed/wzuLC07jp18" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                </div>
-
-                <a href="Color_Xue_Tao_Red.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#E05263]/20 hover:border-[#E05263]/50 bg-gradient-to-r from-white/10 to-[#E05263]/5 rounded-lg transition-all duration-300 cursor-pointer">
-                    <div class="flex items-center space-x-3">
-                        <span class="w-2 h-2 rounded-full bg-[#E05263] group-hover:animate-ping"></span>
-                        <div>
-                            <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="下一站：薛涛桃花红笺馆" data-en="Next Station: Xue Tao Red Pavilion">下一站：薛涛桃花红笺馆</h4>
-                            <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="从极冷月白，至浣花溪畔那一抹傲骨绯红" data-en="From the pure cold Moon White, to the proud crimson by the Huanhua Stream.">从极冷月白，至浣花溪畔那一抹傲骨绯红</p>
-                        </div>
+            
+            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
-                    <span class="text-xs text-[#E05263] font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
-                </a>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
-
-            <div class="space-y-6 flex-grow flex flex-col justify-center">
-                <div id="dynamic-pad" class="w-full h-32 rounded-xl shadow-inner flex flex-col justify-end p-4 text-white color-transition" style="background-color: #D9484A;">
-                    <div class="backdrop-blur-md bg-black/15 p-3 rounded-lg flex justify-between items-end border border-white/10">
-                        <div>
-                            <p id="dynamic-name" class="text-xs font-semibold pad-name-style">宫墙霁雪</p>
-                            <p id="dynamic-rgb" class="text-[9px] font-mono tracking-widest opacity-80 mt-1">RGB(217, 72, 74)</p>
-                        </div>
-                        <button onclick="copyDynamicValue()" class="text-[10px] bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded transition-colors border border-white/10 dynamic-sub" data-zh="复制 <span id='dynamic-hex' class='font-mono font-medium'>#D9484A</span>" data-en="COPY <span id='dynamic-hex' class='font-mono font-medium'>#D9484A</span>">
-                            复制 <span id="dynamic-hex" class="font-mono font-medium">#D9484A</span>
-                        </button>
+            
+            <!-- 下一站链接 -->
+            <a href="Color_Xue_Tao_Red.html" id="channel-link" class="channel-link">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#B12224;"></span>
+                    <div>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="下一站：薛涛桃花红笺馆" data-en="Next Station: Xue Tao Red Pavilion">下一站：薛涛桃花红笺馆</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="从极冷月白，至浣花溪畔那一抹傲骨绯红" data-en="From the pure cold Moon White, to the proud crimson by the Huanhua Stream.">从极冷月白，至浣花溪畔那一抹傲骨绯红</p>
                     </div>
                 </div>
-
-                <div class="space-y-2">
-                    <input type="range" id="color-slider" min="0" max="100" value="50" class="w-full h-1 bg-neutral-200/80 rounded-lg appearance-none cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-neutral-500 tracking-widest font-light">
-                        <span class="dynamic-text" data-zh="#B12224 (朱砂红)" data-en="#B12224 (Cinnabar)">#B12224 (朱砂红)</span>
-                        <span id="blend-percentage" class="font-mono text-neutral-600">50%</span>
-                        <span class="dynamic-text" data-zh="#F9F3EB (凝脂白)" data-en="#F9F3EB (Creamy White)">#F9F3EB (凝脂白)</span>
-                    </div>
+                <span style="font-size:12px; color:#B12224; font-weight:bold;">➔</span>
+            </a>
+            
+            <!-- 动态交互大卡片 -->
+            <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
+                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">宫墙霁雪</p>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9; letter-spacing:0.05em;">#B12224</p>
+                    <span id="copy-badge" class="dynamic-sub" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
             </div>
-
-            <div class="border border-neutral-200/40 p-5 rounded-xl space-y-2 relative overflow-hidden bg-white/20" id="poetry-card">
-                <div class="absolute right-3 top-2 opacity-[0.02] select-none text-6xl font-black text-[#B12224] dynamic-text" data-zh="赤子" data-en="SOUL">
-                    赤子
+            
+            <input type="range" id="color-slider" min="0" max="5" value="0">
+            
+            <!-- 意境山水诗词 -->
+            <div style="border-top:1px solid rgba(0,0,0,0.05); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
+                <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <p id="poetry-text" class="poetry-text-style">“只恐夜深花睡去，故烧高烛照红妆。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align:right;">—— 苏轼 · 《海棠》</p>
                 </div>
-                <div class="border-l border-[#B12224]/30 pl-3">
-                    <p id="poetry-text" class="text-sm text-neutral-700 poetry-text-style"></p>
-                    <p id="poetry-author" class="text-[10px] text-neutral-500 text-right mt-1.5 poetry-source-style"></p>
-                </div>
-                <div class="pt-3 border-t border-neutral-100 flex justify-end">
-                    <button id="next-poetry" class="text-[10px] text-[#B12224] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔">
-                        换一首诗 ➔
-                    </button>
-                </div>
+                <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:none; border:none; cursor:pointer; padding:0; color:#B12224;" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
             </div>
         </section>
     </main>
 
-    <!-- 提示框 -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-neutral-900/90 text-[#FAF6F0] text-xs tracking-widest rounded-full opacity-0 pointer-events-none transition-all duration-300 shadow-lg flex items-center space-x-2">
-        <span class="w-1.5 h-1.5 bg-[#B12224] rounded-full animate-ping"></span>
-        <span id="toast-text">已成功复制色值</span>
-    </div>
-
-    <!-- 页脚 -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
-        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p class="space-x-1">
-            <a href="impressum.html" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+    <!-- 页脚布局 -->
+    <footer class="footer">
+        <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display:flex; gap:6px;">
+            <a href="impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
             <span>|</span> 
-            <a href="Datenschutz.html" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+            <a href="Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
         </p>
     </footer>
 
+    <!-- 响应式大屏侧翼显示控制样式 -->
+    <style>
+        @media (min-width: 1024px) {
+            .side-wing-desktop { display: flex !important; }
+        }
+    </style>
+
+    <!-- 业务交互逻辑脚本 -->
     <script>
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube-nocookie.com/embed/wzuLC07jp18?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            `;
+        }
+
         let currentLang = 'zh';
 
         const colors = [
-            { hex: '#B12224', rgb: 'RGB(177, 34, 36)', name_zh: '朱砂红', name_en: 'Cinnabar Red', desc_zh: '大国朱砂之本色，承载着历史的厚重与无尽的赤诚。', desc_en: 'The authentic shade of traditional cinnabar, bearing historical weight and endless devotion.' },
-            { hex: '#C82C2E', rgb: 'RGB(200, 44, 46)', name_zh: '宫墙红', name_en: 'Imperial Wall Red', desc_zh: '红墙斑驳，斜阳拂过禁城宫阙，深锁时光的暖红。', desc_en: 'Mottled walls under the setting sun, a warm crimson locking away historical memories.' },
-            { hex: '#D9484A', rgb: 'RGB(217, 72, 74)', name_zh: '胭脂雪', name_en: 'Rouge Snow', desc_zh: '胭脂化雪，既保留了红尘繁华，又平添几分飘逸。', desc_en: 'Blushing rouge dissolving in snow, blending worldly elegance with detached freedom.' },
-            { hex: '#E86A6B', rgb: 'RGB(232, 106, 107)', name_zh: '枫叶绯', name_en: 'Maple Crimson', desc_zh: '寒霜染叶，秋意正浓时一抹璀璨又温柔的绯光。', desc_en: 'Frost-bitten foliage, a brilliant yet tender crimson when autumn peaks.' },
-            { hex: '#F5B3B3', rgb: 'RGB(245, 179, 179)', name_zh: '妃色浅', name_en: 'Imperial Consort Pink', desc_zh: '极淡之浅红，如贵妃微醺，略带一抹江南烟雨。', desc_en: 'An ultra-pale red akin to a subtle flush, carrying hints of Southern misty rain.' },
-            { hex: '#F9F3EB', rgb: 'RGB(249, 243, 235)', name_zh: '凝脂白', name_en: 'Creamy White', desc_zh: '似白非白，温润如羊脂白玉，极红之后的寂静空灵。', desc_en: 'Not strictly white, but warm as suet jade, offering serene emptiness after peak passion.' }
+            { hex: '#B12224', name_zh: '朱砂红', name_en: 'Cinnabar Red' },
+            { hex: '#C82C2E', name_zh: '宫墙红', name_en: 'Imperial Wall Red' },
+            { hex: '#D9484A', name_zh: '胭脂雪', name_en: 'Rouge Snow' },
+            { hex: '#E86A6B', name_zh: '枫叶绯', name_en: 'Maple Crimson' },
+            { hex: '#F5B3B3', name_zh: '妃色浅', name_en: 'Imperial Consort Pink' },
+            { hex: '#F9F3EB', name_zh: '凝脂白', name_en: 'Creamy White' }
         ];
 
         const poetries = [
-            { text_zh: '“只恐夜深花睡去，故烧高烛照红妆。”', author_zh: '—— 苏轼 · 《海棠》', text_en: '"Fearing that in the deep of night the flowers might fall asleep, I light high candles to illuminate their red makeup."', author_en: '— Su Shi, Begonia' },
-            { text_zh: '“朱实陨秋露，红叶卷春风。”', author_zh: '—— 杜甫 · 《秋野》', text_en: '"Vermilion fruits fall in the autumn dew, while red leaves drift in the spring breeze."', author_en: '— Du Fu, Autumn Fields' },
-            { text_zh: '“红豆生南国，春来发几枝。”', author_zh: '—— 王维 · 《相思》', text_en: '"The red beans grow in southern lands, sprouting few branches when spring arrives."', author_en: '— Wang Wei, Lovesickness' },
-            { text_zh: '“宫墙寂寂春风晚，朱瓦点点映红尘。”', author_zh: '—— 文人意境 · 《宫红格物》', text_en: '"The palace walls stand silently in the late spring breeze, as vermilion tiles reflect the mortal world."', author_en: '— Literati Mood, Imperial Investigation' },
-            { text_zh: '“如意朱红映雪白，守真克己静墨生。”', author_zh: '—— 自省箴言 · 《知白守黑》', text_en: '"Auspicious vermilion meets snow white; staying true and self-restrained births silent ink."', author_en: '— Self-Reflection, Knowing the White' },
-            { text_zh: '“愿君如火怀赤子，历尽千帆骨仍红。”', author_zh: '—— 蕊宫随笔 · 《向内生长》', text_en: '"May you remain like fire with an innocent heart; though traveling a thousand sails, your bone remains red."', author_en: '— Rui Palace, Inward Growth' }
+            { text_zh: "只恐夜深花睡去，故烧高烛照红妆。", text_en: "Fearing that in the deep of night the flowers might fall asleep, I light high candles to illuminate their red makeup.", source_zh: "—— 苏轼 · 《海棠》", source_en: "— Su Shi, Begonia" },
+            { text_zh: "朱实陨秋露，红叶卷春风。", text_en: "Vermilion fruits fall in the autumn dew, while red leaves drift in the spring breeze.", source_zh: "—— 杜甫 · 《秋野》", source_en: "— Du Fu, Autumn Fields" },
+            { text_zh: "红豆生南国，春来发几枝。", text_en: "The red beans grow in southern lands, sprouting few branches when spring arrives.", source_zh: "—— 王维 · 《相思》", source_en: "— Wang Wei, Lovesickness" },
+            { text_zh: "愿君如火怀赤子，历尽千帆骨仍红。", text_en: "May you remain like fire with an innocent heart; though traveling a thousand sails, your bone remains red.", source_zh: "—— 蕊宫随笔 · 《向内生长》", source_en: "— Rui Palace, Inward Growth" }
         ];
 
-        let currentPoetryIndex = 0;
+        function copyHex() {
+            const hexText = document.getElementById('dynamic-hex').innerText;
+            navigator.clipboard.writeText(hexText);
+            alert(currentLang === 'zh' ? `已复制色号: ${hexText}` : `Hex copied: ${hexText}`);
+        }
 
-        function renderColorGrid() {
-            const colorGrid = document.getElementById('color-grid');
-            colorGrid.innerHTML = colors.map((color, index) => `
-                <div onclick="selectColor(${index})" class="group cursor-pointer bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#B12224]/50 transition-all duration-500 p-4 shadow-sm hover:shadow-md hover:-translate-y-1">
-                    <div class="h-24 mb-3 rounded color-transition relative overflow-hidden" style="background-color:${color.hex}">
-                        <span class="absolute top-2 right-2 text-[8px] font-mono bg-black/15 text-white px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                            COPY
-                        </span>
+        function renderGrid() {
+            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
+                <div onclick="selectGridColor(${idx})" class="color-card">
+                    <div class="color-block" style="background-color:${c.hex}"></div>
+                    <div>
+                        <p class="dynamic-text" style="font-size:11px; font-weight:bold; color:#262626;" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                        <p style="font-size:10px; color:#a3a3a3; font-family:monospace; margin-top:2px;">${c.hex}</p>
                     </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="font-bold text-neutral-900 text-xs dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>
-                            <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${color.hex}</p>
-                        </div>
-                        <span class="text-[9px] text-neutral-300 italic font-mono">0${index+1}</span>
-                    </div>
-                    <p class="text-[10px] text-neutral-500 tracking-wider mt-2 border-t border-neutral-100 pt-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 dynamic-text" data-lang="${currentLang}">
-                        ${currentLang === 'zh' ? color.desc_zh : color.desc_en}
-                    </p>
                 </div>
             `).join('');
         }
 
-        window.selectColor = function(index) {
-            const color = colors[index];
-            copyToClipboard(color.hex);
-            currentPoetryIndex = index % poetries.length;
-            updatePoetryDisplay();
+        function selectGridColor(idx) {
+            document.getElementById('color-slider').value = idx;
+            updateDynamicPad(idx);
         }
 
-        function updatePoetryDisplay() {
-            const poetryText = document.getElementById('poetry-text');
-            const poetrySource = document.getElementById('poetry-author');
-            
-            poetryText.style.opacity = 0;
-            poetrySource.style.opacity = 0;
-            setTimeout(() => {
-                poetryText.innerHTML = currentLang === 'zh' ? poetries[currentPoetryIndex].text_zh : poetries[currentPoetryIndex].text_en;
-                poetrySource.innerText = currentLang === 'zh' ? poetries[currentPoetryIndex].author_zh : poetries[currentPoetryIndex].author_en;
-                
-                poetryText.setAttribute('data-lang', currentLang);
-                poetrySource.setAttribute('data-lang', currentLang);
-                
-                poetryText.style.opacity = 1;
-                poetrySource.style.opacity = 1;
-            }, 200);
-        }
-
-        function interpolateColor(color1, color2, factor) {
-            const r1 = parseInt(color1.substring(1, 3), 16);
-            const g1 = parseInt(color1.substring(3, 5), 16);
-            const b1 = parseInt(color1.substring(5, 7), 16);
-            const r2 = parseInt(color2.substring(1, 3), 16);
-            const g2 = parseInt(color2.substring(3, 5), 16);
-            const b2 = parseInt(color2.substring(5, 7), 16);
-
-            const r = Math.round(r1 + factor * (r2 - r1));
-            const g = Math.round(g1 + factor * (g2 - g1));
-            const b = Math.round(b1 + factor * (b2 - b1));
-
-            const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
-            return { hex, rgb: `RGB(${r}, ${g}, ${b})` };
-        }
-
-        function updateInkMixer() {
-            const sliderVal = document.getElementById('color-slider').value;
-            const factor = sliderVal / 100;
-            const startColor = '#B12224';
-            const endColor = '#F9F3EB';
-            const mixed = interpolateColor(startColor, endColor, factor);
-            
-            document.getElementById('blend-percentage').innerText = `${sliderVal}%`;
-            document.getElementById('dynamic-pad').style.backgroundColor = mixed.hex;
-            document.getElementById('dynamic-rgb').innerText = mixed.rgb;
-            
-            const hexEl = document.getElementById('dynamic-hex');
-            if (hexEl) hexEl.innerText = mixed.hex;
-
+        function updateDynamicPad(idx) {
+            const c = colors[idx];
+            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
             const nameEl = document.getElementById('dynamic-name');
-            if (sliderVal < 20) {
-                nameEl.innerText = currentLang === 'zh' ? '宫红朱砂重' : 'Heavy Cinnabar Red';
-            } else if (sliderVal < 50) {
-                nameEl.innerText = currentLang === 'zh' ? '宫墙霁雪暖' : 'Imperial Snow Warmth';
-            } else if (sliderVal < 80) {
-                nameEl.innerText = currentLang === 'zh' ? '胭脂带雪融' : 'Melting Rouge Snow';
-            } else {
-                nameEl.innerText = currentLang === 'zh' ? '凝脂留白暖' : 'Warm Creamy Space';
-            }
+            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
             nameEl.setAttribute('data-lang', currentLang);
+            document.getElementById('dynamic-hex').innerText = c.hex;
         }
 
-        function copyToClipboard(text) {
-            const tempInput = document.createElement('textarea');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast(currentLang === 'zh' ? `已成功复制色值: ${text}` : `Hex copied: ${text}`);
-        }
+        document.getElementById('color-slider').oninput = function() {
+            updateDynamicPad(this.value);
+        };
 
-        window.copyDynamicValue = function() {
-            const hexEl = document.getElementById('dynamic-hex');
-            if (hexEl) copyToClipboard(hexEl.innerText);
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-text').innerText = message;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 2000);
-        }
-
-        document.getElementById('next-poetry').addEventListener('click', () => {
-            currentPoetryIndex = (currentPoetryIndex + 1) % poetries.length;
-            updatePoetryDisplay();
-        });
+        document.getElementById('next-poetry').onclick = () => {
+            const p = poetries[Math.floor(Math.random() * poetries.length)];
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        };
 
         function returnToPrevious() {
             window.location.href = `index.html?lang=${currentLang}`;
@@ -369,18 +419,23 @@
             const channelLink = document.getElementById('channel-link');
             if (channelLink) channelLink.href = `Color_Xue_Tao_Red.html?lang=${currentLang}`;
 
-            renderColorGrid();
-            updateInkMixer();
-            updatePoetryDisplay();
+            renderGrid();
+            const currentIdx = document.getElementById('color-slider').value;
+            updateDynamicPad(currentIdx);
+
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
         }
 
-        document.getElementById('color-slider').addEventListener('input', updateInkMixer);
-
-        window.onload = function() {
+        window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             toggleLanguage(langParam === 'en' ? 'en' : 'zh');
-        }
+        });
     </script>
 </body>
 </html>
