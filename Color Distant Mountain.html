@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,107 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>远山黛 · 烟岚入画美学色卡</title>
     
-    <!-- 引入高奢艺术级英文字体群（采用本地字库堆栈，完全脱离外部依赖） -->
+    <!-- 安全无风险的基础重置与排版样式 -->
     <style>
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 400;
-            src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 500;
-            src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Cinzel';
-            font-style: normal;
-            font-weight: 600;
-            src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 200;
-            src: url('fonts/montserrat-v31-latin-200.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 300;
-            src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 400;
-            src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 500;
-            src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2');
-        }
-    </style>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
         body { 
-            font-family: "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif; 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
             background-color: #F7F9FA; 
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             /* 完美复原原版如意云纹暗花背景 - 远山黛专属定制色 */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234A5D6B' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
-            -webkit-font-smoothing: antialiased;
         }
-        .chinese-border { border: 1px solid rgba(74, 93, 107, 0.15); outline: 3px double rgba(74, 93, 107, 0.08); outline-offset: -8px; background: rgba(247, 249, 250, 0.6); }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #4A5D6B; cursor: pointer; }
-        
-        /* ================= 中英文独立控制与字距隔离体系 ================= */
-        
-        /* 1. 主大标题字距 */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
-        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        /* 2. 副标题与小标签字距 */
-        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .chinese-border { 
+            border: 1px solid rgba(74, 93, 107, 0.15); 
+            outline: 3px double rgba(74, 93, 107, 0.08); 
+            outline-offset: -8px; 
+            background: rgba(247, 249, 250, 0.6); 
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        input[type="range"]::-webkit-slider-thumb { 
+            -webkit-appearance: none; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: #4A5D6B; 
+            cursor: pointer; 
+        }
+
+        /* 纯净安全字体控制体系（无任何商业授权风险） */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
-        /* 3. 正文与描述性文本字距 */
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        /* 4. 意境诗词文本：本地艺术衬线体栈 */
-        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; text-transform: none !important; }
-        .poetry-text-style[data-lang="en"] { font-family: "Cinzel", "Montserrat", Georgia, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; text-transform: none !important; }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; }
         
-        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; text-transform: none !important; }
-        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: none !important; color: #737373; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-        /* 大卡片内部颜色名称字体样式 */
-        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
-        .pad-name-style[data-lang="en"] { font-family: "Cinzel", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        /* 5. 侧边竖排文本 */
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        /* 6. 语言切换按键样式 */
-        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(74, 93, 107, 0.08); border: 1px solid rgba(74, 93, 107, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(74, 93, 107, 0.08); border: 1px solid rgba(74, 93, 107, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
         .lang-switch-btn:hover { background: #4A5D6B; color: white; border-color: #4A5D6B; }
+
+        /* 布局辅助类 */
+        .max-w-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .pt-6 { padding-top: 1.5rem; }
+        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .justify-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:flex { display: flex; }
+            .hidden { display: none; }
+        }
+        .gap-12 { gap: 3rem; }
+        .gap-4 { gap: 1rem; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .left-8 { left: 2rem; }
+        .right-8 { right: 2rem; }
+        .top-1/2 { top: 50%; transform: translateY(-50%); }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mt-0.5 { margin-top: 0.125rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .h-12 { height: 3rem; }
+        .w-\[1px\] { width: 1px; }
+        .bg-neutral-300 { background-color: #d4d4d4; }
+        .text-neutral-400 { color: #a3a3a3; }
+        .text-neutral-500 { color: #737373; }
+        .text-neutral-600 { color: #525252; }
+        .text-neutral-800 { color: #262626; }
+        .text-neutral-900 { color: #171717; }
+        .border-b { border-bottom-width: 1px; border-color: rgba(229, 229, 229, 0.5); }
+        .border-t { border-top-width: 1px; border-color: #e5e5e5; }
+        .max-w-2xl { max-width: 42rem; }
+        .leading-relaxed { line-height: 1.625; }
+        .break-words { word-break: break-word; }
+        .flex-grow { flex-grow: 1; }
+        .aspect-video { aspect-ratio: 16 / 9; }
+        .bg-neutral-200 { background-color: #e5e5e5; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .overflow-hidden { overflow: hidden; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .border { border-width: 1px; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-3\.5 { padding: 0.875rem; }
+        .cursor-pointer { cursor: pointer; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
+        .duration-300 { transition-duration: 300ms; }
+        .duration-500 { transition-duration: 500ms; }
+        .h-24 { height: 6rem; }
+        .h-1 { height: 0.25rem; }
+        .rounded-full { border-radius: 9999px; }
+        .h-2\.5 { height: 0.625rem; }
+        .w-2\.5 { width: 0.625rem; }
+        .h-2 { height: 0.5rem; }
+        .w-2 { width: 0.5rem; }
+        .bg-\[\#4A5D6B\] { background-color: #4A5D6B; }
+        .text-\[\#4A5D6B\] { color: #4A5D6B; }
+        .font-bold { font-weight: 700; }
+        .font-light { font-weight: 300; }
+        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .opacity-80 { opacity: 0.8; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .min-h-\[75px\] { min-height: 75px; }
+        .hover\:underline:hover { text-decoration: underline; }
     </style>
 </head>
 
-<body class="text-neutral-800 min-h-screen flex flex-col justify-between">
+<body>
 
     <!-- 顶部导航：归隐与语言切换 -->
     <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
-        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#4A5D6B] transition-colors duration-300 group">
+        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#4A5D6B] transition-colors duration-300 group" style="background:none; border:none; cursor:pointer;">
             <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
             <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
@@ -155,25 +208,25 @@
         <section class="chinese-border p-8 rounded-2xl flex flex-col space-y-6">
             <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
             <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/lXYTTG5sK1c" allowfullscreen></iframe>
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/lXYTTG5sK1c" allowfullscreen style="border:none;"></iframe>
             </div>
             
             <!-- 下一站链接：流转至暮山紫落 -->
-            <a href="Color Mu Shan Lila.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer">
+            <a href="Color Mu Shan Lila.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none;">
                 <div class="flex items-center space-x-3">
-                    <span class="w-2 h-2 rounded-full bg-[#4A5D6B] group-hover:animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#4A5D6B]"></span>
                     <div>
                         <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="下一站：暮山紫落 烟霞微茫" data-en="Next Station: Mu Shan Lila & Twilight Haze">下一站：暮山紫落 烟霞微茫</h4>
                         <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="“夕阳虽衔山，紫气自东来。”" data-en="&ldquo;Though the evening sun dips behind mountains, a purple grace rises naturally from the east.&rdquo;">“夕阳虽衔山，紫气自东来。”</p>
                     </div>
                 </div>
-                <span class="text-xs text-[#4A5D6B] font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
+                <span class="text-xs text-[#4A5D6B] font-bold">➔</span>
             </a>
             
             <!-- 动态交互大卡片 -->
-            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer hover:opacity-90 active:scale-[0.99]" style="background-color: #4A5D6B;">
+            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer" style="width: 100%; height: 96px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: white; cursor: pointer; transition: background-color 0.5s; background-color: #4A5D6B;">
                 <p id="dynamic-name" class="text-xs font-bold pad-name-style">远山黛</p>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" style="display: flex; align-items: center; gap: 8px;">
                     <p id="dynamic-hex" class="text-[10px] font-mono opacity-80">#4A5D6B</p>
                     <span id="copy-badge" class="text-[8px] border border-white/30 px-1 rounded font-light dynamic-sub" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
@@ -186,7 +239,7 @@
                     <p id="poetry-text" class="text-sm text-neutral-600 poetry-text-style">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
                     <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">—— 蕊宫原创</p>
                 </div>
-                <button id="next-poetry" class="text-[10px] text-[#4A5D6B] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
+                <button id="next-poetry" class="text-[10px] text-[#4A5D6B] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="background:none; border:none; cursor:pointer;">换一首诗 ➔</button>
             </div>
         </section>
     </main>
@@ -201,6 +254,7 @@
         </p>
     </footer>
 
+    <!-- 业务交互逻辑脚本 -->
     <script>
         let currentLang = 'zh';
 
@@ -214,11 +268,11 @@
             { hex: '#D6E0E6', name_zh: '晨雾白', name_en: 'Morning Mist' }
         ];
 
-        // 完美保留大小写自然排版的双语诗词库
+        // 双语诗词库
         const poetries = [
             { text_zh: "山色空蒙雨亦奇，黛色千重入望迷。", text_en: "The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
             { text_zh: "借得远山烟雨色，点染丹青入画屏。", text_en: "Borrowing the misty hues of distant ranges, to paint the colors of nature onto the unfolding screen.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
-            { text_zh: "空山新雨后，天气晚来秋。", source_zh: "—— 王维", text_en: "After fresh rain on the empty mountain, autumn evening brings its gentle chill.", source_en: "— Wang Wei" }
+            { text_zh: "空山新雨后，天气晚来秋。", text_en: "After fresh rain on the empty mountain, autumn evening brings its gentle chill.", source_zh: "—— 王维", source_en: "— Wang Wei" }
         ];
 
         function copyHex() {
