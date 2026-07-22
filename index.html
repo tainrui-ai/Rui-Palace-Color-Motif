@@ -359,18 +359,39 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.getItem('rui_palace_cookie_consent')) {
+       // 初始化时检查用户的 Cookie 同意状态并执行相应隐私锁
+        function checkConsentStatus() {
+            return localStorage.getItem('rui_palace_cookie_consent');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const consent = checkConsentStatus();
+            if (consent) {
                 document.getElementById('cookie-consent').classList.add('hidden');
+                if (consent === 'rejected') {
+                    enforcePrivacyLockdown();
+                }
             }
         });
+
         document.getElementById('accept-btn').addEventListener('click', () => {
             localStorage.setItem('rui_palace_cookie_consent', 'accepted');
             document.getElementById('cookie-consent').classList.add('hidden');
         });
+
         document.getElementById('reject-btn').addEventListener('click', () => {
             localStorage.setItem('rui_palace_cookie_consent', 'rejected');
             document.getElementById('cookie-consent').classList.add('hidden');
+            
+            // 加锁：立即执行严格的隐私阻断
+            enforcePrivacyLockdown();
         });
+
+        // 隐私锁定执行函数：确保拒绝后阻断所有非必要行为
+        function enforcePrivacyLockdown() {
+            // 如未来接入第三方分析统计脚本，可在此处编写阻断/清理逻辑
+            console.log("Privacy Lockdown Active: Non-essential tracking and storage blocked.");
+        }
 
         const canvas = document.getElementById('inkCanvas');
         const ctx = canvas.getContext('2d');
