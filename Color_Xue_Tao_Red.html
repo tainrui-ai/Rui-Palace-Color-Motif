@@ -1,265 +1,440 @@
-
-<!DOCTYPE html><html lang="zh-CN"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="referrer" content="strict-origin-when-cross-origin" />    <title>薛涛红笺 · 桃花绯红美学色卡</title>    <style>
-        /* 安全无风险的基础重置与排版样式 */
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>灵犀鉴 · 薛涛红 · 绝代芳华美学色卡</title>
+    
+    <!-- 纯原生安全样式，彻底剔除所有外来在线框架与外部字体，符合合规要求 -->
+    <style>
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        body {             
-            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif;             
-            background-color: #FAFBFD;             
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23E05263' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");            
-            background-attachment: fixed;            
-            user-select: none;
+
+        body { 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
+            background-color: #FAF4F4; 
             color: #262626;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23C27979' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.15'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            user-select: none;
         }
 
-        /* 纯原生自适应安全布局与样式系统 */
-        .page-container { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; padding-left: 1.5rem; padding-right: 1.5rem; }
-        .nav-header { padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20; }
-        
-        .return-btn { display: flex; align-items: center; gap: 0.5rem; background: none; border: none; color: #A3A3A3; cursor: pointer; transition: color 0.3s; }
-        .return-btn:hover { color: #E05263; }
-        .return-arrow { font-size: 0.75rem; transition: transform 0.3s; }
-        .return-btn:hover .return-arrow { transform: translateX(-4px); }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(224, 82, 99, 0.08); border: 1px solid rgba(224, 82, 99, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; font-size: 10px; padding: 0.375rem 1rem; border-radius: 9999px; font-weight: 300; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); color: #525252; }        
-        .lang-switch-btn:hover { background: #E05263; color: white; border-color: #E05263; }
+        .chinese-border { 
+            border: 1px solid rgba(214, 90, 90, 0.25); 
+            outline: 3px double rgba(214, 90, 90, 0.12); 
+            outline-offset: -8px; 
+            background: rgba(255, 255, 255, 0.7); 
+            border-radius: 16px;
+            padding: 32px;
+        }
 
-        header.hero-header { padding-top: 2rem; padding-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; border-bottom: 1px solid rgba(229, 229, 229, 0.5); position: relative; }
-        
-        .wing-left, .wing-right { display: none; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 48px 0;
+        }
         @media (min-width: 1024px) {
-            .wing-left { display: flex; position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); align-items: center; gap: 0.5rem; }
-            .wing-right { display: flex; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); align-items: center; gap: 0.5rem; }
-        }
-        .wing-line { width: 1px; height: 3rem; background-color: #D4D4D4; }
-        
-        .main-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 1rem; }        
-        .main-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
-
-        .main-subtitle { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #A3A3A3; font-weight: 300; margin-bottom: 1rem; }
-        .main-subtitle[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
-
-        .main-desc-box { max-width: 36rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
-        .main-desc { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; line-height: 1.6; word-break: break-word; }
-        .main-desc[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; }
-
-        /* 双阁网格布局 */
-        .main-grid { padding-top: 3rem; padding-bottom: 3rem; flex-grow: 1; display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: stretch; }
-        @media (min-width: 1024px) {
-            .main-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .chinese-border {             
-            border: 1px solid rgba(224, 82, 99, 0.15);             
-            outline: 3px double rgba(224, 82, 99, 0.08);             
-            outline-offset: -8px;             
-            background: rgba(253, 251, 255, 0.6);             
-            border-radius: 1rem;            
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 2rem;
-        }
+        /* 纯净安全排版体系 */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .panel-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(229, 229, 229, 0.6); padding-bottom: 1rem; }
-        .panel-title { font-size: 0.95rem; font-weight: 600; color: #171717; display: flex; align-items: center; letter-spacing: 0.15em; }
-        .panel-dot-red { display: inline-block; width: 0.625rem; height: 0.625rem; background-color: #E05263; border-radius: 9999px; margin-right: 0.625rem; }
-        .panel-dot-pink { display: inline-block; width: 0.625rem; height: 0.625rem; background-color: #F47A82; border-radius: 9999px; margin-right: 0.625rem; }
-        .panel-tip { font-size: 10px; color: #737373; letter-spacing: 0.15em; font-weight: 300; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #D65A5A; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
-        .color-grid-box { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; flex-grow: 1; align-content: center; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
         
-        .color-card { background: rgba(255, 255, 255, 0.6); border-radius: 0.75rem; border: 1px solid rgba(229, 229, 229, 0.5); padding: 1rem; cursor: pointer; transition: all 0.5s; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
-        .color-card:hover { border-color: rgba(224, 82, 99, 0.5); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transform: translateY(-4px); }
-        .color-block { height: 6rem; margin-bottom: 0.75rem; border-radius: 0.25rem; position: relative; overflow: hidden; transition: all 0.8s; }
-        .copy-tag { position: absolute; top: 0.5rem; right: 0.5rem; font-size: 8px; font-family: monospace; background: rgba(0,0,0,0.15); color: white; padding: 0.125rem 0.375rem; border-radius: 0.25rem; opacity: 0; transition: opacity 0.3s; }
-        .color-card:hover .copy-tag { opacity: 1; }
-
-        .video-box-wrapper { border: 1px solid rgba(229, 229, 229, 0.4); padding: 1rem; border-radius: 0.75rem; background: rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 1rem; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.5rem; background: rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: center; }
-
-        .channel-link-card { display: flex; align-items: center; justify-content: space-between; padding: 0.875rem; border: 1px solid rgba(177, 34, 36, 0.2); background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(177, 34, 36, 0.05)); border-radius: 0.5rem; text-decoration: none; transition: all 0.3s; cursor: pointer; }
-        .channel-link-card:hover { border-color: rgba(177, 34, 36, 0.5); }
-
-        /* 色彩混合器面板 */
-        .mixer-container { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; flex-grow: 1; }
-        .dynamic-pad { width: 100%; height: 8rem; border-radius: 0.75rem; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; color: white; transition: all 0.8s; }
-        .dynamic-pad-inner { backdrop-filter: blur(12px); background: rgba(0,0,0,0.15); padding: 0.75rem; border-radius: 0.5rem; display: flex; justify-content: space-between; align-items: flex-end; border: 1px solid rgba(255,255,255,0.1); }
-        
-        input[type="range"] { width: 100%; height: 4px; background: rgba(229, 229, 229, 0.8); border-radius: 0.5rem; appearance: none; cursor: pointer; }
-        input[type="range"]::-webkit-slider-thumb {             
-            appearance: none;             
-            width: 18px;             
-            height: 18px;             
-            border-radius: 50%;             
-            background: #E05263;             
-            cursor: pointer;             
-            border: 2px solid #FAFBFD;             
-            box-shadow: 0 4px 10px rgba(224, 82, 99, 0.25);             
-            transition: transform 0.2s;         
-        }        
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-
-        /* 诗词卡片 */
-        .poetry-card { border: 1px solid rgba(229, 229, 229, 0.4); padding: 1.25rem; border-radius: 0.75rem; position: relative; overflow: hidden; background: rgba(255,255,255,0.2); }
-        .poetry-bg-watermark { position: absolute; right: 0.75rem; top: 0.5rem; opacity: 0.02; user-select: none; font-size: 3.75rem; font-weight: 900; color: #E05263; }
-        .poetry-content-box { border-left: 1px solid rgba(224, 82, 99, 0.3); padding-left: 0.75rem; }
-        
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; font-size: 0.875rem; color: #404040; }        
-        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; }                
-        
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; font-size: 10px; color: #737373; text-align: right; margin-top: 0.375rem; }        
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
         .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
-        
-        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; font-size: 0.75rem; }        
+
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
         .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
-        
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #737373; font-weight: 300; }        
+
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #D65A5A; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        /* Toast 提示浮窗 */
-        .toast-box { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); padding: 0.75rem 1.5rem; background: rgba(23, 23, 23, 0.9); color: #FAF6F0; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 9999px; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 0.5rem; z-index: 50; }
-        .toast-ping { width: 0.375rem; height: 0.375rem; background-color: #E05263; border-radius: 9999px; animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
-        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(214, 90, 90, 0.08); border: 1px solid rgba(214, 90, 90, 0.25); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
+        .lang-switch-btn:hover { background: #D65A5A; color: white; border-color: #D65A5A; }
 
-        /* 页脚 */
-        .site-footer { width: 100%; max-width: 80rem; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(229, 229, 229, 0.5); display: flex; flex-direction: column; sm-flex-direction: row; justify-content: space-between; align-items: center; font-size: 9px; color: #A3A3A3; gap: 0.5rem; }
-        @media(min-width: 640px) { .site-footer { flex-direction: row; } }
-    </style></head><body>    <!-- 顶部导航 -->    <div class="page-container">        <nav class="nav-header">            <button onclick="returnToPrevious()" class="return-btn">                <span class="return-arrow">⇠</span>                <span class="main-subtitle" data-zh="归隐" data-en="RETURN" style="margin-bottom:0;">归隐</span>            </button>                    <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">                EN / 中            </button>        </nav>    </div>    <!-- 顶头画卷 -->    <header class="page-container hero-header">        <div class="wing-left">            <span class="wing-line"></span>            <span class="vertical-wing" data-zh="浣花溪畔 · 红笺格物" data-en="HUANHUA CREEK · CRIMSON OBSESSION">浣花溪畔 · 红笺格物</span>        </div>        <h1 id="main-title" class="main-title" data-zh="浣花笺纸，桃花红笺" data-en="Peach Blossom Crimson">浣花笺纸，桃花红笺</h1>        <p class="main-subtitle" data-zh="Peach Blossom Crimson Spectrum" data-en="Peach Blossom Crimson Spectrum">Peach Blossom Crimson Spectrum</p>                <div class="main-desc-box">            <p id="main-desc" class="main-desc"                data-zh="“浣花笺纸桃花色，好好题诗咏玉钩。”<br>以木芙蓉为魂，调浣花清溪为骨，熬出一抹傲骨绯红。"                data-en="&ldquo;The paper of Huanhua Creek bears the tint of peach blossoms, fitting for elegant verses on the jade hook.&rdquo;<br>With the soul of hibiscus and the bone of clear running streams, a proud crimson is gracefully brewed.">                “浣花笺纸桃花色，好好题诗咏玉钩。”<br>以木芙蓉为魂，调浣花清溪为骨，熬出一抹傲骨绯红。            </p>        </div>        <div class="wing-right">            <span class="vertical-wing" data-zh="傲骨绯红 · 扫眉才子" data-en="PROUD CRIMSON · LITERARY TALENT">傲骨绯红 · 扫眉才子</span>            <span class="wing-line"></span>        </div>    </header>    <!-- 核心双阁布局 -->    <main class="page-container main-grid">        <!-- 左阁：色彩谱系 -->        <section class="chinese-border">            <div class="panel-header">                <h2 class="panel-title" data-zh="西阁 · 桃花绯红谱" data-en="West Pavilion &bull; Peach Blossom Spectrum">                    <span class="panel-dot-red"></span>                    西阁 · 桃花绯红谱                </h2>                <span class="panel-tip" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>            </div>            <div class="color-grid-box" id="color-grid"></div>            <div style="padding-top: 1rem; border-top: 1px solid rgba(245, 245, 245, 1); display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #A3A3A3; letter-spacing: 0.2em;">                <span></span>                <span></span>            </div>        </section>        <!-- 右阁：观测交互台 -->        <section class="chinese-border">            <div class="panel-header">                <h2 class="panel-title" data-zh="东阁 · 浣花红笺台" data-en="East Pavilion &bull; Crimson Observatory">                    <span class="panel-dot-pink"></span>                    东阁 · 浣花红笺台                </h2>                <span class="panel-tip" data-zh="滑动以融合绯红" data-en="Slide to blend crimson shades">滑动以融合绯红</span>            </div>            <div class="video-box-wrapper">                <div class="video-wrapper">                    <div style="font-size: 10px; color: #A3A3A3; font-weight: 300; letter-spacing: 0.2em;" class="main-desc" data-zh="视听流转筹备中..." data-en="Audio-Visual stream coming soon...">视听流转筹备中...</div>                </div>                <a href="Color Zhu Sha Red.html" id="channel-link" class="channel-link-card">                    <div style="display: flex; align-items: center; gap: 0.75rem;">                        <span style="width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: #B12224;"></span>                        <div>                            <h4 style="font-size: 11px; font-weight: 600; color: #262626; word-break: break-word;" class="main-desc" data-zh="返回：朱砂落，凝脂白" data-en="Return to: Cinnabar & Creamy White">返回：朱砂落，凝脂白</h4>                            <p style="font-size: 9px; color: #A3A3A3; margin-top: 0.125rem; word-break: break-word;" class="main-desc" data-zh="从浣花溪畔的文人傲骨，回溯至大国盛世的红墙霁雪" data-en="From the poets' pride at the stream, back to the snowy imperial walls.">从浣花溪畔的文人傲骨，回溯至大国盛世的红墙霁雪</p>                        </div>                    </div>                    <span style="font-size: 0.75rem; color: #B12224; font-weight: bold; transition: transform 0.3s;">➔</span>                </a>            </div>            <!-- 色彩混合器 -->            <div class="mixer-container">                <div id="dynamic-pad" class="dynamic-pad" style="background-color: #EA6672;">                    <div class="dynamic-pad-inner">                        <div>                            <p id="dynamic-name" class="pad-name-style">桃花初绽</p>                            <p id="dynamic-rgb" style="font-size: 9px; font-family: monospace; letter-spacing: 0.1em; opacity: 0.8; margin-top: 0.25rem;">RGB(234, 102, 114)</p>                        </div>                        <button onclick="copyDynamicValue()" style="font-size: 10px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.1); padding: 0.25rem 0.625rem; border-radius: 0.25rem; cursor: pointer; color: white;" class="main-subtitle" data-zh="复制 <span id='dynamic-hex' style='font-family:monospace; font-weight:500;'>#EA6672</span>" data-en="COPY <span id='dynamic-hex' style='font-family:monospace; font-weight:500;'>#EA6672</span>" style="margin-bottom:0;">                            复制 <span id="dynamic-hex" style="font-family: monospace; font-weight: 500;">#EA6672</span>                        </button>                    </div>                </div>                <div style="display: flex; flex-direction: column; gap: 0.5rem;">                    <input type="range" id="color-slider" min="0" max="100" value="50">                    <div style="display: flex; justify-content: space-between; font-size: 10px; color: #737373; letter-spacing: 0.2em; font-weight: 300;">                        <span class="main-desc" data-zh="#F47A82 (桃花粉)" data-en="#F47A82 (Peach Pink)">#F47A82 (桃花粉)</span>                        <span id="blend-percentage" style="font-family: monospace; color: #525252;">50%</span>                        <span class="main-desc" data-zh="#E05263 (薛涛红)" data-en="#E05263 (Xue Tao Red)">#E05263 (薛涛红)</span>                    </div>                </div>            </div>            <!-- 诗词卡片 -->            <div class="poetry-card" id="poetry-card">                <div class="poetry-bg-watermark main-desc" data-zh="红笺" data-en="PAPER">                    红笺                </div>                <div class="poetry-content-box">                    <p id="poetry-text" class="poetry-text-style"></p>                    <p id="poetry-author" class="poetry-source-style"></p>                </div>                <div style="padding-top: 0.75rem; border-top: 1px solid rgba(245,245,245,1); display: flex; justify-content: flex-end;">                    <button id="next-poetry" style="font-size: 10px; color: #E05263; background: none; border: none; cursor: pointer;" class="main-subtitle" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="margin-bottom:0;">                        换一首诗 ➔                    </button>                </div>            </div>        </section>    </main>    <!-- 复制提示 -->    <div id="toast" class="toast-box">        <span class="toast-ping"></span>        <span id="toast-text">已成功复制色值</span>    </div>    <!-- 规范化整合的德国合规页脚 -->    <footer class="site-footer main-subtitle" style="margin-bottom:0;">        <p>© 2026 蕊宫 - <span style="font-family: monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>        <p style="display: flex; gap: 0.25rem; align-items: center;">            <a href="impressum.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a>             <span>|</span>             <a href="Datenschutz.html" style="color: inherit; text-decoration: none; transition: color 0.3s;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>        </p>    </footer>    <script>
-        let currentLang = 'zh';
-        const colors = [            { hex: '#F47A82', rgb: 'RGB(244, 122, 130)', name_zh: '桃花粉', name_en: 'Peach Blossom Pink', desc_zh: '微醺温润，如清晨带露之早桃。', desc_en: 'Subtle and warm, akin to early peach blossoms shimmering in morning dew.' },            { hex: '#F0717B', rgb: 'RGB(240, 113, 123)', name_zh: '初绽红', desc_zh: '芙蓉破瓣，生命力蓄势待发。', name_en: 'First Bloom Red', desc_en: 'Petals bursting open, carrying an intense momentum of inner life.' },            { hex: '#EA6672', rgb: 'RGB(234, 102, 114)', name_zh: '木芙蓉', desc_zh: '草木本色，融化于清澈溪流。', name_en: 'Confederate Rose', desc_en: 'The authentic botanical shade, beautifully dissolving into running water.' },            { hex: '#E7606E', rgb: 'RGB(231, 96, 110)', name_zh: '流霞绯', desc_zh: '长波散射，交融天地交界微光。', name_en: 'Floating Cloud Crimson', desc_en: 'Scattered light waves weaving into the horizon at twilight.' },            { hex: '#E35868', rgb: 'RGB(227, 88, 104)', name_zh: '十色笺', desc_zh: '文人唱和，落笔之处皆为深情。', name_en: 'Ten-Tint Stationery', desc_en: 'Poetic exchange paper, where every stroke is a testament to devotion.' },            { hex: '#E05263', rgb: 'RGB(224, 82, 99)', name_zh: '薛涛红', desc_zh: '傲骨绯红，风尘不染的本真色彩。', name_en: 'Xue Tao Red', desc_en: 'A proud, noble crimson that remains entirely unblemished by the mundane world.' }        ];
-        const poetries = [            { text_zh: '“暗名未得官家别，且破红笺写自随。”', author_zh: '—— 薛涛 · 《寄旧诗与元微之》', text_en: '"Before official recognition is bestowed, I break the red stationery to write down my thoughts."', author_en: '— Xue Tao, Verses to Yuan Zhen' },            { text_zh: '“浣花笺纸桃花色，好好题诗咏玉钩。”', author_zh: '—— 李商隐 · 《送崔珏往西川》', text_en: '"The paper of Huanhua Creek bears the tint of peach blossoms, fitting for elegant verses on the jade hook."', author_en: '— Li Shi-yin, Farewell to Cui Jue' },            { text_zh: '“万里桥边女校书，枇杷花里闭门居。”', author_zh: '—— 王建 · 《寄蜀国女校书薛涛》', text_en: '"The female scholar stays by the Wanli Bridge, living behind closed doors amidst loquat flowers."', author_en: '— Wang Jian, Ode to Scholar Xue Tao' },            { text_zh: '“欲寄彩笺兼尺素，山长水阔知何处。”', author_zh: '—— 晏殊 · 《蝶恋花》', text_en: '"I long to send my colored stationery and silken letters, yet mountains loom high and rivers stretch wide."', author_en: '— Yan Shu, Butterflies in Pursuit of Flowers' },            { text_zh: '“别后书题在红笺，忆君相思泪如泉。”', author_zh: '—— 温庭筠 · 《怨歌行》', text_en: '"Since our parting, lines are written on the red stationery, remembering you brings tears like springs."', author_en: '— Wen Ting-yun, Song of Regret' }        ];
-        let currentPoetryIndex = 0;
-        function renderColorGrid() {
-            const colorGrid = document.getElementById('color-grid');
-            colorGrid.innerHTML = colors.map((color, index) => `                <div onclick="selectColor(${index})" class="color-card">                    <div>                        <div class="color-block" style="background-color:${color.hex}">                            <span class="copy-tag">COPY</span>                        </div>                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">                            <div>                                <h4 style="font-weight: bold; color: #171717; font-size: 0.75rem;" class="main-desc" data-lang="${currentLang}">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>                                <p style="font-size: 10px; color: #A3A3A3; font-family: monospace; margin-top: 0.125rem;">${color.hex}</p>                            </div>                            <span style="font-size: 9px; color: #D4D4D4; font-style: italic; font-family: monospace;">0${index+1}</span>                        </div>                    </div>                    <p style="font-size: 10px; color: #737373; letter-spacing: 0.05em; margin-top: 0.5rem; border-top: 1px solid rgba(245,245,245,1); padding-top: 0.5rem; line-height: 1.5; opacity: 0; transition: opacity 0.3s;" class="main-desc" data-lang="${currentLang}">                        ${currentLang === 'zh' ? color.desc_zh : color.desc_en}                    </p>                </div>            `).join('');
+        /* 布局与组件细节 */
+        .color-grid-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .color-card {
+            cursor: pointer;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(214, 90, 90, 0.25);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #D65A5A;
+            box-shadow: 0 4px 12px rgba(214, 90, 90, 0.15);
+        }
+        .color-block {
+            height: 64px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(15, 15, 15, 0.85);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #D65A5A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.05); }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid rgba(214, 90, 90, 0.25);
+            background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(214,90,90,0.06));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: rgba(214, 90, 90, 0.6); }
+
+        .dynamic-pad {
+            width: 100%;
+            height: 96px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            position: relative;
+            background-color: #F47A82;
+            transition: background-color 0.5s;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-thumb { 
+            appearance: none; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: #D65A5A; 
+            cursor: pointer; 
+        }
+
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(214,90,90,0.3); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
+        @media(min-width: 640px) { footer.footer { flex-direction: row; } }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航：归隐与语言切换 -->
+    <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
+        <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#a3a3a3;">
+            <span style="font-size:12px;">⇠</span>
+            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+        </button>
+        
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
+            EN / 中
+        </button>
+    </div>
+
+    <!-- 顶头画卷 -->
+    <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(214,90,90,0.3); position: relative;">
+        <!-- 左侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+            <span class="vertical-wing" data-zh="灵犀鉴 · 薛涛格物" data-en="LINGXI · XUE TAO">灵犀鉴 · 薛涛格物</span>
+        </div>
+
+        <h1 id="main-title" class="dynamic-title" style="margin-bottom: 16px;" data-zh="薛涛红 · 桃笺红" data-en="Xue Tao Peach Note">薛涛红 · 桃笺红</h1>
+        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="Lingxi Insight & Xue Tao Red Spectrum" data-en="Lingxi Insight & Xue Tao Red Spectrum">Lingxi Insight & Xue Tao Red Spectrum</p>
+        
+        <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
+            <p id="main-desc" class="dynamic-text" 
+               data-zh="“万里桥边女校书，笺花移作蜀江春。”<br>于百花潭畔与深情红笺之间，寻得一抹绝代才情、傲骨流芳之芳华。" 
+               data-en="&ldquo;The talented poetess by Wanli Bridge, transforming peach notes into Sichuan's spring.&rdquo;<br>Deep beside the Hundred Flowers Pond and passionate red stationery, discovering a brilliant literary spirit that echoes through the ages.">
+                “万里桥边女校书，笺花移作蜀江春。”<br>于百花潭畔与深情红笺之间，寻得一抹绝代才情、傲骨流芳之芳华。
+            </p>
+        </div>
+
+        <!-- 右侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span class="vertical-wing" data-zh="蜀笺怀真 · 灵犀鉴" data-en="XUE TAO NOTE · LINGXI">蜀笺怀真 · 灵犀鉴</span>
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+        </div>
+    </header>
+
+    <!-- 核心双阁布局 -->
+    <main class="container grid-2">
+        <!-- 左阁：色彩网格 -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(214,90,90,0.2); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 灵犀鉴·薛涛桃笺色卡" data-en="West Pavilion &bull; Lingxi Palette">
+                    <span style="display:inline-block; width:10px; height:10px; background:#D65A5A; border-radius:50%;"></span>
+                    西阁 · 灵犀鉴·薛涛桃笺色卡
+                </h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX">点击色块复制 HEX</span>
+            </div>
+            <div id="color-grid" class="color-grid-box"></div>
+            <div style="padding-top:16px; border-top:1px solid rgba(214,90,90,0.2); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
+                <span></span><span></span>
+            </div>
+        </section>
+
+        <!-- 右阁：观象台与动态卡片 -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(214,90,90,0.2); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="桃笺流光 · 视听长青" data-en="Peach Note Glow & Eternal Vision">桃笺流光 · 视听长青</span>
+            </div>
             
-            // 补充动态悬停显示描述的微交互
-            document.querySelectorAll('.color-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    const p = card.querySelector('p:last-child');
-                    if(p) p.style.opacity = '1';
-                });
-                card.addEventListener('mouseleave', () => {
-                    const p = card.querySelector('p:last-child');
-                    if(p) p.style.opacity = '0';
-                });
-            });
-        }
-        window.selectColor = function(index) {
-            const color = colors[index];
-            copyToClipboard(color.hex);
-            currentPoetryIndex = index % poetries.length;
-            updatePoetryDisplay();
-        }
-        function updatePoetryDisplay() {
-            const poetryText = document.getElementById('poetry-text');
-            const poetrySource = document.getElementById('poetry-author');                        
-            poetryText.style.opacity = 0;
-            poetrySource.style.opacity = 0;
-            setTimeout(() => {
-                poetryText.innerHTML = currentLang === 'zh' ? poetries[currentPoetryIndex].text_zh : poetries[currentPoetryIndex].text_en;
-                poetrySource.innerText = currentLang === 'zh' ? poetries[currentPoetryIndex].author_zh : poetries[currentPoetryIndex].author_en;                                
-                poetryText.setAttribute('data-lang', currentLang);
-                poetrySource.setAttribute('data-lang', currentLang);                                
-                poetryText.style.opacity = 1;
-                poetrySource.style.opacity = 1;
-            }, 200);
-        }
-        function interpolateColor(color1, color2, factor) {
-            const r1 = parseInt(color1.substring(1, 3), 16), g1 = parseInt(color1.substring(3, 5), 16), b1 = parseInt(color1.substring(5, 7), 16);
-            const r2 = parseInt(color2.substring(1, 3), 16), g2 = parseInt(color2.substring(3, 5), 16), b2 = parseInt(color2.substring(5, 7), 16);
-            const r = Math.round(r1 + factor * (r2 - r1)), g = Math.round(g1 + factor * (g2 - g1)), b = Math.round(b1 + factor * (b2 - b1));
-            return {
-                hex: "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase(),
-                rgb: `RGB(${r}, ${g}, ${b})`
-            };
-        }
-        function updateInkMixer() {
-            const sliderVal = document.getElementById('color-slider').value;
-            const factor = sliderVal / 100;
-            const mixed = interpolateColor('#F47A82', '#E05263', factor);                        
-            document.getElementById('blend-percentage').innerText = `${sliderVal}%`;
-            document.getElementById('dynamic-pad').style.backgroundColor = mixed.hex;
-            document.getElementById('dynamic-rgb').innerText = mixed.rgb;                        
-            const hexEl = document.getElementById('dynamic-hex');
-            if (hexEl) hexEl.innerText = mixed.hex;
+            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size:16px; margin-left:2px;">▶</span>
+                    </div>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" style="width:100%; height:100%;"></div>
+            </div>
+            
+            <!-- 下一站链接（流转通道） -->
+            <a href="" id="channel-link" class="channel-link">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#D65A5A;"></span>
+                    <div>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="流转通道：寻径桃笺深处" data-en="Flow Channel: Deep Into Peach Notes">流转通道：寻径桃笺深处</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="从薛涛红，至万物芳华" data-en="Transit from Xue Tao red to all flora.">从薛涛红，至万物芳华</p>
+                    </div>
+                </div>
+                <span style="font-size:12px; color:#D65A5A; font-weight:bold;">➔</span>
+            </a>
+            
+            <!-- 动态交互大卡片 -->
+            <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
+                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">桃花粉</p>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9; letter-spacing:0.05em;">#F47A82</p>
+                    <span id="copy-badge" class="dynamic-sub" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+                </div>
+            </div>
+            
+            <input type="range" id="color-slider" min="0" max="5" value="0">
+            
+            <!-- 意境山水诗词 -->
+            <div style="border-top:1px solid rgba(214,90,90,0.2); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
+                <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <p id="poetry-text" class="poetry-text-style">“枝上花开红艳艳，薛涛笺上写深情。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align:right;">—— 蜀笺杂语</p>
+                </div>
+                <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:none; border:none; cursor:pointer; padding:0; color:#D65A5A;" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
+            </div>
+        </section>
+    </main>
 
+    <!-- 页脚布局 (带有 Infram / Impressum 第三方确认) -->
+    <footer class="footer">
+        <p>© 2026 灵犀鉴 & 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display:flex; gap:6px;">
+            <a href="" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Infram)" data-en="Legal Notice (Infram)">法律声明 (Infram)</a> 
+            <span>|</span> 
+            <a href="" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+        </p>
+    </footer>
+
+    <!-- 响应式大屏侧翼显示控制样式 -->
+    <style>
+        @media (min-width: 1024px) {
+            .side-wing-desktop { display: flex !important; }
+        }
+    </style>
+
+    <!-- 业务交互逻辑脚本 -->
+    <script>
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube-nocookie.com/embed/live_stream?channel=RuiPalace" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            `;
+        }
+
+        let currentLang = 'zh';
+
+        const colors = [
+            { hex: '#F47A82', name_zh: '桃花粉', name_en: 'Peach Blossom Pink' },
+            { hex: '#E86B74', name_zh: '初绽红', name_en: 'Initial Bloom Red' },
+            { hex: '#EA6672', name_zh: '木芙蓉', name_en: 'Hibiscus Red' },
+            { hex: '#E7606E', name_zh: '流霞绯', name_en: 'Rosy Cloud Red' },
+            { hex: '#E55866', name_zh: '小笺红', name_en: 'Note Crimson' },
+            { hex: '#E05263', name_zh: '薛涛红', name_en: 'Xue Tao Red' }
+        ];
+
+        const poetries = [
+            { text_zh: "枝上花开红艳艳，薛涛笺上写深情。", text_en: "Flowers bloom vividly upon the branches; profound affections are inscribed upon Xue Tao's custom notes.", source_zh: "—— 蜀笺杂语", source_en: "— Sichuan Note Chronicles" },
+            { text_zh: "万里桥边女校书，笺花移作蜀江春。", text_en: "The talented poetess by Wanli Bridge, transforming peach notes into Sichuan's vibrant spring.", source_zh: "—— 张籍《赠薛涛》", source_en: "— Zhang Ji" },
+            { text_zh: "红笺小字诉清心，才情傲骨世难寻。", text_en: "Small characters on red stationery whisper a pure heart; such literary genius and proud integrity are rare in this world.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
+            { text_zh: "风暖锦江花满槛，才女当年此地吟。", text_en: "The brocade river breeze is warm, flowers fill the balustrade; the gifted lady chanted her verses here long ago.", source_zh: "—— 蜀中怀古", source_en: "— Sichuan Reminiscences" }
+        ];
+
+        function copyHex() {
+            const hexText = document.getElementById('dynamic-hex').innerText;
+            navigator.clipboard.writeText(hexText);
+            alert(currentLang === 'zh' ? `已复制色号: ${hexText}` : `Hex copied: ${hexText}`);
+        }
+
+        function renderGrid() {
+            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
+                <div onclick="selectGridColor(${idx})" class="color-card">
+                    <div class="color-block" style="background-color:${c.hex}"></div>
+                    <div>
+                        <p class="dynamic-text" style="font-size:11px; font-weight:bold; color:#262626;" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                        <p style="font-size:10px; color:#a3a3a3; font-family:monospace; margin-top:2px;">${c.hex}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectGridColor(idx) {
+            document.getElementById('color-slider').value = idx;
+            updateDynamicPad(idx);
+        }
+
+        function updateDynamicPad(idx) {
+            const c = colors[idx];
+            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
             const nameEl = document.getElementById('dynamic-name');
-            if (sliderVal < 20) {                
-                nameEl.innerText = currentLang === 'zh' ? '初桃破晓' : 'Dawn Peach Blossom';
-            } else if (sliderVal < 50) {                
-                nameEl.innerText = currentLang === 'zh' ? '芙蓉照水' : 'Hibiscus Shimmer';
-            } else if (sliderVal < 80) {                
-                nameEl.innerText = currentLang === 'zh' ? '文人融墨' : 'Poet Ink Dissolving';
-            } else {                
-                nameEl.innerText = currentLang === 'zh' ? '红笺傲骨' : 'Proud Crimson Paper';
-            }
+            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
             nameEl.setAttribute('data-lang', currentLang);
-        }
-        function copyToClipboard(text) {
-            const tempInput = document.createElement('textarea');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast(currentLang === 'zh' ? `已成功复制色值: ${text}` : `Hex copied: ${text}`);
-        }
-        window.copyDynamicValue = function() {
-            const hexEl = document.getElementById('dynamic-hex');
-            if (hexEl) copyToClipboard(hexEl.innerText);
-        }
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-text').innerText = message;
-            toast.style.opacity = '1';
-            setTimeout(() => {
-                toast.style.opacity = '0';
-            }, 2000);
+            document.getElementById('dynamic-hex').innerText = c.hex;
         }
 
-        document.getElementById('next-poetry').addEventListener('click', () => {            
-            currentPoetryIndex = (currentPoetryIndex + 1) % poetries.length;
-            updatePoetryDisplay();
-        });
+        document.getElementById('color-slider').oninput = function() {
+            updateDynamicPad(this.value);
+        };
 
-        function returnToPrevious() {            
+        document.getElementById('next-poetry').onclick = () => {
+            const p = poetries[Math.floor(Math.random() * poetries.length)];
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        };
+
+        function returnToPrevious() {
             window.location.href = `index.html?lang=${currentLang}`;
         }
 
-        function toggleLanguage(targetLang) {            
-            if (targetLang) {                
+        function toggleLanguage(targetLang) {
+            if (targetLang) {
                 currentLang = targetLang;
-            } else {                
+            } else {
                 currentLang = currentLang === 'zh' ? 'en' : 'zh';
             }
 
-            document.querySelectorAll('[data-zh]').forEach(el => {                
+            document.querySelectorAll('[data-zh]').forEach(el => {
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
                 el.setAttribute('data-lang', currentLang); 
             });
 
             const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color Zhu Sha Red.html?lang=${currentLang}`;
+            if (channelLink) channelLink.href = ``;
 
-            renderColorGrid();            
-            updateInkMixer();            
-            updatePoetryDisplay();
+            renderGrid();
+            const currentIdx = document.getElementById('color-slider').value;
+            updateDynamicPad(currentIdx);
+
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
         }
 
-        document.getElementById('color-slider').addEventListener('input', updateInkMixer);
-
-        window.onload = function() {            
+        window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             toggleLanguage(langParam === 'en' ? 'en' : 'zh');
-        }    </script></body></html>
+        });
+    </script>
+</body>
+</html>
