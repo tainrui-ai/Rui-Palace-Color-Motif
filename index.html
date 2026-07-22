@@ -356,9 +356,13 @@
     </footer>
 
     <script>
-        // 1. 初始化时检查用户的 Cookie 同意状态
+        // 合规性修改：绝对杜绝在无授权时前置访问非必要的 localStorage
         function checkConsentStatus() {
-            return localStorage.getItem('rui_palace_cookie_consent');
+            try {
+                return localStorage.getItem('rui_palace_cookie_consent');
+            } catch (e) {
+                return null;
+            }
         }
 
         // 定义受控的全局变量及动画控制句柄
@@ -590,7 +594,7 @@
             animationId = requestAnimationFrame(animate);
         }
 
-        // DOM 加载完成后的分流监听
+        // DOM 加载完成后的分流监听（确保在未授权前不触碰 LocalStorage 写入）
         window.addEventListener('DOMContentLoaded', () => {
             const consent = checkConsentStatus();
             const consentBanner = document.getElementById('cookie-consent');
@@ -603,7 +607,7 @@
                     enforcePrivacyLockdown();
                 }
             } else {
-                // 未做选择：渲染基础静态界面，挂起动态渲染
+                // 未做选择：渲染基础静态界面，挂起动态渲染及非必要存储
                 renderUIStrings();
                 renderPatternPool();
                 renderColorPool();
@@ -613,7 +617,9 @@
             const acceptBtn = document.getElementById('accept-btn');
             if (acceptBtn) {
                 acceptBtn.addEventListener('click', () => {
-                    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
+                    try {
+                        localStorage.setItem('rui_palace_cookie_consent', 'accepted');
+                    } catch (e) {}
                     if (consentBanner) consentBanner.classList.add('hidden');
                     initializeApp();
                 });
@@ -623,7 +629,9 @@
             const rejectBtn = document.getElementById('reject-btn');
             if (rejectBtn) {
                 rejectBtn.addEventListener('click', () => {
-                    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
+                    try {
+                        localStorage.setItem('rui_palace_cookie_consent', 'rejected');
+                    } catch (e) {}
                     if (consentBanner) consentBanner.classList.add('hidden');
                     enforcePrivacyLockdown();
                 });
@@ -633,19 +641,20 @@
         // 隐私锁定执行函数：清除缓存并终止循环
         function enforcePrivacyLockdown() {
             const keysToRemove = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key !== 'rui_palace_cookie_consent') {
-                    keysToRemove.push(key);
+            try {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key !== 'rui_palace_cookie_consent') {
+                        keysToRemove.push(key);
+                    }
                 }
-            }
-            keysToRemove.forEach(key => localStorage.removeItem(key));
+                keysToRemove.forEach(key => localStorage.removeItem(key));
+            } catch (e) {}
 
             window.__RUI_PRIVACY_LOCKED__ = true;
             if (animationId) {
                 cancelAnimationFrame(animationId);
             }
-            console.log("Privacy Lockdown Enforced: Non-essential storage wiped and tracking locked.");
         }
     </script>
 </body>
