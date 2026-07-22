@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>远山黛 · 烟岚入画美学色卡</title>
     
     <!-- 安全无风险的基础重置与排版样式 -->
@@ -70,91 +70,11 @@
 
         .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(74, 93, 107, 0.08); border: 1px solid rgba(74, 93, 107, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
         .lang-switch-btn:hover { background: #4A5D6B; color: white; border-color: #4A5D6B; }
-
-        /* 布局辅助类 */
-        .max-w-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .pt-6 { padding-top: 1.5rem; }
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .justify-between { justify-content: space-between; }
-        .items-center { align-items: center; }
-        .space-x-2 > * + * { margin-left: 0.5rem; }
-        .space-x-3 > * + * { margin-left: 0.75rem; }
-        .space-y-6 > * + * { margin-top: 1.5rem; }
-        .grid { display: grid; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .lg\:flex { display: flex; }
-            .hidden { display: none; }
-        }
-        .gap-12 { gap: 3rem; }
-        .gap-4 { gap: 1rem; }
-        .relative { position: relative; }
-        .absolute { position: absolute; }
-        .left-8 { left: 2rem; }
-        .right-8 { right: 2rem; }
-        .top-1/2 { top: 50%; transform: translateY(-50%); }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mt-0.5 { margin-top: 0.125rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .h-12 { height: 3rem; }
-        .w-\[1px\] { width: 1px; }
-        .bg-neutral-300 { background-color: #d4d4d4; }
-        .text-neutral-400 { color: #a3a3a3; }
-        .text-neutral-500 { color: #737373; }
-        .text-neutral-600 { color: #525252; }
-        .text-neutral-800 { color: #262626; }
-        .text-neutral-900 { color: #171717; }
-        .border-b { border-bottom-width: 1px; border-color: rgba(229, 229, 229, 0.5); }
-        .border-t { border-top-width: 1px; border-color: #e5e5e5; }
-        .max-w-2xl { max-width: 42rem; }
-        .leading-relaxed { line-height: 1.625; }
-        .break-words { word-break: break-word; }
-        .flex-grow { flex-grow: 1; }
-        .aspect-video { aspect-ratio: 16 / 9; }
-        .bg-neutral-200 { background-color: #e5e5e5; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .overflow-hidden { overflow: hidden; }
-        .w-full { width: 100%; }
-        .h-full { height: 100%; }
-        .border { border-width: 1px; }
-        .rounded-xl { border-radius: 0.75rem; }
-        .p-4 { padding: 1rem; }
-        .p-3\.5 { padding: 0.875rem; }
-        .cursor-pointer { cursor: pointer; }
-        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
-        .duration-300 { transition-duration: 300ms; }
-        .duration-500 { transition-duration: 500ms; }
-        .h-24 { height: 6rem; }
-        .h-1 { height: 0.25rem; }
-        .rounded-full { border-radius: 9999px; }
-        .h-2\.5 { height: 0.625rem; }
-        .w-2\.5 { width: 0.625rem; }
-        .h-2 { height: 0.5rem; }
-        .w-2 { width: 0.5rem; }
-        .bg-\[\#4A5D6B\] { background-color: #4A5D6B; }
-        .text-\[\#4A5D6B\] { color: #4A5D6B; }
-        .font-bold { font-weight: 700; }
-        .font-light { font-weight: 300; }
-        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-        .opacity-80 { opacity: 0.8; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-        .min-h-\[75px\] { min-height: 75px; }
-        .hover\:underline:hover { text-decoration: underline; }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#4A5D6B]/25">
 
     <!-- 顶部导航：归隐与语言切换 -->
     <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
@@ -163,7 +83,7 @@
             <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
         
-        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600">
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600 cursor-pointer">
             EN / 中
         </button>
     </div>
@@ -173,11 +93,11 @@
         <!-- 左侧翼：动态竖排声明 -->
         <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
             <span class="w-[1px] h-12 bg-neutral-300"></span>
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 远山格物" data-en="RUI PALACE · MOUNTAIN">蕊宫 · 远山格物</span>
+            <span class="text-[10px] text-[#4A5D6B] font-light vertical-wing" data-zh="蕊宫 · 远山格物" data-en="RUI PALACE · MOUNTAIN">蕊宫 · 远山格物</span>
         </div>
 
         <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="远山黛 · 烟岚入画" data-en="Distant Mountain & Ink Mist">远山黛 · 烟岚入画</h1>
-        <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Distant Mountain Indigo & Mist Painting" data-en="Distant Mountain Indigo & Mist Painting">Distant Mountain Indigo & Mist Painting</p>
+        <p class="text-xs text-[#4A5D6B] font-light mb-4 dynamic-sub" data-zh="Distant Mountain Indigo & Mist Painting" data-en="Distant Mountain Indigo & Mist Painting">Distant Mountain Indigo & Mist Painting</p>
         
         <div class="max-w-2xl mx-auto px-4">
             <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words" 
@@ -189,30 +109,49 @@
 
         <!-- 右侧翼：动态竖排声明 -->
         <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="仙骨怀真 · 黛色长存" data-en="IMMORTAL SPIRIT · INDIGO FOREVER">仙骨怀真 · 黛色长存</span>
+            <span class="text-[10px] text-[#4A5D6B] font-light vertical-wing" data-zh="仙骨怀真 · 黛色长存" data-en="IMMORTAL SPIRIT · INDIGO FOREVER">仙骨怀真 · 黛色长存</span>
             <span class="w-[1px] h-12 bg-neutral-300"></span>
         </div>
     </header>
 
     <!-- 核心双阁布局 -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow">
+    <main class="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow items-stretch">
         <!-- 左阁：色彩网格 -->
-        <section class="chinese-border p-8 rounded-2xl">
-            <h2 class="text-md font-semibold mb-6 flex items-center dynamic-text" data-zh="西阁 · 远山黛色卡" data-en="West Pavilion &bull; Mountain Palette">
-                <span class="w-2.5 h-2.5 bg-[#4A5D6B] rounded-full mr-2"></span>西阁 · 远山黛色卡
-            </h2>
-            <div id="color-grid" class="grid grid-cols-2 gap-4"></div>
+        <section class="chinese-border flex flex-col justify-between space-y-8 rounded-2xl">
+            <div class="flex justify-between items-end border-b border-neutral-200/50 pb-4">
+                <h2 class="text-md font-semibold text-neutral-800 flex items-center dynamic-text" data-zh="西阁 · 远山黛色卡" data-en="West Pavilion &bull; Mountain Palette">
+                    <span class="inline-block w-2.5 h-2.5 bg-[#4A5D6B] rounded-full mr-2.5"></span>西阁 · 远山黛色卡
+                </h2>
+                <span class="text-[10px] text-neutral-400 dynamic-text" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
+            </div>
+            <div id="color-grid" class="grid grid-cols-2 gap-6 flex-grow content-center"></div>
+            <div class="pt-4 border-t border-neutral-200/30 flex justify-between items-center text-[10px] text-neutral-400 tracking-widest">
+                <span></span>
+                <span></span>
+            </div>
         </section>
 
         <!-- 右阁：观象台与动态卡片 -->
-        <section class="chinese-border p-8 rounded-2xl flex flex-col space-y-6">
-            <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
-            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/lXYTTG5sK1c" allowfullscreen style="border:none;"></iframe>
+        <section class="chinese-border flex flex-col justify-between space-y-6 rounded-2xl">
+            <div class="flex justify-between items-end border-b border-neutral-200/50 pb-4">
+                <h2 class="text-md font-semibold text-neutral-800 flex items-center dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+                <span class="text-[10px] text-neutral-400 dynamic-text" data-zh="黛色流光 · 视听长青" data-en="Indigo Glow & Eternal Vision">黛色流光 · 视听长青</span>
+            </div>
+            
+            <!-- YouTube 视频安全确认与点击加载遮罩 -->
+            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden relative" id="video-wrapper">
+                <div id="video-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-neutral-900/80 cursor-pointer transition-opacity duration-300 z-10" onclick="loadYouTubeVideo()">
+                    <div class="w-12 h-12 rounded-full bg-[#4A5D6B] flex items-center justify-center text-white mb-2 shadow-md hover:scale-105 transition-transform">
+                        <span class="text-lg ml-0.5">▶</span>
+                    </div>
+                    <p class="text-xs text-white font-light mb-1 dynamic-text" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="text-[9px] text-neutral-400 dynamic-text" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" class="w-full h-full"></div>
             </div>
             
             <!-- 下一站链接：流转至暮山紫落 -->
-            <a href="Color Mu Shan Lila.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none;">
+            <a href="Color Mu Shan Lila.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/40 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none;">
                 <div class="flex items-center space-x-3">
                     <span class="w-2 h-2 rounded-full bg-[#4A5D6B]"></span>
                     <div>
@@ -220,26 +159,27 @@
                         <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="“夕阳虽衔山，紫气自东来。”" data-en="&ldquo;Though the evening sun dips behind mountains, a purple grace rises naturally from the east.&rdquo;">“夕阳虽衔山，紫气自东来。”</p>
                     </div>
                 </div>
-                <span class="text-xs text-[#4A5D6B] font-bold">➔</span>
+                <span class="text-xs text-[#4A5D6B] font-bold transition-transform group-hover:translate-x-1">➔</span>
             </a>
             
             <!-- 动态交互大卡片 -->
-            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer" style="width: 100%; height: 96px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: white; cursor: pointer; transition: background-color 0.5s; background-color: #4A5D6B;">
-                <p id="dynamic-name" class="text-xs font-bold pad-name-style">远山黛</p>
-                <div class="flex items-center space-x-2" style="display: flex; align-items: center; gap: 8px;">
-                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-80">#4A5D6B</p>
-                    <span id="copy-badge" class="text-[8px] border border-white/30 px-1 rounded font-light dynamic-sub" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer shadow-sm relative overflow-hidden" style="background-color: #4A5D6B;">
+                <p id="dynamic-name" class="text-xs font-bold pad-name-style mb-1">远山黛</p>
+                <div class="flex items-center space-x-2">
+                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-90 tracking-wider">#4A5D6B</p>
+                    <span id="copy-badge" class="text-[8px] border border-white/40 px-1.5 py-0.5 rounded font-light dynamic-sub bg-black/10" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
             </div>
-            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-300 rounded-lg appearance-none cursor-pointer">
+            
+            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-200 rounded-lg appearance-none cursor-pointer">
             
             <!-- 意境山水诗词 -->
-            <div class="border-t border-neutral-200 pt-4">
-                <div id="poetry-container" class="mb-2 min-h-[75px] flex flex-col justify-between break-words">
-                    <p id="poetry-text" class="text-sm text-neutral-600 poetry-text-style">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
+            <div class="border-t border-neutral-200/50 pt-4 flex flex-col justify-between flex-grow">
+                <div id="poetry-container" class="mb-3 min-h-[75px] flex flex-col justify-between break-words">
+                    <p id="poetry-text" class="text-sm text-neutral-700 poetry-text-style">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
                     <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">—— 蕊宫原创</p>
                 </div>
-                <button id="next-poetry" class="text-[10px] text-[#4A5D6B] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="background:none; border:none; cursor:pointer;">换一首诗 ➔</button>
+                <button id="next-poetry" class="text-[10px] text-[#4A5D6B] hover:underline dynamic-sub text-left font-medium" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="background:none; border:none; cursor:pointer; padding:0;">换一首诗 ➔</button>
             </div>
         </section>
     </main>
@@ -256,6 +196,25 @@
 
     <!-- 业务交互逻辑脚本 -->
     <script>
+        // YouTube 视频安全确认与点击加载函数
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+            
+            container.innerHTML = `
+                <iframe class="w-full h-full" 
+                        src="https://www.youtube.com/embed/lXYTTG5sK1c?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        style="border:none;">
+                </iframe>
+            `;
+        }
+
         let currentLang = 'zh';
 
         // 远山黛六色色谱配置
@@ -283,20 +242,32 @@
 
         function renderGrid() {
             document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
-                <div onclick="navigator.clipboard.writeText('${c.hex}'); alert('${currentLang === 'zh' ? '已复制: ' + c.hex : 'Copied: ' + c.hex}')" 
-                     class="cursor-pointer p-4 bg-white/60 rounded-xl border border-neutral-200/50 hover:border-[#4A5D6B]/50 transition duration-300">
-                    <div class="h-24 mb-3 rounded shadow-inner" style="background-color:${c.hex}"></div>
-                    <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                    <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                <div onclick="selectGridColor(${idx})" class="cursor-pointer p-4 bg-white/70 rounded-xl border border-neutral-200/60 hover:border-[#4A5D6B] hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-16 mb-3 rounded shadow-inner" style="background-color:${c.hex}"></div>
+                    <div>
+                        <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                        <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                    </div>
                 </div>
             `).join('');
         }
 
-        document.getElementById('color-slider').oninput = function() {
-            const c = colors[this.value];
+        function selectGridColor(idx) {
+            document.getElementById('color-slider').value = idx;
+            updateDynamicPad(idx);
+        }
+
+        function updateDynamicPad(idx) {
+            const c = colors[idx];
             document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
-            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            const nameEl = document.getElementById('dynamic-name');
+            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            nameEl.setAttribute('data-lang', currentLang);
             document.getElementById('dynamic-hex').innerText = c.hex;
+        }
+
+        document.getElementById('color-slider').oninput = function() {
+            updateDynamicPad(this.value);
         };
 
         document.getElementById('next-poetry').onclick = () => {
@@ -332,11 +303,8 @@
 
             renderGrid();
             const currentIdx = document.getElementById('color-slider').value;
-            
-            const nameEl = document.getElementById('dynamic-name');
-            nameEl.innerText = currentLang === 'zh' ? colors[currentIdx].name_zh : colors[currentIdx].name_en;
-            nameEl.setAttribute('data-lang', currentLang); 
-            
+            updateDynamicPad(currentIdx);
+
             const tEl = document.getElementById('poetry-text');
             const sEl = document.getElementById('poetry-source');
             tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
