@@ -1,11 +1,3 @@
-<!-- 
-  Fonts used:
-  - Cinzel, Montserrat, Playfair Display (Copyright Font Authors)
-  - Licensed under the SIL Open Font License, Version 1.1
-  - https://scripts.sil.org/OFL
--->
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -31,19 +23,16 @@
     </script>
 </head>
 
-<body class="relative flex flex-col justify-between h-screen w-screen" onclick="closeAllPanels()">
+<body class="relative flex flex-col justify-between h-screen w-screen overflow-hidden" onclick="closeAllPanels()">
 
-
-    <!-- 隐私说明弹窗：置于最前端，需点击选择后方可进入主页 -->
-  <div id="cookie-consent" class="modal" onclick="event.stopPropagation()" style="position: fixed; z-index: 9999;">
+    <!-- 隐私说明弹窗 -->
+    <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
         <div class="modal-content">
             <h3 data-zh="蕊宫隐私说明" data-en="RUI PALACE PRIVACY NOTICE">蕊宫隐私说明</h3>
             <p data-zh="蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。" data-en="Rui Palace respects and values your privacy. To ensure a seamless experience, we use essential cookies and third-party technologies. Clicking 'Accept All' grants permission for us to deliver an optimized experience. You may update your preferences at any time within the Privacy Policy.">蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
             <div class="button-group">
                 <button id="reject-btn" class="btn-outline" data-zh="全部拒绝" data-en="REJECT ALL">全部拒绝</button>
                 <button id="accept-btn" class="btn-solid" data-zh="全部同意" data-en="ACCEPT ALL">全部同意</button>
-           
-            
             </div>
             <div class="footer-links">
                 <a href="impressum.html" data-zh="法律声明 (Impressum)" data-en="Impressum">法律声明 (Impressum)</a>
@@ -59,8 +48,7 @@
     </div>
 
     <!-- 顶部导航 -->
-   <!-- 顶部导航：适当收紧上下间距与高度 -->
-    <header class="w-full max-w-7xl mx-auto px-12 pt-6 pb-2 flex justify-between items-center z-10">
+    <header class="w-full max-w-7xl mx-auto px-12 pt-6 pb-2 flex justify-between items-center z-30 relative">
         <div class="flex flex-col space-y-2 pointer-events-none">
             <h1 class="brand-logo text-amber-200">
                 <span data-zh="蕊宫 · 灵犀鉴" data-en="RUI PALACE · LINGXI" class="tracking-[0.4em] data-[lang=en]:tracking-[0.05em] uppercase">蕊宫 · 灵犀鉴</span>
@@ -76,9 +64,8 @@
             EN / 中
         </button>
     </header>
-        
 
-    <!-- 动态诗词：自适应弹性布局，底部留出空间防遮挡 -->
+    <!-- 动态诗词 -->
     <main class="w-full max-w-7xl mx-auto px-12 flex-grow flex items-end pb-36 z-10 pointer-events-none">
         <div id="poem-container" class="max-w-xl w-full transition-all duration-500">
             <p id="left-poem" class="poetry-reflection text-xs tracking-[0.25em] text-amber-100/90 font-light leading-relaxed data-[lang=en]:tracking-wide"
@@ -89,30 +76,30 @@
         </div>
     </main>
 
-    <!-- 左翼触发 -->
+    <!-- 左翼触发按钮 -->
     <div class="absolute left-0 top-1/3 z-20" onclick="event.stopPropagation(); openPatternPool();">
         <button class="py-6 px-3 bg-white/80 hover:bg-white text-neutral-800 text-[10px] tracking-[0.4em] font-light rounded-r-2xl shadow-lg transition-all" style="writing-mode: vertical-rl;">
             📜 <span data-zh="大千纹样" data-en="PATTERN" class="data-[lang=en]:tracking-wider">大千纹样</span>
         </button>
     </div>
 
-    <!-- 右翼触发 -->
+    <!-- 右翼触发按钮 -->
     <div class="absolute right-0 top-1/3 z-20" onclick="event.stopPropagation(); openColorPool();">
         <button class="py-6 px-3 bg-white/80 hover:bg-white text-neutral-800 text-[10px] tracking-[0.4em] font-light rounded-l-2xl shadow-lg transition-all" style="writing-mode: vertical-rl;">
             🎨 <span data-zh="天然色池" data-en="PALETTE" class="data-[lang=en]:tracking-wider">天然色池</span>
         </button>
     </div>
 
-    <!-- 左侧：大千传统纹样池 -->
+    <!-- 左侧：大千传统纹样池面板 -->
     <div id="patternPool" class="side-panel pattern-panel p-8 flex flex-col justify-between" onclick="event.stopPropagation()">
-        <div class="flex flex-col flex-grow">
+        <div class="flex flex-col flex-grow pt-12">
             <div class="flex justify-between items-baseline border-b border-neutral-200/60 pb-4 mb-4 flex-shrink-0">
-                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="大千传统纹样" data-en="HERITAGE MOTIFS" class="data-[lang=en]:tracking-wider">大千传统纹样</h3>
+                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="大千传统纹样" data-en="HERITAGE MOTIFS">大千传统纹样</h3>
                 <span class="text-[9px] text-neutral-400 tracking-wider sub-brand">SACRED MOTIFS</span>
             </div>
-            <div class="space-y-4 overflow-y-auto pr-2 max-h-[calc(100vh-200px)]" id="pattern-list-container"></div>
+            <div class="space-y-4 overflow-y-auto pr-2 flex-grow max-h-[calc(100vh-220px)]" id="pattern-list-container"></div>
         </div>
-        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0">
+        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0 pb-4">
             <button onclick="closePatternPool()" class="text-[9px] tracking-[0.3em] text-neutral-400 hover:text-neutral-700 transition-colors uppercase">
                 ✕ <span data-zh="收起纹样" data-en="COLLAPSE">收起纹样</span>
             </button>
@@ -121,53 +108,45 @@
 
     <!-- 右侧：天然色彩池面板 -->
     <div id="colorPool" class="side-panel color-pool-panel p-8 flex flex-col justify-between" onclick="event.stopPropagation()">
-        <div class="flex flex-col flex-grow">
+        <div class="flex flex-col flex-grow pt-12">
             <div class="flex justify-between items-baseline border-b border-neutral-200/60 pb-4 mb-4 flex-shrink-0">
-                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="天然色彩池" data-en="NATURAL PALETTE" class="data-[lang=en]:tracking-wider">天然色彩池</h3>
+                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="天然色彩池" data-en="NATURAL PALETTE">天然色彩池</h3>
                 <span class="text-[9px] text-neutral-400 tracking-wider sub-brand">NATURAL REVELATION</span>
             </div>
-            <div class="space-y-4 overflow-y-auto pr-2 max-h-[calc(100vh-200px)]" id="pool-list-container"></div>
+            <div class="space-y-4 overflow-y-auto pr-2 flex-grow max-h-[calc(100vh-220px)]" id="pool-list-container"></div>
         </div>
-        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0">
+        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0 pb-4">
             <button onclick="closeColorPool()" class="text-[9px] tracking-[0.3em] text-neutral-400 hover:text-neutral-700 transition-colors uppercase">
                 ✕ <span data-zh="收起色池" data-en="COLLAPSE">收起色池</span>
             </button>
         </div>
     </div>
 
-    <!-- 彻底扁平化底座：控制面板居中，法律、版权、隐私在最底部完全平行 -->
-    <footer class="w-full fixed bottom-0 left-0 z-10 px-12 pb-6 flex flex-col items-center space-y-4" onclick="event.stopPropagation()">
-        
+    <!-- 底部控制与声明 -->
+    <footer class="w-full fixed bottom-0 left-0 z-10 px-12 pb-6 flex flex-col items-center space-y-4 pointer-events-auto" onclick="event.stopPropagation()">
         <div class="w-full max-w-6xl flex justify-center items-center relative">
-            <!-- 正中：磨砂控制面板 -->
             <div class="smart-glass-dock rounded-full px-8 py-4 flex justify-between items-center text-xs tracking-[0.3em] font-light max-w-md w-full mx-auto">
-                <button onclick="openPatternPool()"><span data-zh="📜 纹样" data-en="📜 MOTIF" class="data-[lang=en]:tracking-wide">📜 纹样</span></button>
+                <button onclick="openPatternPool()"><span data-zh="📜 纹样" data-en="📜 MOTIF">📜 纹样</span></button>
                 <span class="divider opacity-30">|</span>
-                <button onclick="triggerManualDrop()"><span data-zh="💧 凝水" data-en="💧 DROP" class="data-[lang=en]:tracking-wide">💧 凝水</span></button>
+                <button onclick="triggerManualDrop()"><span data-zh="💧 凝水" data-en="💧 DROP">💧 凝水</span></button>
                 <span class="divider opacity-30">|</span>
-                <button onclick="openColorPool()"><span data-zh="🎨 色池" data-en="🎨 POOL" class="data-[lang=en]:tracking-wide">🎨 色池</span></button>
+                <button onclick="openColorPool()"><span data-zh="🎨 色池" data-en="🎨 POOL">🎨 色池</span></button>
                 <span class="divider opacity-30">|</span>
-                <button onclick="clearCanvas()"><span data-zh="✨ 澄澈" data-en="✨ CLEAR" class="data-[lang=en]:tracking-wide">✨ 澄澈</span></button>
+                <button onclick="clearCanvas()"><span data-zh="✨ 澄澈" data-en="✨ CLEAR">✨ 澄澈</span></button>
             </div> 
         </div>
 
-        <!-- 底层全宽：法律、版权、隐私完全平行的一行 -->
         <div class="w-full max-w-6xl flex justify-between items-center text-[8px] tracking-[0.25em] font-light border-t border-white/5 pt-3">
-            <!-- 左平行的法律声明 -->
             <div class="w-1/4 flex justify-start">
                 <a href="impressum.html" class="legal-wing-link text-[8px]" data-zh="法律声明 (Impressum)" data-en="Impressum">
                     法律声明 <span class="tracking-normal font-normal ml-0.5">(Impressum)</span>
                 </a>
             </div>
-
-            <!-- 正中的版权声明 -->
             <div class="w-2/4 text-center text-amber-100/40" data-zh="© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。" data-en="© 2026 Rui Palace mail@rui-palace.com - All rights reserved. Preserve purity, cherish humanity.">
                 © 2026 蕊宫 mail@rui-palace.com - <span class="tracking-normal font-normal">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。
             </div>
-
-            <!-- 右平行的隐私政策 -->
             <div class="w-1/4 flex justify-end">
-                <a href="Datenschutz.html" class="legal-wing-link text-[8px]" data-zh="隐私政策 (Datenschutz)" data-en="Datenschutz">
+                <a href="datenschutz.html" class="legal-wing-link text-[8px]" data-zh="隐私政策 (Datenschutz)" data-en="Datenschutz">
                     隐私政策 <span class="tracking-normal font-normal ml-0.5">(Datenschutz)</span>
                 </a>
             </div>
@@ -175,7 +154,6 @@
     </footer>
 
     <script>
-        // 页面加载时检查是否已经做过隐私选择
         window.addEventListener('DOMContentLoaded', () => {
             const consent = localStorage.getItem('rui_palace_cookie_consent');
             if (consent) {
@@ -183,7 +161,6 @@
             }
         });
 
-        // 隐私弹窗交互逻辑：点击同意或拒绝后隐藏弹窗、记录状态并进入主页
         document.getElementById('accept-btn').addEventListener('click', () => {
             localStorage.setItem('rui_palace_cookie_consent', 'accepted');
             document.getElementById('cookie-consent').classList.add('hidden');
@@ -333,7 +310,6 @@
         }
 
         window.addEventListener('click', (e) => {
-            // 如果弹窗处于激活状态，点击不触发canvas水滴效果
             if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
             if (e.clientY < window.innerHeight - 120 && e.clientX > 430 && e.clientX < window.innerWidth - 430) {
                 const randomColor = orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)];
