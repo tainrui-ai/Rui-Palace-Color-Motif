@@ -358,8 +358,7 @@
     </footer>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-       // 初始化时检查用户的 Cookie 同意状态并执行相应隐私锁
+       // 1. 初始化时检查用户的 Cookie 同意状态
         function checkConsentStatus() {
             return localStorage.getItem('rui_palace_cookie_consent');
         }
@@ -367,30 +366,52 @@
         window.addEventListener('DOMContentLoaded', () => {
             const consent = checkConsentStatus();
             if (consent) {
-                document.getElementById('cookie-consent').classList.add('hidden');
+                const consentBanner = document.getElementById('cookie-consent');
+                if (consentBanner) consentBanner.classList.add('hidden');
                 if (consent === 'rejected') {
                     enforcePrivacyLockdown();
                 }
             }
+
+            // 2. 点击“同意”按钮的逻辑
+            const acceptBtn = document.getElementById('accept-btn');
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', () => {
+                    localStorage.setItem('rui_palace_cookie_consent', 'accepted');
+                    const consentBanner = document.getElementById('cookie-consent');
+                    if (consentBanner) consentBanner.classList.add('hidden');
+                });
+            }
+
+            // 3. 点击“拒绝”按钮的逻辑（包含真正的阻断与清理）
+            const rejectBtn = document.getElementById('reject-btn');
+            if (rejectBtn) {
+                rejectBtn.addEventListener('click', () => {
+                    localStorage.setItem('rui_palace_cookie_consent', 'rejected');
+                    const consentBanner = document.getElementById('cookie-consent');
+                    if (consentBanner) consentBanner.classList.add('hidden');
+                    
+                    // 执行严格的隐私阻断与清理
+                    enforcePrivacyLockdown();
+                });
+            }
         });
 
-        document.getElementById('accept-btn').addEventListener('click', () => {
-            localStorage.setItem('rui_palace_cookie_consent', 'accepted');
-            document.getElementById('cookie-consent').classList.add('hidden');
-        });
-
-        document.getElementById('reject-btn').addEventListener('click', () => {
-            localStorage.setItem('rui_palace_cookie_consent', 'rejected');
-            document.getElementById('cookie-consent').classList.add('hidden');
-            
-            // 加锁：立即执行严格的隐私阻断
-            enforcePrivacyLockdown();
-        });
-
-        // 隐私锁定执行函数：确保拒绝后阻断所有非必要行为
+        // 4. 隐私锁定执行函数：当用户点击拒绝时，主动清除并加固拦截
         function enforcePrivacyLockdown() {
-            // 如未来接入第三方分析统计脚本，可在此处编写阻断/清理逻辑
-            console.log("Privacy Lockdown Active: Non-essential tracking and storage blocked.");
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                // 保留拒绝状态本身，清理其他所有本地缓存项
+                if (key !== 'rui_palace_cookie_consent') {
+                    keysToRemove.push(key);
+                }
+            }
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+
+            // 设置内存级全局锁，阻断非必要行为
+            window.__RUI_PRIVACY_LOCKED__ = true;
+            console.log("Privacy Lockdown Enforced: Non-essential storage wiped and tracking locked.");
         }
 
         const canvas = document.getElementById('inkCanvas');
