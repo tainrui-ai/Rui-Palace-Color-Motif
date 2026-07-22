@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>艾青 · 仙草正气美学色卡</title>
     
+    <!-- 纯原生安全样式，彻底剔除所有外来在线框架与外部字体，符合合规要求 -->
     <style>
-        /* 安全无风险的基础重置与排版样式 */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -16,17 +17,22 @@
 
         body { 
             font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
-            /* 底色更新为温润清雅的淡绿色 */
             background-color: #F4F7F2; 
             color: #262626;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            /* 背景如意云纹更新为淡绿色调 */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238DA382' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.15'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .chinese-border { 
@@ -34,12 +40,147 @@
             outline: 3px double rgba(141, 163, 130, 0.12); 
             outline-offset: -8px; 
             background: rgba(255, 255, 255, 0.7); 
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 32px;
         }
 
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 48px 0;
+        }
+        @media (min-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* 纯净安全排版体系 */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #6B8E60; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
+        
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #6B8E60; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
+
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(107, 142, 96, 0.08); border: 1px solid rgba(107, 142, 96, 0.25); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
+        .lang-switch-btn:hover { background: #6B8E60; color: white; border-color: #6B8E60; }
+
+        /* 布局与组件细节 */
+        .color-grid-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .color-card {
+            cursor: pointer;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(141, 163, 130, 0.25);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #6B8E60;
+            box-shadow: 0 4px 12px rgba(107, 142, 96, 0.15);
+        }
+        .color-block {
+            height: 64px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(15, 15, 15, 0.85);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #6B8E60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.05); }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid rgba(107, 142, 96, 0.25);
+            background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(107,142,96,0.06));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: rgba(107, 142, 96, 0.6); }
+
+        .dynamic-pad {
+            width: 100%;
+            height: 96px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            position: relative;
+            background-color: #4A6741;
+            transition: background-color 0.5s;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
+        }
         input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; 
+            appearance: none; 
             width: 18px; 
             height: 18px; 
             border-radius: 50%; 
@@ -47,139 +188,38 @@
             cursor: pointer; 
         }
 
-        /* 纯净安全字体控制体系（无任何商业授权风险） */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; }
-        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
-
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; }
-        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
-
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; }
-        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
-
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
-        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; }
-        
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
-
-        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
-        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
-
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
-
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(107, 142, 96, 0.08); border: 1px solid rgba(107, 142, 96, 0.25); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
-        .lang-switch-btn:hover { background: #6B8E60; color: white; border-color: #6B8E60; }
-
-        /* 布局辅助类 */
-        .max-w-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .pt-6 { padding-top: 1.5rem; }
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .justify-between { justify-content: space-between; }
-        .items-center { align-items: center; }
-        .space-x-2 > * + * { margin-left: 0.5rem; }
-        .space-y-6 > * + * { margin-top: 1.5rem; }
-        .grid { display: grid; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .lg\:flex { display: flex; }
-            .hidden { display: none; }
-        }
-        .gap-12 { gap: 3rem; }
-        .gap-4 { gap: 1rem; }
-        .relative { position: relative; }
-        .absolute { position: absolute; }
-        .left-8 { left: 2rem; }
-        .right-8 { right: 2rem; }
-        .top-1/2 { top: 50%; transform: translateY(-50%); }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mt-0.5 { margin-top: 0.125rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .h-12 { height: 3rem; }
-        .w-\[1px\] { width: 1px; }
-        .bg-neutral-300 { background-color: #d4d4d4; }
-        .text-neutral-400 { color: #a3a3a3; }
-        .text-neutral-500 { color: #737373; }
-        .text-neutral-600 { color: #525252; }
-        .text-neutral-800 { color: #262626; }
-        .text-neutral-900 { color: #171717; }
-        .border-b { border-bottom-width: 1px; border-color: rgba(141, 163, 130, 0.3); }
-        .border-t { border-top-width: 1px; border-color: rgba(141, 163, 130, 0.3); }
-        .max-w-2xl { max-width: 42rem; }
-        .leading-relaxed { line-height: 1.625; }
-        .break-words { word-break: break-word; }
-        .flex-grow { flex-grow: 1; }
-        .aspect-video { aspect-ratio: 16 / 9; }
-        .bg-neutral-200 { background-color: #e5e5e5; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .overflow-hidden { overflow: hidden; }
-        .w-full { width: 100%; }
-        .h-full { height: 100%; }
-        .border { border-width: 1px; }
-        .rounded-xl { border-radius: 0.75rem; }
-        .p-4 { padding: 1rem; }
-        .p-3\.5 { padding: 0.875rem; }
-        .cursor-pointer { cursor: pointer; }
-        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
-        .duration-300 { transition-duration: 300ms; }
-        .duration-500 { transition-duration: 500ms; }
-        .h-24 { height: 6rem; }
-        .h-1 { height: 0.25rem; }
-        .rounded-full { border-radius: 9999px; }
-        .h-2\.5 { height: 0.625rem; }
-        .w-2\.5 { width: 0.625rem; }
-        .bg-\[\#6B8E60\] { background-color: #6B8E60; }
-        .text-\[\#6B8E60\] { color: #6B8E60; }
-        .text-\[\#E05263\] { color: #E05263; }
-        .font-bold { font-weight: 700; }
-        .font-light { font-weight: 300; }
-        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-        .opacity-80 { opacity: 0.8; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-        .min-h-\[75px\] { min-height: 75px; }
-        .hover\:underline:hover { text-decoration: underline; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(141,163,130,0.3); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
+        @media(min-width: 640px) { footer.footer { flex-direction: row; } }
     </style>
 </head>
+<body>
 
-<body class="text-neutral-800 min-h-screen flex flex-col justify-between">
-
-    <!-- 顶部导航：简约雅致的归隐返回按钮 -->
-    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-25" style="z-index: 20;">
-        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-500 hover:text-[#6B8E60] transition-colors duration-300 group" style="background:none; border:none; cursor:pointer;">
-            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
-            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+    <!-- 顶部导航：归隐与语言切换 -->
+    <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
+        <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#a3a3a3;">
+            <span style="font-size:12px;">⇠</span>
+            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
         
-        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600">
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
             EN / 中
         </button>
     </div>
 
     <!-- 顶头画卷 -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b relative">
+    <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(141,163,130,0.3); position: relative;">
         <!-- 左侧翼：动态竖排声明 -->
-        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 艾青格物" data-en="RUI PALACE · MUGWORT">蕊宫 · 艾青格物</span>
+        <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+            <span class="vertical-wing" data-zh="蕊宫 · 艾青格物" data-en="RUI PALACE · MUGWORT">蕊宫 · 艾青格物</span>
         </div>
 
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="艾青 · 凝露白" data-en="Mugwort Green & Dewy White">艾青，凝露白</h1>
-        <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Mugwort Green & Dewy White Spectrum" data-en="Mugwort Green & Dewy White Spectrum">Mugwort Green & Dewy White Spectrum</p>
+        <h1 id="main-title" class="dynamic-title" style="margin-bottom: 16px;" data-zh="艾青 · 凝露白" data-en="Mugwort Green & Dewy White">艾青 · 凝露白</h1>
+        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="Mugwort Green & Dewy White Spectrum" data-en="Mugwort Green & Dewy White Spectrum">Mugwort Green & Dewy White Spectrum</p>
         
-        <div class="max-w-2xl mx-auto px-4">
-            <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words" 
+        <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
+            <p id="main-desc" class="dynamic-text" 
                data-zh="“正气化青，温婉入药。”<br>于药田深处与晨露微凉之间，寻得一抹斩断寒邪、静守本真之风骨。" 
                data-en="&ldquo;Vital harmony distills into green, while gentle elegance becomes the cure.&rdquo;<br>Deep within the herb fields and cool morning dew, discovering a botanical spirit that dispels cold and guards true inner purity.">
                 “正气化青，温婉入药。”<br>于药田深处与晨露微凉之间，寻得一抹斩断寒邪、静守本真之风骨。
@@ -187,65 +227,115 @@
         </div>
 
         <!-- 右侧翼：动态竖排声明 -->
-        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="仙草怀真 · 正气长存" data-en="SACRED HERB · VITAL INTEGRITY">仙草怀真 · 正气长存</span>
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
+        <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span class="vertical-wing" data-zh="仙草怀真 · 正气长存" data-en="SACRED HERB · VITAL INTEGRITY">仙草怀真 · 正气长存</span>
+            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
         </div>
     </header>
 
     <!-- 核心双阁布局 -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 flex-grow">
+    <main class="container grid-2">
         <!-- 左阁：色彩网格 -->
-        <section class="chinese-border p-8 rounded-2xl" style="border-radius: 1rem;">
-            <h2 class="text-md font-semibold mb-6 flex items-center dynamic-text" data-zh="西阁 · 艾青凝露色卡" data-en="West Pavilion &bull; Mugwort Palette">
-                <span class="w-2.5 h-2.5 bg-[#6B8E60] rounded-full mr-2" style="display:inline-block;"></span>西阁 · 艾青凝露色卡
-            </h2>
-            <div id="color-grid" class="grid grid-cols-2 gap-4" style="grid-template-columns: repeat(2, minmax(0, 1fr));"></div>
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(141,163,130,0.2); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 艾青凝露色卡" data-en="West Pavilion &bull; Mugwort Palette">
+                    <span style="display:inline-block; width:10px; height:10px; background:#6B8E60; border-radius:50%;"></span>
+                    西阁 · 艾青凝露色卡
+                </h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX">点击色块复制 HEX</span>
+            </div>
+            <div id="color-grid" class="color-grid-box"></div>
+            <div style="padding-top:16px; border-top:1px solid rgba(141,163,130,0.2); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
+                <span></span><span></span>
+            </div>
         </section>
 
-        <!-- 右阁 -->
-        <section class="chinese-border p-8 rounded-2xl flex flex-col space-y-6" style="border-radius: 1rem;">
-            <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
-            <div class="aspect-video bg-neutral-200 rounded-lg overflow-hidden">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/fKbhu-kOhr8" allowfullscreen style="border:none;"></iframe>
+        <!-- 右阁：观象台与动态卡片 -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(141,163,130,0.2); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="仙草流光 · 视听长青" data-en="Herbal Glow & Eternal Vision">仙草流光 · 视听长青</span>
             </div>
             
-            <a href="Color Sky Blue.html" id="channel-link" class="flex items-center justify-between group p-3.5 border rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none; border-color: rgba(107, 142, 96, 0.25); background: linear-gradient(to right, rgba(255,255,255,0.2), rgba(107,142,96,0.06));">
-                <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="流转通道：云破奇峰涌帝青" data-en="Flow Channel: Imperial Blue Over Peaks">流转通道：云破奇峰涌帝青</h4>
+            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size:16px; margin-left:2px;">▶</span>
+                    </div>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" style="width:100%; height:100%;"></div>
+            </div>
+            
+            <!-- 下一站链接（流转通道） -->
+            <a href="Color Sky Blue.html" id="channel-link" class="channel-link">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#6B8E60;"></span>
+                    <div>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="流转通道：云破奇峰涌帝青" data-en="Flow Channel: Imperial Blue Over Peaks">流转通道：云破奇峰涌帝青</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="从艾青正气，至汝窑天青" data-en="Transit from mugwort green to imperial sky blue.">从艾青正气，至汝窑天青</p>
+                    </div>
+                </div>
+                <span style="font-size:12px; color:#6B8E60; font-weight:bold;">➔</span>
             </a>
             
             <!-- 动态交互大卡片 -->
-            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer" style="background-color: #4A6741; border-radius: 0.75rem;">
-                <p id="dynamic-name" class="text-xs pad-name-style">南阳艾绿</p>
-                <div class="flex items-center space-x-2">
-                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-80">#4A6741</p>
-                    <span id="copy-badge" class="text-[8px] border border-white/30 px-1 rounded font-light dynamic-sub" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+            <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
+                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">南阳艾绿</p>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9; letter-spacing:0.05em;">#4A6741</p>
+                    <span id="copy-badge" class="dynamic-sub" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
             </div>
-            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-300 rounded-lg appearance-none cursor-pointer">
+            
+            <input type="range" id="color-slider" min="0" max="5" value="0">
             
             <!-- 意境山水诗词 -->
-            <div class="border-t pt-4">
-                <div id="poetry-container" class="mb-2 min-h-[75px] flex flex-col justify-between break-words">
-                    <p id="poetry-text" class="text-sm text-neutral-600 poetry-text-style">“绿叶丛中藏仙草，清风徐来药韵长。”</p>
-                    <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">——《采药人语》</p>
+            <div style="border-top:1px solid rgba(141,163,130,0.2); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
+                <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <p id="poetry-text" class="poetry-text-style">“手持艾叶驱寒气，正气存内百邪除。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align:right;">—— 医家语</p>
                 </div>
-                <button id="next-poetry" class="text-[10px] text-[#6B8E60] hover:underline dynamic-sub" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="background:none; border:none; cursor:pointer; padding:0;">换一首诗 ➔</button>
+                <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:none; border:none; cursor:pointer; padding:0; color:#6B8E60;" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
             </div>
         </section>
     </main>
 
     <!-- 页脚布局 -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
-        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p class="space-x-2">
-            <a href="#" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" style="color:inherit; text-decoration:none;">法律声明 (Impressum)</a> 
+    <footer class="footer">
+        <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display:flex; gap:6px;">
+            <a href="impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
             <span>|</span> 
-            <a href="#" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" style="color:inherit; text-decoration:none;">隐私政策 (Datenschutz)</a>
+            <a href="Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
         </p>
     </footer>
 
+    <!-- 响应式大屏侧翼显示控制样式 -->
+    <style>
+        @media (min-width: 1024px) {
+            .side-wing-desktop { display: flex !important; }
+        }
+    </style>
+
+    <!-- 业务交互逻辑脚本 -->
     <script>
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube-nocookie.com/embed/fKbhu-kOhr8?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            `;
+        }
+
         let currentLang = 'zh';
 
         const colors = [
@@ -272,30 +362,40 @@
 
         function renderGrid() {
             document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
-                <div onclick="navigator.clipboard.writeText('${c.hex}'); alert('${currentLang === 'zh' ? '已复制: ' + c.hex : 'Copied: ' + c.hex}')" 
-                     class="cursor-pointer p-4 bg-white rounded-xl border transition duration-300" style="background: rgba(255,255,255,0.7); border-color: rgba(141,163,130,0.25); border-radius: 0.75rem;">
-                    <div class="h-24 mb-3 rounded shadow-inner" style="background-color:${c.hex}; border-radius: 0.25rem; height: 6rem; margin-bottom: 0.75rem;"></div>
-                    <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                    <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                <div onclick="selectGridColor(${idx})" class="color-card">
+                    <div class="color-block" style="background-color:${c.hex}"></div>
+                    <div>
+                        <p class="dynamic-text" style="font-size:11px; font-weight:bold; color:#262626;" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                        <p style="font-size:10px; color:#a3a3a3; font-family:monospace; margin-top:2px;">${c.hex}</p>
+                    </div>
                 </div>
             `).join('');
         }
 
-        document.getElementById('color-slider').oninput = function() {
-            const c = colors[this.value];
+        function selectGridColor(idx) {
+            document.getElementById('color-slider').value = idx;
+            updateDynamicPad(idx);
+        }
+
+        function updateDynamicPad(idx) {
+            const c = colors[idx];
             document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
-            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            const nameEl = document.getElementById('dynamic-name');
+            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            nameEl.setAttribute('data-lang', currentLang);
             document.getElementById('dynamic-hex').innerText = c.hex;
+        }
+
+        document.getElementById('color-slider').oninput = function() {
+            updateDynamicPad(this.value);
         };
 
         document.getElementById('next-poetry').onclick = () => {
             const p = poetries[Math.floor(Math.random() * poetries.length)];
             const tEl = document.getElementById('poetry-text');
             const sEl = document.getElementById('poetry-source');
-            
             tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
             sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-            
             tEl.setAttribute('data-lang', currentLang);
             sEl.setAttribute('data-lang', currentLang);
         };
@@ -321,8 +421,8 @@
 
             renderGrid();
             const currentIdx = document.getElementById('color-slider').value;
-            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? colors[currentIdx].name_zh : colors[currentIdx].name_en;
-            
+            updateDynamicPad(currentIdx);
+
             const tEl = document.getElementById('poetry-text');
             const sEl = document.getElementById('poetry-source');
             tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
