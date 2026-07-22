@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,69 +7,29 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>紫菀 · 幽香蕴真美学色卡</title>
     
-    <!-- 引入本地高奢艺术级英文字体群与中文字体规则 -->
+    <!-- 安全无风险的纯净字体体系与排版样式 -->
     <style>
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 400;
-          src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 500;
-          src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 600;
-          src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
-        }
-
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 200;
-          src: url('fonts/montserrat-v31-latin-200.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 300;
-          src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 400;
-          src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 500;
-          src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2');
-        }
-
-        @font-face {
-          font-family: 'Playfair Display';
-          font-style: italic;
-          font-weight: 400;
-          src: url('fonts/playfair-display-v37-latin-italic.woff2') format('woff2');
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body { 
-            font-family: "Cinzel", "Montserrat", "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", "Times New Roman", serif; 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
             background-color: #F0E3F9; 
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23d6c6e6' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.4'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
             -webkit-font-smoothing: antialiased;
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .chinese-border { border: 1px solid rgba(166, 139, 189, 0.15); outline: 3px double rgba(166, 139, 189, 0.08); outline-offset: -8px; background: rgba(253, 251, 255, 0.6); }
+        .chinese-border { border: 1px solid rgba(166, 139, 189, 0.15); outline: 3px double rgba(166, 139, 189, 0.08); outline-offset: -8px; background: rgba(253, 251, 255, 0.6); border-radius: 1rem; padding: 2rem; }
         
         input[type="range"]::-webkit-slider-thumb { 
             -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #A68BBD; cursor: pointer; border: 2px solid #FFFBF7; box-shadow: 0 4px 10px rgba(166, 139, 189, 0.25); transition: transform 0.2s;
@@ -76,41 +37,40 @@
         input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
         /* ================= 中英文独立控制与字距隔离体系 ================= */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; }
-        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .dynamic-sub { font-family: "Montserrat", sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        /* 完美同步的高奢艺术级英文斜体 */
-        .poetry-text-style { font-family: "Songti SC", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
         .poetry-text-style[data-lang="en"] { 
-            font-family: "Playfair Display", Georgia, serif !important; 
+            font-family: "Times New Roman", Times, serif !important; 
             font-style: italic !important; 
-            letter-spacing: 0px !important;        /* 释放间距，彻底消除字母断裂割裂感 */
-            font-size: 1rem !important;         
+            letter-spacing: 0.02em !important; 
+            font-size: 0.88rem !important; 
             line-height: 1.5 !important; 
-            color: #403845 !important;            /* 优雅的深紫灰意境色 */
+            color: #403845 !important; 
         }
         
-        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-        .pad-name-style { font-family: "Songti SC", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
-        .pad-name-style[data-lang="en"] { font-family: "Playfair Display", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(166, 139, 189, 0.08); border: 1px solid rgba(166, 139, 189, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(166, 139, 189, 0.08); border: 1px solid rgba(166, 139, 189, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
         .lang-switch-btn:hover { background: #A68BBD; color: white; border-color: #A68BBD; }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#A68BBD]/20">
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#A68BBD]/20">
 
     <!-- 顶部导航 -->
     <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
@@ -131,7 +91,7 @@
             <span class="text-[10px] text-neutral-500 font-light vertical-wing" data-zh="蕊宫 · 紫菀格物" data-en="RUI PALACE · ASTER SPECTRUM">蕊宫 · 紫菀格物</span>
         </div>
 
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="紫菀 · 幽香蕴真" data-en="Aster Purple & Fragrant Truth">紫菀 · 幽香蕴真</h1>
+        <h1 id="main-title" class="text-3xl md:text-4xl text-neutral-900 mb-4 dynamic-title" data-zh="紫菀 · 幽香蕴真" data-en="Aster Purple & Fragrant Truth">紫菀 · 幽香蕴真</h1>
         <p class="text-xs text-neutral-400 font-light mb-4 dynamic-sub" data-zh="Aster Purple & Fragrant Truth Spectrum" data-en="Aster Purple & Fragrant Truth Spectrum">Aster Purple & Fragrant Truth Spectrum</p>
         
         <div class="max-w-xl mx-auto px-4">
