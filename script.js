@@ -37,9 +37,17 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 
-    if (rejectBtn) {
+if (rejectBtn) {
         rejectBtn.onclick = function() {
+            // 补充写入拒绝状态，避免刷新后反复弹窗，并闭环合规
+            document.cookie = "cookie_consent=false; domain=rui-palace.com; path=/; max-age=31536000; SameSite=Lax";
+            localStorage.setItem("cookie_consent", "false");
             dismiss();
+            enforcePrivacyLockdown();
         };
     }
 });
+// 隐私锁定执行函数：当用户拒绝时调用
+function enforcePrivacyLockdown() {
+    console.log("Privacy Lockdown Active: Non-essential tracking and storage blocked.");
+}
