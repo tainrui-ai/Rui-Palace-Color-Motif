@@ -14,162 +14,355 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕊宫 · 灵犀鉴大千色域 | RUI PALACE</title>
     
-    <!-- 引入外部的 style.css 文件 -->
-    <link rel="stylesheet" href="style.css">
-<script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              cinzel: ['Cinzel', 'serif'],
-              montserrat: ['Montserrat', 'sans-serif'],
-            }
-          }
+    <style>
+        /* 本地字体定义（严格使用本地字体文件，杜绝任何外部字体加载） */
+        @font-face {
+            font-family: 'Cinzel';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
         }
-      }
-    </script>
+        @font-face {
+            font-family: 'Cinzel';
+            font-style: normal;
+            font-weight: 500;
+            src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Cinzel';
+            font-style: normal;
+            font-weight: 600;
+            src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 300;
+            src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html { 
+            width: 100vw; 
+            height: 100vh; 
+            overflow: hidden; 
+            position: relative;
+            background-color: #B22222; /* 大唐朱砂红 */
+            font-family: "Cinzel", "Montserrat", "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* 舞台中心：宝相花旋转核心区 */
+        #stage-container { 
+            position: absolute; 
+            inset: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0; 
+            pointer-events: none; 
+        }
+
+        #baoxiang-img { 
+            position: absolute;
+            width: 70vmin; 
+            height: 70vmin; 
+            object-fit: contain; 
+            opacity: 0.85; 
+            animation: slowRotate 140s linear infinite; 
+            z-index: 1;
+            box-shadow: 0 0 60px rgba(0,0,0,0.35);
+            border-radius: 50%;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; 
+        }
+
+        @keyframes slowRotate {            
+            from { transform: rotate(0deg); }            
+            to { transform: rotate(360deg); }        
+        }
+
+        #inkCanvas { 
+            position: absolute; 
+            inset: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* 顶部导航 */
+        header {
+            width: 100%; max-width: 80rem; margin: 0 auto; padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            z-index: 30; position: relative; pointer-events: none;
+        }
+        .header-left { display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none; }
+        
+        .brand-logo { 
+            font-family: "Cinzel", "Kaiti SC", "STKaiti", serif;
+            font-size: 2.2rem; 
+            font-weight: 400; 
+            letter-spacing: 0.3em; 
+            color: #FEF3C7; 
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: letter-spacing 0.4s ease;
+        }
+        .sub-info { display: flex; gap: 1.5rem; font-size: 0.75rem; letter-spacing: 0.2em; color: rgba(254, 243, 199, 0.9); font-weight: 300; transition: letter-spacing 0.4s ease; }
+        
+        .lang-switch {
+            font-family: "Cinzel", serif;
+            font-size: 0.75rem; letter-spacing: 0.15em; padding: 0.5rem 1.25rem; border-radius: 9999px;
+            font-weight: 300; background: rgba(255, 255, 255, 0.12); color: #FEF3C7;
+            border: 1px solid rgba(254, 243, 199, 0.3); backdrop-filter: blur(10px);
+            pointer-events: auto; cursor: pointer; transition: all 0.4s;
+        }
+        .lang-switch:hover { background: rgba(255, 255, 255, 0.95); color: #B22222; font-weight: bold; }
+
+        /* 中部动态诗词 */
+        main {
+            width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 3rem;
+            flex-grow: 1; display: flex; align-items: flex-end; padding-bottom: 7rem;
+            z-index: 10; pointer-events: none;
+        }
+        #poem-container { max-width: 48rem; width: 100%; }
+        #left-poem { 
+            font-family: "Montserrat", "KaiTi", "Songti SC", serif;
+            font-size: 0.9rem; letter-spacing: 0.25em; color: rgba(254, 243, 199, 0.95); 
+            font-weight: 300; line-height: 1.8; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.8s ease-in-out;
+        }
+
+        /* 侧边触发按钮 */
+        .side-trigger-left, .side-trigger-right {
+            position: absolute; top: 33%; z-index: 20; pointer-events: auto; cursor: pointer;
+        }
+        .side-trigger-left { left: 0; }
+        .side-trigger-right { right: 0; }
+        .trigger-btn {
+            padding: 1.5rem 0.75rem; background: rgba(255, 255, 255, 0.85); color: #262626;
+            font-size: 0.625rem; letter-spacing: 0.4em; font-weight: 300; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            writing-mode: vertical-rl; border: none; transition: background 0.3s, letter-spacing 0.4s ease;
+        }
+        .side-trigger-left .trigger-btn { border-radius: 0 1rem 1rem 0; }
+        .side-trigger-right .trigger-btn { border-radius: 1rem 0 0 1rem; }
+        .trigger-btn:hover { background: #ffffff; }
+
+        /* 侧边滑出面板 */
+        .side-panel {
+            position: fixed; top: 0; right: -450px; width: 450px; height: 100vh;
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(15px);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.2); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 50; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;
+        }
+        .side-panel.left-side { right: auto; left: -450px; }
+        .side-panel.open { right: 0; }
+        .side-panel.left-side.open { left: 0; }
+
+        .panel-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .panel-header h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; color: #B22222; transition: letter-spacing 0.4s ease; }
+        .panel-header span { font-size: 0.55rem; color: #888; letter-spacing: 0.1em; font-family: "Cinzel", serif; }
+        
+        .panel-list { overflow-y: auto; padding-right: 0.5rem; flex-grow: 1; display: flex; flex-direction: column; gap: 1rem; max-height: calc(100vh - 220px); }
+        .pool-card {
+            background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 1rem; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer;
+        }
+        .pool-card:hover { background: rgba(255, 255, 255, 0.98); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .pool-card-title { font-size: 0.875rem; font-weight: 500; color: #262626; letter-spacing: 0.15em; transition: letter-spacing 0.4s ease; }
+        .pool-card-desc { font-size: 0.6875rem; color: #555; font-weight: 300; line-height: 1.6; }
+
+        .panel-footer { border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1.5rem; text-align: center; }
+        .panel-footer button { background: none; border: none; font-size: 0.6rem; letter-spacing: 0.3em; color: #888; cursor: pointer; transition: color 0.3s, letter-spacing 0.4s ease; }
+        .panel-footer button:hover { color: #B22222; }
+
+        /* 底部控制与声明 */
+        footer {
+            width: 100%; position: fixed; bottom: 0; left: 0; z-index: 20;
+            padding: 0 3rem 1.25rem 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+            pointer-events: auto;
+        }
+        .dock-wrapper { width: 100%; max-width: 72rem; display: flex; justify-content: center; }
+        .smart-glass-dock {
+            background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(15px);
+            border: 1px solid rgba(254, 243, 199, 0.3); color: #FEF3C7;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); border-radius: 9999px;
+            padding: 0.875rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.75rem; letter-spacing: 0.3em; font-weight: 300; max-width: 28rem; width: 100%;
+            transition: letter-spacing 0.4s ease;
+        }
+        .smart-glass-dock button { background: none; border: none; color: inherit; font-size: inherit; letter-spacing: inherit; cursor: pointer; transition: all 0.3s; }
+        .smart-glass-dock button:hover { color: #FDEBC7; transform: translateY(-1px); }
+        .dock-divider { opacity: 0.3; }
+
+        .legal-footer {
+            width: 100%; max-width: 72rem; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.7rem; letter-spacing: 0.15em; font-weight: 300;
+            border-top: 1px solid rgba(254, 243, 199, 0.2); padding-top: 0.625rem; color: rgba(254, 243, 199, 0.85);
+            transition: letter-spacing 0.4s ease;
+        }
+        .legal-wing-link { color: inherit; text-decoration: none; transition: opacity 0.3s; }
+        .legal-wing-link:hover { opacity: 1; color: #FEF3C7; text-shadow: 0 0 8px rgba(253, 235, 199, 0.4); }
+
+        /* 隐私弹窗 */
+        .modal {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(12px);
+            display: flex; justify-content: center; align-items: center; z-index: 100;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+        }
+        .modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.96); padding: 2.5rem; border-radius: 20px; max-width: 480px; width: 90%;
+            border: 1px solid rgba(212, 160, 23, 0.3); box-shadow: 0 25px 60px rgba(0,0,0,0.4); text-align: center;
+            font-family: "Montserrat", "Songti SC", serif;
+        }
+        .modal-content h3 { font-size: 1.25rem; letter-spacing: 0.15em; margin-bottom: 1rem; color: #B22222; font-weight: 400; transition: letter-spacing 0.4s ease; }
+        .modal-content p { font-size: 0.85rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+        .button-group { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.2rem; }
+        .btn-solid { background: #B22222; color: #fff; padding: 0.8rem 1.5rem; border-radius: 10px; font-size: 0.8rem; letter-spacing: 0.15em; border: 1px solid #B22222; cursor: pointer; transition: background 0.3s, letter-spacing 0.4s ease; box-shadow: 0 4px 15px rgba(178,34,34,0.3); }
+        .btn-solid:hover { background: #901B1B; }
+        .btn-outline { border: 1px solid #B22222; background: transparent; color: #B22222; padding: 0.8rem 1.5rem; border-radius: 10px; font-size: 0.8rem; letter-spacing: 0.15em; cursor: pointer; transition: background 0.3s, letter-spacing 0.4s ease; }
+        .btn-outline:hover { background: rgba(178,34,34,0.05); }
+        .footer-links { display: flex; justify-content: space-between; font-size: 0.75rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1rem; letter-spacing: 0.08em; transition: letter-spacing 0.4s ease; }
+        .footer-links a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #B22222; }
+
+        /* 英文状态专属紧凑间距适配规则（核心极致压缩） */
+        .lang-en-mode .brand-logo { letter-spacing: 0.08em !important; font-size: 1.9rem; }
+        .lang-en-mode .sub-info { letter-spacing: 0.05em !important; font-size: 0.7rem; }
+        .lang-en-mode #left-poem { letter-spacing: 0.04em !important; font-weight: 300; word-spacing: 0.05em; } /* 将英文诗句字间距大幅压缩，恢复正常优雅排版 */
+        .lang-en-mode .smart-glass-dock { letter-spacing: 0.06em !important; }
+        .lang-en-mode .legal-footer { letter-spacing: 0.04em !important; }
+        .lang-en-mode .trigger-btn { letter-spacing: 0.08em !important; }
+        .lang-en-mode .panel-header h3 { letter-spacing: 0.08em !important; }
+        .lang-en-mode .panel-footer button { letter-spacing: 0.08em !important; }
+        .lang-en-mode .pool-card-title { letter-spacing: 0.04em !important; }
+        .lang-en-mode .modal-content h3 { letter-spacing: 0.06em !important; }
+        .lang-en-mode .btn-solid, .lang-en-mode .btn-outline { letter-spacing: 0.04em !important; }
+        .lang-en-mode .footer-links { letter-spacing: 0.03em !important; }
+    </style>
 </head>
 
-<body class="relative flex flex-col justify-between h-screen w-screen overflow-hidden" onclick="closeAllPanels()">
+<body onclick="closeAllPanels()">
 
     <!-- 隐私说明弹窗 -->
     <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
         <div class="modal-content">
-            <h3 data-zh="蕊宫隐私说明" data-en="RUI PALACE PRIVACY NOTICE">蕊宫隐私说明</h3>
-            <p data-zh="蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。" data-en="Rui Palace respects and values your privacy. To ensure a seamless experience, we use essential cookies and third-party technologies. Clicking 'Accept All' grants permission for us to deliver an optimized experience. You may update your preferences at any time within the Privacy Policy.">蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与第三方技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
+            <h3 id="modal-title">蕊宫隐私说明</h3>
+            <p id="modal-desc">蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与本地存储。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。</p>
             <div class="button-group">
-                <button id="reject-btn" class="btn-outline" data-zh="全部拒绝" data-en="REJECT ALL">全部拒绝</button>
-                <button id="accept-btn" class="btn-solid" data-zh="全部同意" data-en="ACCEPT ALL">全部同意</button>
+                <button id="reject-btn" class="btn-outline">全部拒绝</button>
+                <button id="accept-btn" class="btn-solid">全部同意</button>
             </div>
             <div class="footer-links">
-                <a href="impressum.html" data-zh="法律声明 (Impressum)" data-en="Impressum">法律声明 (Impressum)</a>
-                <a href="datenschutz.html" data-zh="隐私政策 (Datenschutz)" data-en="Datenschutz">隐私政策 (Datenschutz)</a>
+                <a href="impressum.html" id="modal-link-impressum">法律声明 (Impressum)</a>
+                <a href="datenschutz.html" id="modal-link-datenschutz">隐私政策 (Datenschutz)</a>
             </div>
         </div>
     </div>
 
-    <!-- 舞台核心区 -->
+    <!-- 舞台核心区：宝相花中央旋转自如 -->
     <div id="stage-container">
-        <img id="baoxiang-img" src="images/baoxianghua.jpg" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1000&auto=format&fit=crop';" alt="核心纹样">
+        <img id="baoxiang-img" src="images/baoxianghua.jpg" alt="核心纹样">
         <canvas id="inkCanvas"></canvas>
     </div>
 
     <!-- 顶部导航 -->
-    <header class="w-full max-w-7xl mx-auto px-12 pt-6 pb-2 flex justify-between items-center z-30 relative">
-        <div class="flex flex-col space-y-2 pointer-events-none">
-            <h1 class="brand-logo text-amber-200">
-                <span data-zh="蕊宫 · 灵犀鉴" data-en="RUI PALACE · LINGXI" class="tracking-[0.4em] data-[lang=en]:tracking-[0.05em] uppercase">蕊宫 · 灵犀鉴</span>
-            </h1>
-            <div class="flex space-x-6 text-xs tracking-[0.2em] text-amber-100/70 font-light transition-colors duration-1000">
-                <span id="current-pattern-name" data-zh="当前境象：经典宝相花" data-en="Pattern: Sacred Baoxiang" class="data-[lang=en]:tracking-wide">当前境象：经典宝相花</span>
+    <header>
+        <div class="header-left">
+            <h1 class="brand-logo" id="brand-title">蕊宫 · 灵犀鉴</h1>
+            <div class="sub-info">
+                <span id="current-pattern-name">当前境象：经典宝相花</span>
                 <span>|</span>
-                <span id="current-color-name" data-zh="当前色域：宝相大红底蕴" data-en="Current Realm: Vermilion Resonance" class="data-[lang=en]:tracking-wide">当前色域：宝相大红底蕴</span>
+                <span id="current-color-name">当前色域：宝相大红底蕴</span>
             </div>
         </div>
-        
-        <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch text-xs tracking-[0.2em] px-5 py-2 rounded-full font-light shadow-md data-[lang=en]:tracking-wide flex-shrink-0">
-            EN / 中
-        </button>
+        <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
     </header>
 
     <!-- 动态诗词 -->
-    <main class="w-full max-w-7xl mx-auto px-12 flex-grow flex items-end pb-36 z-10 pointer-events-none">
-        <div id="poem-container" class="max-w-xl w-full transition-all duration-500">
-            <p id="left-poem" class="poetry-reflection text-xs tracking-[0.25em] text-amber-100/90 font-light leading-relaxed data-[lang=en]:tracking-wide"
-                data-zh="金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。"
-                data-en="Golden threads define the bones; the sacred flower blooms in quiet splendor. The grand gates open to the world.">
-                金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。
-            </p>
+    <main>
+        <div id="poem-container">
+            <p id="left-poem">金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。</p>
         </div>
     </main>
 
     <!-- 左翼触发按钮 -->
-    <div class="absolute left-0 top-1/3 z-20" onclick="event.stopPropagation(); openPatternPool();">
-        <button class="py-6 px-3 bg-white/80 hover:bg-white text-neutral-800 text-[10px] tracking-[0.4em] font-light rounded-r-2xl shadow-lg transition-all" style="writing-mode: vertical-rl;">
-            📜 <span data-zh="大千纹样" data-en="PATTERN" class="data-[lang=en]:tracking-wider">大千纹样</span>
-        </button>
+    <div class="side-trigger-left" onclick="event.stopPropagation(); openPatternPool();">
+        <button class="trigger-btn" id="left-trigger-text">📜 大千纹样</button>
     </div>
 
     <!-- 右翼触发按钮 -->
-    <div class="absolute right-0 top-1/3 z-20" onclick="event.stopPropagation(); openColorPool();">
-        <button class="py-6 px-3 bg-white/80 hover:bg-white text-neutral-800 text-[10px] tracking-[0.4em] font-light rounded-l-2xl shadow-lg transition-all" style="writing-mode: vertical-rl;">
-            🎨 <span data-zh="天然色池" data-en="PALETTE" class="data-[lang=en]:tracking-wider">天然色池</span>
-        </button>
+    <div class="side-trigger-right" onclick="event.stopPropagation(); openColorPool();">
+        <button class="trigger-btn" id="right-trigger-text">🎨 天然色池</button>
     </div>
 
-    <!-- 左侧：大千传统纹样池面板 -->
-    <div id="patternPool" class="side-panel pattern-panel p-8 flex flex-col justify-between" onclick="event.stopPropagation()">
-        <div class="flex flex-col flex-grow pt-12">
-            <div class="flex justify-between items-baseline border-b border-neutral-200/60 pb-4 mb-4 flex-shrink-0">
-                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="大千传统纹样" data-en="HERITAGE MOTIFS">大千传统纹样</h3>
-                <span class="text-[9px] text-neutral-400 tracking-wider sub-brand">SACRED MOTIFS</span>
+    <!-- 左侧：纹样面板 -->
+    <div id="patternPool" class="side-panel left-side" onclick="event.stopPropagation()">
+        <div>
+            <div class="panel-header">
+                <h3 id="panel-pattern-title">大千传统纹样</h3>
+                <span>SACRED MOTIFS</span>
             </div>
-            <div class="space-y-4 overflow-y-auto pr-2 flex-grow max-h-[calc(100vh-220px)]" id="pattern-list-container"></div>
+            <div class="panel-list" id="pattern-list-container"></div>
         </div>
-        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0 pb-4">
-            <button onclick="closePatternPool()" class="text-[9px] tracking-[0.3em] text-neutral-400 hover:text-neutral-700 transition-colors uppercase">
-                ✕ <span data-zh="收起纹样" data-en="COLLAPSE">收起纹样</span>
-            </button>
+        <div class="panel-footer">
+            <button onclick="closePatternPool()" id="close-pattern-text">✕ 收起纹样</button>
         </div>
     </div>
 
-    <!-- 右侧：天然色彩池面板 -->
-    <div id="colorPool" class="side-panel color-pool-panel p-8 flex flex-col justify-between" onclick="event.stopPropagation()">
-        <div class="flex flex-col flex-grow pt-12">
-            <div class="flex justify-between items-baseline border-b border-neutral-200/60 pb-4 mb-4 flex-shrink-0">
-                <h3 class="text-base font-light tracking-[0.4em] text-neutral-800" data-zh="天然色彩池" data-en="NATURAL PALETTE">天然色彩池</h3>
-                <span class="text-[9px] text-neutral-400 tracking-wider sub-brand">NATURAL REVELATION</span>
+    <!-- 右侧：色池面板 -->
+    <div id="colorPool" class="side-panel" onclick="event.stopPropagation()">
+        <div>
+            <div class="panel-header">
+                <h3 id="panel-color-title">天然色彩池</h3>
+                <span>NATURAL REVELATION</span>
             </div>
-            <div class="space-y-4 overflow-y-auto pr-2 flex-grow max-h-[calc(100vh-220px)]" id="pool-list-container"></div>
+            <div class="panel-list" id="pool-list-container"></div>
         </div>
-        <div class="border-t border-neutral-200/60 pt-6 text-center flex-shrink-0 pb-4">
-            <button onclick="closeColorPool()" class="text-[9px] tracking-[0.3em] text-neutral-400 hover:text-neutral-700 transition-colors uppercase">
-                ✕ <span data-zh="收起色池" data-en="COLLAPSE">收起色池</span>
-            </button>
+        <div class="panel-footer">
+            <button onclick="closeColorPool()" id="close-color-text">✕ 收起色池</button>
         </div>
     </div>
 
     <!-- 底部控制与声明 -->
-    <footer class="w-full fixed bottom-0 left-0 z-10 px-12 pb-6 flex flex-col items-center space-y-4 pointer-events-auto" onclick="event.stopPropagation()">
-        <div class="w-full max-w-6xl flex justify-center items-center relative">
-            <div class="smart-glass-dock rounded-full px-8 py-4 flex justify-between items-center text-xs tracking-[0.3em] font-light max-w-md w-full mx-auto">
-                <button onclick="openPatternPool()"><span data-zh="📜 纹样" data-en="📜 MOTIF">📜 纹样</span></button>
-                <span class="divider opacity-30">|</span>
-                <button onclick="triggerManualDrop()"><span data-zh="💧 凝水" data-en="💧 DROP">💧 凝水</span></button>
-                <span class="divider opacity-30">|</span>
-                <button onclick="openColorPool()"><span data-zh="🎨 色池" data-en="🎨 POOL">🎨 色池</span></button>
-                <span class="divider opacity-30">|</span>
-                <button onclick="clearCanvas()"><span data-zh="✨ 澄澈" data-en="✨ CLEAR">✨ 澄澈</span></button>
+    <footer>
+        <div class="dock-wrapper">
+            <div class="smart-glass-dock" id="dock-container">
+                <button onclick="openPatternPool()" id="dock-btn-pattern">📜 纹样</button>
+                <span class="dock-divider">|</span>
+                <button onclick="triggerManualDrop()" id="dock-btn-drop">💧 凝水</button>
+                <span class="dock-divider">|</span>
+                <button onclick="openColorPool()" id="dock-btn-color">🎨 色池</button>
+                <span class="dock-divider">|</span>
+                <button onclick="clearCanvas()" id="dock-btn-clear">✨ 澄澈</button>
             </div> 
         </div>
 
-        <div class="w-full max-w-6xl flex justify-between items-center text-[8px] tracking-[0.25em] font-light border-t border-white/5 pt-3">
-            <div class="w-1/4 flex justify-start">
-                <a href="impressum.html" class="legal-wing-link text-[8px]" data-zh="法律声明 (Impressum)" data-en="Impressum">
-                    法律声明 <span class="tracking-normal font-normal ml-0.5">(Impressum)</span>
-                </a>
-            </div>
-            <div class="w-2/4 text-center text-amber-100/40" data-zh="© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。" data-en="© 2026 Rui Palace mail@rui-palace.com - All rights reserved. Preserve purity, cherish humanity.">
-                © 2026 蕊宫 mail@rui-palace.com - <span class="tracking-normal font-normal">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。
-            </div>
-            <div class="w-1/4 flex justify-end">
-                <a href="datenschutz.html" class="legal-wing-link text-[8px]" data-zh="隐私政策 (Datenschutz)" data-en="Datenschutz">
-                    隐私政策 <span class="tracking-normal font-normal ml-0.5">(Datenschutz)</span>
-                </a>
-            </div>
+        <div class="legal-footer">
+            <div><a class="legal-wing-link" href="impressum.html" id="footer-link-impressum">法律声明 (Impressum)</a></div>
+            <div style="text-align: center;" id="footer-motto">© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。</div>
+            <div><a class="legal-wing-link" href="datenschutz.html" id="footer-link-datenschutz">隐私政策 (Datenschutz)</a></div>
         </div>
     </footer>
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            const consent = localStorage.getItem('rui_palace_cookie_consent');
-            if (consent) {
+            if (localStorage.getItem('rui_palace_cookie_consent')) {
                 document.getElementById('cookie-consent').classList.add('hidden');
             }
         });
-
         document.getElementById('accept-btn').addEventListener('click', () => {
             localStorage.setItem('rui_palace_cookie_consent', 'accepted');
             document.getElementById('cookie-consent').classList.add('hidden');
@@ -183,101 +376,137 @@
         const ctx = canvas.getContext('2d');
         let currentLang = 'zh';
 
-        const orientalPatterns = [
-            {
-                name_zh: "经典宝相花", name_en: "Sacred Baoxiang", img: "images/baoxianghua.jpg",
-                backup: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1000&auto=format&fit=crop",
-                desc_zh: "大唐卷草与莲花交融之作，独具端庄与圆融之美。",
-                desc_en: "The integration of Tang dynasty scrolls and lotus flower, presenting supreme dignity.",
-                poetry_zh: "金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。",
-                poetry_en: "Golden threads define the bones; the sacred flower blooms in quiet splendor. The grand gates open to the world."
+        const uiTexts = {
+            zh: {
+                brand: "蕊宫 · 灵犀鉴",
+                leftTrigger: "📜 大千纹样",
+                rightTrigger: "🎨 天然色池",
+                panelPatternTitle: "大千传统纹样",
+                closePattern: "✕ 收起纹样",
+                panelColorTitle: "天然色彩池",
+                closeColor: "✕ 收起色池",
+                dockPattern: "📜 纹样",
+                dockDrop: "💧 凝水",
+                dockColor: "🎨 色池",
+                dockClear: "✨ 澄澈",
+                motto: "© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。",
+                modalTitle: "蕊宫隐私说明",
+                modalDesc: "蕊宫尊重并珍视您的隐私。为了提供更好的服务，本站使用必要的 Cookie 与本地存储。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。您可随时在“隐私政策”中调整设置。",
+                rejectBtn: "全部拒绝",
+                acceptBtn: "全部同意",
+                impressum: "法律声明 (Impressum)",
+                datenschutz: "隐私政策 (Datenschutz)",
+                defaultPatternName: "当前境象：经典宝相花",
+                defaultColorName: "当前色域：宝相大红底蕴"
             },
-            {
-                name_zh: "敦煌大藻井", name_en: "Dunhuang Caisson", img: "images/zaojing.jpg",
-                backup: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=1000&auto=format&fit=crop", 
-                desc_zh: "高昌及盛唐莫高窟窟顶核心华彩，层叠方井演化宇宙秩序。",
-                desc_en: "The core masterwork of Dunhuang cave ceilings, forming cosmic order via square structures.",
-                poetry_zh: "宛转回莲层叠影，丹青画壁步天台。", poetry_en: "Layered lotuses rotate in shadows; painted murals pave paths to heaven."
-            },
-            {
-                name_zh: "盛唐忍冬纹", name_en: "Tang Honeysuckle", img: "images/rendong.jpg",
-                backup: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop", 
-                desc_zh: "丝路东传的经典藤蔓纹，叶片三裂，连绵不绝象征永生。",
-                desc_en: "Classic Silk Road vine motif, three-lobed leaves symbolizing continuous vitality.",
-                poetry_zh: "蔓草绵延成造化，清风拂过尽婀娜。", poetry_en: "Endless vines form nature’s craft; gentle breeze evokes endless grace."
+            en: {
+                brand: "Rui Palace · Spiritual Mirror",
+                leftTrigger: "📜 Sacred Motifs",
+                rightTrigger: "🎨 Natural Palettes",
+                panelPatternTitle: "Sacred Motifs",
+                closePattern: "✕ Close Motifs",
+                panelColorTitle: "Natural Palettes",
+                closeColor: "✕ Close Palettes",
+                dockPattern: "📜 Motifs",
+                dockDrop: "💧 Condense",
+                dockColor: "🎨 Palettes",
+                dockClear: "✨ Clear",
+                motto: "© 2026 Rui Palace mail@rui-palace.com - All rights reserved. Stay pure, cherish humanity.",
+                modalTitle: "Rui Palace Privacy Notice",
+                modalDesc: "Rui Palace respects and values your privacy. To provide a better experience, this site uses necessary cookies and local storage. By clicking 'Accept All', you consent to our services. You can adjust your settings anytime in the Privacy Policy.",
+                rejectBtn: "Reject All",
+                acceptBtn: "Accept All",
+                impressum: "Legal Notice (Impressum)",
+                datenschutz: "Privacy Policy (Datenschutz)",
+                defaultPatternName: "Pattern: Sacred Baoxiang",
+                defaultColorName: "Current Realm: Vermilion Resonance"
             }
+        };
+
+        const orientalPatterns = [
+            { name_zh: "经典宝相花", name_en: "Sacred Baoxiang", img: "images/baoxianghua.jpg", desc_zh: "大唐卷草与莲花交融之作，独具端庄与圆融之美。", desc_en: "Tang scrolls & lotus integration.", poetry_zh: "金丝作骨，宝相自开。九天阊阖开宫殿，万国衣冠拜冕旟。", poetry_en: "Golden threads define the bones; the sacred flower blooms in quiet splendor." },
+            { name_zh: "敦煌大藻井", name_en: "Dunhuang Caisson", img: "images/zaojing.jpg", desc_zh: "高昌及盛唐莫高窟窟顶核心华彩，层叠方井演化宇宙秩序。", desc_en: "Core masterwork of Dunhuang ceilings.", poetry_zh: "宛转回莲层叠影，丹青画壁步天台。", poetry_en: "Layered lotuses rotate in shadows." },
+            { name_zh: "盛唐忍冬纹", name_en: "Tang Honeysuckle", img: "images/rendong.jpg", desc_zh: "丝路东传的经典藤蔓纹，叶片三裂，连绵不绝象征永生。", desc_en: "Classic Silk Road vine motif.", poetry_zh: "蔓草绵延成造化，清风拂过尽婀娜。", poetry_en: "Endless vines form nature’s craft." }
         ];
 
         const orientalPalettes = [
-            { name_zh: "艾青 · 凝露白 ", name_en: "Mugwort Green", hex: "#4A6741", origin_zh: "正气化青，温婉入药。", origin_en: "Vital harmony distills into sapphire, while gentle elegance becomes the cure.", url: "ColorAiQing.html" },
+            { name_zh: "艾青 · 凝露白", name_en: "Mugwort Green", hex: "#4A6741", origin_zh: "正气化青，温婉入药。", origin_en: "Vital harmony distills into sapphire.", url: "ColorAiQing.html" },
             { name_zh: "芭蕉橙 · 暖阳", name_en: "Plantain Orange", hex: "#D97706", origin_zh: "日光斜照芭蕉之脉络，取大地与韶华之暖色。", origin_en: "Warm hues from sunlit plantain leaves.", url: "Color Orange.html" },
             { name_zh: "紫菀 · 幽香", name_en: "Aster Purple", hex: "#A68BBD", origin_zh: "草木紫菀之幽远，将静谧与端庄沉淀于方寸间。", origin_en: "Distilled aster essence anchoring serene depths.", url: "Color Purple.html" },
-            { name_zh: "涌帝青 · 奇峰", name_en: "Imperial Blue", hex: "#1E3A8A", origin_zh: "深邃如帝王法界之青，锁住全图的精神力量。", origin_en: "Deep imperial indigo carrying celestial order.", url: "Color Sky Blue.html?" },
+            { name_zh: "涌帝青 · 奇峰", name_en: "Imperial Blue", hex: "#1E3A8A", origin_zh: "深邃如帝王法界之青，锁住全图的精神力量。", origin_en: "Deep imperial indigo carrying celestial order.", url: "Color Sky Blue.html" },
             { name_zh: "雨过天晴 · 天青", name_en: "Sky Blue Celadon", hex: "#4B6674", origin_zh: "柴窑传世之大美，取雨后苍穹初开之温润。", origin_en: "Legendary celadon capturing post-rain sky clarity.", url: "Color Tian Qing.html" },
             { name_zh: "朱砂落 · 宫墙", name_en: "Cinnabar Red", hex: "#B12224", origin_zh: "大唐宫墙与汉玉凝脂之经典撞色，刚柔并济。", origin_en: "Classic contrast of palace red and jade cream.", url: "Color Zhu Sha Red.html" },
             { name_zh: "桃花红笺 · 流霞", name_en: "Peach Crimson", hex: "#E05263", origin_zh: "薛涛红笺之流霞，将诗意风骨熔铸为淡雅绯红。", origin_en: "Poetic letter paper stained with peach blossom hues.", url: "Color_Xue_Tao_Red.html" },
             { name_zh: "玄武黑 · 墨韵", name_en: "Xuanwu Obsidian", hex: "#1A1A1A", origin_zh: "五方正色之玄黑，如泼墨入水，沉稳内敛。", origin_en: "The deep obsidian black, representing timeless depth.", url: "Color Distant Mountain.html" },
-            { name_zh: "琥珀金 · 金泽流光 ", name_en: "Amber Gold", hex: "#D4A017", origin_zh: "流光不掩本真，岁月沉淀清气。", origin_en: "Time’s shifting light cannot veil the true self; the passing years distill pure serenity.", url: "Color Amber Gold.html" },
-            { name_zh: "杏花天 · 医道亦道 ", name_en: "Apricot Blossom Sky", hex: "#E9A68D", origin_zh: "杏花微雨霓裳舞，曾忆锦瑟五十弦?", origin_en: "Amidst the apricot blossoms and fine rain, the neon garments dance; do you still recall the fifty strings of the zither from seasons past?", url: "Color Apricot Blossom.html" },
-            { name_zh: "暮山落 · 月独白 ", name_en: "Mushan Purple", hex: "#8670A0", origin_zh: "烟光凝而暮山紫，无尽夏开月独白。", origin_en: "Mist condenses as the evening mountains turn to aster purple，Endless summers bloom while the moon shines in solitary white.", url: "Color Mu Shan Lila.html" }
+            { name_zh: "琥珀金 · 金泽流光", name_en: "Amber Gold", hex: "#D4A017", origin_zh: "流光不掩本真，岁月沉淀清气。", origin_en: "Time’s shifting light cannot veil the true self.", url: "Color Amber Gold.html" }
         ];
 
-        let drops = []; let ripples = []; let backgroundFlows = [];
+        let drops = [], ripples = [], backgroundFlows = [];
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
+        function renderUIStrings() {
+            const t = uiTexts[currentLang];
+            document.getElementById('brand-title').innerText = t.brand;
+            document.getElementById('left-trigger-text').innerText = t.leftTrigger;
+            document.getElementById('right-trigger-text').innerText = t.rightTrigger;
+            document.getElementById('panel-pattern-title').innerText = t.panelPatternTitle;
+            document.getElementById('close-pattern-text').innerText = t.closePattern;
+            document.getElementById('panel-color-title').innerText = t.panelColorTitle;
+            document.getElementById('close-color-text').innerText = t.closeColor;
+            document.getElementById('dock-btn-pattern').innerText = t.dockPattern;
+            document.getElementById('dock-btn-drop').innerText = t.dockDrop;
+            document.getElementById('dock-btn-color').innerText = t.dockColor;
+            document.getElementById('dock-btn-clear').innerText = t.dockClear;
+            document.getElementById('footer-motto').innerText = t.motto;
+            document.getElementById('modal-title').innerText = t.modalTitle;
+            document.getElementById('modal-desc').innerText = t.modalDesc;
+            document.getElementById('reject-btn').innerText = t.rejectBtn;
+            document.getElementById('accept-btn').innerText = t.acceptBtn;
+            document.getElementById('modal-link-impressum').innerText = t.impressum;
+            document.getElementById('modal-link-datenschutz').innerText = t.datenschutz;
+            document.getElementById('footer-link-impressum').innerText = t.impressum;
+            document.getElementById('footer-link-datenschutz').innerText = t.datenschutz;
+
+            if (currentLang === 'en') {
+                document.documentElement.classList.add('lang-en-mode');
+            } else {
+                document.documentElement.classList.remove('lang-en-mode');
+            }
+        }
+
         function renderPatternPool() {
-            const container = document.getElementById('pattern-list-container');
-            container.innerHTML = orientalPatterns.map((item, idx) => `
-                <div class="pool-card pattern-card rounded-2xl p-4 flex flex-col space-y-2" onclick="selectPattern(${idx})">
-                    <div class="text-sm font-medium text-neutral-800 tracking-widest sub-brand data-[lang=en]:tracking-wider" data-lang="${currentLang}">
-                        ${currentLang === 'zh' ? item.name_zh : item.name_en}
-                    </div>
-                    <p class="text-[11px] text-neutral-600 font-light leading-relaxed data-[lang=en]:tracking-normal" data-lang="${currentLang}">
-                        ${currentLang === 'zh' ? item.desc_zh : item.desc_en}
-                    </p>
+            document.getElementById('pattern-list-container').innerHTML = orientalPatterns.map((item, idx) => `
+                <div class="pool-card" onclick="selectPattern(${idx})">
+                    <div class="pool-card-title">${currentLang === 'zh' ? item.name_zh : item.name_en}</div>
+                    <p class="pool-card-desc">${currentLang === 'zh' ? item.desc_zh : item.desc_en}</p>
                 </div>
             `).join('');
         }
 
         function renderColorPool() {
-            const container = document.getElementById('pool-list-container');
-            container.innerHTML = orientalPalettes.map((item, idx) => `
-                <div class="pool-card color-card rounded-2xl p-4 flex flex-col space-y-2" onclick="selectPaletteFromPool(${idx})">
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-4 h-4 rounded-full shadow-inner" style="background-color: ${item.hex}"></span>
-                            <span class="text-sm font-medium text-neutral-800 tracking-widest sub-brand data-[lang=en]:tracking-wider" data-lang="${currentLang}">${currentLang === 'zh' ? item.name_zh : item.name_en}</span>
+            document.getElementById('pool-list-container').innerHTML = orientalPalettes.map((item, idx) => `
+                <div class="pool-card" onclick="selectPaletteFromPool(${idx})">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="width: 1rem; height: 1rem; border-radius: 9999px; background-color: ${item.hex}; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);"></span>
+                            <span class="pool-card-title">${currentLang === 'zh' ? item.name_zh : item.name_en}</span>
                         </div>
-                        <span class="text-[10px] font-mono text-neutral-400 tracking-normal">${item.hex}</span>
+                        <span style="font-size: 0.625rem; font-family: monospace; color: #888;">${item.hex}</span>
                     </div>
-                    <p class="text-[11px] text-neutral-600 font-light leading-relaxed data-[lang=en]:tracking-normal" data-lang="${currentLang}">
-                        ${currentLang === 'zh' ? item.origin_zh : item.origin_en}
-                    </p>
+                    <p class="pool-card-desc">${currentLang === 'zh' ? item.origin_zh : item.origin_en}</p>
                 </div>
             `).join('');
         }
 
         function selectPattern(index) {
-            const pattern = orientalPatterns[index];
-            const imgEl = document.getElementById('baoxiang-img');
-            imgEl.style.opacity = '0';
-            setTimeout(() => {
-                imgEl.onerror = function() { this.src = pattern.backup; };
-                imgEl.src = pattern.img;
-                imgEl.style.opacity = '1';
-            }, 300);
-            
-            const nameEl = document.getElementById('current-pattern-name');
-            nameEl.innerText = currentLang === 'zh' ? `当前境象：${pattern.name_zh}` : `Pattern: ${pattern.name_en}`;
-            nameEl.setAttribute('data-lang', currentLang);
-
-            const poemEl = document.getElementById('left-poem');
-            poemEl.setAttribute('data-zh', pattern.poetry_zh);
-            poemEl.setAttribute('data-en', pattern.poetry_en);
-            poemEl.innerText = currentLang === 'zh' ? pattern.poetry_zh : pattern.poetry_en;
-            poemEl.setAttribute('data-lang', currentLang);
+            const p = orientalPatterns[index];
+            const img = document.getElementById('baoxiang-img');
+            img.style.opacity = '0';
+            setTimeout(() => { img.src = p.img; img.style.opacity = '0.85'; }, 400);
+            document.getElementById('current-pattern-name').innerText = currentLang === 'zh' ? `当前境象：${p.name_zh}` : `Pattern: ${p.name_en}`;
+            document.getElementById('left-poem').innerText = currentLang === 'zh' ? p.poetry_zh : p.poetry_en;
         }
 
         function openPatternPool() { closeColorPool(); document.getElementById('patternPool').classList.add('open'); }
@@ -289,7 +518,7 @@
         function selectPaletteFromPool(index) {
             const data = orientalPalettes[index];
             createImpact(canvas.width / 2, canvas.height / 2, data);
-            if (data.url) { setTimeout(() => { window.location.href = data.url; }, 600); }
+            if (data.url) setTimeout(() => window.location.href = data.url, 600);
         }
 
         class WaterDrop {
@@ -299,7 +528,7 @@
         }
 
         class ColorRipple {
-            constructor(x, y, color) { this.x = x; this.y = y; this.color = color; this.radius = 1; this.maxRadius = Math.random() * 100 + 150; this.alpha = 0.8; }
+            constructor(x, y, color) { this.x = x; this.y = y; this.color = color; this.radius = 1; this.maxRadius = 180; this.alpha = 0.8; }
             update() { this.radius += (this.maxRadius - this.radius) * 0.05; this.alpha -= 0.008; return this.alpha > 0; }
             draw() { ctx.save(); ctx.beginPath(); ctx.strokeStyle = this.color; ctx.globalAlpha = this.alpha; ctx.lineWidth = 3; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
         }
@@ -307,40 +536,30 @@
         class LiquidFlow {
             constructor(x, y, colorData) { this.x = x; this.y = y; this.color = colorData.hex; this.radius = 0; this.maxRadius = Math.max(canvas.width, canvas.height) * 1.2; this.speed = 8; this.alpha = 0.4; }
             update() { this.radius += this.speed; if (this.radius >= this.maxRadius) { document.body.style.backgroundColor = this.color; this.alpha -= 0.015; } return this.alpha > 0; }
-            draw() { ctx.save(); ctx.beginPath(); let gradient = ctx.createRadialGradient(this.x, this.y, this.radius * 0.1, this.x, this.y, this.radius); gradient.addColorStop(0, this.color); gradient.addColorStop(0.4, this.color + "44"); gradient.addColorStop(1, 'transparent'); ctx.fillStyle = gradient; ctx.globalAlpha = this.alpha; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+            draw() { ctx.save(); ctx.beginPath(); let g = ctx.createRadialGradient(this.x, this.y, this.radius * 0.1, this.x, this.y, this.radius); g.addColorStop(0, this.color); g.addColorStop(0.4, this.color + "44"); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.globalAlpha = this.alpha; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
         }
 
         function createImpact(x, y, colorData) {
             ripples.push(new ColorRipple(x, y, colorData.hex));
             backgroundFlows.push(new LiquidFlow(x, y, colorData));
-            const colorEl = document.getElementById('current-color-name');
-            colorEl.innerText = currentLang === 'zh' ? `当前色域：${colorData.name_zh}` : `Current Realm: ${colorData.name_en}`;
-            colorEl.setAttribute('data-lang', currentLang);
+            document.getElementById('current-color-name').innerText = currentLang === 'zh' ? `当前色域：${colorData.name_zh}` : `Current Realm: ${colorData.name_en}`;
         }
 
         window.addEventListener('click', (e) => {
             if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
-            if (e.clientY < window.innerHeight - 120 && e.clientX > 430 && e.clientX < window.innerWidth - 430) {
-                const randomColor = orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)];
-                drops.push(new WaterDrop(e.clientX, e.clientY, randomColor));
+            if (e.clientY < window.innerHeight - 120 && e.clientX > 450 && e.clientX < window.innerWidth - 450) {
+                drops.push(new WaterDrop(e.clientX, e.clientY, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
             }
         });
 
         function triggerManualDrop() {
-            const rx = Math.random() * (canvas.width - 900) + 450;
-            const ry = Math.random() * (canvas.height * 0.4) + (canvas.height * 0.3);
-            const randomColor = orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)];
-            drops.push(new WaterDrop(rx, ry, randomColor));
+            drops.push(new WaterDrop(window.innerWidth / 2, window.innerHeight / 2, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
         }
 
         function clearCanvas() {
             drops = []; ripples = []; backgroundFlows = [];
             document.body.style.backgroundColor = "#B22222";
-            
-            const colorEl = document.getElementById('current-color-name');
-            colorEl.innerText = currentLang === 'zh' ? "当前色域：宝相大红底蕴" : "Current Realm: Vermilion Resonance";
-            colorEl.setAttribute('data-lang', currentLang);
-            
+            document.getElementById('current-color-name').innerText = uiTexts[currentLang].defaultColorName;
             selectPattern(0);
             closeAllPanels();
         }
@@ -348,22 +567,21 @@
         function toggleLanguage(e) {
             e.stopPropagation();
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            document.querySelectorAll('[data-zh]').forEach(el => {
-                el.innerText = el.getAttribute(`data-${currentLang}`);
-                el.setAttribute('data-lang', currentLang);
-            });
+            renderUIStrings();
             renderPatternPool();
             renderColorPool();
+            selectPattern(0);
         }
 
+        renderUIStrings();
         renderPatternPool();
         renderColorPool();
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            backgroundFlows = backgroundFlows.filter(flow => { const active = flow.update(); if (active) flow.draw(); return active; });
-            ripples = ripples.filter(ripple => { const active = ripple.update(); if (active) ripple.draw(); return active; });
-            drops = drops.filter(drop => { const active = drop.update(); if (active) drop.draw(); return active; });
+            backgroundFlows = backgroundFlows.filter(f => { let a = f.update(); if (a) f.draw(); return a; });
+            ripples = ripples.filter(r => { let a = r.update(); if (a) r.draw(); return a; });
+            drops = drops.filter(d => { let a = d.update(); if (a) d.draw(); return a; });
             requestAnimationFrame(animate);
         }
         animate();
