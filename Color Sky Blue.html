@@ -7,7 +7,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>祈年殿 · 涌帝青美学色卡</title>
     
-    <!-- 安全无风险的基础重置与排版样式 -->
+    <!-- 纯原生安全样式，彻底剔除所有外来在线框架与外部字体 -->
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -16,212 +16,352 @@
         }
 
         body { 
-            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
             background-color: #0F172A; /* 帝师青深蓝底色 */
             color: #F1F5F9;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            /* 精致深蓝色调云纹背景 */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%233B82F6' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.12'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
             -webkit-font-smoothing: antialiased;
         }
-        .color-transition { transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
         .chinese-border { 
             border: 1px solid rgba(59, 130, 246, 0.25); 
             outline: 3px double rgba(59, 130, 246, 0.15); 
             outline-offset: -8px; 
             background: rgba(15, 23, 42, 0.85); 
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 32px;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
-        
-        input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #3B82F6; cursor: pointer; border: 2px solid #0F172A; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4); transition: transform 0.2s;
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 48px 0;
         }
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        @media (min-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-        /* ================= 纯净安全字体控制体系（无任何商业授权风险） ================= */
+        /* 纯净排版控制体系 */
         .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #F8FAFC; }
-        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        .dynamic-title[data-lang="en"] { font-family: Georgia, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #94A3B8; }
+        .dynamic-sub { font-family: -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #94A3B8; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
 
         .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #CBD5E1; }
-        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text[data-lang="en"] { font-family: -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; color: #F1F5F9; }
-        .poetry-text-style[data-lang="en"] { 
-            font-family: "Times New Roman", Times, serif !important; 
-            font-style: italic !important; 
-            letter-spacing: 0.02em !important; 
-            font-size: 0.95rem !important;         
-            line-height: 1.5 !important; 
-            color: #60A5FA !important;            
-        }
+        .poetry-text-style { font-family: Georgia, "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; color: #F1F5F9; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: Georgia, serif !important; font-style: italic !important; letter-spacing: 0.02em !important; font-size: 0.95rem !important; line-height: 1.5 !important; color: #60A5FA !important; }
         
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #94A3B8; }
-        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #94A3B8; }
+        .poetry-source-style { font-family: Georgia, "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #94A3B8; font-size: 0.75rem; }
+        .poetry-source-style[data-lang="en"] { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #94A3B8; }
 
-        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
-        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style { font-family: Georgia, "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; color: #60A5FA; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #60A5FA; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: Georgia, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); transition: all 0.3s ease; letter-spacing: 0.1em; color: #93C5FD; cursor: pointer; }
+        .lang-switch-btn { font-family: Georgia, serif; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #93C5FD; }
         .lang-switch-btn:hover { background: #3B82F6; color: white; border-color: #3B82F6; }
+
+        /* 布局与组件细节 */
+        .color-grid-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .color-card {
+            cursor: pointer;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #60A5FA;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+            transform: translateY(-2px);
+        }
+        .color-block {
+            height: 96px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.9);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #3B82F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.1); }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.4));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: rgba(96, 165, 250, 0.6); }
+
+        .dynamic-pad {
+            width: 100%;
+            height: 128px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            position: relative;
+            background-color: #1E3A8A;
+            transition: background-color 0.5s;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #020617;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-thumb { 
+            appearance: none; 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            background: #3B82F6; 
+            cursor: pointer; 
+            border: 2px solid #0F172A;
+        }
+
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(59, 130, 246, 0.3); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: rgba(147, 197, 253, 0.6); gap: 8px; }
+        @media(min-width: 640px) { footer.footer { flex-direction: row; } }
     </style>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-blue-500/30">
+<body style="selection-background-color: rgba(59, 130, 246, 0.3);">
 
     <!-- 顶部导航 -->
-    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
-        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-stone-400 hover:text-blue-400 transition-colors duration-300 group cursor-pointer">
-            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
-            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+    <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
+        <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#94A3B8;">
+            <span style="font-size:12px;">⇠</span>
+            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
         
-        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm">
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
             EN / 中
         </button>
     </div>
 
     <!-- 顶头画卷 -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b border-blue-900/50 relative">
-        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="w-[1px] h-12 bg-blue-900"></span>
-            <span class="text-[10px] font-light vertical-wing" data-zh="蕊宫 · 祈年格物" data-en="RUI PALACE · IMPERIAL VAULT">蕊宫 · 祈年格物</span>
+    <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(30, 58, 138, 0.5); position: relative;">
+        <!-- 左侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span style="width:1px; height:48px; background:#1E3A8A;"></span>
+            <span class="vertical-wing" data-zh="蕊宫 · 祈年格物" data-en="RUI PALACE · IMPERIAL VAULT">蕊宫 · 祈年格物</span>
         </div>
 
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold mb-4 dynamic-title" data-zh="云破奇峰 · 涌帝青" data-en="Imperial Blue & Sky Vault">云破奇峰 · 涌帝青</h1>
-        <p class="text-xs font-light mb-4 dynamic-sub text-blue-300/70" data-zh="Imperial Blue & Sky Vault Spectrum" data-en="Imperial Blue & Sky Vault Spectrum">Imperial Blue & Sky Vault Spectrum</p>
+        <h1 id="main-title" class="dynamic-title" style="margin-bottom: 16px;" data-zh="云破奇峰 · 涌帝青" data-en="Imperial Blue & Sky Vault">云破奇峰 · 涌帝青</h1>
+        <p class="dynamic-sub" style="margin-bottom: 16px; color: rgba(147, 197, 253, 0.7);" data-zh="Imperial Blue & Sky Vault Spectrum" data-en="Imperial Blue & Sky Vault Spectrum">Imperial Blue & Sky Vault Spectrum</p>
         
-        <div class="max-w-xl mx-auto px-4">
-            <p id="main-desc" class="text-sm leading-relaxed font-light dynamic-text break-words" 
+        <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
+            <p id="main-desc" class="dynamic-text" 
                data-zh="“天道无亲，常与善人。”<br>于祈年殿顶，于那抹纯正苍穹之蓝间，寻得与天地共振的建筑灵魂。" 
                data-en="&ldquo;Heaven has no favorites; it always aligns with the good.&rdquo;<br>Atop the Hall of Prayer for Good Harvests, within that absolute vault of sky-blue, find the architectural soul resonating with heaven and earth.">
                 “天道无亲，常与善人。”<br>于祈年殿顶，于那抹纯正苍穹之蓝间，寻得与天地共振的建筑灵魂。
             </p>
         </div>
 
-        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="text-[10px] font-light vertical-wing" data-zh="仙骨怀真 · 天道长存" data-en="INNER TRUTH · HEAVEN ENDURES">仙骨怀真 · 天道长存</span>
-            <span class="w-[1px] h-12 bg-blue-900"></span>
+        <!-- 右侧翼：动态竖排声明 -->
+        <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+            <span class="vertical-wing" data-zh="仙骨怀真 · 天道长存" data-en="INNER TRUTH · HEAVEN ENDURES">仙骨怀真 · 天道长存</span>
+            <span style="width:1px; height:48px; background:#1E3A8A;"></span>
         </div>
     </header>
 
     <!-- 核心双阁布局 -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <main class="container grid-2">
         <!-- 左阁：色彩网格 -->
-        <section class="chinese-border shadow-sm flex flex-col justify-between space-y-8 color-transition">
-            <div class="flex justify-between items-end border-b border-blue-900/50 pb-4">
-                <h2 class="text-md font-semibold text-blue-100 flex items-center dynamic-text" data-zh="西阁 · 祈年帝青色卡" data-en="West Pavilion &bull; Imperial Blue Palette">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#3B82F6] rounded-full mr-2.5 shadow-[0_0_8px_#3B82F6]"></span>
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(30, 58, 138, 0.5); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#F1F5F9; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 祈年帝青色卡" data-en="West Pavilion &bull; Imperial Blue Palette">
+                    <span style="display:inline-block; width:10px; height:10px; background:#3B82F6; border-radius:50%; box-shadow:0 0 8px #3B82F6;"></span>
                     西阁 · 祈年帝青色卡
                 </h2>
-                <span class="text-[10px] text-blue-300/60 dynamic-text" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
+                <span class="dynamic-text" style="font-size:10px; color:rgba(147, 197, 253, 0.6);" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
             </div>
-
-            <div class="grid grid-cols-2 gap-6 flex-grow content-center" id="color-grid"></div>
-
-            <div class="pt-4 border-t border-blue-900/30 flex justify-between items-center text-[10px] text-blue-400/40 tracking-widest">
-                <span></span>
-                <span></span>
+            <div id="color-grid" class="color-grid-box"></div>
+            <div style="padding-top:16px; border-top:1px solid rgba(30, 58, 138, 0.3); display:flex; justify-content:space-between; font-size:10px; color:rgba(59, 130, 246, 0.4); letter-spacing:0.1em;">
+                <span></span><span></span>
             </div>
         </section>
 
-        <!-- 右阁：观象台与动态交互 -->
-        <section class="chinese-border shadow-sm flex flex-col justify-between space-y-8 color-transition">
-            <div class="flex justify-between items-end border-b border-blue-900/50 pb-4">
-                <h2 class="text-md font-semibold text-blue-100 flex items-center dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Wind & Rain Observatory">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#60A5FA] rounded-full mr-2.5 shadow-[0_0_8px_#60A5FA]"></span>
-                    东阁 · 听风听雨观象台
-                </h2>
+        <!-- 右阁：观象台与动态交互（配备点击确认后方可加载的 YouTube 专属罩层） -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(30, 58, 138, 0.5); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#F1F5F9;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Wind & Rain Observatory">东阁 · 听风听雨观象台</h2>
             </div>
-
-            <div class="border border-blue-900/60 p-4 rounded-xl space-y-4 bg-slate-900/60">
-                <div class="aspect-video bg-black rounded-lg overflow-hidden relative shadow-inner">
-                    <iframe class="w-full h-full absolute top-0 left-0" src="https://www.youtube.com/embed/2XrOHNbKZ6M?rel=0&modestbranding=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-
-                <!-- 管道链接 -->
-                <a href="Color Purple.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-blue-500/20 hover:border-blue-400/50 bg-gradient-to-r from-slate-900 to-blue-950/40 rounded-lg transition-all duration-300 cursor-pointer shadow-sm">
-                    <div class="flex items-center space-x-3">
-                        <span class="w-2 h-2 rounded-full bg-blue-400 group-hover:animate-ping"></span>
-                        <div>
-                            <h4 class="text-[11px] font-semibold text-blue-100 dynamic-text break-words" data-zh="流转通道：紫菀通幽径，轻盈入瑶台" data-en="Channel Switch: Path to Aster Purple">流转通道：紫菀通幽径，轻盈入瑶台</h4>
-                            <p class="text-[9px] text-blue-300/70 mt-0.5 dynamic-text break-words" data-zh="幽香拂面，温润本真" data-en="A faint fragrance brushes the face, gentle and true.">幽香拂面，温润本真</p>
-                        </div>
+            
+            <!-- YouTube 视频安全确认与点击加载遮罩层 -->
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
-                    <span class="text-xs text-blue-400 font-bold transform group-hover:translate-x-1 transition-transform">➔</span>
-                </a>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#94A3B8;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
-
-            <div class="space-y-6 flex-grow flex flex-col justify-center">
-                <div id="dynamic-pad" class="w-full h-32 rounded-xl shadow-md flex flex-col justify-end p-4 text-white color-transition border border-blue-500/30" style="background-color: #1E3A8A;">
-                    <div class="backdrop-blur-md bg-black/50 p-3 rounded-lg flex justify-between items-end border border-white/15">
-                        <div>
-                            <p id="dynamic-name" class="text-xs font-semibold pad-name-style text-white">涌帝青</p>
-                            <p id="dynamic-rgb" class="text-[9px] font-mono tracking-widest text-blue-200 mt-1">RGB(30, 58, 138)</p>
-                        </div>
-                        <button onclick="copyDynamicValue()" class="text-[10px] bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded transition-colors border border-white/20 dynamic-sub text-white cursor-pointer" data-zh="复制 <span id='dynamic-hex' class='font-mono font-medium'>#1E3A8A</span>" data-en="COPY <span id='dynamic-hex' class='font-mono font-medium'>#1E3A8A</span>">
-                            复制 <span id="dynamic-hex" class="font-mono font-medium">#1E3A8A</span>
-                        </button>
+            
+            <!-- 管道链接 -->
+            <a href="Color Purple.html" id="channel-link" class="channel-link">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#60A5FA;"></span>
+                    <div>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#F1F5F9;" data-zh="流转通道：紫菀通幽径，轻盈入瑶台" data-en="Channel Switch: Path to Aster Purple">流转通道：紫菀通幽径，轻盈入瑶台</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:rgba(147, 197, 253, 0.7); margin-top:2px;" data-zh="幽香拂面，温润本真" data-en="A faint fragrance brushes the face, gentle and true.">幽香拂面，温润本真</p>
                     </div>
                 </div>
-
-                <div class="space-y-2">
-                    <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-blue-950 rounded-lg appearance-none cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-blue-300/70 tracking-widest font-light">
-                        <span class="dynamic-text" data-zh="#1E3A8A (涌帝青)" data-en="#1E3A8A (Imperial)">#1E3A8A (涌帝青)</span>
-                        <span id="blend-percentage" class="font-mono text-blue-400 font-semibold">0</span>
-                        <span class="dynamic-text" data-zh="#DBEAFE (凝露琉璃)" data-en="#DBEAFE (Glass)">#DBEAFE (凝露琉璃)</span>
+                <span style="font-size:12px; color:#60A5FA; font-weight:bold;">➔</span>
+            </a>
+            
+            <!-- 动态交互大卡片 -->
+            <div id="dynamic-pad" class="dynamic-pad">
+                <div style="background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); padding:12px; border-radius:8px; display:flex; justify-content:space-between; align-items:flex-end; border:1px solid rgba(255,255,255,0.15);">
+                    <div>
+                        <p id="dynamic-name" class="pad-name-style" style="font-size:12px; color:white;">涌帝青</p>
+                        <p id="dynamic-rgb" style="font-size:9px; font-family:monospace; letter-spacing:0.1em; color:#BFDBFE; margin-top:4px;">RGB(30, 58, 138)</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="border border-blue-900/60 p-5 rounded-xl space-y-2 relative overflow-hidden bg-slate-900/60 shadow-sm" id="poetry-card">
-                <div class="absolute right-3 top-2 opacity-[0.05] select-none text-6xl font-black text-blue-400 dynamic-text" data-zh="怀真" data-en="TRUTH">
-                    怀真
-                </div>
-                <div class="border-l-2 border-blue-500 pl-3">
-                    <p id="poetry-text" class="text-sm poetry-text-style"></p>
-                    <p id="poetry-author" class="text-[10px] text-right mt-1.5 poetry-source-style"></p>
-                </div>
-                <div class="pt-3 border-t border-blue-900/40 flex justify-end">
-                    <button id="next-poetry" class="text-[10px] text-blue-400 hover:underline dynamic-sub cursor-pointer font-medium" data-zh="换一首诗 ➔" data-en="Next Verse ➔">
-                        换一首诗 ➔
+                    <button onclick="copyDynamicValue()" class="dynamic-sub" style="font-size:10px; background:rgba(255,255,255,0.2); hover:background:rgba(255,255,255,0.3); padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.2); color:white; cursor:pointer;" data-zh="复制 <span id='dynamic-hex'>#1E3A8A</span>" data-en="COPY <span id='dynamic-hex'>#1E3A8A</span>">
+                        复制 <span id="dynamic-hex" style="font-family:monospace; font-weight:500;">#1E3A8A</span>
                     </button>
+                </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:8px;">
+                <input type="range" id="color-slider" min="0" max="5" value="0">
+                <div class="flex-between" style="font-size:10px; color:rgba(147, 197, 253, 0.7); letter-spacing:0.1em;">
+                    <span class="dynamic-text" data-zh="#1E3A8A (涌帝青)" data-en="#1E3A8A (Imperial)">#1E3A8A (涌帝青)</span>
+                    <span id="blend-percentage" style="font-family:monospace; color:#60A5FA; font-weight:600;">0</span>
+                    <span class="dynamic-text" data-zh="#DBEAFE (凝露琉璃)" data-en="#DBEAFE (Glass)">#DBEAFE (凝露琉璃)</span>
+                </div>
+            </div>
+            
+            <!-- 意境山水诗词卡片 -->
+            <div style="border:1px solid rgba(30, 58, 138, 0.6); padding:20px; border-radius:12px; background:rgba(15, 23, 42, 0.6); position:relative; overflow:hidden;">
+                <div style="position:absolute; right:12px; top:8px; opacity:0.05; user-select:none; font-size:60px; font-weight:900; color:#60A5FA;" class="dynamic-text" data-zh="怀真" data-en="TRUTH">怀真</div>
+                <div style="border-left:2px solid #3B82F6; padding-left:12px;">
+                    <p id="poetry-text" class="poetry-text-style"></p>
+                    <p id="poetry-author" class="poetry-source-style" style="text-align:right; margin-top:6px;"></p>
+                </div>
+                <div style="padding-top:12px; border-top:1px solid rgba(30, 58, 138, 0.4); display:flex; justify-content:flex-end;">
+                    <button id="next-poetry" class="dynamic-sub" style="font-size:10px; color:#60A5FA; background:none; border:none; cursor:pointer; font-weight:500;" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- 提示框 -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-blue-950 text-blue-100 border border-blue-500/30 text-xs tracking-widest rounded-full opacity-0 pointer-events-none transition-all duration-300 shadow-xl flex items-center space-x-2 z-50">
-        <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping"></span>
+    <div id="toast" style="position:fixed; bottom:32px; left:50%; transform:translateX(-50%); padding:12px 24px; background:#020617; color:#BFDBFE; border:1px solid rgba(59, 130, 246, 0.3); font-size:12px; letter-spacing:0.1em; border-radius:9999px; opacity:0; pointer-events:none; transition:all 0.3s; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5); display:flex; align-items:center; gap:8px; z-index:50;">
+        <span style="width:6px; height:6px; background:#60A5FA; border-radius:50%;"></span>
         <span id="toast-text">已成功复制色值</span>
     </div>
 
     <!-- 页脚 -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-blue-900/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-blue-300/60 space-y-2 sm:space-y-0 dynamic-sub">
-        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p class="space-x-1">
-            <a href="impressum.html" class="hover:text-blue-200 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+    <footer class="footer">
+        <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display:flex; gap:6px;">
+            <a href="impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
             <span>|</span> 
-            <a href="Datenschutz.html" class="hover:text-blue-200 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+            <a href="Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
         </p>
     </footer>
 
+    <!-- 响应式大屏侧翼显示控制样式 -->
+    <style>
+        @media (min-width: 1024px) {
+            .side-wing-desktop { display: flex !important; }
+        }
+    </style>
+
+    <!-- 业务交互逻辑脚本 -->
     <script>
+        // YouTube 视频安全点击加载函数
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube.com/embed/2XrOHNbKZ6M?autoplay=1&rel=0&modestbranding=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
+
         let currentLang = 'zh';
 
         const colors = [
@@ -247,22 +387,15 @@
         function renderColorGrid() {
             const colorGrid = document.getElementById('color-grid');
             colorGrid.innerHTML = colors.map((color, index) => `
-                <div onclick="selectColor(${index})" class="group cursor-pointer bg-slate-900/80 rounded-xl border border-blue-900/50 hover:border-blue-400/60 transition-all duration-500 p-4 shadow-sm hover:shadow-md hover:-translate-y-1">
-                    <div class="h-24 mb-3 rounded color-transition relative overflow-hidden shadow-inner border border-white/10" style="background-color:${color.hex}">
-                        <span class="absolute top-2 right-2 text-[8px] font-mono bg-black/60 text-white px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                            COPY
-                        </span>
-                    </div>
-                    <div class="flex justify-between items-start">
+                <div onclick="selectColor(${index})" class="color-card">
+                    <div class="color-block" style="background-color:${color.hex}"></div>
+                    <div class="flex-between" style="align-items:flex-start;">
                         <div>
-                            <h4 class="font-bold text-blue-100 text-xs dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>
-                            <p class="text-[10px] text-blue-400 font-mono mt-0.5 font-medium">${color.hex}</p>
+                            <h4 style="font-weight:bold; color:#F1F5F9; font-size:12px;" class="dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? color.name_zh : color.name_en}</h4>
+                            <p style="font-size:10px; color:#60A5FA; font-family:monospace; margin-top:2px;">${color.hex}</p>
                         </div>
-                        <span class="text-[9px] text-blue-500/40 italic font-mono">0${index+1}</span>
+                        <span style="font-size:9px; color:rgba(96, 165, 250, 0.4); font-family:monospace;">0${index+1}</span>
                     </div>
-                    <p class="text-[10px] text-blue-300/70 tracking-wider mt-2 border-t border-blue-900/40 pt-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 dynamic-text" data-lang="${currentLang}">
-                        ${currentLang === 'zh' ? color.desc_zh : color.desc_en}
-                    </p>
                 </div>
             `).join('');
         }
@@ -326,11 +459,11 @@
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').innerText = message;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
+            toast.style.opacity = '1';
+            toast.style.pointerEvents = 'auto';
             setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.style.opacity = '0';
+                toast.style.pointerEvents = 'none';
             }, 2000);
         }
 
