@@ -123,11 +123,20 @@
                 <h2 class="text-md font-semibold text-neutral-800 flex items-center dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
                 <span class="text-[10px] text-neutral-400 dynamic-text" data-zh="杏雨流光 · 视听长青" data-en="Apricot Rain & Eternal Vision">杏雨流光 · 视听长青</span>
             </div>
-            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden shadow-sm">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/UHVF3uotIq0" allowfullscreen style="border:none;"></iframe>
+            
+            <!-- 带有 Amber Gold 一致的 YouTube 链接前置确认与隐私保护加载遮罩 -->
+            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden relative" id="video-wrapper">
+                <div id="video-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-neutral-900/80 cursor-pointer transition-opacity duration-300 z-10" onclick="loadYouTubeVideo()">
+                    <div class="w-12 h-12 rounded-full bg-[#E9A68D] flex items-center justify-center text-white mb-2 shadow-md hover:scale-105 transition-transform">
+                        <span class="text-lg ml-0.5">▶</span>
+                    </div>
+                    <p class="text-xs text-white font-light mb-1 dynamic-text" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="text-[9px] text-neutral-400 dynamic-text" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                </div>
+                <div id="youtube-container" class="w-full h-full"></div>
             </div>
             
-            <!-- 下一站链接：流转至琥珀金 -->
+            <!-- 下一站链接：流转至琥珀金（已同步 Amber Gold 的外链字体与样式规范） -->
             <a href="Color Amber Gold.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#E9A68D]/20 hover:border-[#E9A68D]/50 bg-gradient-to-r from-white/40 to-[#E9A68D]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none;">
                 <div class="flex items-center space-x-3">
                     <span class="w-2 h-2 rounded-full bg-[#E9A68D]"></span>
@@ -173,6 +182,25 @@
 
     <!-- 业务交互逻辑脚本 -->
     <script>
+        // YouTube 视频安全确认与点击加载函数
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+            
+            container.innerHTML = `
+                <iframe class="w-full h-full" 
+                        src="https://www.youtube.com/embed/UHVF3uotIq0?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        style="border:none;">
+                </iframe>
+            `;
+        }
+
         let currentLang = 'zh';
         
         // 杏花天六色色谱配置
