@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -8,52 +9,15 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ================= 纯本地字体声明体系（已移除所有Google外链） ================= */
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 400;
-          src: url('fonts/cinzel-v26-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 500;
-          src: url('fonts/cinzel-v26-latin-500.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Cinzel';
-          font-style: normal;
-          font-weight: 600;
-          src: url('fonts/cinzel-v26-latin-600.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 200;
-          src: url('fonts/montserrat-v31-latin-200.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 300;
-          src: url('fonts/montserrat-v31-latin-300.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 400;
-          src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-weight: 500;
-          src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2');
+        /* ================= 安全无风险的基础重置与排版样式 ================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body { 
-            font-family: "Cinzel", "Montserrat", "Songti SC", "SimSun", "STSong", "KaiTi", "Georgia", serif; 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
             background-color: #FBF2F1; 
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.45'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
@@ -68,36 +32,36 @@
         }
         input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
-        /* ================= 中英文独立控制与字体隔离体系 ================= */
-        .dynamic-title { font-family: "Cinzel", "Songti SC", serif; letter-spacing: 0.3em; transition: all 0.3s; font-weight: 500; }
-        .dynamic-title[data-lang="en"] { font-family: "Cinzel", serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
+        /* ================= 纯净安全字体控制体系（无任何商业授权风险） ================= */
+        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
-        .dynamic-sub { font-family: "Cinzel", "Montserrat", sans-serif; letter-spacing: 0.4em; }
-        .dynamic-sub[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; font-weight: 300; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; }
+        .dynamic-sub[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; font-weight: 300; }
 
-        .dynamic-text { font-family: "Montserrat", "Songti SC", sans-serif; letter-spacing: 0.15em; font-weight: 300; }
-        .dynamic-text[data-lang="en"] { font-family: "Montserrat", sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; font-weight: 300; }
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; font-weight: 300; }
 
-        .poetry-text-style { font-family: "Songti SC", "KaiTi", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
         .poetry-text-style[data-lang="en"] { 
-            font-family: "Cinzel", Georgia, serif !important; 
+            font-family: "Times New Roman", Times, serif !important; 
             font-style: italic !important; 
-            letter-spacing: 0px !important; 
-            font-size: 1rem !important;          
+            letter-spacing: 0.02em !important; 
+            font-size: 0.88rem !important;          
             line-height: 1.5 !important; 
             color: #384145 !important; 
         }
         
-        .poetry-source-style { font-family: "Songti SC", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: "Montserrat", sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; font-weight: 300; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; font-weight: 300; }
 
-        .pad-name-style { font-family: "Songti SC", "KaiTi", serif; letter-spacing: 0.2em; transition: all 0.2s ease; }
-        .pad-name-style[data-lang="en"] { font-family: "Cinzel", Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-family: "Songti SC", serif; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Cinzel", serif; font-size: 9px; }
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-family: "Songti SC", "SimSun", serif; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Cinzel", serif; background: rgba(177, 34, 36, 0.08); border: 1px solid rgba(177, 34, 36, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
+        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(177, 34, 36, 0.08); border: 1px solid rgba(177, 34, 36, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; }
         .lang-switch-btn:hover { background: #B12224; color: white; border-color: #B12224; }
     </style>
 </head>
