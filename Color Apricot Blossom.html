@@ -1,5 +1,13 @@
 
-<!DOCTYPE html><html lang="zh-CN"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="referrer" content="strict-origin-when-cross-origin" />    <title>杏花天 · 春色入梦美学色卡</title>        <!-- 安全无风险的基础重置与排版样式 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>杏花天 · 春色入梦美学色卡</title>
+    
+    <!-- 纯原生系统字体与样式，绝不引入任何外部网络字体、CDN 字体及非法外链 -->
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -20,17 +28,217 @@
             user-select: none;
         }
 
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header.header {
+            padding: 40px 0 32px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
         .chinese-border { 
             border: 1px solid rgba(233, 166, 141, 0.15); 
             outline: 3px double rgba(233, 166, 141, 0.08); 
             outline-offset: -8px; 
             background: rgba(255, 255, 255, 0.6); 
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 32px;
         }
 
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 48px 0;
+        }
+        @media (min-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* 纯净安全字体与排版体系 */
+        .dynamic-title { letter-spacing: 0.3em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 16px; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; font-weight: 500; }
+
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #C2785C; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+
+        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
+        
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+
+        /* 左右两侧绝对定位：上角放按钮，中间放干净的竖行字（已彻底清除所有多余竖线） */
+        .side-wing-left {
+            display: none;
+            position: absolute;
+            left: 32px;
+            top: 24px;
+            bottom: 24px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+        }
+        .side-wing-right {
+            display: none;
+            position: absolute;
+            right: 32px;
+            top: 24px;
+            bottom: 24px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+        }
+        @media (min-width: 1024px) {
+            .side-wing-left, .side-wing-right { display: flex; }
+        }
+
+        .vertical-wing { 
+            writing-mode: vertical-rl; 
+            text-orientation: upright; 
+            letter-spacing: 0.3em; 
+            font-size: 10px; 
+            color: #C2785C; 
+        }
+        .vertical-wing[data-lang="en"] { 
+            writing-mode: vertical-rl; 
+            text-orientation: mixed; 
+            letter-spacing: 0.05em; 
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 9px; 
+        }
+
+        .lang-switch-btn { 
+            font-family: "Times New Roman", Times, serif; 
+            background: rgba(233, 166, 141, 0.08); 
+            border: 1px solid rgba(233, 166, 141, 0.2); 
+            transition: all 0.3s ease; 
+            letter-spacing: 0.1em; 
+            cursor: pointer; 
+            padding: 6px 16px; 
+            border-radius: 9999px; 
+            font-size: 10px; 
+            color: #525252; 
+        }
+        .lang-switch-btn:hover { background: #E9A68D; color: white; border-color: #E9A68D; }
+
+        /* 颜色色卡网格 */
+        .color-grid-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .color-card {
+            cursor: pointer;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #E9A68D;
+            box-shadow: 0 4px 12px rgba(233, 166, 141, 0.15);
+        }
+        .color-block {
+            height: 64px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        /* 视频与交互控件 */
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(15, 15, 15, 0.85);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #E9A68D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.05); }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid rgba(233, 166, 141, 0.2);
+            background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(233,166,141,0.05));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .channel-link:hover { border-color: rgba(233, 166, 141, 0.5); }
+
+        .dynamic-pad {
+            width: 100%;
+            height: 96px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            position: relative;
+            background-color: #E9A68D;
+            transition: background-color 0.5s;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            appearance: none;
+            cursor: pointer;
+        }
         input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; 
+            appearance: none; 
             width: 18px; 
             height: 18px; 
             border-radius: 50%; 
@@ -38,172 +246,146 @@
             cursor: pointer; 
         }
 
-        /* 纯净安全字体控制体系 */
-        .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; }
-        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
-
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; }
-        .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
-
-        .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; }
-        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
-
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; transition: all 0.2s ease; }
-        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; line-height: 1.5; color: #333333; }
-        
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; }
-        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
-
-        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; transition: all 0.2s ease; font-weight: bold; }
-        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
-
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
-
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(233, 166, 141, 0.08); border: 1px solid rgba(233, 166, 141, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; }
-        .lang-switch-btn:hover { background: #E9A68D; color: white; border-color: #E9A68D; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
+        @media(min-width: 640px) { footer.footer { flex-direction: row; } }
     </style>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="text-neutral-800 min-h-screen flex flex-col justify-between selection:bg-[#E9A68D]/25">
-    <!-- 顶部导航 -->
-    <div class="w-full max-w-7xl mx-auto px-6 pt-6 flex justify-between items-center z-20">
-        <button onclick="returnToPrevious()" class="flex items-center space-x-2 text-neutral-400 hover:text-[#E9A68D] transition-colors duration-300 group" style="background:none; border:none; cursor:pointer;">
-            <span class="text-xs transition-transform duration-300 group-hover:-translate-x-1">⇠</span>
-            <span class="text-[10px] font-light dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
-        </button>
-        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn text-[10px] px-4 py-1.5 rounded-full font-light shadow-sm text-neutral-600 cursor-pointer">
-            EN / 中
-        </button>
-    </div>
-
-    <!-- 顶头画卷 -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col items-center text-center border-b border-neutral-200/50 relative">
-        <div class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
-            <span class="text-[10px] text-[#C2785C] font-light vertical-wing" data-zh="蕊宫 · 杏花格物" data-en="RUI PALACE · APRICOT">蕊宫 · 杏花格物</span>
+<body style="selection-background-color: rgba(233, 166, 141, 0.25);">
+    <!-- 顶头画卷头部（左右两边上角纯净按钮，无多余竖线） -->
+    <header class="header container">
+        <!-- 左侧上角：归隐按钮 + 纯净居中竖行字 -->
+        <div class="side-wing-left">
+            <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;">
+                <span style="font-size:12px;">⇠</span>
+                <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+            </button>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <span class="vertical-wing" data-zh="蕊宫 · 杏花格物" data-en="RUI PALACE · APRICOT">蕊宫 · 杏花格物</span>
+            </div>
+            <div></div>
         </div>
-        <h1 id="main-title" class="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-4 dynamic-title" data-zh="杏花天 · 医道亦道" data-en="Apricot Blossom & Spring Dream">杏花天 · 医道亦道</h1>
-        <p class="text-xs text-[#C2785C] font-light mb-4 dynamic-sub" data-zh="Apricot Blossom & Spring Dream Spectrum" data-en="Apricot Blossom & Spring Dream Spectrum">Apricot Blossom & Spring Dream Spectrum</p>
+
+        <h1 id="main-title" class="dynamic-title" data-zh="杏花天 · 医道亦道" data-en="Apricot Blossom & Spring Dream">杏花天 · 医道亦道</h1>
+        <p class="dynamic-sub" style="margin-bottom:16px;" data-zh="Apricot Blossom & Spring Dream Spectrum" data-en="Apricot Blossom & Spring Dream Spectrum">Apricot Blossom & Spring Dream Spectrum</p>
         
-        <div class="max-w-xl mx-auto px-4">
-            <p id="main-desc" class="text-sm text-neutral-600 leading-relaxed font-light dynamic-text break-words"
+        <div style="max-width:576px; margin:0 auto; padding:0 16px;">
+            <p id="main-desc" class="dynamic-text"
                 data-zh="“杏花微雨霓裳舞，曾忆锦瑟五十弦？”<br>在这一抹柔和的杏色中，静候一场关于春日与温柔的邂逅。"
                 data-en="&ldquo;Apricot blossoms dance in light rain; do you remember the fifty strings of the zither?&rdquo;<br>Deep within this gentle touch of apricot, quietly awaiting a soft encounter with springtime and tenderness.">
                 “杏花微雨霓裳舞，曾忆锦瑟五十弦？”<br>在这一抹柔和的杏色中，静候一场关于春日与温柔的邂逅。
             </p>
         </div>
-        <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 items-center space-x-2">
-            <span class="text-[10px] text-[#C2785C] font-light vertical-wing" data-zh="仙骨怀真 · 杏色长存" data-en="IMMORTAL SPIRIT · APRICOT FOREVER">仙骨怀真 · 杏色长存</span>
-            <span class="w-[1px] h-12 bg-neutral-300"></span>
+
+        <!-- 右侧上角：语言切换按钮 + 纯净居中竖行字 -->
+        <div class="side-wing-right">
+            <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
+                EN / 中
+            </button>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <span class="vertical-wing" data-zh="仙骨怀真 · 杏色长存" data-en="IMMORTAL SPIRIT · APRICOT FOREVER">仙骨怀真 · 杏色长存</span>
+            </div>
+            <div></div>
         </div>
     </header>
 
     <!-- 核心双阁布局 -->
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <main class="container grid-2">
         <!-- 左阁：色彩网格 -->
-        <section class="chinese-border flex flex-col justify-between space-y-8">
-            <div class="flex justify-between items-end border-b border-neutral-200/50 pb-4">
-                <h2 class="text-md font-semibold text-neutral-800 flex items-center dynamic-text" data-zh="西阁 · 杏花天色卡" data-en="West Pavilion &bull; Apricot Palette">
-                    <span class="inline-block w-2.5 h-2.5 bg-[#E9A68D] rounded-full mr-2.5"></span>
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 杏花天色卡" data-en="West Pavilion &bull; Apricot Palette">
+                    <span style="display:inline-block; width:10px; height:10px; background:#E9A68D; border-radius:50%;"></span>
                     西阁 · 杏花天色卡
                 </h2>
-                <span class="text-[10px] text-neutral-400 dynamic-text" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
             </div>
-            <div class="grid grid-cols-2 gap-6 flex-grow content-center" id="color-grid"></div>
-            <div class="pt-4 border-t border-neutral-200/30 flex justify-between items-center text-[10px] text-neutral-400 tracking-widest">
-                <span></span>
-                <span></span>
+            <div class="color-grid-box" id="color-grid"></div>
+            <div style="padding-top:16px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
+                <span></span><span></span>
             </div>
         </section>
 
         <!-- 右阁：观象台与动态交互 -->
-        <section class="chinese-border flex flex-col justify-between space-y-6">
-            <div class="flex justify-between items-end border-b border-neutral-200/50 pb-4">
-                <h2 class="text-md font-semibold text-neutral-800 flex items-center dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
-                <span class="text-[10px] text-neutral-400 dynamic-text" data-zh="杏雨流光 · 视听长青" data-en="Apricot Rain & Eternal Vision">杏雨流光 · 视听长青</span>
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+            <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
+                <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
+                <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="杏雨流光 · 视听长青" data-en="Apricot Rain & Eternal Vision">杏雨流光 · 视听长青</span>
             </div>
             
-            <!-- 带有 Amber Gold 一致的 YouTube 链接前置确认与隐私保护加载遮罩 -->
-            <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden relative" id="video-wrapper">
-                <div id="video-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-neutral-900/80 cursor-pointer transition-opacity duration-300 z-10" onclick="loadYouTubeVideo()">
-                    <div class="w-12 h-12 rounded-full bg-[#E9A68D] flex items-center justify-center text-white mb-2 shadow-md hover:scale-105 transition-transform">
-                        <span class="text-lg ml-0.5">▶</span>
+            <!-- YouTube 播放加载遮罩 -->
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
-                    <p class="text-xs text-white font-light mb-1 dynamic-text" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
-                    <p class="text-[9px] text-neutral-400 dynamic-text" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
                 </div>
-                <div id="youtube-container" class="w-full h-full"></div>
+                <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
             
-            <!-- 下一站链接：流转至琥珀金（已同步 Amber Gold 的外链字体与样式规范） -->
-            <a href="Color Amber Gold.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#E9A68D]/20 hover:border-[#E9A68D]/50 bg-gradient-to-r from-white/40 to-[#E9A68D]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration:none;">
-                <div class="flex items-center space-x-3">
-                    <span class="w-2 h-2 rounded-full bg-[#E9A68D]"></span>
+            <!-- 下一站链接 -->
+            <a href="Color Amber Gold.html" id="channel-link" class="channel-link">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background:#E9A68D;"></span>
                     <div>
-                        <h4 class="text-[11px] font-semibold text-neutral-800 dynamic-text break-words" data-zh="下一站：琥珀金 金泽流光" data-en="Next Station: Amber Gold & Timeless Glow">下一站：琥珀金 金泽流光</h4>
-                        <p class="text-[9px] text-neutral-400 mt-0.5 dynamic-text break-words" data-zh="“流光不掩本真，岁月沉淀清气。”" data-en="&ldquo;Time cannot obscure the true essence, while passing years distill pure inner grace.&rdquo;">“流光不掩本真，岁月沉淀清气。”</p>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="下一站：琥珀金 金泽流光" data-en="Next Station: Amber Gold & Timeless Glow">下一站：琥珀金 金泽流光</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="“流光不掩本真，岁月沉淀清气。”" data-en="&ldquo;Time cannot obscure the true essence, while passing years distill pure inner grace.&rdquo;">“流光不掩本真，岁月沉淀清气。”</p>
                     </div>
                 </div>
-                <span class="text-xs text-[#E9A68D] font-bold transition-transform group-hover:translate-x-1">➔</span>
+                <span style="font-size:12px; color:#E9A68D; font-weight:bold;">➔</span>
             </a>
             
             <!-- 动态交互大卡片 -->
-            <div id="dynamic-pad" onclick="copyHex()" class="w-full h-24 rounded-xl flex flex-col justify-end p-4 text-white transition-colors duration-500 cursor-pointer shadow-sm relative overflow-hidden" style="background-color: #E9A68D;">
-                <p id="dynamic-name" class="text-xs font-bold pad-name-style mb-1">杏色</p>
-                <div class="flex items-center space-x-2">
-                    <p id="dynamic-hex" class="text-[10px] font-mono opacity-90 tracking-wider">#E9A68D</p>
-                    <span id="copy-badge" class="text-[8px] border border-white/40 px-1.5 py-0.5 rounded font-light dynamic-sub bg-black/10" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
+            <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
+                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">杏色</p>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9; letter-spacing:0.05em;">#E9A68D</p>
+                    <span id="copy-badge" class="dynamic-sub" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
             </div>
             
-            <input type="range" id="color-slider" min="0" max="5" value="0" class="w-full h-1 bg-neutral-200 rounded-lg appearance-none cursor-pointer">
+            <input type="range" id="color-slider" min="0" max="5" value="0">
             
             <!-- 意境山水诗词 -->
-            <div class="border-t border-neutral-200/50 pt-4 flex flex-col justify-between flex-grow">
-                <div id="poetry-container" class="mb-3 min-h-[75px] flex flex-col justify-between break-words">
-                    <p id="poetry-text" class="text-sm text-neutral-700 poetry-text-style">“杏花天影尘埃起，欲道清愁还说休。”</p>
-                    <p id="poetry-source" class="text-[10px] text-neutral-400 mt-2 text-right poetry-source-style">—— 蕊宫原创</p>
+            <div style="border-top:1px solid rgba(0,0,0,0.05); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
+                <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <p id="poetry-text" class="poetry-text-style">“杏花天影尘埃起，欲道清愁还说休。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align:right;">—— 蕊宫原创</p>
                 </div>
-                <button id="next-poetry" class="text-[10px] text-[#C2785C] hover:underline dynamic-sub text-left font-medium" data-zh="换一首诗 ➔" data-en="Next Verse ➔" style="background:none; border:none; cursor:pointer; padding:0;">换一首诗 ➔</button>
+                <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:none; border:none; cursor:pointer; padding:0; color:#C2785C;" data-zh="换一首诗 ➔" data-en="Next Verse ➔">换一首诗 ➔</button>
             </div>
         </section>
     </main>
 
     <!-- 页脚布局 -->
-    <footer class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-neutral-200/50 flex flex-col sm:flex-row justify-between items-center text-[9px] text-neutral-400 space-y-2 sm:space-y-0 dynamic-sub">
-        <p>© 2026 蕊宫 - <span class="font-mono">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p class="space-x-1">
-            <a href="impressum.html" class="hover:text-neutral-600 transition-colors" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
+    <footer class="footer">
+        <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display:flex; gap:6px;">
+            <a href="impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)">法律声明 (Impressum)</a> 
             <span>|</span> 
-            <a href="Datenschutz.html" class="hover:text-neutral-600 transition-colors" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
+            <a href="Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)">隐私政策 (Datenschutz)</a>
         </p>
     </footer>
 
     <!-- 业务交互逻辑脚本 -->
     <script>
-        // YouTube 视频安全确认与点击加载函数
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
             const placeholder = document.getElementById('video-placeholder');
-            
-            if (placeholder) {
-                placeholder.style.display = 'none';
-            }
-            
+            if (placeholder) { placeholder.style.display = 'none'; }
             container.innerHTML = `
-                <iframe class="w-full h-full" 
+                <iframe style="width:100%; height:100%; border:none;" 
                         src="https://www.youtube.com/embed/UHVF3uotIq0?autoplay=1" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen 
-                        style="border:none;">
+                        allowfullscreen>
                 </iframe>
             `;
         }
 
         let currentLang = 'zh';
         
-        // 杏花天六色色谱配置
         const colors = [
             { hex: '#E9A68D', name_zh: '杏色', name_en: 'Apricot' },
             { hex: '#F0B7A2', name_zh: '软杏', name_en: 'Soft Apricot' },
@@ -213,7 +395,6 @@
             { hex: '#FFF5F2', name_zh: '凝雪杏', name_en: 'Snow Apricot' }
         ];
 
-        // 双语诗词库
         const poetries = [
             { text_zh: "杏花天影尘埃起，欲道清愁还说休。", text_en: "Shadows of apricot blossoms stir in the dust; about to speak of subtle melancholy, yet words fade into silence.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
             { text_zh: "杏花微雨洒清晨，春意满枝梦已遥。", text_en: "Drizzling rain falls on apricot blossoms at dawn; spring fills the branches while dreams drift afar.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
@@ -229,11 +410,11 @@
 
         function renderGrid() {
             document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
-                <div onclick="selectGridColor(${idx})" class="cursor-pointer p-4 bg-white/70 rounded-xl border border-neutral-200/60 hover:border-[#E9A68D] hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-                    <div class="h-16 mb-3 rounded shadow-inner" style="background-color:${c.hex}"></div>
+                <div onclick="selectGridColor(${idx})" class="color-card">
+                    <div class="color-block" style="background-color:${c.hex}"></div>
                     <div>
-                        <p class="text-[11px] font-bold text-neutral-800 dynamic-text" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                        <p class="text-[10px] text-neutral-400 font-mono mt-0.5">${c.hex}</p>
+                        <p class="dynamic-text" style="font-size:11px; font-weight:bold; color:#262626;" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                        <p style="font-size:10px; color:#a3a3a3; font-family:monospace; margin-top:2px;">${c.hex}</p>
                     </div>
                 </div>
             `).join('');
@@ -261,10 +442,8 @@
             const p = poetries[Math.floor(Math.random() * poetries.length)];
             const tEl = document.getElementById('poetry-text');
             const sEl = document.getElementById('poetry-source');
-            
             tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
             sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-            
             tEl.setAttribute('data-lang', currentLang);
             sEl.setAttribute('data-lang', currentLang);
         };
