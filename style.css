@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: 'Cinzel';
   font-style: normal;
   font-weight: 400;
@@ -49,7 +49,6 @@ body, html {
     height: 100%;
     overflow: hidden;
     background-color: #B22222; /* 大唐朱砂红 */
-    /* 融合第一个文档的中文字体（楷书/宋体）与英文字体，完美兼顾东西方气韵 */            
     font-family: "Cinzel", "Montserrat", "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;            
     user-select: none;
     -webkit-font-smoothing: antialiased;         
@@ -61,7 +60,7 @@ body, html {
     display: flex;            
     justify-content: center;            
     align-items: center;            
-    zIndex: 0;        
+    z-index: 0;        
 }
 
 #baoxiang-img {            
@@ -71,7 +70,7 @@ body, html {
     object-fit: contain;            
     pointer-events: none;            
     animation: slowRotate 140s linear infinite;            
-    zIndex: 1;            
+    z-index: 1;            
     box-shadow: 0 0 60px rgba(0,0,0,0.35);            
     border-radius: 50%;            
     transition: all 0.8s ease-in-out;        
@@ -80,7 +79,7 @@ body, html {
 #inkCanvas {            
     position: absolute;            
     inset: 0;            
-    zIndex: 2;            
+    z-index: 2;            
     pointer-events: none;            
     mix-blend-mode: screen;       
 }
@@ -109,7 +108,7 @@ body, html {
     inset: 0;
     background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(12px);
-    zIndex: 100;
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,24 +197,34 @@ body, html {
     color: #B22222;
 }
 
-/* 侧边弹窗 */
+/* 侧边面板通用样式：绝对定位、全高、毛玻璃与平滑过渡动画 */
 .side-panel {
-    position: absolute;
+    position: fixed;
     top: 0;
-    width: 420px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.93);
-    backdrop-filter: blur(40px);
-    box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
-    zIndex: 30;
-    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 450px;
+    height: 100vh;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.pattern-panel { left: -450px; border-right: 1px solid rgba(255, 255, 255, 0.6); }
-.pattern-panel.open { left: 0; }
+.pattern-panel { 
+    left: -450px; 
+    border-right: 1px solid rgba(255, 255, 255, 0.6); 
+}
+.pattern-panel.open { 
+    left: 0; 
+}
 
-.color-pool-panel { right: -450px; border-left: 1px solid rgba(255, 255, 255, 0.6); }
-.color-pool-panel.open { right: 0; }
+.color-pool-panel { 
+    right: -450px; 
+    border-left: 1px solid rgba(255, 255, 255, 0.6); 
+}
+.color-pool-panel.open { 
+    right: 0; 
+}
 
 .pool-card {
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -264,7 +273,6 @@ body, html {
     transform: translateY(-1px);
 }
 
-/* 法律声明侧边链接样式 */
 .legal-wing-link {
     text-decoration: none;
     color: #E8C3A7;
