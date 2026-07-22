@@ -209,7 +209,22 @@
         <section class="chinese-border flex flex-col space-y-6">
             <h2 class="text-md font-semibold dynamic-text" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
             <div class="aspect-video bg-neutral-200/50 rounded-lg overflow-hidden">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/r89BAG_5Tu0" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>
+                
+<!-- 原来的 iframe 替换为以下结构 -->
+<div class="aspect-video bg-neutral-200 rounded-lg overflow-hidden relative" id="video-wrapper">
+    <!-- 视频封面占位与隐私提示 -->
+    <div id="video-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-neutral-900/80 cursor-pointer transition-opacity duration-300 z-10" onclick="loadYouTubeVideo()">
+        <div class="w-12 h-12 rounded-full bg-[#6B8E60] flex items-center justify-center text-white mb-2 shadow-md hover:scale-105 transition-transform">
+            <span class="text-lg ml-0.5">▶</span>
+        </div>
+        <p class="text-xs text-white font-light mb-1" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+        <p class="text-[9px] text-neutral-400" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
+    </div>
+    <!-- 实际的 iframe 容器（初始为空，由 JS 动态注入） -->
+    <div id="youtube-container" class="w-full h-full"></div>
+</div>
+
+
             </div>
             
             <a href="Color Distant Mountain.html" id="channel-link" class="flex items-center justify-between group p-3.5 border border-[#4A5D6B]/20 hover:border-[#4A5D6B]/50 bg-gradient-to-r from-white/10 to-[#4A5D6B]/5 rounded-lg transition-all duration-300 cursor-pointer" style="text-decoration: none; display:flex; justify-content:space-between; align-items:center;">
@@ -255,6 +270,28 @@
     </footer>
 
     <script>
+
+function loadYouTubeVideo() {
+    const container = document.getElementById('youtube-container');
+    const placeholder = document.getElementById('video-placeholder');
+    
+    // 隐藏并移除占位层，防止重复点击
+    if (placeholder) {
+        placeholder.style.display = 'none';
+    }
+    
+    // 动态注入带有 autoplay 参数的 iframe，实现一键即播的流畅体验
+    container.innerHTML = `
+        <iframe class="w-full h-full" 
+                src="https://www.youtube.com/embed/fKbhu-kOhr8?autoplay=1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen 
+                style="border:none;">
+        5</iframe>
+    `;
+}
+
+
         let currentLang = 'zh';
 
         const colors = [
