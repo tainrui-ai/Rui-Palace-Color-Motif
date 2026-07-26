@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -262,14 +263,14 @@
                     <div class="play-btn">
                         <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
-                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="https://youtu.be/tvW4GgF4y1M" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
+                    <p class="dynamic-text" style="color:white; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)">点击加载东阁影像（将连接至 YouTube）</p>
                     <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy">加载即代表您同意 Google 的隐私政策</p>
                 </div>
                 <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
             
             <!-- 下一站链接（流转通道） -->
-            <a href="" id="channel-link" class="channel-link">
+            <a href="https://youtu.be/tvW4GgF4y1M" target="_blank" rel="noopener noreferrer" id="channel-link" class="channel-link">
                 <div style="display:flex; align-items:center; gap:12px;">
                     <span style="width:8px; height:8px; border-radius:50%; background:#D65A5A;"></span>
                     <div>
@@ -327,7 +328,7 @@
             if (placeholder) { placeholder.style.display = 'none'; }
             container.innerHTML = `
                 <iframe style="width:100%; height:100%; border:none;" 
-                        src="https://www.youtube-nocookie.com/embed/live_stream?channel=RuiPalace" 
+                        src="https://www.youtube-nocookie.com/embed/tvW4GgF4y1M" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
                         referrerpolicy="strict-origin-when-cross-origin">
@@ -416,7 +417,7 @@
             });
 
             const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = ``;
+            if (channelLink) channelLink.href = `https://youtu.be/tvW4GgF4y1M`;
 
             renderGrid();
             const currentIdx = document.getElementById('color-slider').value;
