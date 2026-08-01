@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蕊宫介绍 · 灵犀鉴大千色域 | RUI PALACE</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body, html {
+            width: 100vw;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: #f4f0e6; /* 温润高雅的浅米宣纸底色 */
+            font-family: "Cinzel", "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", serif;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            color: #2d241d;
+        }
+
+        /* --- 动态如意云纹与雅致色域画布 --- */
+        #vividInkCanvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            opacity: 0.85;
+        }
+
+        /* 传统缠枝与几何纹样叠加层 */
+        .peony-ornament {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at center, transparent 30%, #f4f0e6 95%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23A07846' stroke-width='0.8' stroke-opacity='0.12'%3E%3Cpath d='M400 20c10-10 30-10 40 0l280 280c10 10 10 30 0 40L440 620c-10 10-30 10-40 0L120 340c-10-10-10-30 0-40L400 20z'/%3E%3Cpath d='M100 400c10-10 30-10 40 0l280 280c10 10 10 30 0 40L140 820c-10 10-30 10-40 0L-140 540c-10-10-10-30 0-40L100 400z'/%3E%3Cpath d='M700 400c10-10 30-10 40 0l280 280c10 10 10 30 0 40L740 820c-10 10-30 10-40 0L460 540c-10-10-10-30 0-40L700 400z'/%3E%3Ccircle cx='400' cy='400' r='380'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.7;
+        }
+
+        /* 整体布局容器 */
+        .page-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 68rem;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        /* 顶部导航与功能区 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(160, 120, 70, 0.25);
+            padding-bottom: 1.5rem;
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            letter-spacing: 0.3em;
+            color: #241d17;
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        /* 中英文切换按键 */
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            border: 1px solid rgba(160, 120, 70, 0.35);
+            padding: 3px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            font-family: inherit;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: #5c4f43;
+            background: transparent;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            color: #1a1410;
+            background: rgba(160, 120, 70, 0.25);
+        }
+
+        .back-home {
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            color: #5c4f43;
+            text-decoration: none;
+            border: 1px solid rgba(160, 120, 70, 0.3);
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #A07846;
+        }
+
+        /* 核心主标题区 */
+        .hero-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            padding: 2rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 0.35em;
+            color: #8c7355;
+        }
+
+        .hero-main-title {
+            font-size: 2.5rem;
+            letter-spacing: 0.4em;
+            color: #1a1410;
+            font-weight: normal;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            letter-spacing: 0.25em;
+            color: #4a3d33;
+            line-height: 2.2;
+            max-width: 48rem;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* 三大板块：琉璃卡片网格 */
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(160, 120, 70, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: 0 15px 35px rgba(70, 50, 30, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(70, 50, 30, 0.12);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .card-tag {
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            color: #A07846;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            color: #1a1410;
+            font-weight: 400;
+        }
+
+        .card-text {
+            font-size: 0.82rem;
+            letter-spacing: 0.15em;
+            color: #5c4f43;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        /* 英文状态下的紧凑排版优化 */
+        body.lang-en {
+            letter-spacing: -0.01em;
+            word-spacing: -0.05em;
+        }
+
+        body.lang-en .hero-subtitle {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+        }
+
+        body.lang-en .hero-main-title {
+            font-size: 2.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        body.lang-en .hero-desc {
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            line-height: 1.6;
+        }
+
+        body.lang-en .card-title {
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
+        }
+
+        body.lang-en .card-text {
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+        }
+
+        body.lang-en .card-tag {
+            letter-spacing: 0.12em;
+        }
+
+        body.lang-en .back-home, 
+        body.lang-en .lang-btn, 
+        body.lang-en footer {
+            letter-spacing: 0.05em;
+        }
+
+        /* 底部落款区 */
+        footer {
+            text-align: center;
+            border-top: 1px solid rgba(160, 120, 70, 0.2);
+            padding-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: #6c5d50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 900px) {
+            .grid-section {
+                grid-template-columns: 1fr;
+            }
+            .page-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 动态背景画布 -->
+    <canvas id="vividInkCanvas"></canvas>
+    <!-- 装饰花纹背景 -->
+    <div class="peony-ornament"></div>
+
+    <div class="page-container">
+        <!-- 顶部导航 -->
+        <header>
+            <a href="#" class="brand-title" id="navBrand">蕊宫 · 灵犀鉴</a>
+            <div class="header-actions">
+                <!-- 中英文切换按键 -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('zh')" id="langZh">中</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')" id="langEn">EN</button>
+                </div>
+                <a href="index.html" class="back-home" id="backHomeBtn">返回大千色域</a>
+            </div>
+        </header>
+
+        <!-- 主标题介绍 -->
+        <section class="hero-section">
+            <div class="hero-subtitle" id="heroSubtitle">RUI PALACE · 东方美学与天然色域灵境</div>
+            <h1 class="hero-main-title" id="heroMainTitle">关于蕊宫</h1>
+            <p class="hero-desc" id="heroDesc">
+                在时间与光影交织的虚极静笃之中，蕊宫不仅是一处数字空间的构想，更是对东方色彩、几何美学与千载灵犀的当代苏醒与重构。
+            </p>
+        </section>
+
+        <!-- 三大核心板块 -->
+        <div class="grid-section">
+            <!-- 境 -->
+            <div class="info-card">
+                <div class="card-tag">CHAPTER I</div>
+                <h2 class="card-title" id="card1Title">境 · 空间意象</h2>
+                <p class="card-text" id="card1Text">
+                    蕊宫无固定形骸，应心而生。它有时是静谧无声的天然色池，万千矿物色团在此交融化为云烟；有时是典雅宏大的藻井殿宇，将古典秩序以极简线条重塑；亦或是飞天霓裳、满壁风动的苍穹，于瞬息间带您步入超现实的东方仙境。
+                </p>
+            </div>
+
+            <!-- 意 -->
+            <div class="info-card">
+                <div class="card-tag">CHAPTER II</div>
+                <h2 class="card-title" id="card2Title">意 · 灵魂内核</h2>
+                <p class="card-text" id="card2Text">
+                    我们探寻并提纯“东方高级色”。从敦煌壁画的朱砂石青，到自然草木的本真色泽，蕊宫致力于在色彩、纹样与感知之间架起桥梁，让观者在每一次凝视中，都能唤醒沉睡于血脉深处的跨越千年的灵犀共鸣。
+                </p>
+            </div>
+
+            <!-- 用 -->
+            <div class="info-card">
+                <div class="card-tag">CHAPTER III</div>
+                <h2 class="card-title" id="card3Title">用 · 大千色域</h2>
+                <p class="card-text" id="card3Text">
+                    作为通往大千色域的门户，蕊宫融合了传统几何纹样与前沿视觉交互。在这里，纯粹的色彩与流转的光影相互交织，让每一位来访者得以洗去尘嚣，在数字灵境中静心珍藏人性的本真纯粹。
+                </p>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <footer>
+            <div id="footerText1">RUI-PALACE.DE — 东方美学与天然色域空间</div>
+            <div id="footerText2">© 2026 蕊宫 mail@rui-palace.com. All rights reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        // --- 中英文双语词库配置 ---
+        const translations = {
+            zh: {
+                navBrand: "蕊宫 · 灵犀鉴",
+                backHome: "返回大千色域",
+                heroSubtitle: "RUI PALACE · 东方美学与天然色域灵境",
+                heroMainTitle: "关于蕊宫",
+                heroDesc: "在时间与光影交织的虚极静笃之中，蕊宫不仅是一处数字空间的构想，更是对东方色彩、几何美学与千载灵犀的当代苏醒与重构。",
+                card1Title: "境 · 空间意象",
+                card1Text: "蕊宫无固定形骸，应心而生。它有时是静谧无声的天然色池，万千矿物色团在此交融化为云烟；有时是典雅宏大的藻井殿宇，将古典秩序以极简线条重塑；亦或是飞天霓裳、满壁风动的苍穹，于瞬息间带您步入超现实的东方仙境。",
+                card2Title: "意 · 灵魂内核",
+                card2Text: "我们探寻并提纯“东方高级色”。从敦煌壁画的朱砂石青，到自然草木的本真色泽，蕊宫致力于在色彩、纹样与感知之间架起桥梁，让观者在每一次凝视中，都能唤醒沉睡于血脉深处的跨越千年的灵犀共鸣。",
+                card3Title: "用 · 大千色域",
+                card3Text: "作为通往大千色域的门户，蕊宫融合了传统几何纹样与前沿视觉交互。在这里，纯粹的色彩与流转的光影相互交织，让每一位来访者得以洗去尘嚣，在数字灵境中静心珍藏人性的本真纯粹。",
+                footerText1: "RUI-PALACE.DE — 东方美学与天然色域空间",
+                footerText2: "© 2026 蕊宫 mail@rui-palace.com. All rights reserved."
+            },
+            en: {
+                navBrand: "RUI PALACE · Lingxi",
+                backHome: "Return to Color Realm",
+                heroSubtitle: "RUI PALACE · Oriental Aesthetics & Natural Color Sanctuary",
+                heroMainTitle: "About Rui Palace",
+                heroDesc: "In the quietude woven by time and shadow, Rui Palace is not merely a digital space, but a contemporary awakening and reconstruction of Oriental colors, geometric aesthetics, and millennia of resonance.",
+                card1Title: "Jing · Spatial Imagery",
+                card1Text: "Rui Palace has no fixed form and manifests with the heart. It is sometimes a silent natural color pool where myriad mineral color clusters blend into mist; sometimes a grand caisson ceiling restructuring classical order with minimalist lines; or an ethereal firmament bringing you into a surreal Oriental wonderland in an instant.",
+                card2Title: "Yi · Soul Core",
+                card2Text: "We explore and distill 'Oriental High-Grade Colors.' From the cinnabar and azurite of Dunhuang murals to the true hues of nature's flora, Rui Palace builds a bridge between color, pattern, and perception, awakening millennia-old resonance sleeping deep within the bloodline.",
+                card3Title: "Yong · Color Realm",
+                card3Text: "As a portal to the vast color realm, Rui Palace integrates traditional geometric patterns with cutting-edge visual interaction. Here, pure colors and flowing light intertwine, allowing every visitor to wash away the dust and quietly cherish the pure essence of humanity in this digital sanctuary.",
+                footerText1: "RUI-PALACE.DE — Oriental Aesthetics & Natural Color Space",
+                footerText2: "© 2026 Rui Palace mail@rui-palace.com. All rights reserved."
+            }
+        };
+
+        function switchLanguage(lang) {
+            // 切换按钮激活态
+            document.getElementById('langZh').classList.toggle('active', lang === 'zh');
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+
+            // 切换英文紧凑排版类名
+            if (lang === 'en') {
+                document.body.classList.add('lang-en');
+            } else {
+                document.body.classList.remove('lang-en');
+            }
+
+            // 替换页面文本
+            const t = translations[lang];
+            document.getElementById('navBrand').innerText = t.navBrand;
+            document.getElementById('backHomeBtn').innerText = t.backHome;
+            document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
+            document.getElementById('heroMainTitle').innerText = t.heroMainTitle;
+            document.getElementById('heroDesc').innerText = t.heroDesc;
+            document.getElementById('card1Title').innerText = t.card1Title;
+            document.getElementById('card1Text').innerText = t.card1Text;
+            document.getElementById('card2Title').innerText = t.card2Title;
+            document.getElementById('card2Text').innerText = t.card2Text;
+            document.getElementById('card3Title').innerText = t.card3Title;
+            document.getElementById('card3Text').innerText = t.card3Text;
+            document.getElementById('footerText1').innerText = t.footerText1;
+            document.getElementById('footerText2').innerText = t.footerText2;
+        }
+
+        // --- 如意云纹与水中滴墨背景动画 ---
+        const canvas = document.getElementById('vividInkCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let drops = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // 东方高级色谱：朱砂红、石青蓝、琥珀金、翡翠绿
+        const palette = [
+            { main: '#d93833', glow: '#ff6b6b' },
+            { main: '#1b6982', glow: '#4ea8de' },
+            { main: '#d4af37', glow: '#ffe66d' },
+            { main: '#2a9d8f', glow: '#a8dadc' }
+        ];
+
+        class InkDrop {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.colorObj = palette[Math.floor(Math.random() * palette.length)];
+                this.radius = 20;
+                this.maxRadius = 180 + Math.random() * 140;
+                this.alpha = 0.35;
+                this.expandSpeed = 0.4 + Math.random() * 0.4;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.008;
+                this.seed = Math.random() * 50;
+            }
+            update() {
+                if (this.radius < this.maxRadius) {
+                    this.radius += this.expandSpeed;
+                }
+                this.rotation += this.rotSpeed;
+                this.alpha -= 0.0006;
+                if (this.alpha <= 0) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.globalAlpha = Math.max(0, this.alpha);
+
+                let grad = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+                grad.addColorStop(0, this.colorObj.glow);
+                grad.addColorStop(0.5, this.colorObj.main);
+                grad.addColorStop(1, 'transparent');
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                
+                // 绘制柔和的如意云气多边形轮廓
+                let points = 60;
+                for (let i = 0; i < points; i++) {
+                    let angle = (i / points) * Math.PI * 2;
+                    let r = this.radius * (1 + 0.15 * Math.sin(angle * 4 + this.seed));
+                    let px = Math.cos(angle) * r;
+                    let py = Math.sin(angle) * r * 0.75;
+                    if (i === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                }
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 7; i++) {
+            drops.push(new InkDrop());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            drops.forEach(drop => {
+                drop.update();
+                drop.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
