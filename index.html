@@ -9,7 +9,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Soul of Oriental Aesthetics | RUI PALACE</title>
     
     <style>
@@ -48,7 +48,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { 
             width: 100vw; 
-            height: 100vh; 
+            height: 100dvh; /* 修复移动端视口高度跳动与遮挡问题 */
             overflow: hidden; 
             position: relative;
             background-color: #B22222; /* 大唐朱砂红 */
@@ -118,14 +118,30 @@
         }
         .sub-info { display: flex; gap: 1.5rem; font-size: 0.75rem; letter-spacing: 0.2em; color: rgba(254, 243, 199, 0.9); font-weight: 300; transition: letter-spacing 0.4s ease; }
         
+        .header-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            pointer-events: auto;
+        }
+
         .lang-switch {
             font-family: "Cinzel", serif;
             font-size: 0.75rem; letter-spacing: 0.15em; padding: 0.5rem 1.25rem; border-radius: 9999px;
             font-weight: 300; background: rgba(255, 255, 255, 0.12); color: #FEF3C7;
             border: 1px solid rgba(254, 243, 199, 0.3); backdrop-filter: blur(10px);
-            pointer-events: auto; cursor: pointer; transition: all 0.4s;
+            cursor: pointer; transition: all 0.4s;
         }
         .lang-switch:hover { background: rgba(255, 255, 255, 0.95); color: #B22222; font-weight: bold; }
+
+        .about-btn {
+            font-family: "Cinzel", "Songti SC", serif;
+            font-size: 0.75rem; letter-spacing: 0.15em; padding: 0.5rem 1.25rem; border-radius: 9999px;
+            font-weight: 300; background: rgba(255, 255, 255, 0.12); color: #FEF3C7;
+            border: 1px solid rgba(254, 243, 199, 0.3); backdrop-filter: blur(10px);
+            cursor: pointer; transition: all 0.4s; text-decoration: none; display: inline-flex; align-items: center;
+        }
+        .about-btn:hover { background: rgba(255, 255, 255, 0.95); color: #B22222; font-weight: bold; transform: translateY(-1px); }
 
         /* 中部动态诗词与首屏升级架构 */
         main {
@@ -198,7 +214,7 @@
 
         /* 侧边滑出面板 */
         .side-panel {
-            position: fixed; top: 0; right: -450px; width: 450px; height: 100vh;
+            position: fixed; top: 0; right: -450px; width: 450px; height: 100dvh;
             background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(15px);
             box-shadow: -10px 0 40px rgba(0,0,0,0.2); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             z-index: 50; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;
@@ -211,7 +227,7 @@
         .panel-header h3 { font-size: 1rem; font-weight: 400; letter-spacing: 0.3em; color: #B22222; transition: letter-spacing 0.4s ease; }
         .panel-header span { font-size: 0.55rem; color: #888; letter-spacing: 0.1em; font-family: "Cinzel", serif; }
         
-        .panel-list { overflow-y: auto; padding-right: 0.5rem; flex-grow: 1; display: flex; flex-direction: column; gap: 1rem; max-height: calc(100vh - 220px); }
+        .panel-list { overflow-y: auto; padding-right: 0.5rem; flex-grow: 1; display: flex; flex-direction: column; gap: 1rem; max-height: calc(100dvh - 220px); }
         .pool-card {
             background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0,0,0,0.05);
             border-radius: 1rem; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem;
@@ -295,7 +311,7 @@
 
 <body onclick="closeAllPanels()">
 
-    <!-- 隐私说明弹窗 (GDPR / TTDSG 合规) -->
+    <!-- 隐私说明弹窗 (GDPR / TTDSG 合规闭环) -->
     <div id="cookie-consent" class="modal" onclick="event.stopPropagation()">
         <div class="modal-content">
             <h3 id="modal-title">蕊宫隐私说明</h3>
@@ -327,7 +343,10 @@
                 <span id="current-color-name">当前色域：宝相大红底蕴</span>
             </div>
         </div>
-        <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
+        <div class="header-right-actions">
+            <a href="about.html" id="aboutBtn" class="about-btn">[ 关于蕊宫 ]</a>
+            <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
+        </div>
     </header>
 
     <!-- 中部动态升级首屏架构 -->
@@ -402,7 +421,9 @@
     </footer>
 
     <script>
-        // 绝对安全地检查本地存储状态（防御隐私模式下抛出 DOMException 的 IT 风险）
+        // 彻底移除任何第三方未授权的 Cloudflare 或动态注入外链脚本，确保完全自托管合规。
+
+        // 安全地检查本地存储状态（防御隐私模式下抛出 DOMException 异常）
         function checkConsentStatus() {
             try {
                 return localStorage.getItem('rui_palace_cookie_consent');
@@ -421,6 +442,7 @@
                 brand: "蕊宫 · 灵犀鉴",
                 heroTitle: "东方美学的灵魂",
                 heroSub: "献给现代创作者的精准色彩标准与永恒纹样，兼具情绪解药之效。",
+                aboutBtn: "[ 关于蕊宫 ]",
                 heroBtnColors: "[ 探索色彩 ]",
                 heroBtnPatterns: "[ 探索纹样 ]",
                 leftTrigger: "📜 大千纹样",
@@ -447,6 +469,7 @@
                 brand: "Rui Palace · Spiritual Mirror",
                 heroTitle: "The Soul of Oriental Aesthetics",
                 heroSub: "Precision Color Standards & Timeless Patterns as Emotional Antidotes for Modern Creators.",
+                aboutBtn: "[ About Rui Palace ]",
                 heroBtnColors: "[ Explore Colors ]",
                 heroBtnPatterns: "[ Explore Patterns ]",
                 leftTrigger: "📜 Sacred Motifs",
@@ -493,9 +516,11 @@
 
         function initializeApp() {
             canvas = document.getElementById('inkCanvas');
-            ctx = canvas.getContext('2d');
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+            if (canvas) {
+                ctx = canvas.getContext('2d');
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+            }
 
             renderUIStrings();
             renderPatternPool();
@@ -503,7 +528,8 @@
             animate();
 
             window.addEventListener('click', (e) => {
-                if (!document.getElementById('cookie-consent').classList.contains('hidden')) return;
+                const consentBanner = document.getElementById('cookie-consent');
+                if (consentBanner && !consentBanner.classList.contains('hidden')) return;
                 if (window.__RUI_PRIVACY_LOCKED__) return; // 隐私拒绝后直接阻断交互响应
                 if (e.clientY < window.innerHeight - 120 && e.clientX > 450 && e.clientX < window.innerWidth - 450) {
                     drops.push(new WaterDrop(e.clientX, e.clientY, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
@@ -517,32 +543,39 @@
             canvas.height = window.innerHeight; 
         }
 
+        // 采用安全的 DOM 判空更新，防止某元素缺失导致脚本完全崩溃
+        function safeSetText(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.innerText = text;
+        }
+
         function renderUIStrings() {
             const t = uiTexts[currentLang];
-            document.getElementById('brand-title').innerText = t.brand;
-            document.getElementById('hero-main-title').innerText = t.heroTitle;
-            document.getElementById('left-poem').innerText = t.heroSub;
-            document.getElementById('hero-btn-colors').innerText = t.heroBtnColors;
-            document.getElementById('hero-btn-patterns').innerText = t.heroBtnPatterns;
-            document.getElementById('left-trigger-text').innerText = t.leftTrigger;
-            document.getElementById('right-trigger-text').innerText = t.rightTrigger;
-            document.getElementById('panel-pattern-title').innerText = t.panelPatternTitle;
-            document.getElementById('close-pattern-text').innerText = t.closePattern;
-            document.getElementById('panel-color-title').innerText = t.panelColorTitle;
-            document.getElementById('close-color-text').innerText = t.closeColor;
-            document.getElementById('dock-btn-pattern').innerText = t.dockPattern;
-            document.getElementById('dock-btn-drop').innerText = t.dockDrop;
-            document.getElementById('dock-btn-color').innerText = t.dockColor;
-            document.getElementById('dock-btn-clear').innerText = t.dockClear;
-            document.getElementById('footer-motto').innerText = t.motto;
-            document.getElementById('modal-title').innerText = t.modalTitle;
-            document.getElementById('modal-desc').innerText = t.modalDesc;
-            document.getElementById('reject-btn').innerText = t.rejectBtn;
-            document.getElementById('accept-btn').innerText = t.acceptBtn;
-            document.getElementById('modal-link-impressum').innerText = t.impressum;
-            document.getElementById('modal-link-datenschutz').innerText = t.datenschutz;
-            document.getElementById('footer-link-impressum').innerText = t.impressum;
-            document.getElementById('footer-link-datenschutz').innerText = t.datenschutz;
+            safeSetText('brand-title', t.brand);
+            safeSetText('hero-main-title', t.heroTitle);
+            safeSetText('left-poem', t.heroSub);
+            safeSetText('aboutBtn', t.aboutBtn);
+            safeSetText('hero-btn-colors', t.heroBtnColors);
+            safeSetText('hero-btn-patterns', t.heroBtnPatterns);
+            safeSetText('left-trigger-text', t.leftTrigger);
+            safeSetText('right-trigger-text', t.rightTrigger);
+            safeSetText('panel-pattern-title', t.panelPatternTitle);
+            safeSetText('close-pattern-text', t.closePattern);
+            safeSetText('panel-color-title', t.panelColorTitle);
+            safeSetText('close-color-text', t.closeColor);
+            safeSetText('dock-btn-pattern', t.dockPattern);
+            safeSetText('dock-btn-drop', t.dockDrop);
+            safeSetText('dock-btn-color', t.dockColor);
+            safeSetText('dock-btn-clear', t.dockClear);
+            safeSetText('footer-motto', t.motto);
+            safeSetText('modal-title', t.modalTitle);
+            safeSetText('modal-desc', t.modalDesc);
+            safeSetText('reject-btn', t.rejectBtn);
+            safeSetText('accept-btn', t.acceptBtn);
+            safeSetText('modal-link-impressum', t.impressum);
+            safeSetText('modal-link-datenschutz', t.datenschutz);
+            safeSetText('footer-link-impressum', t.impressum);
+            safeSetText('footer-link-datenschutz', t.datenschutz);
 
             if (currentLang === 'en') {
                 document.documentElement.classList.add('lang-en-mode');
@@ -552,7 +585,9 @@
         }
 
         function renderPatternPool() {
-            document.getElementById('pattern-list-container').innerHTML = orientalPatterns.map((item, idx) => `
+            const container = document.getElementById('pattern-list-container');
+            if (!container) return;
+            container.innerHTML = orientalPatterns.map((item, idx) => `
                 <div class="pool-card" onclick="selectPattern(${idx})">
                     <div class="pool-card-title">${currentLang === 'zh' ? item.name_zh : item.name_en}</div>
                     <p class="pool-card-desc">${currentLang === 'zh' ? item.desc_zh : item.desc_en}</p>
@@ -561,7 +596,9 @@
         }
 
         function renderColorPool() {
-            document.getElementById('pool-list-container').innerHTML = orientalPalettes.map((item, idx) => `
+            const container = document.getElementById('pool-list-container');
+            if (!container) return;
+            container.innerHTML = orientalPalettes.map((item, idx) => `
                 <div class="pool-card" onclick="selectPaletteFromPool(${idx})">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -578,56 +615,83 @@
         function selectPattern(index) {
             const p = orientalPatterns[index];
             const img = document.getElementById('baoxiang-img');
-            img.style.opacity = '0';
-            setTimeout(() => { img.src = p.img; img.style.opacity = '0.85'; }, 400);
-            document.getElementById('current-pattern-name').innerText = currentLang === 'zh' ? `当前境象：${p.name_zh}` : `Pattern: ${p.name_en}`;
+            if (img) {
+                img.style.opacity = '0';
+                setTimeout(() => { img.src = p.img; img.style.opacity = '0.85'; }, 400);
+            }
+            safeSetText('current-pattern-name', currentLang === 'zh' ? `当前境象：${p.name_zh}` : `Pattern: ${p.name_en}`);
         }
 
-        function openPatternPool() { closeColorPool(); document.getElementById('patternPool').classList.add('open'); }
-        function closePatternPool() { document.getElementById('patternPool').classList.remove('open'); }
-        function openColorPool() { closePatternPool(); document.getElementById('colorPool').classList.add('open'); }
-        function closeColorPool() { document.getElementById('colorPool').classList.remove('open'); }
+        function openPatternPool() { closeColorPool(); const el = document.getElementById('patternPool'); if(el) el.classList.add('open'); }
+        function closePatternPool() { const el = document.getElementById('patternPool'); if(el) el.classList.remove('open'); }
+        function openColorPool() { closePatternPool(); const el = document.getElementById('colorPool'); if(el) el.classList.add('open'); }
+        function closeColorPool() { const el = document.getElementById('colorPool'); if(el) el.classList.remove('open'); }
         function closeAllPanels() { closePatternPool(); closeColorPool(); }
 
         function selectPaletteFromPool(index) {
             const data = orientalPalettes[index];
-            createImpact(canvas.width / 2, canvas.height / 2, data);
+            if (canvas) {
+                createImpact(canvas.width / 2, canvas.height / 2, data);
+            }
             if (data.url) setTimeout(() => window.location.href = data.url, 600);
         }
 
         class WaterDrop {
             constructor(x, y, colorData) { this.x = x; this.y = 0; this.targetY = y; this.speed = 0; this.gravity = 0.3; this.size = 3; this.colorData = colorData; }
             update() { this.speed += this.gravity; this.y += this.speed; if (this.y >= this.targetY) { createImpact(this.x, this.targetY, this.colorData); return false; } return true; }
-            draw() { ctx.save(); ctx.beginPath(); ctx.fillStyle = this.colorData.hex; ctx.ellipse(this.x, this.y, this.size, this.size * 2.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+            draw() { if(!ctx) return; ctx.save(); ctx.beginPath(); ctx.fillStyle = this.colorData.hex; ctx.ellipse(this.x, this.y, this.size, this.size * 2.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
         }
 
         class ColorRipple {
             constructor(x, y, color) { this.x = x; this.y = y; this.color = color; this.radius = 1; this.maxRadius = 180; this.alpha = 0.8; }
             update() { this.radius += (this.maxRadius - this.radius) * 0.05; this.alpha -= 0.008; return this.alpha > 0; }
-            draw() { ctx.save(); ctx.beginPath(); ctx.strokeStyle = this.color; ctx.globalAlpha = this.alpha; ctx.lineWidth = 3; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+            draw() { if(!ctx) return; ctx.save(); ctx.beginPath(); ctx.strokeStyle = this.color; ctx.globalAlpha = this.alpha; ctx.lineWidth = 3; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
         }
 
         class LiquidFlow {
-            constructor(x, y, colorData) { this.x = x; this.y = y; this.color = colorData.hex; this.radius = 0; this.maxRadius = Math.max(canvas.width, canvas.height) * 1.2; this.speed = 8; this.alpha = 0.4; }
+            constructor(x, y, colorData) { 
+                this.x = x; 
+                this.y = y; 
+                this.color = colorData.hex; 
+                this.radius = 0; 
+                this.maxRadius = canvas ? Math.max(canvas.width, canvas.height) * 1.2 : 1000; 
+                this.speed = 8; 
+                this.alpha = 0.4; 
+            }
             update() { this.radius += this.speed; if (this.radius >= this.maxRadius) { document.body.style.backgroundColor = this.color; this.alpha -= 0.015; } return this.alpha > 0; }
-            draw() { ctx.save(); ctx.beginPath(); let g = ctx.createRadialGradient(this.x, this.y, this.radius * 0.1, this.x, this.y, this.radius); g.addColorStop(0, this.color); g.addColorStop(0.4, this.color + "44"); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.globalAlpha = this.alpha; ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+            draw() { 
+                if(!ctx) return; 
+                ctx.save(); 
+                ctx.beginPath(); 
+                let g = ctx.createRadialGradient(this.x, this.y, this.radius * 0.1, this.x, this.y, this.radius); 
+                g.addColorStop(0, this.color); 
+                g.addColorStop(0.4, this.color + "44"); 
+                g.addColorStop(1, 'transparent'); 
+                ctx.fillStyle = g; 
+                ctx.globalAlpha = this.alpha; 
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); 
+                ctx.fill(); 
+                ctx.restore(); 
+            }
         }
 
         function createImpact(x, y, colorData) {
             ripples.push(new ColorRipple(x, y, colorData.hex));
             backgroundFlows.push(new LiquidFlow(x, y, colorData));
-            document.getElementById('current-color-name').innerText = currentLang === 'zh' ? `当前色域：${colorData.name_zh}` : `Current Realm: ${colorData.name_en}`;
+            safeSetText('current-color-name', currentLang === 'zh' ? `当前色域：${colorData.name_zh}` : `Current Realm: ${colorData.name_en}`);
         }
 
         function triggerManualDrop() {
             if (window.__RUI_PRIVACY_LOCKED__) return;
-            drops.push(new WaterDrop(window.innerWidth / 2, window.innerHeight / 2, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
+            if (canvas) {
+                drops.push(new WaterDrop(canvas.width / 2, canvas.height / 2, orientalPalettes[Math.floor(Math.random() * orientalPalettes.length)]));
+            }
         }
 
         function clearCanvas() {
             drops = []; ripples = []; backgroundFlows = [];
             document.body.style.backgroundColor = "#B22222";
-            document.getElementById('current-color-name').innerText = uiTexts[currentLang].defaultColorName;
+            safeSetText('current-color-name', uiTexts[currentLang].defaultColorName);
             selectPattern(0);
             closeAllPanels();
         }
@@ -639,13 +703,12 @@
             renderPatternPool();
             renderColorPool();
             
-            // 同步刷新品类默认名称文案，防止语言状态不一致
-            document.getElementById('current-pattern-name').innerText = uiTexts[currentLang].defaultPatternName;
-            document.getElementById('current-color-name').innerText = uiTexts[currentLang].defaultColorName;
+            safeSetText('current-pattern-name', uiTexts[currentLang].defaultPatternName);
+            safeSetText('current-color-name', uiTexts[currentLang].defaultColorName);
         }
 
         function animate() {
-            if (!ctx) return;
+            if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             backgroundFlows = backgroundFlows.filter(f => { let a = f.update(); if (a) f.draw(); return a; });
             ripples = ripples.filter(r => { let a = r.update(); if (a) r.draw(); return r; });
@@ -653,7 +716,7 @@
             animationId = requestAnimationFrame(animate);
         }
 
-        // DOM 载入后严格的 Cookie 闭环逻辑
+        // DOM 载入后安全的隐私与合规闭环初始化
         window.addEventListener('DOMContentLoaded', () => {
             const consent = checkConsentStatus();
             const consentBanner = document.getElementById('cookie-consent');
@@ -666,7 +729,7 @@
                     enforcePrivacyLockdown();
                 }
             } else {
-                // 未做选择前：只初始化静态骨架，绝不提前读写未授权的存储或启动 Canvas
+                // 未做选择前：只渲染静态文本骨架，绝不触发未授权的存储读写或许可性 Canvas 动画
                 renderUIStrings();
                 renderPatternPool();
                 renderColorPool();
@@ -684,7 +747,7 @@
                 });
             }
 
-            // 拒绝事件绑定（闭环核心）
+            // 拒绝事件绑定（合规闭环核心）
             const rejectBtn = document.getElementById('reject-btn');
             if (rejectBtn) {
                 rejectBtn.addEventListener('click', () => {
@@ -697,10 +760,10 @@
             }
         });
 
-        // 隐私拒绝后的锁定与彻底清理函数
+        // 隐私拒绝后的彻底锁定与降级函数
         function enforcePrivacyLockdown() {
-            const keysToRemove = [];
             try {
+                const keysToRemove = [];
                 for (let i = 0; i < localStorage.length; i++) {
                     const key = localStorage.key(i);
                     if (key !== 'rui_palace_cookie_consent') {
