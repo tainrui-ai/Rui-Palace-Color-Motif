@@ -45,13 +45,15 @@
 body, html {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100dvh;
     overflow: hidden;
+    position: relative;
     background-color: #B22222; /* 大唐朱砂红 */
     font-family: "Cinzel", "Montserrat", "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;            
     user-select: none;
     -webkit-font-smoothing: antialiased;         
+    transition: background-color 1.2s ease-in-out; /* 确保背景色切换平滑丝滑 */
 }
 
 #stage-container {            
@@ -197,7 +199,7 @@ body, html {
     color: #B22222;
 }
 
-/* 侧边面板通用样式：绝对定位、全高、毛玻璃与平滑过渡动画 */
+/* 侧边面板通用样式 */
 .side-panel {
     position: fixed;
     top: 0;
