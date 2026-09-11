@@ -344,6 +344,8 @@
             </div>
         </div>
         <div class="header-right-actions">
+            <!-- 新增的“蕊宫珍藏”按钮（链接至 store.html） -->
+            <a href="store.html" id="storeBtn" class="about-btn">[ 蕊宫珍藏 ]</a>
             <a href="about.html" id="aboutBtn" class="about-btn">[ 关于蕊宫 ]</a>
             <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
         </div>
@@ -442,6 +444,7 @@
                 brand: "蕊宫 · 灵犀鉴",
                 heroTitle: "东方美学的灵魂",
                 heroSub: "献给现代创作者的精准色彩标准与永恒纹样，兼具情绪解药之效。",
+                storeBtn: "[ 蕊宫珍藏 ]",
                 aboutBtn: "[ 关于蕊宫 ]",
                 heroBtnColors: "[ 探索色彩 ]",
                 heroBtnPatterns: "[ 探索纹样 ]",
@@ -469,6 +472,7 @@
                 brand: "Rui Palace · Spiritual Mirror",
                 heroTitle: "The Soul of Oriental Aesthetics",
                 heroSub: "Precision Color Standards & Timeless Patterns as Emotional Antidotes for Modern Creators.",
+                storeBtn: "[ Palace Store ]",
                 aboutBtn: "[ About Rui Palace ]",
                 heroBtnColors: "[ Explore Colors ]",
                 heroBtnPatterns: "[ Explore Patterns ]",
@@ -554,6 +558,7 @@
             safeSetText('brand-title', t.brand);
             safeSetText('hero-main-title', t.heroTitle);
             safeSetText('left-poem', t.heroSub);
+            safeSetText('storeBtn', t.storeBtn);
             safeSetText('aboutBtn', t.aboutBtn);
             safeSetText('hero-btn-colors', t.heroBtnColors);
             safeSetText('hero-btn-patterns', t.heroBtnPatterns);
