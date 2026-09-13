@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rui Palace Haute Wallpaper | 美学壁纸数字殿堂</title>
+    <style>
+        :root {
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --text-primary: #2C282D;
+            --text-muted: #6A626B;
+            --gold: #A37E2C;
+            --gold-hover: #80611E;
+            --border-color: rgba(163, 126, 44, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 核心：高对比度、浓郁东方美学 11 色循环流转引擎 */
+        body {
+            background: linear-gradient(135deg, 
+                #B22222, /* 大唐朱砂红 */
+                #1E3A8A, /* 帝青 */
+                #4A6741, /* 艾青 */
+                #D97706, /* 琥珀金 */
+                #8670A0, /* 暮山紫 */
+                #B22222  /* 循环回朱砂红 */
+            );
+            background-size: 400% 400%;
+            animation: ruiPalace11ColorFlow 16s ease-in-out infinite;
+            color: var(--text-primary);
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            letter-spacing: 0.05em;
+            min-height: 100vh;
+            position: relative;
+            transition: background-color 1.2s ease-in-out;
+        }
+
+        @keyframes ruiPalace11ColorFlow {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 100% 50%; }
+            66% { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 东方美学柔和光晕流转层 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: auraBreathing 10s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes auraBreathing {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.06); }
+        }
+
+        header, .sanctuary-container, footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 殿堂级头部导航与语言切换器 */
+        header {
+            padding: 60px 40px 40px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(240, 243, 246, 0.7);
+            backdrop-filter: blur(12px);
+            position: relative;
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 4px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(4px);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 12px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: #FFFFFF;
+        }
+
+        header h1 {
+            font-size: 28px;
+            color: var(--gold);
+            font-weight: normal;
+            letter-spacing: 0.15em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* 橱窗展陈主容器 */
+        .sanctuary-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .gallery-section {
+            margin-bottom: 90px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--text-primary);
+            font-weight: normal;
+            letter-spacing: 0.1em;
+        }
+
+        .section-subtitle {
+            font-size: 12px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* 艺术画廊网格 */
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .artwork-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .artwork-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(163, 126, 44, 0.1);
+        }
+
+        /* 模拟显示器效果：16:9 比例 */
+        .artwork-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            background-color: #111111;
+            border: 4px solid #222222;
+            border-bottom: 8px solid #222222;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        .slide-dots {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            gap: 4px;
+            z-index: 3;
+            background: rgba(240, 243, 246, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 3px 6px;
+            border: 1px solid rgba(163, 126, 44, 0.2);
+            max-width: 180px;
+            overflow-x: auto;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            opacity: 0.4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background-color: var(--gold);
+            transform: scale(1.4);
+        }
+
+        .specs-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(163, 126, 44, 0.4);
+            padding: 3px 8px;
+            font-size: 9px;
+            color: #E2C785;
+            letter-spacing: 0.1em;
+            z-index: 3;
+        }
+
+        .artwork-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .artwork-title {
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: normal;
+        }
+
+        .artwork-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .download-action-box {
+            border-top: 1px solid var(--border-color);
+            padding-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .package-info {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .haute-btn {
+            display: inline-block;
+            text-align: center;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            font-size: 12px;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .haute-btn:hover {
+            background: var(--gold);
+            color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(163, 126, 44, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            background: rgba(240, 243, 246, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('zh')">中文</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+    <h1>RUI PALACE HAUTE WALLPAPER</h1>
+    <p data-key="header-subtitle">数字美学殿堂与高定母版档案</p>
+</header>
+
+    <div class="sanctuary-container">
+
+        <!-- 1. 春之卷 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-1-title">I. 春之卷 · 迎春吐芳</h2>
+                <span class="section-subtitle">Spring Botanical Gallery</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/spring/spring_01.jpg" alt="Spring Watermarked 1"></div>
+                            <div class="slide"><img src="images/spring/spring_02.jpg" alt="Spring Watermarked 2"></div>
+                            <div class="slide"><img src="images/spring/spring_03.jpg" alt="Spring Watermarked 3"></div>
+                            <div class="slide"><img src="images/spring/spring_04.jpg" alt="Spring Watermarked 4"></div>
+                            <div class="slide"><img src="images/spring/spring_05.jpg" alt="Spring Watermarked 5"></div>
+                            <div class="slide"><img src="images/spring/spring_06.jpg" alt="Spring Watermarked 6"></div>
+                            <div class="slide"><img src="images/spring/spring_07.jpg" alt="Spring Watermarked 7"></div>
+                            <div class="slide"><img src="images/spring/spring_08.jpg" alt="Spring Watermarked 8"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-6cat">6-Category Master Package</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-1-title">春生万物 · 灵动芬芳系列</h3>
+                            <p class="artwork-desc" data-key="art-1-desc">捕捉初春萌动之气，以细腻水墨笔触与温润色盘呈现万物复苏的高定质感。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-1-info">包含 6 大设备无水印母版 (ZIP / 12.0 MB)</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Spring Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 夏之卷 (26张全量升级) -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-2-title">II. 夏之卷 · 莲风清穆</h2>
+                <span class="section-subtitle">Summer Botanical Gallery (26 Editions)</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/summer/summer_01.jpg" alt="Summer Watermarked 1"></div>
+                            <div class="slide"><img src="images/summer/summer_02.jpg" alt="Summer Watermarked 2"></div>
+                            <div class="slide"><img src="images/summer/summer_03.jpg" alt="Summer Watermarked 3"></div>
+                            <div class="slide"><img src="images/summer/summer_04.jpg" alt="Summer Watermarked 4"></div>
+                            <div class="slide"><img src="images/summer/summer_05.jpg" alt="Summer Watermarked 5"></div>
+                            <div class="slide"><img src="images/summer/summer_06.jpg" alt="Summer Watermarked 6"></div>
+                            <div class="slide"><img src="images/summer/summer_07.jpg" alt="Summer Watermarked 7"></div>
+                            <div class="slide"><img src="images/summer/summer_08.jpg" alt="Summer Watermarked 8"></div>
+                            <div class="slide"><img src="images/summer/summer_09.jpg" alt="Summer Watermarked 9"></div>
+                            <div class="slide"><img src="images/summer/summer_10.jpg" alt="Summer Watermarked 10"></div>
+                            <div class="slide"><img src="images/summer/summer_11.jpg" alt="Summer Watermarked 11"></div>
+                            <div class="slide"><img src="images/summer/summer_12.jpg" alt="Summer Watermarked 12"></div>
+                            <div class="slide"><img src="images/summer/summer_13.jpg" alt="Summer Watermarked 13"></div>
+                            <div class="slide"><img src="images/summer/summer_14.jpg" alt="Summer Watermarked 14"></div>
+                            <div class="slide"><img src="images/summer/summer_15.jpg" alt="Summer Watermarked 15"></div>
+                            <div class="slide"><img src="images/summer/summer_16.jpg" alt="Summer Watermarked 16"></div>
+                            <div class="slide"><img src="images/summer/summer_17.jpg" alt="Summer Watermarked 17"></div>
+                            <div class="slide"><img src="images/summer/summer_18.jpg" alt="Summer Watermarked 18"></div>
+                            <div class="slide"><img src="images/summer/summer_19.jpg" alt="Summer Watermarked 19"></div>
+                            <div class="slide"><img src="images/summer/summer_20.jpg" alt="Summer Watermarked 20"></div>
+                            <div class="slide"><img src="images/summer/summer_21.jpg" alt="Summer Watermarked 21"></div>
+                            <div class="slide"><img src="images/summer/summer_22.jpg" alt="Summer Watermarked 22"></div>
+                            <div class="slide"><img src="images/summer/summer_23.jpg" alt="Summer Watermarked 23"></div>
+                            <div class="slide"><img src="images/summer/summer_24.jpg" alt="Summer Watermarked 24"></div>
+                            <div class="slide"><img src="images/summer/summer_25.jpg" alt="Summer Watermarked 25"></div>
+                            <div class="slide"><img src="images/summer/summer_26.jpg" alt="Summer Watermarked 26"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-6cat">26-Edition Master Archive</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-2-title">盛夏清和 · 莲韵生香系列 (全26帧)</h3>
+                            <p class="artwork-desc" data-key="art-2-desc">收录夏之卷全套 26 张高定影像，全面展现盛夏池畔的静谧与清透，流转东方雅致色彩[cite: 4]。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-2-info">包含 26 张全套设备无水印母版 (ZIP / 48.5 MB)[cite: 4]</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Summer Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 秋之卷 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-3-title">III. 秋之卷 · 菊韵傲霜</h2>
+                <span class="section-subtitle">Autumn Botanical Gallery</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/autumn/autumn_01.jpg" alt="Autumn Watermarked 1"></div>
+                            <div class="slide"><img src="images/autumn/autumn_02.jpg" alt="Autumn Watermarked 2"></div>
+                            <div class="slide"><img src="images/autumn/autumn_03.jpg" alt="Autumn Watermarked 3"></div>
+                            <div class="slide"><img src="images/autumn/autumn_04.jpg" alt="Autumn Watermarked 4"></div>
+                            <div class="slide"><img src="images/autumn/autumn_05.jpg" alt="Autumn Watermarked 5"></div>
+                            <div class="slide"><img src="images/autumn/autumn_06.jpg" alt="Autumn Watermarked 6"></div>
+                            <div class="slide"><img src="images/autumn/autumn_07.jpg" alt="Autumn Watermarked 7"></div>
+                            <div class="slide"><img src="images/autumn/autumn_08.jpg" alt="Autumn Watermarked 8"></div>
+                            <div class="slide"><img src="images/autumn/autumn_09.jpg" alt="Autumn Watermarked 9"></div>
+                            <div class="slide"><img src="images/autumn/autumn_10.jpg" alt="Autumn Watermarked 10"></div>
+                            <div class="slide"><img src="images/autumn/autumn_11.jpg" alt="Autumn Watermarked 11"></div>
+                            <div class="slide"><img src="images/autumn/autumn_12.jpg" alt="Autumn Watermarked 12"></div>
+                            <div class="slide"><img src="images/autumn/autumn_13.jpg" alt="Autumn Watermarked 13"></div>
+                            <div class="slide"><img src="images/autumn/autumn_14.jpg" alt="Autumn Watermarked 14"></div>
+                            <div class="slide"><img src="images/autumn/autumn_15.jpg" alt="Autumn Watermarked 15"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-6cat">15-Edition Master Package</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-3-title">金秋肃穆 · 霜菊傲骨系列</h3>
+                            <p class="artwork-desc" data-key="art-3-desc">提炼秋日萧瑟中的高古气节，沉淀出兼具成熟与典雅的东方美学视界。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-3-info">包含 15 张无水印母版 (ZIP / 11.8 MB)</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Autumn Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 冬之卷 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-4-title">IV. 冬之卷 · 暗香疏影</h2>
+                <span class="section-subtitle">Winter Botanical Gallery</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper">
+                        <div class="slideshow-container" data-slideshow>
+    <div class="slide active"><img src="images/winter/winter_01.jpg" alt="Winter Watermarked 1"></div>
+    <div class="slide"><img src="images/winter/winter_02.jpg" alt="Winter Watermarked 2"></div>
+    <div class="slide"><img src="images/winter/winter_03.jpg" alt="Winter Watermarked 3"></div>
+    <div class="slide"><img src="images/winter/winter_04.jpg" alt="Winter Watermarked 4"></div>
+    <div class="slide"><img src="images/winter/winter_05.jpg" alt="Winter Watermarked 5"></div>
+    <div class="slide"><img src="images/winter/winter_06.jpg" alt="Winter Watermarked 6"></div>
+    <div class="slide"><img src="images/winter/winter_07.jpg" alt="Winter Watermarked 7"></div>
+    <div class="slide"><img src="images/winter/winter_08.jpg" alt="Winter Watermarked 8"></div>
+    <div class="slide"><img src="images/winter/winter_09.jpg" alt="Winter Watermarked 9"></div>
+    <div class="slide"><img src="images/winter/winter_10.jpg" alt="Winter Watermarked 10"></div>
+    <div class="slide"><img src="images/winter/winter_11.jpg" alt="Winter Watermarked 11"></div>
+    <div class="slide"><img src="images/winter/winter_12.jpg" alt="Winter Watermarked 12"></div>
+    <div class="slide"><img src="images/winter/winter_13.jpg" alt="Winter Watermarked 13"></div>
+    <div class="slide"><img src="images/winter/winter_14.jpg" alt="Winter Watermarked 14"></div>
+    <div class="slide"><img src="images/winter/winter_15.jpg" alt="Winter Watermarked 15"></div>
+    <div class="slide"><img src="images/winter/winter_16.jpg" alt="Winter Watermarked 16"></div>
+    <div class="slide"><img src="images/winter/winter_17.jpg" alt="Winter Watermarked 17"></div>
+    <div class="slide"><img src="images/winter/winter_18.jpg" alt="Winter Watermarked 18"></div>
+    <div class="slide"><img src="images/winter/winter_19.jpg" alt="Winter Watermarked 19"></div>
+    <div class="slide"><img src="images/winter/winter_20.jpg" alt="Winter Watermarked 20"></div>
+    <div class="slide"><img src="images/winter/winter_21.jpg" alt="Winter Watermarked 21"></div>
+    <div class="slide"><img src="images/winter/winter_22.jpg" alt="Winter Watermarked 22"></div>
+    <div class="slide"><img src="images/winter/winter_23.jpg" alt="Winter Watermarked 23"></div>
+    <div class="slide"><img src="images/winter/winter_24.jpg" alt="Winter Watermarked 24"></div>
+    <div class="slide"><img src="images/winter/winter_25.jpg" alt="Winter Watermarked 25"></div>
+    <div class="slide"><img src="images/winter/winter_26.jpg" alt="Winter Watermarked 26"></div>
+    <div class="slide"><img src="images/winter/winter_27.jpg" alt="Winter Watermarked 27"></div>
+</div>
+                        <div class="specs-badge" data-key="badge-6cat">6-Category Master Package</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-4-title">岁寒三友 · 寒梅傲雪系列</h3>
+                            <p class="artwork-desc" data-key="art-4-desc">展现隆冬时节傲雪凌霜的疏影横斜，为屏幕带来清冷孤高的高定艺术张力[cite: 4]。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-4-info">包含 6 大设备无水印母版 (ZIP / 13.1 MB)[cite: 4]</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Winter Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 意境山水画橱窗 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-5-title">V. 意境山水 · 大美无言</h2>
+                <span class="section-subtitle">Landscape & Wilderness Sanctuary</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper" style="aspect-ratio: 21 / 9;">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/landscape/land_01.jpg" alt="Landscape Watermarked 1"></div>
+                            <div class="slide"><img src="images/landscape/land_02.jpg" alt="Landscape Watermarked 2"></div>
+                            <div class="slide"><img src="images/landscape/land_03.jpg" alt="Landscape Watermarked 3"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-ultrawide">Optimized for Ultrawide & 4K</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-5-title">云山苍茫 · 泼墨意境全景</h3>
+                            <p class="artwork-desc" data-key="art-5-desc">专为桌面大屏与超宽屏（Ultrawide）呈现的远山墨韵，营造静谧深邃的视界[cite: 4]。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-5-info">包含超宽屏与 4K 高定母版 (ZIP / 52.4 MB)[cite: 4]</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 古代仕女图橱窗 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-6-title">VI. 东方意韵 · 古代仕女图</h2>
+                <span class="section-subtitle">Classical Figures & Elegance</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper" style="aspect-ratio: 3 / 4;">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/classical_lady/lady_01.jpg" alt="Lady Watermarked 1"></div>
+                            <div class="slide"><img src="images/classical_lady/lady_02.jpg" alt="Lady Watermarked 2"></div>
+                            <div class="slide"><img src="images/classical_lady/lady_03.jpg" alt="Lady Watermarked 3"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-tablet">Tablet & Mobile Haute Couture</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-6-title">汉宫春晓 · 工笔重彩仕女</h3>
+                            <p class="artwork-desc" data-key="art-6-desc">汲取传统工笔重彩与服饰器物色彩，完美适配平板及高分手机屏幕比例[cite: 4]。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-6-info">包含全套移动与平板母版 (ZIP / 45.1 MB)[cite: 4]</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 星际星云橱窗 -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="section-title" data-key="sec-7-title">VII. 寰宇星际 · 星云幻灯机</h2>
+                <span class="section-subtitle">Cosmic Nebulae & Stardust</span>
+            </div>
+            <div class="grid-gallery">
+                <div class="artwork-card">
+                    <div class="artwork-image-wrapper">
+                        <div class="slideshow-container" data-slideshow>
+                            <div class="slide active"><img src="images/nebula/nebula_01.jpg" alt="Nebula Watermarked 1"></div>
+                            <div class="slide"><img src="images/nebula/nebula_02.jpg" alt="Nebula Watermarked 2"></div>
+                            <div class="slide"><img src="images/nebula/nebula_03.jpg" alt="Nebula Watermarked 3"></div>
+                        </div>
+                        <div class="specs-badge" data-key="badge-oled">OLED Black-Level Optimized</div>
+                        <div class="slide-dots"></div>
+                    </div>
+                    <div class="artwork-content">
+                        <div>
+                            <h3 class="artwork-title" data-key="art-7-title">洪荒星海 · 东方宇宙浪漫</h3>
+                            <p class="artwork-desc" data-key="art-7-desc">将传统对洪荒的浪漫想象与现代星际星云交融，针对 OLED 黑位表现深度优化[cite: 4]。</p>
+                        </div>
+                        <div class="download-action-box">
+                            <span class="package-info" data-key="pkg-7-info">包含 6 大设备全套母版 (ZIP / 61.3 MB)[cite: 4]</span>
+                            <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rui Palace Commercial Studio. All Rights Reserved. Designed for www.rui-palace.de[cite: 4]</p>
+    </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                "header-subtitle": "数字美学殿堂与高定母版档案",
+                "sec-1-title": "I. 春之卷 · 迎春吐芳",
+                "sec-2-title": "II. 夏之卷 · 莲韵清穆",
+                "sec-3-title": "III. 秋之卷 · 青松傲霜",
+                "sec-4-title": "IV. 冬之卷 · 暗香疏影",
+                "sec-5-title": "V. 意境山水 · 大美无言",
+                "sec-6-title": "VI. 东方意韵 · 古代仕女图",
+                "sec-7-title": "VII. 寰宇星际 · 星云幻灯机",
+                
+                "badge-6cat": "6-Category Master Package",
+                "badge-ultrawide": "Optimized for Ultrawide & 4K",
+                "badge-tablet": "Tablet & Mobile Haute Couture",
+                "badge-oled": "OLED Black-Level Optimized",
+
+                "art-1-title": "春生万物 · 灵动芬芳系列",
+                "art-1-desc": "捕捉初春萌动之气，以细腻水墨笔触与温润色盘呈现万物复苏的高定质感。",
+                "pkg-1-info": "包含 6 大设备无水印母版 (ZIP / 12.0 MB)",
+
+                "art-2-title": "盛夏清和 · 莲韵生香系列 (全26帧)",
+                "art-2-desc": "收录夏之卷全套 26 张高定影像，全面展现盛夏池畔的静谧与清透，流转东方雅致色彩。",
+                "pkg-2-info": "包含 26 张全套设备无水印母版 (ZIP / 48.5 MB)",
+
+                "art-3-title": "金秋肃穆 · 霜菊傲骨系列",
+                "art-3-desc": "提炼秋日萧瑟中的高古气节，沉淀出兼具成熟与典雅的东方美学视界。",
+                "pkg-3-info": "包含 6 大设备无水印母版 (ZIP / 11.8 MB)",
+
+                "art-4-title": "岁寒三友 · 寒梅傲雪系列",
+                "art-4-desc": "展现隆冬时节傲雪凌霜的疏影横斜，为屏幕带来清冷孤高的高定艺术张力。",
+                "pkg-4-info": "包含 6 大设备无水印母版 (ZIP / 13.1 MB)",
+
+                "art-5-title": "云山苍茫 · 泼墨意境全景",
+                "art-5-desc": "专为桌面大屏与超宽屏（Ultrawide）呈现的远山墨韵，营造静谧深邃的视界。",
+                "pkg-5-info": "包含超宽屏与 4K 高定母版 (ZIP / 52.4 MB)",
+
+                "art-6-title": "汉宫春晓 · 工笔重彩仕女",
+                "art-6-desc": "汲取传统工笔重彩与服饰器物色彩，完美适配平板及高分手机屏幕比例。",
+                "pkg-6-info": "包含全套移动与平板母版 (ZIP / 45.1 MB)",
+
+                "art-7-title": "洪荒星海 · 东方宇宙浪漫",
+                "art-7-desc": "将传统对洪荒的浪漫想象与现代星际星云交融，针对 OLED 黑位表现深度优化。",
+                "pkg-7-info": "包含 6 大设备全套母版 (ZIP / 61.3 MB)",
+
+                "btn-acquire": "Acquire Master Collection"
+            },
+            en: {
+                "header-subtitle": "Digital Aesthetics Sanctuary & Master Archive",
+                "sec-1-title": "I. Spring Scroll · Peony & Peach",
+                "sec-2-title": "II. Summer Scroll · Lotus Breeze (26 Editions)",
+                "sec-3-title": "III. Autumn Scroll · Frost Chrysanthemum",
+                "sec-4-title": "IV. Winter Scroll · Subtle Plum Shadows",
+                "sec-5-title": "V. Landscape · Silent Grandeur",
+                "sec-6-title": "VI. Oriental Elegance · Classical Ladies",
+                "sec-7-title": "VII. Cosmos · Nebula Projector",
+                
+                "badge-6cat": "6-Category Master Package",
+                "badge-ultrawide": "Optimized for Ultrawide & 4K",
+                "badge-tablet": "Tablet & Mobile Haute Couture",
+                "badge-oled": "OLED Black-Level Optimized",
+
+                "art-1-title": "Spring Awakening · whisper Series",
+                "art-1-desc": "Capturing the vibrant pulse of early spring with delicate ink strokes and a warm palette.",
+                "pkg-1-info": "Includes 6-Device Unwatermarked Masters (ZIP / 12.0 MB)",
+
+                "art-2-title": "Midsummer Serenity · Lotus Series (26 Editions)",
+                "art-2-desc": "Featuring all 26 high-definition master editions of the summer collection, exhibiting serene pond clarity.",
+                "pkg-2-info": "Includes 26-Edition Unwatermarked Masters (ZIP / 48.5 MB)",
+
+                "art-3-title": "Autumn Solemnity · Frost Chrysanthemum Series",
+                "art-3-desc": "Distilling the austere elegance of autumn into a mature and sophisticated visual horizon.",
+                "pkg-3-info": "Includes 6-Device Unwatermarked Masters (ZIP / 11.8 MB)",
+
+                "art-4-title": "Three Friends of Winter · Plum Blossom Series",
+                "art-4-desc": "Portraying the stark, resilient beauty of winter branches against snow for an haute couture tension.",
+                "pkg-4-info": "Includes 6-Device Unwatermarked Masters (ZIP / 13.1 MB)",
+
+                "art-5-title": "Boundless Mountains · Panoramic Ink Landscape",
+                "art-5-desc": "Tailored for desktop and ultrawide displays, evoking a deep and meditative horizon of distant peaks.",
+                "pkg-5-info": "Includes Ultrawide & 4K Haute Masters (ZIP / 52.4 MB)",
+
+                "art-6-title": "Han Palace Dawn · Court Ladies in Fine Brushwork",
+                "art-6-desc": "Drawing inspiration from traditional gongbi polychrome and textiles, perfectly proportioned for tablets and mobiles.",
+                "pkg-6-info": "Includes Full Mobile & Tablet Masters (ZIP / 45.1 MB)",
+
+                "art-7-title": "Primordial Starry Sea · Cosmic Romance",
+                "art-7-desc": "Fusing ancient cosmic imagination with modern nebulae, deeply optimized for OLED black levels.",
+                "pkg-7-info": "Includes Full 6-Device Master Package (ZIP / 61.3 MB)",
+
+                "btn-acquire": "Acquire Master Collection"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+            document.getElementById("html-root").setAttribute("lang", lang === 'zh' ? 'zh-CN' : 'en');
+            document.querySelectorAll("[data-key]").forEach(el => {
+                const key = el.getAttribute("data-key");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const containers = document.querySelectorAll("[data-slideshow]");
+            containers.forEach((container) => {
+                const slides = container.querySelectorAll(".slide");
+                const card = container.closest(".artwork-card");
+                const dotsContainer = card.querySelector(".slide-dots");
+                let currentIndex = 0;
+                let slideInterval;
+
+                dotsContainer.innerHTML = "";
+                slides.forEach((_, idx) => {
+                    const dot = document.createElement("span");
+                    dot.classList.add("dot");
+                    if (idx === 0) dot.classList.add("active");
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = dotsContainer.querySelectorAll(".dot");
+
+                function showNextSlide() {
+                    slides[currentIndex].classList.remove("active");
+                    dots[currentIndex].classList.remove("active");
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    slides[currentIndex].classList.add("active");
+                    dots[currentIndex].classList.add("active");
+                }
+
+                slideInterval = setInterval(showNextSlide, 4000);
+
+                dots.forEach((dot, dotIndex) => {
+                    dot.addEventListener("click", () => {
+                        clearInterval(slideInterval);
+                        slides[currentIndex].classList.remove("active");
+                        dots[currentIndex].classList.remove("active");
+                        currentIndex = dotIndex;
+                        slides[currentIndex].classList.add("active");
+                        dots[currentIndex].classList.add("active");
+                        slideInterval = setInterval(showNextSlide, 4000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
