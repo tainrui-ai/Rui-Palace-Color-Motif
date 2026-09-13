@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN" id="html-root">
 <head>
@@ -83,12 +84,51 @@
             position: relative;
         }
 
-        .lang-switcher {
+        .nav-controls {
             position: absolute;
             top: 25px;
             right: 40px;
             display: flex;
-            gap: 8px;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* 对齐 about 页面的返回主页风格：增加左侧箭头与左移微交互 */
+        .home-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            font-family: 'Georgia', serif;
+            backdrop-filter: blur(4px);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .home-btn .icon-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: var(--gold);
+            color: #FFFFFF;
+            border-color: var(--gold);
+            transform: translateX(-2px);
+        }
+
+        .home-btn:hover .icon-arrow {
+            transform: translateX(-3px);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
             background: rgba(255, 255, 255, 0.8);
             padding: 4px;
             border: 1px solid var(--border-color);
@@ -350,9 +390,15 @@
 <body>
 
 <header>
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLanguage('zh')">中文</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <div class="nav-controls">
+        <a href="index.html" class="home-btn">
+            <span class="icon-arrow">←</span>
+            <span data-key="btn-home">返回主页</span>
+        </a>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('zh')">中文</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        </div>
     </div>
     <h1>RUI PALACE HAUTE WALLPAPER</h1>
     <p data-key="header-subtitle">数字美学殿堂与高定母版档案</p>
@@ -439,10 +485,10 @@
                     <div class="artwork-content">
                         <div>
                             <h3 class="artwork-title" data-key="art-2-title">盛夏清和 · 莲韵生香系列 (全26帧)</h3>
-                            <p class="artwork-desc" data-key="art-2-desc">收录夏之卷全套 26 张高定影像，全面展现盛夏池畔的静谧与清透，流转东方雅致色彩[cite: 4]。</p>
+                            <p class="artwork-desc" data-key="art-2-desc">收录夏之卷全套 26 张高定影像，全面展现盛夏池畔的静谧与清透，流转东方雅致色彩。</p>
                         </div>
                         <div class="download-action-box">
-                            <span class="package-info" data-key="pkg-2-info">包含 26 张全套设备无水印母版 (ZIP / 48.5 MB)[cite: 4]</span>
+                            <span class="package-info" data-key="pkg-2-info">包含 26 张全套设备无水印母版 (ZIP / 48.5 MB)</span>
                             <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Summer Collection</a>
                         </div>
                     </div>
@@ -503,44 +549,44 @@
                 <div class="artwork-card">
                     <div class="artwork-image-wrapper">
                         <div class="slideshow-container" data-slideshow>
-    <div class="slide active"><img src="images/winter/winter_01.jpg" alt="Winter Watermarked 1"></div>
-    <div class="slide"><img src="images/winter/winter_02.jpg" alt="Winter Watermarked 2"></div>
-    <div class="slide"><img src="images/winter/winter_03.jpg" alt="Winter Watermarked 3"></div>
-    <div class="slide"><img src="images/winter/winter_04.jpg" alt="Winter Watermarked 4"></div>
-    <div class="slide"><img src="images/winter/winter_05.jpg" alt="Winter Watermarked 5"></div>
-    <div class="slide"><img src="images/winter/winter_06.jpg" alt="Winter Watermarked 6"></div>
-    <div class="slide"><img src="images/winter/winter_07.jpg" alt="Winter Watermarked 7"></div>
-    <div class="slide"><img src="images/winter/winter_08.jpg" alt="Winter Watermarked 8"></div>
-    <div class="slide"><img src="images/winter/winter_09.jpg" alt="Winter Watermarked 9"></div>
-    <div class="slide"><img src="images/winter/winter_10.jpg" alt="Winter Watermarked 10"></div>
-    <div class="slide"><img src="images/winter/winter_11.jpg" alt="Winter Watermarked 11"></div>
-    <div class="slide"><img src="images/winter/winter_12.jpg" alt="Winter Watermarked 12"></div>
-    <div class="slide"><img src="images/winter/winter_13.jpg" alt="Winter Watermarked 13"></div>
-    <div class="slide"><img src="images/winter/winter_14.jpg" alt="Winter Watermarked 14"></div>
-    <div class="slide"><img src="images/winter/winter_15.jpg" alt="Winter Watermarked 15"></div>
-    <div class="slide"><img src="images/winter/winter_16.jpg" alt="Winter Watermarked 16"></div>
-    <div class="slide"><img src="images/winter/winter_17.jpg" alt="Winter Watermarked 17"></div>
-    <div class="slide"><img src="images/winter/winter_18.jpg" alt="Winter Watermarked 18"></div>
-    <div class="slide"><img src="images/winter/winter_19.jpg" alt="Winter Watermarked 19"></div>
-    <div class="slide"><img src="images/winter/winter_20.jpg" alt="Winter Watermarked 20"></div>
-    <div class="slide"><img src="images/winter/winter_21.jpg" alt="Winter Watermarked 21"></div>
-    <div class="slide"><img src="images/winter/winter_22.jpg" alt="Winter Watermarked 22"></div>
-    <div class="slide"><img src="images/winter/winter_23.jpg" alt="Winter Watermarked 23"></div>
-    <div class="slide"><img src="images/winter/winter_24.jpg" alt="Winter Watermarked 24"></div>
-    <div class="slide"><img src="images/winter/winter_25.jpg" alt="Winter Watermarked 25"></div>
-    <div class="slide"><img src="images/winter/winter_26.jpg" alt="Winter Watermarked 26"></div>
-    <div class="slide"><img src="images/winter/winter_27.jpg" alt="Winter Watermarked 27"></div>
-</div>
+                            <div class="slide active"><img src="images/winter/winter_01.jpg" alt="Winter Watermarked 1"></div>
+                            <div class="slide"><img src="images/winter/winter_02.jpg" alt="Winter Watermarked 2"></div>
+                            <div class="slide"><img src="images/winter/winter_03.jpg" alt="Winter Watermarked 3"></div>
+                            <div class="slide"><img src="images/winter/winter_04.jpg" alt="Winter Watermarked 4"></div>
+                            <div class="slide"><img src="images/winter/winter_05.jpg" alt="Winter Watermarked 5"></div>
+                            <div class="slide"><img src="images/winter/winter_06.jpg" alt="Winter Watermarked 6"></div>
+                            <div class="slide"><img src="images/winter/winter_07.jpg" alt="Winter Watermarked 7"></div>
+                            <div class="slide"><img src="images/winter/winter_08.jpg" alt="Winter Watermarked 8"></div>
+                            <div class="slide"><img src="images/winter/winter_09.jpg" alt="Winter Watermarked 9"></div>
+                            <div class="slide"><img src="images/winter/winter_10.jpg" alt="Winter Watermarked 10"></div>
+                            <div class="slide"><img src="images/winter/winter_11.jpg" alt="Winter Watermarked 11"></div>
+                            <div class="slide"><img src="images/winter/winter_12.jpg" alt="Winter Watermarked 12"></div>
+                            <div class="slide"><img src="images/winter/winter_13.jpg" alt="Winter Watermarked 13"></div>
+                            <div class="slide"><img src="images/winter/winter_14.jpg" alt="Winter Watermarked 14"></div>
+                            <div class="slide"><img src="images/winter/winter_15.jpg" alt="Winter Watermarked 15"></div>
+                            <div class="slide"><img src="images/winter/winter_16.jpg" alt="Winter Watermarked 16"></div>
+                            <div class="slide"><img src="images/winter/winter_17.jpg" alt="Winter Watermarked 17"></div>
+                            <div class="slide"><img src="images/winter/winter_18.jpg" alt="Winter Watermarked 18"></div>
+                            <div class="slide"><img src="images/winter/winter_19.jpg" alt="Winter Watermarked 19"></div>
+                            <div class="slide"><img src="images/winter/winter_20.jpg" alt="Winter Watermarked 20"></div>
+                            <div class="slide"><img src="images/winter/winter_21.jpg" alt="Winter Watermarked 21"></div>
+                            <div class="slide"><img src="images/winter/winter_22.jpg" alt="Winter Watermarked 22"></div>
+                            <div class="slide"><img src="images/winter/winter_23.jpg" alt="Winter Watermarked 23"></div>
+                            <div class="slide"><img src="images/winter/winter_24.jpg" alt="Winter Watermarked 24"></div>
+                            <div class="slide"><img src="images/winter/winter_25.jpg" alt="Winter Watermarked 25"></div>
+                            <div class="slide"><img src="images/winter/winter_26.jpg" alt="Winter Watermarked 26"></div>
+                            <div class="slide"><img src="images/winter/winter_27.jpg" alt="Winter Watermarked 27"></div>
+                        </div>
                         <div class="specs-badge" data-key="badge-6cat">6-Category Master Package</div>
                         <div class="slide-dots"></div>
                     </div>
                     <div class="artwork-content">
                         <div>
                             <h3 class="artwork-title" data-key="art-4-title">岁寒三友 · 寒梅傲雪系列</h3>
-                            <p class="artwork-desc" data-key="art-4-desc">展现隆冬时节傲雪凌霜的疏影横斜，为屏幕带来清冷孤高的高定艺术张力[cite: 4]。</p>
+                            <p class="artwork-desc" data-key="art-4-desc">展现隆冬时节傲雪凌霜的疏影横斜，为屏幕带来清冷孤高的高定艺术张力。</p>
                         </div>
                         <div class="download-action-box">
-                            <span class="package-info" data-key="pkg-4-info">包含 6 大设备无水印母版 (ZIP / 13.1 MB)[cite: 4]</span>
+                            <span class="package-info" data-key="pkg-4-info">包含 6 大设备无水印母版 (ZIP / 13.1 MB)</span>
                             <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Winter Collection</a>
                         </div>
                     </div>
@@ -568,10 +614,10 @@
                     <div class="artwork-content">
                         <div>
                             <h3 class="artwork-title" data-key="art-5-title">云山苍茫 · 泼墨意境全景</h3>
-                            <p class="artwork-desc" data-key="art-5-desc">专为桌面大屏与超宽屏（Ultrawide）呈现的远山墨韵，营造静谧深邃的视界[cite: 4]。</p>
+                            <p class="artwork-desc" data-key="art-5-desc">专为桌面大屏与超宽屏（Ultrawide）呈现的远山墨韵，营造静谧深邃的视界。</p>
                         </div>
                         <div class="download-action-box">
-                            <span class="package-info" data-key="pkg-5-info">包含超宽屏与 4K 高定母版 (ZIP / 52.4 MB)[cite: 4]</span>
+                            <span class="package-info" data-key="pkg-5-info">包含超宽屏与 4K 高定母版 (ZIP / 52.4 MB)</span>
                             <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
                         </div>
                     </div>
@@ -599,10 +645,10 @@
                     <div class="artwork-content">
                         <div>
                             <h3 class="artwork-title" data-key="art-6-title">汉宫春晓 · 工笔重彩仕女</h3>
-                            <p class="artwork-desc" data-key="art-6-desc">汲取传统工笔重彩与服饰器物色彩，完美适配平板及高分手机屏幕比例[cite: 4]。</p>
+                            <p class="artwork-desc" data-key="art-6-desc">汲取传统工笔重彩与服饰器物色彩，完美适配平板及高分手机屏幕比例。</p>
                         </div>
                         <div class="download-action-box">
-                            <span class="package-info" data-key="pkg-6-info">包含全套移动与平板母版 (ZIP / 45.1 MB)[cite: 4]</span>
+                            <span class="package-info" data-key="pkg-6-info">包含全套移动与平板母版 (ZIP / 45.1 MB)</span>
                             <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
                         </div>
                     </div>
@@ -630,10 +676,10 @@
                     <div class="artwork-content">
                         <div>
                             <h3 class="artwork-title" data-key="art-7-title">洪荒星海 · 东方宇宙浪漫</h3>
-                            <p class="artwork-desc" data-key="art-7-desc">将传统对洪荒的浪漫想象与现代星际星云交融，针对 OLED 黑位表现深度优化[cite: 4]。</p>
+                            <p class="artwork-desc" data-key="art-7-desc">将传统对洪荒的浪漫想象与现代星际星云交融，针对 OLED 黑位表现深度优化。</p>
                         </div>
                         <div class="download-action-box">
-                            <span class="package-info" data-key="pkg-7-info">包含 6 大设备全套母版 (ZIP / 61.3 MB)[cite: 4]</span>
+                            <span class="package-info" data-key="pkg-7-info">包含 6 大设备全套母版 (ZIP / 61.3 MB)</span>
                             <a href="#checkout" class="haute-btn" data-key="btn-acquire">Acquire Master Collection</a>
                         </div>
                     </div>
@@ -644,12 +690,13 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Rui Palace Commercial Studio. All Rights Reserved. Designed for www.rui-palace.de[cite: 4]</p>
+        <p>&copy; 2026 Rui Palace Commercial Studio. All Rights Reserved. Designed for www.rui-palace.de</p>
     </footer>
 
     <script>
         const translations = {
             zh: {
+                "btn-home": "返回主页",
                 "header-subtitle": "数字美学殿堂与高定母版档案",
                 "sec-1-title": "I. 春之卷 · 迎春吐芳",
                 "sec-2-title": "II. 夏之卷 · 莲韵清穆",
@@ -695,6 +742,7 @@
                 "btn-acquire": "Acquire Master Collection"
             },
             en: {
+                "btn-home": "Return Home",
                 "header-subtitle": "Digital Aesthetics Sanctuary & Master Archive",
                 "sec-1-title": "I. Spring Scroll · Peony & Peach",
                 "sec-2-title": "II. Summer Scroll · Lotus Breeze (26 Editions)",
