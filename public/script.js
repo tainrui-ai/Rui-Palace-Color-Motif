@@ -208,3 +208,30 @@ function initInkAnimationEngine() {
 
     animate();
 }
+
+// 初始化商店卡片轮播预览
+document.querySelectorAll('.product-card').forEach(card => {
+  const slides = card.querySelectorAll('.preview-slideshow img');
+  if (slides.length <= 1) return;
+  
+  let currentIndex = 0;
+  let intervalId = null;
+
+  // 鼠标悬停时加速轮播预览
+  card.addEventListener('mouseenter', () => {
+    intervalId = setInterval(() => {
+      slides[currentIndex].style.opacity = '0';
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].style.opacity = '1';
+    }, 1500);
+  });
+
+  // 鼠标移出时恢复初始状态
+  card.addEventListener('mouseleave', () => {
+    clearInterval(intervalId);
+    slides.forEach((slide, idx) => {
+      slide.style.opacity = idx === 0 ? '1' : '0';
+    });
+    currentIndex = 0;
+  });
+});
