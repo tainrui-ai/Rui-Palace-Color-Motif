@@ -345,11 +345,15 @@
             </div>
         </div>
         <div class="header-right-actions">
-            <!-- 新增的“蕊宫珍藏”按钮（链接至 store.html） -->
-            <a href="store.html" id="storeBtn" class="about-btn">[ 蕊宫珍藏 ]</a>
-            <a href="about.html" id="aboutBtn" class="about-btn">[ 关于蕊宫 ]</a>
-            <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
-        </div>
+    <!-- 订单查询按钮（链接至 track.html） -->
+    <a href="track.html" id="trackBtn" class="about-btn" data-zh="[ 订单查询 ]" data-en="[ Track Order ]">[ 订单查询 ]</a>
+    <!-- “蕊宫珍藏”按钮（链接至 store.html） -->
+    <a href="store.html" id="storeBtn" class="about-btn" data-zh="[ 蕊宫珍藏 ]" data-en="[ Collection ]">[ 蕊宫珍藏 ]</a>
+    <!-- “关于蕊宫”按钮 -->
+    <a href="about.html" id="aboutBtn" class="about-btn" data-zh="[ 关于蕊宫 ]" data-en="[ About Us ]">[ 关于蕊宫 ]</a>
+    <!-- 语言切换按钮 -->
+    <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
+</div>
     </header>
 
     <!-- 中部动态升级首屏架构 -->
