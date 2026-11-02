@@ -76,7 +76,6 @@
         .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
         .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        /* 强制确保竖排声明在所有屏幕下可见 */
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 11px; color: #6B8E60; font-weight: 600; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 10px; }
 
@@ -256,10 +255,11 @@
         </button>
     </div>
 
-    <!-- 顶头画卷 -->
+    <!-- 顶头画卷（包含在“归隐/中英文切换”下方两侧的竖排声明） -->
     <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(141,163,130,0.3); position: relative;">
-        <!-- 左侧翼：动态竖排声明（强制直接显示） -->
-        <div style="position:absolute; left:16px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:6px; z-index:10;">
+        
+        <!-- 左侧竖排声明：紧跟在按钮下方两侧 -->
+        <div style="position:absolute; left:24px; top:40px; display:flex; align-items:center; gap:6px; z-index:10;">
             <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
             <span class="vertical-wing" data-zh="蕊宫 · 艾青格物" data-en="RUI PALACE · MUGWORT">蕊宫 · 艾青格物</span>
         </div>
@@ -275,8 +275,8 @@
             </p>
         </div>
 
-        <!-- 右侧翼：动态竖排声明（强制直接显示） -->
-        <div style="position:absolute; right:16px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:6px; z-index:10;">
+        <!-- 右侧竖排声明：紧跟在按钮下方两侧 -->
+        <div style="position:absolute; right:24px; top:40px; display:flex; align-items:center; gap:6px; z-index:10;">
             <span class="vertical-wing" data-zh="仙草怀真 · 正气长存" data-en="SACRED HERB · VITAL INTEGRITY">仙草怀真 · 正气长存</span>
             <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
         </div>
@@ -658,38 +658,38 @@
             if (hexEl) hexEl.innerText = c.hex;
         }
 
-        function returnToPrevious() {
-            window.location.href = `https://www.rui-palace.com/aesthetics?lang=${currentLang}`;
+    function returnToPrevious() {
+        window.location.href = `https://www.rui-palace.com/aesthetics?lang=${currentLang}`;
+    }
+
+    function toggleLanguage(targetLang) {
+        if (targetLang) {
+            currentLang = targetLang;
+        } else {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
         }
 
-        function toggleLanguage(targetLang) {
-            if (targetLang) {
-                currentLang = targetLang;
-            } else {
-                currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            }
+        document.querySelectorAll('[data-zh]').forEach(el => {
+            el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            el.setAttribute('data-lang', currentLang); 
+        });
 
-            document.querySelectorAll('[data-zh]').forEach(el => {
-                el.innerHTML = el.getAttribute(`data-${currentLang}`);
-                el.setAttribute('data-lang', currentLang); 
-            });
+        const channelLink = document.getElementById('channel-link');
+        if (channelLink) channelLink.href = `Color Sky Blue.html?lang=${currentLang}`;
 
-            const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color Sky Blue.html?lang=${currentLang}`;
+        switchProduct(currentProductIdx);
+        renderGrid();
+        const slider = document.getElementById('color-slider');
+        if (slider) updateDynamicPad(slider.value);
+    }
 
-            switchProduct(currentProductIdx);
-            renderGrid();
-            const slider = document.getElementById('color-slider');
-            if (slider) updateDynamicPad(slider.value);
-        }
-
-        function openLightbox(idx = currentProductIdx) {
-            const imgSrc = products[idx].img;
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            if (lightboxImg) lightboxImg.src = imgSrc;
-            if (lightbox) lightbox.classList.add('active');
-        }
+    function openLightbox(idx = currentProductIdx) {
+        const imgSrc = products[idx].img;
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        if (lightboxImg) lightboxImg.src = imgSrc;
+        if (lightbox) lightbox.classList.add('active');
+    }
 
     function closeLightbox() {
         document.getElementById('imageLightbox')?.classList.remove('active');
@@ -736,6 +736,6 @@
             };
         }
     });
-</script>
+    </script>
 </body>
 </html>
