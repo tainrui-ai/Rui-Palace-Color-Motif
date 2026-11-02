@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>艾青 · 仙草正气美学色卡与典藏推广</title>
+    <title>艾青 · 仙草正气美学色卡与定制臻藏</title>
     
+    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAZBjJQVB0sdSCeQ-8us00ThhIHr6G6UzpUIQdSwVRnnGIL7eLqI2Xf_EBOCqBMZQ7mptJdRCzsMvBpzc&currency=EUR&components=buttons&enable-funding=venmo,paylater,sepa,card"></script>
+
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -33,7 +36,6 @@
             padding: 0 24px;
         }
 
-        /* 顶部导航与边距微调 */
         .top-nav {
             padding-top: 28px;
             padding-bottom: 8px;
@@ -71,7 +73,6 @@
             box-shadow: 0 10px 30px -10px rgba(107, 142, 96, 0.12);
         }
 
-        /* 纯净排版控制体系 */
         .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
         .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
@@ -104,13 +105,12 @@
         }
         .lang-switch-btn:hover { background: #6B8E60; color: white; border-color: #6B8E60; }
 
-        /* 海棠花窗剪裁及相关样式 */
         .begonia-window-clip { clip-path: url(#begonia-clip); }
-        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: grab; }
+        .slider-track:active { cursor: grabbing; }
         .product-thumb { cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
         .product-thumb.active { border-color: #6B8E60; background: rgba(107, 142, 96, 0.08); transform: scale(1.05); }
 
-        /* 左右平行双阁窗口布局 (色卡与视频观象台) */
         .grid-2-parallel {
             display: grid;
             grid-template-columns: 1fr;
@@ -229,6 +229,77 @@
             cursor: pointer; 
         }
 
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0;
+            font-family: "Songti SC", "SimSun", serif;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: #8c8c8c;
+            text-decoration: line-through;
+        }
+
+        .sale-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #6B8E60;
+        }
+
+        .discount-tag {
+            background: rgba(107, 142, 96, 0.1);
+            color: #6B8E60;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(107, 142, 96, 0.2);
+            font-family: sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(107, 142, 96, 0.25);
+            border-radius: 8px;
+            outline: none;
+            font-size: 13px;
+            background: #FAFAFA;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #6B8E60;
+            background: #FFF;
+        }
+
+        .custom-order-btn {
+            display: block;
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            background: #6B8E60;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(107, 142, 96, 0.25);
+            text-align: center;
+            text-decoration: none;
+        }
+        .custom-order-btn:hover {
+            background: #55724d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(107, 142, 96, 0.35);
+        }
+
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
         footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
         @media(min-width: 640px) { footer.footer { flex-direction: row; } }
@@ -292,8 +363,20 @@
                 <span class="dynamic-sub" style="font-weight:600; color:#6B8E60; font-size:11px;" data-zh="海棠花窗 · 仙草臻藏" data-en="BEGONIA GALLERY · COLLECTION">海棠花窗 · 仙草臻藏</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="南阳艾草 · 高纯原矿艾绿手串" data-en="Nanyang Mugwort · Green Jasper Bracelet">南阳艾草 · 高纯原矿艾绿手串</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" data-zh="Mugwort Green & Dewy White Collection" data-en="Mugwort Green & Dewy White Collection">Mugwort Green & Dewy White Collection</p>
+            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:4px;" data-zh="南阳艾草 · 高纯原矿艾绿手串" data-en="Nanyang Mugwort · Green Jasper Bracelet">南阳艾草 · 高纯原矿艾绿手串</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:12px;" data-zh="Mugwort Green & Dewy White Collection" data-en="Mugwort Green & Dewy White Collection">Mugwort Green & Dewy White Collection</p>
+            
+            <div class="price-container">
+                <span id="hero-product-original-price" class="original-price">€ 189.00</span>
+                <span id="hero-product-sale-price" class="sale-price">€ 89.00</span>
+                <span class="discount-tag" data-zh="限时结缘" data-en="SPECIAL OFFER">限时结缘</span>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#6B8E60; font-size:11px; font-family:serif;">
+                <span>⇠</span>
+                <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left & Right / Click to Enlarge">支持左右滑动 / 点击放大全貌</span>
+                <span>⇢</span>
+            </div>
 
             <!-- 放大后的海棠花窗视口 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
@@ -311,16 +394,16 @@
 
                 <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#F4F7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
                     <div id="slider-track" class="slider-track" style="width:100%; height:100%;">
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(0)">
                             <img src="https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort" alt="南阳艾绿手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(1)">
                             <img src="https://placehold.co/600x600/6b8e60/ffffff?text=Deep+Grass+Flora" alt="苍青草色手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(2)">
                             <img src="https://placehold.co/600x600/8fa984/ffffff?text=Dewy+Meadow" alt="晨露浅草手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(3)">
                             <img src="https://placehold.co/600x600/f0f5ef/262626?text=Dewy+Alabaster" alt="凝露白手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                     </div>
@@ -352,12 +435,17 @@
                     <span style="font-size:11px; font-family:serif;" data-zh="凝露白" data-en="Alabaster">凝露白</span>
                 </div>
             </div>
+
+            <!-- 定制订单按钮 -->
+            <div style="width: 100%; max-width: 400px; margin-top: 24px;">
+                <button onclick="openCustomOrderModal()" class="custom-order-btn" data-zh="定制专属订单" data-en="CUSTOMIZE ORDER">定制专属订单</button>
+            </div>
         </div>
     </section>
 
-    <!-- 左右平行双阁布局 (西阁：色彩卡片，东阁：视频与视听观象台) -->
+    <!-- 左右平行双阁布局 -->
     <main class="container grid-2-parallel">
-        <!-- 西阁：色彩网格 (左窗口) -->
+        <!-- 西阁：色彩网格 -->
         <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:28px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 艾青凝露色卡" data-en="West Pavilion &bull; Mugwort Palette">
@@ -372,7 +460,7 @@
             </div>
         </section>
 
-        <!-- 东阁：观象台与动态卡片 (右窗口，与左侧平行) -->
+        <!-- 东阁：观象台与动态卡片 -->
         <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
@@ -425,6 +513,81 @@
         </section>
     </main>
 
+    <!-- 定制订单模态框 -->
+    <div id="custom-modal" style="display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding: 16px;">
+        <div class="chinese-border" style="background:#FFF; width:100%; max-width:520px; padding:32px 24px; position:relative; border-radius:24px; text-align:center; max-height:90vh; overflow-y:auto;">
+            <button onclick="closeCustomOrderModal()" style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:18px; cursor:pointer; color:#737373; width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
+            
+            <div style="width:36px; height:36px; border-radius:50%; background:rgba(107,142,96,0.08); border:1px solid rgba(107,142,96,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 12px auto; color:#6B8E60; font-size:14px;">✦</div>
+
+            <h3 id="modal-title" style="font-family:'Songti SC','SimSun',serif; font-size:1.25rem; font-weight:bold; color:#262626; margin-bottom:6px;" data-zh="【南阳艾草 · 高纯原矿艾绿手串】· 臻藏结缘" data-en="[Nanyang Mugwort Bracelet] &bull; Bespoke Order">【南阳艾草 · 高纯原矿艾绿手串】· 臻藏结缘</h3>
+            <p class="dynamic-text" style="font-size:11px; color:#8c8c8c; margin-bottom:20px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please provide your contact details & shipping address">请详细填写您的联系信息与邮寄地址</p>
+            
+            <div style="display:flex; flex-direction:column; gap:14px; text-align:left;">
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name">尊姓大名</label>
+                    <input type="text" id="cust-name" class="form-input" placeholder="例如：张女士 / Alice Smith" data-placeholder-zh="例如：张女士 / Alice Smith" data-placeholder-en="e.g. Alice Smith">
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email Address">联系邮箱</label>
+                        <input type="email" id="cust-email" class="form-input" placeholder="name@domain.com" data-placeholder-zh="name@domain.com" data-placeholder-en="name@domain.com">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone">联系电话</label>
+                        <input type="text" id="cust-phone" class="form-input" placeholder="用于配送联系" data-placeholder-zh="用于配送联系" data-placeholder-en="For delivery updates">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Shipping Address: Street & House No.">邮寄地址：街道与门牌号</label>
+                    <input type="text" id="cust-street" class="form-input" placeholder="例如：Hauptstraße 123 或 淮海中路888号" data-placeholder-zh="例如：Hauptstraße 123 或 淮海中路888号" data-placeholder-en="e.g. Hauptstraße 123, Apt 4B">
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Zip Code / Postcode">邮政编码</label>
+                        <input type="text" id="cust-zip" class="form-input" placeholder="例如：80331" data-placeholder-zh="例如：80331" data-placeholder-en="e.g. 80331">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City">城市</label>
+                        <input type="text" id="cust-city" class="form-input" placeholder="例如：München / 慕尼黑" data-placeholder-zh="例如：München / 慕尼黑" data-placeholder-en="e.g. Munich">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)">手围尺寸 (cm)</label>
+                    <select id="cust-wrist" style="width:100%; padding:10px 14px; border:1px solid rgba(107,142,96,0.25); border-radius:8px; outline:none; font-size:13px; background:#FAFAFA; cursor:pointer;">
+                        <option value="13.0cm - 14.5cm" data-zh="13.0cm - 14.5cm" data-en="13.0cm - 14.5cm">13.0cm - 14.5cm</option>
+                        <option value="15.0cm - 16.5cm" data-zh="15.0cm - 16.5cm" data-en="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                        <option value="17.0cm - 18.5cm" data-zh="17.0cm - 18.5cm" data-en="17.0cm - 18.5cm">17.0cm - 18.5cm</option>
+                        <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size">定制专属尺寸</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes / Gift Wrap">其他备注或礼盒需求</label>
+                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="选填：礼品包装需求或特殊尺寸说明" data-placeholder-zh="选填：礼品包装需求或特殊尺寸说明" data-placeholder-en="Optional: Gift messaging or custom dimensions"></textarea>
+                </div>
+
+                <div style="margin-top: 8px;">
+                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€89.00 含邮)" data-en="Select payment method below after entering details (€89.00 incl. shipping)">完整填写后，请选择结算方式 (€89.00 含邮)</p>
+                    
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 超高清图片灯箱 (Lightbox) -->
+    <div id="imageLightbox" style="display: none; position: fixed; inset: 0; z-index: 150; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 16px; cursor: pointer;" onclick="closeLightbox()">
+        <div style="position: relative; width: 100%; height: 100%; max-width: 1200px; max-height: 92vh; display: flex; align-items: center; justify-content: center;" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" style="position: absolute; top: 10px; right: 10px; z-index: 50; color: white; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+            <img id="lightbox-img" src="" alt="手链超清大图" style="max-width: 95vw; max-height: 90vh; object-fit: contain; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+        </div>
+    </div>
+
     <!-- 页脚布局 -->
     <footer class="footer">
         <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
@@ -439,6 +602,7 @@
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
+        let selectedProductModel = "南阳艾草 · 高纯原矿艾绿手串 (原价 €189.00 / 特惠 €89.00)";
 
         const products = [
             {
@@ -446,32 +610,44 @@
                 title_en: "Nanyang Mugwort · Green Jasper Bracelet",
                 sub_zh: "Mugwort Green & Dewy White Collection",
                 sub_en: "Mugwort Green & Dewy White Collection",
+                original_price: "€ 189.00",
+                sale_price: "€ 89.00",
                 desc_zh: "“手持艾叶驱寒气，正气存内百邪除。” 精选南阳优质艾草与草木玉石，色泽苍翠温润，佩之清心宁神，辟邪纳福。",
-                desc_en: "“Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.”"
+                desc_en: "“Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.”",
+                img: "https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort"
             },
             {
                 title_zh: "苍青草色 · 深绿玉髓手串",
                 title_en: "Deep Grass Flora · Chalcedony Bracelet",
                 sub_zh: "Deep Grass Flora Collection",
                 sub_en: "Deep Grass Flora Collection",
+                original_price: "€ 189.00",
+                sale_price: "€ 89.00",
                 desc_zh: "“绿叶丛中藏仙草，清风徐来药韵长。” 苍青纯净的草木色泽，带来无限生机与内敛宁静。",
-                desc_en: "“Sacred herbs hidden amidst verdant leaves; gentle breeze carries enduring herbal resonance.”"
+                desc_en: "“Sacred herbs hidden amidst verdant leaves; gentle breeze carries enduring herbal resonance.”",
+                img: "https://placehold.co/600x600/6b8e60/ffffff?text=Deep+Grass+Flora"
             },
             {
                 title_zh: "晨露浅草 · 冰透绿幽灵手串",
                 title_en: "Dewy Meadow · Green Phantom Quartz",
                 sub_zh: "Dewy Meadow Collection",
                 sub_en: "Dewy Meadow Collection",
+                original_price: "€ 189.00",
+                sale_price: "€ 89.00",
                 desc_zh: "“晨露凝青如玉润，静守本真待岁长。” 晶体纯净伴随天然草木幽灵，灵动脱俗。",
-                desc_en: "“Morning dew condensing like flawless jade, guarding authentic self through years.”"
+                desc_en: "“Morning dew condensing like flawless jade, guarding authentic self through years.”",
+                img: "https://placehold.co/600x600/8fa984/ffffff?text=Dewy+Meadow"
             },
             {
                 title_zh: "凝露白 · 羊脂白玉髓手串",
                 title_en: "Dewy Alabaster · Chalcedony Bracelet",
                 sub_zh: "Dewy Alabaster Collection",
                 sub_en: "Dewy Alabaster Collection",
+                original_price: "€ 189.00",
+                sale_price: "€ 89.00",
                 desc_zh: "“清风拂面晨露散，玉润冰清意自闲。” 如早春晨露般的温润白色玉髓，纯粹清爽。",
-                desc_en: "“Pure alabaster chalcedony capturing the pristine freshness of morning dew.”"
+                desc_en: "“Pure alabaster chalcedony capturing the pristine freshness of morning dew.”",
+                img: "https://placehold.co/600x600/f0f5ef/262626?text=Dewy+Alabaster"
             }
         ];
 
@@ -506,11 +682,22 @@
             const p = products[idx];
             const titleEl = document.getElementById('hero-product-title');
             const subTitleEl = document.getElementById('hero-product-subtitle');
+            const originalPriceEl = document.getElementById('hero-product-original-price');
+            const salePriceEl = document.getElementById('hero-product-sale-price');
             const descEl = document.getElementById('hero-product-desc');
+            const modalTitleEl = document.getElementById('modal-title');
 
             if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
             if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
+            if (originalPriceEl) originalPriceEl.innerText = p.original_price;
+            if (salePriceEl) salePriceEl.innerText = p.sale_price;
             if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+            
+            const productTitleText = currentLang === 'zh' ? p.title_zh : p.title_en;
+            if (modalTitleEl) {
+                modalTitleEl.innerText = currentLang === 'zh' ? `【${productTitleText}】· 臻藏结缘` : `[${productTitleText}] • Bespoke Order`;
+            }
+            selectedProductModel = `${productTitleText} (原价 €189.00 / 特惠 €89.00)`;
         }
 
         function nextProduct() {
@@ -523,6 +710,130 @@
             switchProduct(currentProductIdx);
         }
 
+        function openCustomOrderModal() {
+            document.getElementById('custom-modal').style.display = 'flex';
+        }
+
+        function closeCustomOrderModal() {
+            document.getElementById('custom-modal').style.display = 'none';
+        }
+
+        function openLightbox(idx = currentProductIdx) {
+            const currentImgSrc = products[idx].img;
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            if (lightboxImg) lightboxImg.src = currentImgSrc;
+            if (lightbox) {
+                lightbox.style.display = 'flex';
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            if (lightbox) {
+                lightbox.style.display = 'none';
+            }
+        }
+
+        function validateOrderFields() {
+            const name = document.getElementById('cust-name').value.trim();
+            const email = document.getElementById('cust-email').value.trim();
+            const street = document.getElementById('cust-street').value.trim();
+            const zip = document.getElementById('cust-zip').value.trim();
+            const city = document.getElementById('cust-city').value.trim();
+
+            if (!name || !email || !street || !zip || !city) {
+                alert(currentLang === 'zh' ? 
+                    '请完整填写尊姓大名、联系邮箱以及详细的邮寄地址（街道门牌号、邮编和城市）。' : 
+                    'Please enter your full name, email address, and complete shipping address (street, zip code, city).'
+                );
+                return false;
+            }
+            return true;
+        }
+
+        function sendOrderEmail(customerData) {
+            const formData = new FormData();
+            formData.append('_subject', '【蕊宫官网】艾青手链专属定制订单意向通知');
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            formData.append('客户姓名', customerData.name);
+            formData.append('联系邮箱', customerData.email);
+            formData.append('电话/微信', customerData.phone);
+            formData.append('街道门牌号', customerData.street);
+            formData.append('邮政编码', customerData.zip);
+            formData.append('城市', customerData.city);
+            formData.append('手围尺寸', customerData.wrist);
+            formData.append('定制款式', customerData.model);
+            formData.append('其他备注', customerData.notes);
+
+            fetch('https://formsubmit.co/ajax/mai@rui-palace.de', {
+                method: 'POST',
+                body: formData
+            }).catch(err => console.log('邮件异步发送提示:', err));
+        }
+
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'gold',
+                shape:  'rect',
+                label:  'paypal'
+            },
+            createOrder: function(data, actions) {
+                if (!validateOrderFields()) {
+                    throw new Error('Required address and contact fields are missing.');
+                }
+
+                const wristSize = document.getElementById('cust-wrist').value;
+                const street = document.getElementById('cust-street').value;
+                const zip = document.getElementById('cust-zip').value;
+                const city = document.getElementById('cust-city').value;
+                const fullItemDescription = `${selectedProductModel} | [尺寸: ${wristSize}] | [地址: ${street}, ${zip} ${city}]`;
+
+                return actions.order.create({
+                    purchase_units: [{
+                        description: fullItemDescription,
+                        amount: {
+                            currency_code: 'EUR',
+                            value: '89.00'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    const customerData = {
+                        name: document.getElementById('cust-name').value,
+                        email: document.getElementById('cust-email').value,
+                        phone: document.getElementById('cust-phone').value || '未填',
+                        street: document.getElementById('cust-street').value,
+                        zip: document.getElementById('cust-zip').value,
+                        city: document.getElementById('cust-city').value,
+                        wrist: document.getElementById('cust-wrist').value,
+                        model: selectedProductModel,
+                        notes: document.getElementById('cust-notes').value.trim() || '无备注'
+                    };
+
+                    sendOrderEmail(customerData);
+
+                    alert(currentLang === 'zh' ? 
+                        `感谢尊贵的客户 ${customerData.name}！支付已成功完成。您的详细快递地址（${customerData.street}, ${customerData.zip} ${customerData.city}）与手围尺寸已自动记录并推送到 mai@rui-palace.de。` : 
+                        `Thank you ${customerData.name}! Payment successful. Your delivery details (${customerData.street}, ${customerData.zip} ${customerData.city}) have been registered and sent to mai@rui-palace.de.`
+                    );
+                    closeCustomOrderModal();
+                });
+            },
+            onCancel: function (data) {
+                alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
+            },
+            onError: function (err) {
+                console.error('支付流程异常：', err);
+                alert(currentLang === 'zh' ? '支付未成功完成，请确保表单信息填写完整后重试。' : 'Payment could not be completed. Please ensure all required fields are filled out.');
+            }
+        }).render('#paypal-button-container');
+
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
             const placeholder = document.getElementById('video-placeholder');
@@ -531,7 +842,8 @@
                 <iframe style="width:100%; height:100%; border:none;" 
                         src="https://www.youtube-nocookie.com/embed/fKbhu-kOhr8?autoplay=1" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
                 </iframe>
             `;
         }
@@ -583,7 +895,7 @@
         };
 
         function returnToPrevious() {
-            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
+            window.location.href = `index.html?lang=${currentLang}`;
         }
 
         function toggleLanguage(targetLang) {
@@ -597,6 +909,17 @@
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
                 el.setAttribute('data-lang', currentLang); 
             });
+
+            document.querySelectorAll('[data-placeholder-zh]').forEach(input => {
+                input.placeholder = input.getAttribute(`data-placeholder-${currentLang}`);
+            });
+
+            document.querySelectorAll('#cust-wrist option').forEach(opt => {
+                opt.innerText = opt.getAttribute(`data-${currentLang}`);
+            });
+
+            const channelLink = document.getElementById('channel-link');
+            if (channelLink) channelLink.href = `Color Sky Blue.html?lang=${currentLang}`;
 
             switchProduct(currentProductIdx);
             renderGrid();
@@ -615,6 +938,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             toggleLanguage(langParam === 'en' ? 'en' : 'zh');
+            renderGrid();
         });
     </script>
 </body>
