@@ -60,10 +60,10 @@
         .side-wing-left, .side-wing-right {
             display: none;
             position: absolute;
-            top: 20px;
-            bottom: 20px;
+            top: 24px;
+            bottom: 24px;
             flex-direction: column;
-            justify-content: flex-start; /* 改为 flex-start 以便精细控制间距 */
+            justify-content: space-between;
             align-items: center;
             z-index: 20;
         }
@@ -80,7 +80,6 @@
             letter-spacing: 0.3em; 
             font-size: 10px; 
             color: #8670A0; 
-            margin-top: 48px; /* 增加竖行文字与上方按钮的间距 */
         }
         .vertical-wing[data-lang="en"] { 
             writing-mode: vertical-rl; 
@@ -88,7 +87,6 @@
             letter-spacing: 0.05em; 
             font-family: "Times New Roman", Times, serif; 
             font-size: 9px; 
-            margin-top: 48px;
         }
 
         .lang-switch-btn { 
@@ -233,7 +231,6 @@
 
     <!-- 顶部 Header -->
     <header class="relative pt-8 pb-6 border-b border-black/5 text-center max-w-7xl mx-auto w-full px-6">
-        <!-- 左侧翼：归隐按钮与上方留出安全距离的竖文 -->
         <div class="side-wing-left">
             <button onclick="returnToPrevious()" class="bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-[#a3a3a3] p-1 hover:text-[#8670A0]">
                 <span class="text-xs">⇠</span>
@@ -242,6 +239,7 @@
             <div class="flex flex-col items-center">
                 <span class="vertical-wing" data-zh="灵犀鉴 · 暮色格物" data-en="RUI PALACE · TWILIGHT">灵犀鉴 · 暮色格物</span>
             </div>
+            <div></div>
         </div>
 
         <h1 id="main-title" class="dynamic-title" data-zh="暮山紫 · 月白无尽夏" data-en="Mushan Purple & Yuebai Collection">暮山紫 · 月白无尽夏</h1>
@@ -255,7 +253,6 @@
             </p>
         </div>
 
-        <!-- 右侧翼：语言切换按钮与上方留出安全距离的竖文 -->
         <div class="side-wing-right">
             <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
                 EN / 中
@@ -263,6 +260,7 @@
             <div class="flex flex-col items-center">
                 <span class="vertical-wing" data-zh="向内深种 · 守白知黑" data-en="INWARD GROWTH · EMBRACE SHADOW">向内深种 · 守白知黑</span>
             </div>
+            <div></div>
         </div>
     </header>
 
