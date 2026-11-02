@@ -173,7 +173,7 @@
             transition: background-color 0.5s;
         }
 
-        /* 核心：海棠花窗视口与裁剪定义（确保图片四周四个角被花窗完美遮挡） */
+        /* 核心：海棠花窗视口与裁剪定义 */
         .begonia-window-clip {
             clip-path: url(#begonia-clip);
         }
@@ -256,11 +256,12 @@
         </button>
     </div>
 
-    <!-- 顶头画卷：包含左右两侧紧跟在按钮下方的竖排声明 -->
+    <!-- 顶头画卷（包含在“归隐/中英文切换”下方两侧的竖排声明） -->
     <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(141,163,130,0.3); position: relative;">
-        <!-- 左侧竖排声明 -->
-        <div style="position: absolute; left: 24px; top: 32px; display: flex; align-items: center; gap: 6px; z-index: 10;">
-            <span style="width: 1px; height: 40px; background: #8DA382; opacity: 0.4;"></span>
+        
+        <!-- 左侧竖排声明：紧跟在按钮下方两侧 -->
+        <div style="position:absolute; left:24px; top:32px; display:flex; align-items:center; gap:6px; z-index:10;">
+            <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
             <span class="vertical-wing" data-zh="蕊宫 · 艾青格物" data-en="RUI PALACE · MUGWORT">蕊宫 · 艾青格物</span>
         </div>
 
@@ -275,14 +276,14 @@
             </p>
         </div>
 
-        <!-- 右侧竖排声明 -->
-        <div style="position: absolute; right: 24px; top: 32px; display: flex; align-items: center; gap: 6px; z-index: 10;">
+        <!-- 右侧竖排声明：紧跟在按钮下方两侧 -->
+        <div style="position:absolute; right:24px; top:32px; display:flex; align-items:center; gap:6px; z-index:10;">
             <span class="vertical-wing" data-zh="仙草怀真 · 正气长存" data-en="SACRED HERB · VITAL INTEGRITY">仙草怀真 · 正气长存</span>
-            <span style="width: 1px; height: 40px; background: #8DA382; opacity: 0.4;"></span>
+            <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
         </div>
     </header>
 
-    <!-- 核心 Hero 海棠花窗产品展示中心 -->
+    <!-- 核心 Hero 海棠花窗主打系列展示中心 -->
     <section class="container" style="padding-top: 40px;">
         <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(255, 255, 255, 0.9); max-width: 840px; margin: 0 auto;">
             
