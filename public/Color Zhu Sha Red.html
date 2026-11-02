@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>朱砂落 · 凝脂白中国红美学色卡</title>
-    
     <!-- 纯原生安全样式，彻底剔除所有外来在线框架与外部字体，符合合规要求 -->
     <style>
         *, *::before, *::after {
@@ -13,7 +12,6 @@
             margin: 0;
             padding: 0;
         }
-
         body { 
             font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
             background-color: #FBF2F1; 
@@ -55,32 +53,30 @@
             }
         }
 
-        /* 纯净排版控制体系 */
         .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
         .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
-
+        
         .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.4em; font-size: 0.75rem; color: #B12224; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
-
+        
         .dynamic-text { letter-spacing: 0.15em; font-weight: 300; font-size: 0.875rem; color: #525252; }
         .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
-
+        
         .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
         .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
         
         .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
         .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
-
+        
         .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
         .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
-
+        
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #B12224; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
-
+        
         .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(177, 34, 36, 0.08); border: 1px solid rgba(177, 34, 36, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
         .lang-switch-btn:hover { background: #B12224; color: white; border-color: #B12224; }
 
-        /* 布局与组件细节 */
         .color-grid-box {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -170,6 +166,20 @@
             transition: background-color 0.5s;
         }
 
+        /* 核心：海棠花窗完美裁切定义 */
+        .begonia-window-clip {
+            clip-path: url(#begonia-clip);
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: grab;
+        }
+        .slider-track:active {
+            cursor: grabbing;
+        }
+
         input[type="range"] {
             width: 100%;
             height: 4px;
@@ -192,8 +202,15 @@
         @media(min-width: 640px) { footer.footer { flex-direction: row; } }
     </style>
 </head>
-<body style="selection-background-color: rgba(177, 34, 36, 0.25);">
-
+<body>
+    <!-- 定义海棠花窗 SVG 几何路径 (用于 clip-path 遮挡四周四个角) -->
+    <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
+        <defs>
+            <clipPath id="begonia-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,0.02 C 0.63,0.02 0.71,0.09 0.76,0.22 C 0.89,0.27 0.98,0.36 0.98,0.5 C 0.98,0.64 0.89,0.73 0.76,0.78 C 0.71,0.91 0.63,0.98 0.5,0.98 C 0.37,0.98 0.29,0.91 0.24,0.78 C 0.11,0.73 0.02,0.64 0.02,0.5 C 0.02,0.36 0.11,0.27 0.24,0.22 C 0.29,0.09 0.37,0.02 0.5,0.02 Z" />
+            </clipPath>
+        </defs>
+    </svg>
     <!-- 顶部导航：归隐与语言切换 -->
     <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
         <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#a3a3a3;">
@@ -218,9 +235,9 @@
         <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="Cinnabar Red & Creamy White Spectrum" data-en="Cinnabar Red & Creamy White Spectrum">Cinnabar Red & Creamy White Spectrum</p>
         
         <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
-            <p id="main-desc" class="dynamic-text" 
-               data-zh="“朱砂染就大国色，凝脂和光守本真。”<br>于故宫红墙与霁雪初下之刹那，碰撞出既热烈澎湃、又克制深沉的东方风骨。" 
-               data-en="&ldquo;Cinnabar dyes the great national color, while creamy white softens light to hold inner essence.&rdquo;<br>At the split second when the forbidden walls meet the first dawn snow, a spirit both passionate and restrained is born.">
+            <p id="main-desc" class="dynamic-text"
+                data-zh="“朱砂染就大国色，凝脂和光守本真。”<br>于故宫红墙与霁雪初下之刹那，碰撞出既热烈澎湃、又克制深沉的东方风骨。"
+                data-en="&ldquo;Cinnabar dyes the great national color, while creamy white softens light to hold inner essence.&rdquo;<br>At the split second when the forbidden walls meet the first dawn snow, a spirit both passionate and restrained is born.">
                 “朱砂染就大国色，凝脂和光守本真。”<br>于故宫红墙与霁雪初下之刹那，碰撞出既热烈澎湃、又克制深沉的东方风骨。
             </p>
         </div>
@@ -232,24 +249,34 @@
         </div>
     </header>
 
-    <!-- 核心 Hero 海棠花窗主打系列展示中心 -->
+    <!-- 核心 Hero 海棠花窗主打系列展示中心（图片位于花窗后面、四角被精准遮挡） -->
     <section class="container" style="padding-top: 40px;">
         <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(253, 251, 255, 0.9); max-width: 840px; margin: 0 auto;">
+            
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; background:rgba(177, 34, 36, 0.08); padding:4px 16px; border-radius:9999px; border:1px solid rgba(177, 34, 36, 0.2);">
                 <span style="width:8px; height:8px; border-radius:50%; background:#B12224; display:inline-block;"></span>
                 <span class="dynamic-sub" style="font-weight:600; color:#B12224; font-size:11px;" data-zh="海棠花窗 · 朱砂臻藏" data-en="BEGONIA GALLERY · CINNABAR COLLECTION">海棠花窗 · 朱砂臻藏</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="朱砂落 · 高纯原矿朱砂凝脂手串" data-en="Cinnabar Red · Pure Mineral Cinnabar Bracelet">朱砂落 · 高纯原矿朱砂凝脂手串</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" data-zh="Pure Mineral Cinnabar & Creamy White Collection" data-en="Pure Mineral Cinnabar & Creamy White Collection">Pure Mineral Cinnabar & Creamy White Collection</p>
+            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" 
+                data-zh="朱砂落 · 高纯原矿朱砂凝脂手串" 
+                data-en="Cinnabar Red · Pure Mineral Cinnabar Bracelet">
+                朱砂落 · 高纯原矿朱砂凝脂手串
+            </h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" 
+                data-zh="Pure Mineral Cinnabar & Creamy White Collection" 
+                data-en="Pure Mineral Cinnabar & Creamy White Collection">
+                Pure Mineral Cinnabar & Creamy White Collection
+            </p>
 
-            <!-- 放大后的海棠花窗视口 -->
+            <!-- 海棠花窗视口组件 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
-                <!-- 切换导航按钮 -->
+                
+                <!-- 左右切换导航按钮 (置于花窗两侧外层) -->
                 <button onclick="prevProduct()" style="position:absolute; left:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#B12224; border:1px solid rgba(177, 34, 36, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个">❮</button>
                 <button onclick="nextProduct()" style="position:absolute; right:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#B12224; border:1px solid rgba(177, 34, 36, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个">❯</button>
 
-                <!-- 外边框装饰 -->
+                <!-- 花窗外边框装饰 (叠放在最上层勾勒边缘) -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
                         <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" 
@@ -257,22 +284,24 @@
                     </svg>
                 </div>
 
+                <!-- 关键修改：带有 clip-path 的花窗裁剪容器，产品图片在容器内部，四个角被完美遮住 -->
                 <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
-                    <div id="slider-track" class="slider-track" style="width:100%; height:100%; display:flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+                    <div id="slider-track" class="slider-track" style="width:100%; height:100%; display:flex;">
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/b12224/ffffff?text=Cinnabar+Red+Bracelet" alt="朱砂落手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/b12224/ffffff?text=Cinnabar+Red+Bracelet" alt="朱砂落手链" style="width:100%; height:100%; object-fit:contain; pointer-events:none;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/c82c2e/ffffff?text=Imperial+Wall+Red" alt="宫墙红手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/c82c2e/ffffff?text=Imperial+Wall+Red" alt="宫墙红手链" style="width:100%; height:100%; object-fit:contain; pointer-events:none;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/d9484a/ffffff?text=Rouge+Snow" alt="胭脂雪手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/d9484a/ffffff?text=Rouge+Snow" alt="胭脂雪手链" style="width:100%; height:100%; object-fit:contain; pointer-events:none;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/f9f3eb/262626?text=Creamy+White" alt="凝脂白手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/f9f3eb/262626?text=Creamy+White" alt="凝脂白手链" style="width:100%; height:100%; object-fit:contain; pointer-events:none;">
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <p id="hero-product-desc" class="poetry-text-style" style="font-size:0.95rem; color:#525252; max-width:620px; margin:16px 0; line-height:1.7;"
@@ -283,7 +312,7 @@
 
             <!-- 款式缩略选择 -->
             <div style="display:flex; gap:16px; margin-top:12px;">
-                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px; cursor:pointer; border:2px solid transparent; transition:all 0.3s;" class="active">
+                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px; cursor:pointer; border:2px solid transparent; transition:all 0.3s;">
                     <div style="width:16px; height:16px; border-radius:50%; background:#B12224;"></div>
                     <span style="font-size:11px; font-family:serif;" data-zh="朱砂红" data-en="Cinnabar">朱砂红</span>
                 </div>
@@ -314,9 +343,11 @@
                 </h2>
                 <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
             </div>
+            
             <div id="color-grid" class="color-grid-box"></div>
+            
             <div style="padding-top:16px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
-                <span></span><span></span>
+                <span>朱砂大国色</span><span>凝脂守本真</span>
             </div>
         </section>
 
@@ -350,18 +381,18 @@
                 </div>
                 <span style="font-size:12px; color:#B12224; font-weight:bold;">➔</span>
             </a>
-            
+
             <!-- 动态交互大卡片 -->
             <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
-                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">宫墙霁雪</p>
+                <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">朱砂红</p>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9; letter-spacing:0.05em;">#B12224</p>
                     <span id="copy-badge" class="dynamic-sub" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY">点击复制</span>
                 </div>
             </div>
-            
+
             <input type="range" id="color-slider" min="0" max="5" value="0">
-            
+
             <!-- 意境山水诗词 -->
             <div style="border-top:1px solid rgba(0,0,0,0.05); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
                 <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
@@ -454,10 +485,10 @@
         ];
 
         const poetries = [
-            { text_zh: "只恐夜深花睡去，故烧高烛照红妆。", text_en: "Fearing that in the deep of night the flowers might fall asleep, I light high candles to illuminate their red makeup.", source_zh: "—— 苏轼 · 《海棠》", source_en: "— Su Shi, Begonia" },
-            { text_zh: "朱实陨秋露，红叶卷春风。", text_en: "Vermilion fruits fall in the autumn dew, while red leaves drift in the spring breeze.", source_zh: "—— 杜甫 · 《秋野》", source_en: "— Du Fu, Autumn Fields" },
-            { text_zh: "红豆生南国，春来发几枝。", text_en: "The red beans grow in southern lands, sprouting few branches when spring arrives.", source_zh: "—— 王维 · 《相思》", source_en: "— Wang Wei, Lovesickness" },
-            { text_zh: "愿君如火怀赤子，历尽千帆骨仍红。", text_en: "May you remain like fire with an innocent heart; though traveling a thousand sails, your bone remains red.", source_zh: "—— 蕊宫随笔 · 《向内生长》", source_en: "— Rui Palace, Inward Growth" }
+            { text_zh: "只恐夜深花睡去，故烧高烛照红妆。", text_en: "Fearing that in the deep of night the flowers might fall asleep, I light high candles to illuminate their red makeup.", source_zh: "—— 苏轼 · 《海棠》", source_en: "- Su Shi, Begonia" },
+            { text_zh: "朱实陨秋露，红叶卷春风。", text_en: "Vermilion fruits fall in the autumn dew, while red leaves drift in the spring breeze.", source_zh: "—— 杜甫 · 《秋野》", source_en: "- Du Fu, Autumn Fields" },
+            { text_zh: "红豆生南国，春来发几枝。", text_en: "The red beans grow in southern lands, sprouting few branches when spring arrives.", source_zh: "—— 王维 · 《相思》", source_en: "- Wang Wei, Lovesickness" },
+            { text_zh: "愿君如火怀赤子，历尽千帆骨仍红。", text_en: "May you remain like fire with an innocent heart; though traveling a thousand sails, your bone remains red.", source_zh: "—— 蕊宫随笔 · 《向内生长》", source_en: "- Rui Palace, Inward Growth" }
         ];
 
         function switchProduct(idx) {
@@ -506,7 +537,9 @@
         }
 
         function renderGrid() {
-            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
+            const grid = document.getElementById('color-grid');
+            if (!grid) return;
+            grid.innerHTML = colors.map((c, idx) => `
                 <div onclick="selectGridColor(${idx})" class="color-card">
                     <div class="color-block" style="background-color:${c.hex}"></div>
                     <div>
@@ -518,69 +551,60 @@
         }
 
         function selectGridColor(idx) {
-            document.getElementById('color-slider').value = idx;
+            const slider = document.getElementById('color-slider');
+            if (slider) slider.value = idx;
             updateDynamicPad(idx);
         }
 
         function updateDynamicPad(idx) {
             const c = colors[idx];
-            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
+            const pad = document.getElementById('dynamic-pad');
             const nameEl = document.getElementById('dynamic-name');
-            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
-            nameEl.setAttribute('data-lang', currentLang);
-            document.getElementById('dynamic-hex').innerText = c.hex;
-        }
+            const hexEl = document.getElementById('dynamic-hex');
 
-        document.getElementById('color-slider').oninput = function() {
-            updateDynamicPad(this.value);
-        };
-
-        document.getElementById('next-poetry').onclick = () => {
-            const p = poetries[Math.floor(Math.random() * poetries.length)];
-            const tEl = document.getElementById('poetry-text');
-            const sEl = document.getElementById('poetry-source');
-            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
-            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-            tEl.setAttribute('data-lang', currentLang);
-            sEl.setAttribute('data-lang', currentLang);
-        };
-
-        function returnToPrevious() {
-            window.location.href = `index.html?lang=${currentLang}`;
+            if (pad) pad.style.backgroundColor = c.hex;
+            if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            if (hexEl) hexEl.innerText = c.hex;
         }
 
         function toggleLanguage(targetLang) {
-            if (targetLang) {
-                currentLang = targetLang;
-            } else {
-                currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            }
-
+            currentLang = targetLang ? targetLang : (currentLang === 'zh' ? 'en' : 'zh');
+            
             document.querySelectorAll('[data-zh]').forEach(el => {
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
-                el.setAttribute('data-lang', currentLang); 
+                el.setAttribute('data-lang', currentLang);
             });
-
-            const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color_Xue_Tao_Red.html?lang=${currentLang}`;
 
             switchProduct(currentProductIdx);
             renderGrid();
-            const currentIdx = document.getElementById('color-slider').value;
-            updateDynamicPad(currentIdx);
+            const slider = document.getElementById('color-slider');
+            if (slider) updateDynamicPad(slider.value);
+        }
 
-            const tEl = document.getElementById('poetry-text');
-            const sEl = document.getElementById('poetry-source');
-            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
-            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
-            tEl.setAttribute('data-lang', currentLang);
-            sEl.setAttribute('data-lang', currentLang);
+        function returnToPrevious() {
+            window.location.href = `https://www.rui-palace.com/aesthetics?lang=${currentLang}`;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const langParam = urlParams.get('lang');
-            toggleLanguage(langParam === 'en' ? 'en' : 'zh');
+            renderGrid();
+
+            const slider = document.getElementById('color-slider');
+            if (slider) {
+                slider.oninput = function() {
+                    updateDynamicPad(this.value);
+                };
+            }
+
+            const nextPoetryBtn = document.getElementById('next-poetry');
+            if (nextPoetryBtn) {
+                nextPoetryBtn.onclick = () => {
+                    const p = poetries[Math.floor(Math.random() * poetries.length)];
+                    const tEl = document.getElementById('poetry-text');
+                    const sEl = document.getElementById('poetry-source');
+                    if (tEl) tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+                    if (sEl) sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+                };
+            }
         });
     </script>
 </body>
