@@ -786,8 +786,8 @@
                         city: document.getElementById('cust-city').value,
                         wrist: document.getElementById('cust-wrist').value,
                         model: selectedProductModel,
-                        notes: document.getElementById('cust-notes').value || '无备注'
-                    };
+                       notes: document.getElementById('cust-notes').value.trim() || '无备注'
+};
 
                     sendOrderEmail(customerData);
 
