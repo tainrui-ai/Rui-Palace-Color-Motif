@@ -76,8 +76,9 @@
         .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
         .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
 
-        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #6B8E60; }
-        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
+        /* 强制确保竖排声明在所有屏幕下可见 */
+        .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 11px; color: #6B8E60; font-weight: 600; }
+        .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 10px; }
 
         .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(107, 142, 96, 0.08); border: 1px solid rgba(107, 142, 96, 0.25); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
         .lang-switch-btn:hover { background: #6B8E60; color: white; border-color: #6B8E60; }
@@ -257,9 +258,9 @@
 
     <!-- 顶头画卷 -->
     <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(141,163,130,0.3); position: relative;">
-        <!-- 左侧翼：动态竖排声明 -->
-        <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
-            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+        <!-- 左侧翼：动态竖排声明（强制直接显示） -->
+        <div style="position:absolute; left:16px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:6px; z-index:10;">
+            <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
             <span class="vertical-wing" data-zh="蕊宫 · 艾青格物" data-en="RUI PALACE · MUGWORT">蕊宫 · 艾青格物</span>
         </div>
 
@@ -274,10 +275,10 @@
             </p>
         </div>
 
-        <!-- 右侧翼：动态竖排声明 -->
-        <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
+        <!-- 右侧翼：动态竖排声明（强制直接显示） -->
+        <div style="position:absolute; right:16px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:6px; z-index:10;">
             <span class="vertical-wing" data-zh="仙草怀真 · 正气长存" data-en="SACRED HERB · VITAL INTEGRITY">仙草怀真 · 正气长存</span>
-            <span style="width:1px; height:48px; background:#d4d4d4;"></span>
+            <span style="width:1px; height:40px; background:#8DA382; opacity:0.4;"></span>
         </div>
     </header>
 
@@ -506,13 +507,6 @@
         </p>
     </footer>
 
-    <!-- 响应式大屏侧翼显示控制样式 -->
-    <style>
-        @media (min-width: 1024px) {
-            .side-wing-desktop { display: flex !important; }
-        }
-    </style>
-
     <!-- 业务交互逻辑脚本 -->
     <script>
         function loadYouTubeVideo() {
@@ -697,52 +691,51 @@
             if (lightbox) lightbox.classList.add('active');
         }
 
-        function closeLightbox() {
-            document.getElementById('imageLightbox')?.classList.remove('active');
+    function closeLightbox() {
+        document.getElementById('imageLightbox')?.classList.remove('active');
+    }
+
+    function openModal() {
+        const p = products[currentProductIdx];
+        const selectedTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
+        const modalTitle = document.getElementById('modal-product-title');
+        const hiddenInput = document.getElementById('modal-product-hidden');
+        if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
+        if (hiddenInput) hiddenInput.value = selectedTitle;
+        document.getElementById('buyModal')?.classList.add('active');
+    }
+
+    function closeModal() {
+        document.getElementById('buyModal')?.classList.remove('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam === 'en') {
+            toggleLanguage('en');
+        } else {
+            renderGrid();
         }
 
-        function openModal() {
-            const p = products[currentProductIdx];
-            const selectedTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
-            const modalTitle = document.getElementById('modal-product-title');
-            const hiddenInput = document.getElementById('modal-product-hidden');
-            if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
-            if (hiddenInput) hiddenInput.value = selectedTitle;
-            document.getElementById('buyModal')?.classList.add('active');
+        const slider = document.getElementById('color-slider');
+        if (slider) {
+            slider.oninput = function() {
+                updateDynamicPad(this.value);
+            };
         }
 
-        function closeModal() {
-            document.getElementById('buyModal')?.classList.remove('active');
+        const nextPoetryBtn = document.getElementById('next-poetry');
+        if (nextPoetryBtn) {
+            nextPoetryBtn.onclick = () => {
+                const p = poetries[Math.floor(Math.random() * poetries.length)];
+                const tEl = document.getElementById('poetry-text');
+                const sEl = document.getElementById('poetry-source');
+                if (tEl) tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+                if (sEl) sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            };
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const langParam = urlParams.get('lang');
-            if (langParam === 'en') {
-                toggleLanguage('en');
-            } else {
-                renderGrid();
-            }
-
-            const slider = document.getElementById('color-slider');
-            if (slider) {
-                slider.oninput = function() {
-                    updateDynamicPad(this.value);
-                };
-            }
-
-            const nextPoetryBtn = document.getElementById('next-poetry');
-            if (nextPoetryBtn) {
-                nextPoetryBtn.onclick = () => {
-                    const p = poetries[Math.floor(Math.random() * poetries.length)];
-                    const tEl = document.getElementById('poetry-text');
-                    const sEl = document.getElementById('poetry-source');
-                    if (tEl) tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
-                    if (sEl) sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-                };
-            }
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
-```eof
