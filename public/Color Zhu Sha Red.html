@@ -249,7 +249,7 @@
         </div>
     </header>
 
-    <!-- 核心 Hero 海棠花窗主打系列展示中心（图片位于花窗后面、四角被精准遮挡） -->
+    <!-- 核心 Hero 海棠花窗主打系列展示中心 -->
     <section class="container" style="padding-top: 40px;">
         <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(253, 251, 255, 0.9); max-width: 840px; margin: 0 auto;">
             
@@ -272,11 +272,11 @@
             <!-- 海棠花窗视口组件 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
                 
-                <!-- 左右切换导航按钮 (置于花窗两侧外层) -->
+                <!-- 左右切换导航按钮 -->
                 <button onclick="prevProduct()" style="position:absolute; left:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#B12224; border:1px solid rgba(177, 34, 36, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个">❮</button>
                 <button onclick="nextProduct()" style="position:absolute; right:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#B12224; border:1px solid rgba(177, 34, 36, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个">❯</button>
 
-                <!-- 花窗外边框装饰 (叠放在最上层勾勒边缘) -->
+                <!-- 花窗外边框装饰 -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
                         <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" 
@@ -284,7 +284,7 @@
                     </svg>
                 </div>
 
-                <!-- 关键修改：带有 clip-path 的花窗裁剪容器，产品图片在容器内部，四个角被完美遮住 -->
+                <!-- 带有 clip-path 的花窗裁剪容器 -->
                 <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
                     <div id="slider-track" class="slider-track" style="width:100%; height:100%; display:flex;">
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
@@ -537,9 +537,7 @@
         }
 
         function renderGrid() {
-            const grid = document.getElementById('color-grid');
-            if (!grid) return;
-            grid.innerHTML = colors.map((c, idx) => `
+            document.getElementById('color-grid').innerHTML = colors.map((c, idx) => `
                 <div onclick="selectGridColor(${idx})" class="color-card">
                     <div class="color-block" style="background-color:${c.hex}"></div>
                     <div>
@@ -551,60 +549,66 @@
         }
 
         function selectGridColor(idx) {
-            const slider = document.getElementById('color-slider');
-            if (slider) slider.value = idx;
+            document.getElementById('color-slider').value = idx;
             updateDynamicPad(idx);
         }
 
         function updateDynamicPad(idx) {
             const c = colors[idx];
-            const pad = document.getElementById('dynamic-pad');
+            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
             const nameEl = document.getElementById('dynamic-name');
-            const hexEl = document.getElementById('dynamic-hex');
+            nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            nameEl.setAttribute('data-lang', currentLang);
+            document.getElementById('dynamic-hex').innerText = c.hex;
+        }
 
-            if (pad) pad.style.backgroundColor = c.hex;
-            if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
-            if (hexEl) hexEl.innerText = c.hex;
+        document.getElementById('color-slider').oninput = function() {
+            updateDynamicPad(this.value);
+        };
+
+        document.getElementById('next-poetry').onclick = () => {
+            const p = poetries[Math.floor(Math.random() * poetries.length)];
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
+        };
+
+        function returnToPrevious() {
+            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
         }
 
         function toggleLanguage(targetLang) {
-            currentLang = targetLang ? targetLang : (currentLang === 'zh' ? 'en' : 'zh');
-            
+            if (targetLang) {
+                currentLang = targetLang;
+            } else {
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            }
+
             document.querySelectorAll('[data-zh]').forEach(el => {
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
-                el.setAttribute('data-lang', currentLang);
+                el.setAttribute('data-lang', currentLang); 
             });
 
             switchProduct(currentProductIdx);
             renderGrid();
-            const slider = document.getElementById('color-slider');
-            if (slider) updateDynamicPad(slider.value);
-        }
+            const currentIdx = document.getElementById('color-slider').value;
+            updateDynamicPad(currentIdx);
 
-        function returnToPrevious() {
-            window.location.href = `https://www.rui-palace.com/aesthetics?lang=${currentLang}`;
+            const tEl = document.getElementById('poetry-text');
+            const sEl = document.getElementById('poetry-source');
+            tEl.innerHTML = currentLang === 'zh' ? `“${poetries[0].text_zh}”` : `&ldquo;${poetries[0].text_en}&rdquo;`;
+            sEl.innerText = currentLang === 'zh' ? poetries[0].source_zh : poetries[0].source_en;
+            tEl.setAttribute('data-lang', currentLang);
+            sEl.setAttribute('data-lang', currentLang);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            renderGrid();
-
-            const slider = document.getElementById('color-slider');
-            if (slider) {
-                slider.oninput = function() {
-                    updateDynamicPad(this.value);
-                };
-            }
-
-            const nextPoetryBtn = document.getElementById('next-poetry');
-            if (nextPoetryBtn) {
-                nextPoetryBtn.onclick = () => {
-                    const p = poetries[Math.floor(Math.random() * poetries.length)];
-                    const tEl = document.getElementById('poetry-text');
-                    const sEl = document.getElementById('poetry-source');
-                    if (tEl) tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
-                    if (sEl) sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-                };
-            }
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            toggleLanguage(langParam === 'en' ? 'en' : 'zh');
         });
     </script>
 </body>
