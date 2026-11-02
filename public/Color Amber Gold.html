@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>琥珀金 · 金泽流光美学色卡与典藏推广</title>
+    <title>琥珀金 · 宫廷美学色卡与定制臻藏</title>
     
+    <!-- 引入 PayPal 多合一 SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAZBjJQVB0sdSCeQ-8us00ThhIHr6G6UzpUIQdSwVRnnGIL7eLqI2Xf_EBOCqBMZQ7mptJdRCzsMvBpzc&currency=EUR&components=buttons&enable-funding=venmo,paylater,sepa,card"></script>
+
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -21,7 +24,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23D4A017' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23D4A017' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.08'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
         }
@@ -159,7 +162,7 @@
             justify-content: center;
             padding: 16px;
             text-align: center;
-            background: rgba(15, 15, 15, 0.85);
+            background: rgba(25, 20, 10, 0.88);
             cursor: pointer;
             transition: opacity 0.3s;
             z-index: 10;
@@ -225,6 +228,77 @@
             cursor: pointer; 
         }
 
+        .custom-order-btn {
+            display: block;
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            background: #D4A017;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 160, 23, 0.25);
+            text-align: center;
+            text-decoration: none;
+        }
+        .custom-order-btn:hover {
+            background: #B8860B;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212, 160, 23, 0.35);
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0;
+            font-family: "Songti SC", "SimSun", serif;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: #8c8c8c;
+            text-decoration: line-through;
+        }
+
+        .sale-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #D4A017;
+        }
+
+        .discount-tag {
+            background: rgba(212, 160, 23, 0.1);
+            color: #D4A017;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 160, 23, 0.2);
+            font-family: sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(212, 160, 23, 0.25);
+            border-radius: 8px;
+            outline: none;
+            font-size: 13px;
+            background: #FAFAFA;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            border-color: #D4A017;
+            background: #FFF;
+        }
+
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
         footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
         @media(min-width: 640px) { footer.footer { flex-direction: row; } }
@@ -263,13 +337,13 @@
         </div>
 
         <h1 id="main-title" class="dynamic-title" style="margin-bottom: 16px;" data-zh="琥珀金 · 金泽流光" data-en="Amber Gold & Timeless Glow">琥珀金 · 金泽流光</h1>
-        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="AMBER GOLD & TIMELESS GLOW SPECTRUM" data-en="AMBER GOLD & TIMELESS GLOW SPECTRUM">AMBER GOLD & TIMELESS GLOW SPECTRUM</p>
+        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="AMBER GOLD & IMPERIAL SPECTRUM" data-en="AMBER GOLD & IMPERIAL SPECTRUM">AMBER GOLD & IMPERIAL SPECTRUM</p>
         
         <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
             <p id="main-desc" class="dynamic-text" 
-               data-zh="“流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀中，寻得那份历经风霜后愈发纯粹的内敛光华。" 
-               data-en="&ldquo;Time cannot obscure the true essence, while passing years distill pure inner grace.&rdquo;<br>Deep within the amber of time, discovering that introverted brilliance which grows more pristine after weathering the world.">
-                “流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀中，寻得那份历经风霜后愈发纯粹的内敛光华。
+               data-zh="“流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀与流转岁月中，寻得那份历经风霜后愈发纯粹的东方清光。" 
+               data-en="&ldquo;Time cannot obscure true essence, passing years distill pure inner grace.&rdquo;<br>Deep within amber of time, discovering that introverted brilliance which grows more pristine.">
+                “流光不掩本真，岁月沉淀清气。”<br>于时光的琥珀与流转岁月中，寻得那份历经风霜后愈发纯粹的东方清光。
             </p>
         </div>
 
@@ -288,8 +362,14 @@
                 <span class="dynamic-sub" style="font-weight:600; color:#D4A017; font-size:11px;" data-zh="海棠花窗 · 琥珀臻藏" data-en="BEGONIA GALLERY · AMBER COLLECTION">海棠花窗 · 琥珀臻藏</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="琥珀金 · 天然蜜蜡流光手串" data-en="Amber Gold · Natural Beeswax Bracelet">琥珀金 · 天然蜜蜡流光手串</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" data-zh="Amber Gold & Timeless Collection" data-en="Amber Gold & Timeless Collection">Amber Gold & Timeless Collection</p>
+            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:4px;" data-zh="琥珀金 · 天然金绞蜜手串" data-en="Amber Gold · Natural Amber Gemstone Bracelet">琥珀金 · 天然金绞蜜手串</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:12px;" data-zh="Imperial Amber Collection" data-en="Imperial Amber Collection">Imperial Amber Collection</p>
+            
+            <div class="price-container">
+                <span id="hero-product-original-price" class="original-price">€ 199.00</span>
+                <span id="hero-product-sale-price" class="sale-price">€ 0.01</span>
+                <span class="discount-tag" data-zh="限时结缘" data-en="SPECIAL OFFER">限时结缘</span>
+            </div>
 
             <!-- 放大后的海棠花窗视口 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
@@ -308,25 +388,25 @@
                 <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FDFBF8; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
                     <div id="slider-track" class="slider-track" style="width:100%; height:100%;">
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/d4a017/ffffff?text=Amber+Gold" alt="琥珀金手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/d4a017/ffffff?text=Amber+Gold" alt="琥珀金手串" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/e5b73e/ffffff?text=Warm+Solar" alt="暖阳金手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/e5b73e/ffffff?text=Titanium+Quartz" alt="钛晶手串" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/f1c40f/262626?text=Autumn+Yellow" alt="秋实黄手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/f1c40f/262626?text=Citrine+Quartz" alt="黄水晶手串" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
-                            <img src="https://placehold.co/600x600/fcf3cf/262626?text=Gilded+Alabaster" alt="凝金白手链" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/b8860b/ffffff?text=Agarwood+Bracelet" alt="沉香手串" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                     </div>
                 </div>
             </div>
 
             <p id="hero-product-desc" class="poetry-text-style" style="font-size:0.95rem; color:#525252; max-width:620px; margin:16px 0; line-height:1.7;"
-                data-zh="“金石千载蕴流光，清气氤氲满室香。” 精选天然琥珀蜜蜡与黄金微晶，温润凝练，流光不掩本真。"
-                data-en="&ldquo;Gold and jade embrace timeless glow through thousands of years; the refined spirit diffuses fragrance throughout the sanctuary.&rdquo;">
-                “金石千载蕴流光，清气氤氲满室香。” 精选天然琥珀蜜蜡与黄金微晶，温润凝练，流光不掩本真。
+                data-zh="“金石千载蕴流光，清气氤氲满室香。” 精选天然金绞蜜琥珀，蕴含千载时光沉淀，温润凝脂，安神定气。"
+                data-en="&ldquo;Gold and amber embrace timeless glow through thousands of years.&rdquo;">
+                “金石千载蕴流光，清气氤氲满室香。” 精选天然金绞蜜琥珀，蕴含千载时光沉淀，温润凝脂，安神定气。
             </p>
 
             <!-- 款式缩略选择 -->
@@ -337,16 +417,21 @@
                 </div>
                 <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
                     <div style="width:16px; height:16px; border-radius:50%; background:#E5B73E;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="暖阳金" data-en="Solar">暖阳金</span>
+                    <span style="font-size:11px; font-family:serif;" data-zh="钛晶" data-en="Titanium">钛晶</span>
                 </div>
                 <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
                     <div style="width:16px; height:16px; border-radius:50%; background:#F1C40F;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="秋实黄" data-en="Autumn">秋实黄</span>
+                    <span style="font-size:11px; font-family:serif;" data-zh="秋实" data-en="Citrine">秋实</span>
                 </div>
                 <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
-                    <div style="width:16px; height:16px; border-radius:50%; background:#FCF3CF; border:1px solid #d4d4d4;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="凝金白" data-en="Gilded">凝金白</span>
+                    <div style="width:16px; height:16px; border-radius:50%; background:#B8860B;"></div>
+                    <span style="font-size:11px; font-family:serif;" data-zh="金丝木" data-en="Agarwood">金丝木</span>
                 </div>
+            </div>
+
+            <!-- 定制订单按钮 -->
+            <div style="width: 100%; max-width: 400px; margin-top: 24px;">
+                <button onclick="openCustomOrderModal()" class="custom-order-btn" data-zh="定制专属订单" data-en="CUSTOMIZE ORDER">定制专属订单</button>
             </div>
         </div>
     </section>
@@ -364,7 +449,7 @@
             </div>
             <div id="color-grid" class="color-grid-box"></div>
             <div style="padding-top:12px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
-                <span>流光不掩</span><span>岁月清气</span>
+                <span>流光不掩</span><span>金泽长存</span>
             </div>
         </section>
 
@@ -387,13 +472,13 @@
                 <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
             
-            <!-- 下一站链接 -->
-            <a href="Color Distant Mountain.html" id="channel-link" class="channel-link">
+            <!-- 流转通道：返回朱砂红页面 -->
+            <a href="Color Zhu Sha Red.html" id="channel-link" class="channel-link">
                 <div style="display:flex; align-items:center; gap:12px;">
                     <span style="width:8px; height:8px; border-radius:50%; background:#D4A017;"></span>
                     <div>
-                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="流转通道：远山如黛 眉眼如烟" data-en="Flow Channel: Distant Mountains Like Indigo Mist">流转通道：远山如黛 眉眼如烟</h4>
-                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="从琥珀金泽，至远山黛色" data-en="Transit from amber gold to distant mountain indigo.">从琥珀金泽，至远山黛色</p>
+                        <h4 class="dynamic-text" style="font-size:11px; font-weight:600; color:#262626;" data-zh="流转通道：朱砂红 · 典藏正色" data-en="Flow Channel: Cinnabar Red & Imperial Spectrum">流转通道：朱砂红 · 典藏正色</h4>
+                        <p class="dynamic-text" style="font-size:9px; color:#a3a3a3; margin-top:2px;" data-zh="从琥珀金泽，至朱砂正红" data-en="Transit from amber gold to cinnabar red.">从琥珀金泽，至朱砂正红</p>
                     </div>
                 </div>
                 <span style="font-size:12px; color:#D4A017; font-weight:bold;">➔</span>
@@ -421,6 +506,82 @@
         </section>
     </main>
 
+    <!-- 定制订单模态框 -->
+    <div id="custom-modal" style="display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding: 16px;">
+        <div class="chinese-border" style="background:#FFF; width:100%; max-width:520px; padding:32px 24px; position:relative; border-radius:24px; text-align:center; max-height:90vh; overflow-y:auto;">
+            <!-- 关闭按钮 -->
+            <button onclick="closeCustomOrderModal()" style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:18px; cursor:pointer; color:#737373; width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
+            
+            <!-- 顶端圆点徽标 -->
+            <div style="width:36px; height:36px; border-radius:50%; background:rgba(212,160,23,0.08); border:1px solid rgba(212,160,23,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 12px auto; color:#D4A017; font-size:14px;">✦</div>
+
+            <h3 id="modal-title" style="font-family:'Songti SC','SimSun',serif; font-size:1.25rem; font-weight:bold; color:#262626; margin-bottom:6px;" data-zh="【琥珀金 · 天然金绞蜜手串】· 臻藏结缘" data-en="[Amber Gold · Natural Bracelet] &bull; Bespoke Order">【琥珀金 · 天然金绞蜜手串】· 臻藏结缘</h3>
+            <p class="dynamic-text" style="font-size:11px; color:#8c8c8c; margin-bottom:20px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please provide your contact details & shipping address">请详细填写您的联系信息与邮寄地址</p>
+            
+            <div style="display:flex; flex-direction:column; gap:14px; text-align:left;">
+                <!-- 1. 客户姓名 -->
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name">尊姓大名</label>
+                    <input type="text" id="cust-name" class="form-input" placeholder="例如：张女士 / Alice Smith" data-placeholder-zh="例如：张女士 / Alice Smith" data-placeholder-en="e.g. Alice Smith">
+                </div>
+
+                <!-- 2. 联系邮箱与电话/微信 -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email Address">联系邮箱</label>
+                        <input type="email" id="cust-email" class="form-input" placeholder="name@domain.com" data-placeholder-zh="name@domain.com" data-placeholder-en="name@domain.com">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone">联系电话</label>
+                        <input type="text" id="cust-phone" class="form-input" placeholder="用于配送联系" data-placeholder-zh="用于配送联系" data-placeholder-en="For delivery updates">
+                    </div>
+                </div>
+
+                <!-- 3. 街道与门牌号 -->
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Shipping Address: Street & House No.">邮寄地址：街道与门牌号</label>
+                    <input type="text" id="cust-street" class="form-input" placeholder="例如：Hauptstraße 123 或 淮海中路888号" data-placeholder-zh="例如：Hauptstraße 123 或 淮海中路888号" data-placeholder-en="e.g. Hauptstraße 123, Apt 4B">
+                </div>
+
+                <!-- 4. 邮政编码与城市 -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Zip Code / Postcode">邮政编码</label>
+                        <input type="text" id="cust-zip" class="form-input" placeholder="例如：80331" data-placeholder-zh="例如：80331" data-placeholder-en="e.g. 80331">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City">城市</label>
+                        <input type="text" id="cust-city" class="form-input" placeholder="例如：München / 慕尼黑" data-placeholder-zh="例如：München / 慕尼黑" data-placeholder-en="e.g. Munich">
+                    </div>
+                </div>
+
+                <!-- 5. 手围尺寸 -->
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)">手围尺寸 (cm)</label>
+                    <select id="cust-wrist" style="width:100%; padding:10px 14px; border:1px solid rgba(212,160,23,0.25); border-radius:8px; outline:none; font-size:13px; background:#FAFAFA; cursor:pointer;">
+                        <option value="13.0cm - 14.5cm" data-zh="13.0cm - 14.5cm" data-en="13.0cm - 14.5cm">13.0cm - 14.5cm</option>
+                        <option value="15.0cm - 16.5cm" data-zh="15.0cm - 16.5cm" data-en="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                        <option value="17.0cm - 18.5cm" data-zh="17.0cm - 18.5cm" data-en="17.0cm - 18.5cm">17.0cm - 18.5cm</option>
+                        <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size">定制专属尺寸</option>
+                    </select>
+                </div>
+
+                <!-- 6. 备注与礼盒需求 -->
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes / Gift Wrap">其他备注或礼盒需求</label>
+                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="选填：礼品包装需求或特殊尺寸说明" data-placeholder-zh="选填：礼品包装需求或特殊尺寸说明" data-placeholder-en="Optional: Gift messaging or custom dimensions"></textarea>
+                </div>
+
+                <!-- 支付按钮区域 -->
+                <div style="margin-top: 8px;">
+                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€0.01 含邮)" data-en="Select payment method below after entering details (€0.01 incl. shipping)">完整填写后，请选择结算方式 (€0.01 含邮)</p>
+                    
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 页脚布局 -->
     <footer class="footer">
         <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
@@ -435,55 +596,64 @@
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
+        let selectedProductModel = "琥珀金 · 天然金绞蜜手串 (特惠 €0.01)";
 
         const products = [
             {
-                title_zh: "琥珀金 · 天然蜜蜡流光手串",
-                title_en: "Amber Gold · Natural Beeswax Bracelet",
-                sub_zh: "Amber Gold & Timeless Collection",
-                sub_en: "Amber Gold & Timeless Collection",
-                desc_zh: "“金石千载蕴流光，清气氤氲满室香。” 精选天然琥珀蜜蜡与黄金微晶，温润凝练，流光不掩本真。",
-                desc_en: "“Gold and jade embrace timeless glow through thousands of years; the refined spirit diffuses fragrance throughout the sanctuary.”"
+                title_zh: "琥珀金 · 天然金绞蜜手串",
+                title_en: "Amber Gold · Natural Amber Bracelet",
+                sub_zh: "Imperial Amber Collection",
+                sub_en: "Imperial Amber Collection",
+                original_price: "€ 199.00",
+                sale_price: "€ 99.00",
+                desc_zh: "“金石千载蕴流光，清气氤氲满室香。” 精选天然金绞蜜琥珀，蕴含千载时光沉淀，温润凝脂，安神定气。",
+                desc_en: "“Gold and amber embrace timeless glow through thousands of years.”"
             },
             {
-                title_zh: "暖阳金 · 太阳石金耀手串",
-                title_en: "Warm Solar Gold · Sunstone Bracelet",
-                sub_zh: "Warm Solar Collection",
-                sub_en: "Warm Solar Collection",
-                desc_zh: "“暖阳照耀生光彩，岁月温存自成辉。” 闪耀着金色微光的天然太阳石，温暖而治愈。",
-                desc_en: "“Natural sunstone shimmering with warm golden reflections, full of healing energy.”"
+                title_zh: "金泽流光 · 钛晶顺发手串",
+                title_en: "Gold Shimmer · Titanium Quartz Bracelet",
+                sub_zh: "Titanium Quartz Collection",
+                sub_en: "Titanium Quartz Collection",
+                original_price: "€ 199.00",
+                sale_price: "€ 99.00",
+                desc_zh: "“发晶如金丝，光芒耀乾坤。” 特级顺发钛晶主珠，聚财纳福，气场浑厚强劲。",
+                desc_en: "“Strands like golden threads shining across cosmos, bringing fortune and energy.”"
             },
             {
-                title_zh: "秋实黄 · 黄玉髓圆珠手串",
-                title_en: "Autumn Harvest Yellow · Chalcedony Bracelet",
-                sub_zh: "Autumn Harvest Collection",
-                sub_en: "Autumn Harvest Collection",
-                desc_zh: "“秋实累累含清气，金色华光映岁华。” 饱满润泽的黄玉髓，如秋日丰收的纯粹金彩。",
-                desc_en: "“Lustrous yellow chalcedony embodying the rich and pure colors of autumn harvest.”"
+                title_zh: "秋实 · 明澈黄水晶手串",
+                title_en: "Autumn Harvest · Citrine Bracelet",
+                sub_zh: "Citrine Gemstone Collection",
+                sub_en: "Citrine Gemstone Collection",
+                original_price: "€ 199.00",
+                sale_price: "€ 99.00",
+                desc_zh: "“秋实累累开金菊，明澈澄净如朝日。” 晶莹剔透天然黄水晶，带来愉悦与丰盈意感。",
+                desc_en: "“Crystal clear natural citrine bringing radiant warmth and joyful harvest.”"
             },
             {
-                title_zh: "凝金白 · 白玉髓金丝手串",
-                title_en: "Gilded Alabaster · Chalcedony Bracelet",
-                sub_zh: "Gilded Alabaster Collection",
-                sub_en: "Gilded Alabaster Collection",
-                desc_zh: "“凝白如玉藏金意，守白知黑心自闲。” 洁白如脂的玉髓镶嵌金色点缀，典雅清纯。",
-                desc_en: "“Pure white chalcedony adorned with subtle golden accents, elegant and serene.”"
+                title_zh: "金丝木 · 醇厚沉香手串",
+                title_en: "Golden Silk · Agarwood Bracelet",
+                sub_zh: "Agarwood Heritage Collection",
+                sub_en: "Agarwood Heritage Collection",
+                original_price: "€ 199.00",
+                sale_price: "€ 99.00",
+                desc_zh: "“沉香安神，金丝吐纳。” 醇厚天然加里曼丹沉香搭配金丝隔珠，沉稳高雅，养性清心。",
+                desc_en: "“Pure natural Kalimantan agarwood with golden accents for serenity.”"
             }
         ];
 
         const colors = [
             { hex: '#D4A017', name_zh: '琥珀金', name_en: 'Amber Gold' },
             { hex: '#E5B73E', name_zh: '暖阳金', name_en: 'Warm Solar Gold' },
-            { hex: '#F1C40F', name_zh: '秋实黄', name_en: 'Autumn Harvest Yellow' },
+            { hex: '#F1C40F', name_zh: '秋实黄', name_en: 'Harvest Yellow' },
             { hex: '#F7DC6F', name_zh: '晨曦金', name_en: 'Dawn Glow Gold' },
             { hex: '#F9E79F', name_zh: '流光影', name_en: 'Shimmering Shadow' },
             { hex: '#FCF3CF', name_zh: '凝金白', name_en: 'Gilded Alabaster' }
         ];
 
         const poetries = [
-            { text_zh: "金石千载蕴流光，清气氤氲满室香。", text_en: "Gold and jade embrace timeless glow through thousands of years; the refined spirit diffuses fragrance throughout the sanctuary.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
-            { text_zh: "时光凝作琥珀暖，万物静好映流年。", text_en: "Time condenses into the warmth of golden amber; all creations dwell in peaceful grace, reflecting the passing years.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
-            { text_zh: "一点真金藏底色，岁月如歌自成晖。", text_en: "A trace of genuine gold lies deep within the foundation; as life unfolds like a melody, it radiates its own intrinsic splendor.", source_zh: "—— 瑞宫诗集", source_en: "— Rui Palace Anthology" }
+            { text_zh: "金石千载蕴流光，清气氤氲满室香。", text_en: "Gold and amber embrace timeless glow through thousands of years; the refined spirit diffuses fragrance throughout.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
+            { text_zh: "时光凝作琥珀暖，万物静好映流年。", text_en: "Time condenses into the warmth of golden amber; all creations dwell in peaceful grace.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
+            { text_zh: "一点真金藏底色，岁月如歌自成晖。", text_en: "A trace of genuine gold lies deep within; as life unfolds like a melody, it radiates splendor.", source_zh: "—— 瑞宫诗集", source_en: "— Rui Palace Anthology" }
         ];
 
         function switchProduct(idx) {
@@ -501,11 +671,22 @@
             const p = products[idx];
             const titleEl = document.getElementById('hero-product-title');
             const subTitleEl = document.getElementById('hero-product-subtitle');
+            const originalPriceEl = document.getElementById('hero-product-original-price');
+            const salePriceEl = document.getElementById('hero-product-sale-price');
             const descEl = document.getElementById('hero-product-desc');
+            const modalTitleEl = document.getElementById('modal-title');
 
             if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
             if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
+            if (originalPriceEl) originalPriceEl.innerText = p.original_price;
+            if (salePriceEl) salePriceEl.innerText = p.sale_price;
             if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+            
+            const productTitleText = currentLang === 'zh' ? p.title_zh : p.title_en;
+            if (modalTitleEl) {
+                modalTitleEl.innerText = currentLang === 'zh' ? `【${productTitleText}】· 臻藏结缘` : `[${productTitleText}] • Bespoke Order`;
+            }
+            selectedProductModel = `${productTitleText} (原价 €199.00 / 特惠 €0.01)`;
         }
 
         function nextProduct() {
@@ -517,6 +698,112 @@
             currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
             switchProduct(currentProductIdx);
         }
+
+        function openCustomOrderModal() {
+            document.getElementById('custom-modal').style.display = 'flex';
+        }
+
+        function closeCustomOrderModal() {
+            document.getElementById('custom-modal').style.display = 'none';
+        }
+
+        function validateOrderFields() {
+            const name = document.getElementById('cust-name').value.trim();
+            const email = document.getElementById('cust-email').value.trim();
+            const street = document.getElementById('cust-street').value.trim();
+            const zip = document.getElementById('cust-zip').value.trim();
+            const city = document.getElementById('cust-city').value.trim();
+
+            if (!name || !email || !street || !zip || !city) {
+                alert(currentLang === 'zh' ? 
+                    '请完整填写尊姓大名、联系邮箱以及详细的邮寄地址（街道门牌号、邮编和城市）。' : 
+                    'Please enter your full name, email address, and complete shipping address (street, zip code, city).'
+                );
+                return false;
+            }
+            return true;
+        }
+
+        function sendOrderEmail(customerData) {
+            const formData = new FormData();
+            formData.append('_subject', '【蕊宫官网】新专属定制订单意向通知 (琥珀金)');
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            formData.append('客户姓名', customerData.name);
+            formData.append('联系邮箱', customerData.email);
+            formData.append('电话/微信', customerData.phone);
+            formData.append('街道门牌号', customerData.street);
+            formData.append('邮政编码', customerData.zip);
+            formData.append('城市', customerData.city);
+            formData.append('手围尺寸', customerData.wrist);
+            formData.append('定制款式', customerData.model);
+            formData.append('其他备注', customerData.notes);
+
+            fetch('https://formsubmit.co/ajax/mai@rui-palace.de', {
+                method: 'POST',
+                body: formData
+            }).catch(err => console.log('邮件异步发送提示:', err));
+        }
+
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'gold',
+                shape:  'rect',
+                label:  'paypal'
+            },
+            createOrder: function(data, actions) {
+                if (!validateOrderFields()) {
+                    throw new Error('Required address and contact fields are missing.');
+                }
+
+                const wristSize = document.getElementById('cust-wrist').value;
+                const street = document.getElementById('cust-street').value;
+                const zip = document.getElementById('cust-zip').value;
+                const city = document.getElementById('cust-city').value;
+                const fullItemDescription = `${selectedProductModel} | [尺寸: ${wristSize}] | [地址: ${street}, ${zip} ${city}]`;
+
+                return actions.order.create({
+                    purchase_units: [{
+                        description: fullItemDescription,
+                        amount: {
+                            currency_code: 'EUR',
+                            value: '99.00'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    const customerData = {
+                        name: document.getElementById('cust-name').value,
+                        email: document.getElementById('cust-email').value,
+                        phone: document.getElementById('cust-phone').value || '未填',
+                        street: document.getElementById('cust-street').value,
+                        zip: document.getElementById('cust-zip').value,
+                        city: document.getElementById('cust-city').value,
+                        wrist: document.getElementById('cust-wrist').value,
+                        model: selectedProductModel,
+                        notes: document.getElementById('cust-notes').value.trim() || '无备注'
+                    };
+
+                    sendOrderEmail(customerData);
+
+                    alert(currentLang === 'zh' ? 
+                        `感谢尊贵的客户 ${customerData.name}！支付已成功完成。您的详细快递地址（${customerData.street}, ${customerData.zip} ${customerData.city}）与手围尺寸已自动记录并推送到 mai@rui-palace.de。` : 
+                        `Thank you ${customerData.name}! Payment successful. Your delivery details (${customerData.street}, ${customerData.zip} ${customerData.city}) have been registered and sent to mai@rui-palace.de.`
+                    );
+                    closeCustomOrderModal();
+                });
+            },
+            onCancel: function (data) {
+                alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
+            },
+            onError: function (err) {
+                console.error('支付流程异常：', err);
+                alert(currentLang === 'zh' ? '支付未成功完成，请确保表单信息填写完整后重试。' : 'Payment could not be completed. Please ensure all required fields are filled out.');
+            }
+        }).render('#paypal-button-container');
 
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
@@ -594,8 +881,16 @@
                 el.setAttribute('data-lang', currentLang); 
             });
 
+            document.querySelectorAll('[data-placeholder-zh]').forEach(input => {
+                input.placeholder = input.getAttribute(`data-placeholder-${currentLang}`);
+            });
+
+            document.querySelectorAll('#cust-wrist option').forEach(opt => {
+                opt.innerText = opt.getAttribute(`data-${currentLang}`);
+            });
+
             const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color Distant Mountain.html?lang=${currentLang}`;
+            if (channelLink) channelLink.href = `Color Zhu Sha Red.html?lang=${currentLang}`;
 
             switchProduct(currentProductIdx);
             renderGrid();
