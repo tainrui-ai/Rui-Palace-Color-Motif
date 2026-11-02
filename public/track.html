@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-         <!-- 返回首页按钮 -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕊宫 · 订单跟踪与进度查询 | Rui Palace Order Tracking</title>
@@ -161,7 +159,7 @@
             position: absolute;
             top: 14px;
             left: 10%;
-            width: 33%; /* 进度宽度可动态改变 */
+            width: 33%;
             height: 2px;
             background: #C0392B;
             z-index: 2;
@@ -228,14 +226,13 @@
 </head>
 <body>
 
-
-         <!-- 顶部导航 -->
-<div class="container top-nav">
-    <a href="https://www.rui-palace.de" class="return-btn">
-        <span style="font-size:14px; line-height:1;">⇠</span>
-        <span style="font-size:11px; letter-spacing:0.15em;" data-zh="返回主页" data-en="BACK TO HOME">返回主页</span>
-    </a>
-         <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
+    <!-- 顶部导航 -->
+    <div class="container top-nav">
+        <a href="https://www.rui-palace.de" class="return-btn">
+            <span style="font-size:14px; line-height:1;">⇠</span>
+            <span style="font-size:11px; letter-spacing:0.15em;" data-zh="返回主页" data-en="BACK TO HOME">返回主页</span>
+        </a>
+        <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
             EN / 中
         </button>
     </div>
@@ -263,7 +260,7 @@
 
             <!-- 查询结果面板 -->
             <div id="result-panel" class="result-card">
-                <h3 style="font-size:1.1rem; color:#262626; text-align:center; font-family:'Songti SC', serif;" data-zh="定制进度与流转状态" data-en="Bespoke Status Timeline">定制进度与流转状态</h3>
+                <h3 style="font-size:1.1rem; color:#262626; text-align:center; font-family:'Songti SC', serif; margin-bottom: 20px;" data-zh="定制进度与流转状态" data-en="Bespoke Status Timeline">定制进度与流转状态</h3>
 
                 <!-- Timeline 进度条 -->
                 <div class="status-timeline">
@@ -288,12 +285,12 @@
                 </div>
 
                 <!-- 订单明细框 -->
-                <div class="order-details-box">
+                <div class="order-details-box" style="margin-top: 24px;">
                     <p><strong data-zh="订单编号：" data-en="Order ID: ">订单编号：</strong><span id="res-order-id">RP-2026-8888</span></p>
                     <p><strong data-zh="定制款式：" data-en="Item: ">定制款式：</strong><span id="res-model">朱砂红 · 高含量天然原矿手串</span></p>
                     <p><strong data-zh="手围尺寸：" data-en="Wrist Size: ">手围尺寸：</strong><span id="res-wrist">15.0cm - 16.5cm</span></p>
                     <p><strong data-zh="物流单号：" data-en="Tracking No: ">物流单号：</strong><span id="res-tracking">DHL Express: DE9876543210 (德国发货)</span></p>
-                    <p><strong data-zh="最新备注：" data-en="Latest Update: ">最新备注：</strong><span id="res-notes" style="color:#C0392B;">已为您筛选极品天然朱砂原矿，正在由匠人组绳打结。</span></p>
+                    <p><strong data-zh="最新备注：" data-en="Latest Update: ">最新备注：</strong><span id="res-notes" style="color:#C0392B;" data-zh="已为您筛选极品天然朱砂原矿，正在由匠人组绳打结。" data-en="Premium natural cinnabar raw stone has been selected for you, currently being hand-knotted by the artisan.">已为您筛选极品天然朱砂原矿，正在由匠人组绳打结。</span></p>
                 </div>
             </div>
         </div>
@@ -315,10 +312,12 @@
         function toggleLanguage() {
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
             
+            // 切换所有带 data-zh / data-en 属性的普通文本
             document.querySelectorAll('[data-zh]').forEach(el => {
                 el.innerText = el.getAttribute(`data-${currentLang}`);
             });
 
+            // 切换输入框的 placeholder
             document.querySelectorAll('[data-placeholder-zh]').forEach(input => {
                 input.placeholder = input.getAttribute(`data-placeholder-${currentLang}`);
             });
@@ -335,7 +334,7 @@
             const resultPanel = document.getElementById('result-panel');
             resultPanel.style.display = 'block';
 
-            // 填充示例数据（实际运行中可接入轻量数据接口或存储库）
+            // 填充示例数据
             document.getElementById('res-order-id').innerText = orderId;
             
             // 滚动到查询结果位置
