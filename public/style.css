@@ -334,3 +334,12 @@ body, html {
   object-fit: cover;
   transition: opacity 0.5s ease;
 }
+/* 英文状态专属紧凑间距适配规则 */
+.lang-en-mode .brand-logo { letter-spacing: 0.08em !important; font-size: 1.9rem; } /* 修改品牌标题间距 */
+.lang-en-mode .sub-info { letter-spacing: 0.05em !important; font-size: 0.7rem; }    /* 修改副标题间距 */
+.lang-en-mode .hero-title { letter-spacing: 0.05em !important; font-size: 1.7rem; }  /* 修改主标题间距 */
+.lang-en-mode #left-poem { letter-spacing: 0.04em !important; font-weight: 300; word-spacing: 0.05em; } /* 修改正文/诗词间距 */
+.lang-en-mode .smart-glass-dock { letter-spacing: 0.06em !important; }             /* 修改底部导航栏间距 */
+.lang-en-mode .legal-footer { letter-spacing: 0.04em !important; }                 /* 修改底部法律声明间距 */
+.lang-en-mode .trigger-btn { letter-spacing: 0.08em !important; }                 /* 修改侧边按钮间距 */
+/* ...其他组件的 letter-spacing 都在这里定义... */
