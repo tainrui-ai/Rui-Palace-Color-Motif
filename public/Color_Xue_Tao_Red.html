@@ -33,7 +33,6 @@
             padding: 0 24px;
         }
 
-        /* 顶部导航与边距微调 */
         .top-nav {
             padding-top: 28px;
             padding-bottom: 8px;
@@ -61,17 +60,30 @@
             background: rgba(214, 90, 90, 0.08);
         }
 
+        .lang-switch-btn { 
+            font-family: "Times New Roman", Times, serif; 
+            background: rgba(214, 90, 90, 0.08); 
+            border: 1px solid rgba(214, 90, 90, 0.25); 
+            transition: all 0.3s ease; 
+            letter-spacing: 0.15em; 
+            cursor: pointer; 
+            padding: 8px 20px; 
+            border-radius: 9999px; 
+            font-size: 11px; 
+            color: #525252; 
+        }
+        .lang-switch-btn:hover { background: #D65A5A; color: white; border-color: #D65A5A; }
+
         .chinese-border { 
-            border: 1px solid rgba(214, 90, 90, 0.2); 
+            border: 1px solid rgba(214, 90, 90, 0.15); 
             outline: 3px double rgba(214, 90, 90, 0.08); 
             outline-offset: -8px; 
-            background: rgba(255, 255, 255, 0.85); 
-            border-radius: 20px;
+            background: rgba(255, 252, 252, 0.6); 
+            border-radius: 16px;
             padding: 32px;
-            box-shadow: 0 10px 30px -10px rgba(214, 90, 90, 0.1);
+            box-shadow: 0 15px 35px -10px rgba(214, 90, 90, 0.1);
         }
 
-        /* 纯净排版控制体系 */
         .dynamic-title { letter-spacing: 0.3em; transition: all 0.3s; font-weight: 800; font-size: 2.25rem; color: #171717; }
         .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.04em; font-size: 1.8rem; line-height: 1.2; font-weight: 500; }
 
@@ -87,30 +99,18 @@
         .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
         .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
+        .pad-name-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.2em; font-weight: bold; }
+        .pad-name-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: normal; font-weight: 500; letter-spacing: 0.04em; font-size: 0.95rem; }
+
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #D65A5A; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { 
-            font-family: "Times New Roman", Times, serif; 
-            background: rgba(214, 90, 90, 0.08); 
-            border: 1px solid rgba(214, 90, 90, 0.25); 
-            transition: all 0.3s ease; 
-            letter-spacing: 0.15em; 
-            cursor: pointer; 
-            padding: 8px 20px; 
-            border-radius: 9999px; 
-            font-size: 11px; 
-            color: #525252; 
-        }
-        .lang-switch-btn:hover { background: #D65A5A; color: white; border-color: #D65A5A; }
-
-        /* 海棠花窗剪裁及相关样式 */
         .begonia-window-clip { clip-path: url(#begonia-clip); }
-        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: grab; }
+        .slider-track:active { cursor: grabbing; }
         .product-thumb { cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
         .product-thumb.active { border-color: #D65A5A; background: rgba(214, 90, 90, 0.08); transform: scale(1.05); }
 
-        /* 左右平行双阁窗口布局 (色卡与视频观象台) */
         .grid-2-parallel {
             display: grid;
             grid-template-columns: 1fr;
@@ -230,14 +230,14 @@
         }
 
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
-        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
+        footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
         @media(min-width: 640px) { footer.footer { flex-direction: row; } }
         @media (min-width: 1024px) { .side-wing-desktop { display: flex !important; } }
     </style>
 </head>
 <body>
 
-    <!-- SVG 海棠花窗形路径定义 -->
+    <!-- SVG 海棠花窗形路径 -->
     <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
         <defs>
             <clipPath id="begonia-clip" clipPathUnits="objectBoundingBox">
@@ -246,7 +246,7 @@
         </defs>
     </svg>
 
-    <!-- 顶部导航：归隐与语言切换 -->
+    <!-- 顶部导航 -->
     <div class="container top-nav">
         <button onclick="returnToPrevious()" class="return-btn">
             <span style="font-size:14px; line-height:1;">⇠</span>
@@ -259,8 +259,7 @@
     </div>
 
     <!-- 顶头画卷 -->
-    <header class="container" style="padding-top: 24px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative;">
-        <!-- 左侧翼：动态竖排声明 -->
+    <header class="container" style="padding-top: 24px; padding-bottom: 32px; text-align: center; position: relative;">
         <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
             <span style="width:1px; height:48px; background:#d4d4d4;"></span>
             <span class="vertical-wing" data-zh="蕊宫 · 薛涛格物" data-en="LINGXI · XUE TAO">蕊宫 · 薛涛格物</span>
@@ -277,31 +276,34 @@
             </p>
         </div>
 
-        <!-- 右侧翼：动态竖排声明 -->
         <div style="display:none; position:absolute; right:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
             <span class="vertical-wing" data-zh="蜀笺怀真 · 蕊宫" data-en="XUE TAO NOTE · LINGXI">蜀笺怀真 · 蕊宫</span>
             <span style="width:1px; height:48px; background:#d4d4d4;"></span>
         </div>
     </header>
 
-    <!-- 海棠花窗产品臻选展示（已放大尺寸居中） -->
+    <!-- 海棠花窗产品臻选展示 -->
     <section class="container" style="padding-top: 40px;">
-        <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(255,255,255,0.9); max-width: 840px; margin: 0 auto;">
+        <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(255,252,252,0.9); max-width: 840px; margin: 0 auto;">
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; background:rgba(214, 90, 90, 0.08); padding:4px 16px; border-radius:9999px; border:1px solid rgba(214, 90, 90, 0.2);">
                 <span style="width:8px; height:8px; border-radius:50%; background:#D65A5A; display:inline-block;"></span>
                 <span class="dynamic-sub" style="font-weight:600; color:#D65A5A; font-size:11px;" data-zh="海棠花窗 · 典藏产品" data-en="BEGONIA GALLERY · COLLECTION">海棠花窗 · 典藏产品</span>
             </div>
 
             <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="薛涛红 · 桃笺流霞朱砂手串" data-en="Xue Tao Red · Peach Note Cinnabar Bracelet">薛涛红 · 桃笺流霞朱砂手串</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" data-zh="Xue Tao Peach Blossom Gemstone Bracelet" data-en="Xue Tao Peach Blossom Gemstone Bracelet">Xue Tao Peach Blossom Gemstone Bracelet</p>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:16px;" data-zh="Xue Tao Peach Blossom Gemstone Bracelet" data-en="Xue Tao Peach Blossom Gemstone Bracelet">Xue Tao Peach Blossom Gemstone Bracelet</p>
 
-            <!-- 放大后的海棠花窗视口 -->
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#D65A5A; font-size:11px; font-family:serif;">
+                <span>⇠</span>
+                <span data-zh="支持左右滑动 / 点击切换款式" data-en="Slide Left & Right / Click Variations">支持左右滑动 / 点击切换款式</span>
+                <span>⇢</span>
+            </div>
+
+            <!-- 海棠花窗视口 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
-                <!-- 切换导航按钮 -->
                 <button onclick="prevProduct()" style="position:absolute; left:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#D65A5A; border:1px solid rgba(214, 90, 90, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个">❮</button>
                 <button onclick="nextProduct()" style="position:absolute; right:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#D65A5A; border:1px solid rgba(214, 90, 90, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个">❯</button>
 
-                <!-- 外边框装饰 -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
                         <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" 
@@ -334,30 +336,33 @@
             </p>
 
             <!-- 款式缩略选择 -->
-            <div style="display:flex; gap:16px; margin-top:12px;">
-                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
-                    <div style="width:16px; height:16px; border-radius:50%; background:#E05263;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="薛涛红" data-en="Xue Tao">薛涛红</span>
-                </div>
-                <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
-                    <div style="width:16px; height:16px; border-radius:50%; background:#F47A82;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="桃花粉" data-en="Peach">桃花粉</span>
-                </div>
-                <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
-                    <div style="width:16px; height:16px; border-radius:50%; background:#EA6672;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="木芙蓉" data-en="Hibiscus">木芙蓉</span>
-                </div>
-                <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
-                    <div style="width:16px; height:16px; border-radius:50%; background:#E7606E;"></div>
-                    <span style="font-size:11px; font-family:serif;" data-zh="流霞绯" data-en="Rosy">流霞绯</span>
+            <div style="margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.05); width: 100%; max-width: 440px;">
+                <p style="font-size: 11px; color: #a3a3a3; font-family: serif; margin-bottom: 12px; letter-spacing: 0.1em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——">—— 点击切换同系列款式 ——</p>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
+                        <div style="width: 20px; height: 20px; margin: 0 auto 4px auto; border-radius: 50%; background: #E05263;"></div>
+                        <span style="font-size: 10px; font-family: serif;" data-zh="薛涛红" data-en="Xue Tao">薛涛红</span>
+                    </div>
+                    <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
+                        <div style="width: 20px; height: 20px; margin: 0 auto 4px auto; border-radius: 50%; background: #F47A82;"></div>
+                        <span style="font-size: 10px; font-family: serif;" data-zh="桃花粉" data-en="Peach">桃花粉</span>
+                    </div>
+                    <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
+                        <div style="width: 20px; height: 20px; margin: 0 auto 4px auto; border-radius: 50%; background: #EA6672;"></div>
+                        <span style="font-size: 10px; font-family: serif;" data-zh="木芙蓉" data-en="Hibiscus">木芙蓉</span>
+                    </div>
+                    <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
+                        <div style="width: 20px; height: 20px; margin: 0 auto 4px auto; border-radius: 50%; background: #E7606E;"></div>
+                        <span style="font-size: 10px; font-family: serif;" data-zh="流霞绯" data-en="Rosy">流霞绯</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 左右平行双阁布局 (西阁：色彩卡片，东阁：视频与视听观象台) -->
+    <!-- 左右平行双阁布局 -->
     <main class="container grid-2-parallel">
-        <!-- 西阁：色彩网格 (左窗口) -->
+        <!-- 西阁：色彩网格 -->
         <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:28px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 蕊宫·薛涛桃笺色卡" data-en="West Pavilion &bull; Lingxi Palette">
@@ -372,14 +377,13 @@
             </div>
         </section>
 
-        <!-- 东阁：观象台与动态卡片 (右窗口，与左侧平行) -->
+        <!-- 东阁：观象台与动态卡片 -->
         <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
                 <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="桃笺流光 · 视听长青" data-en="Peach Note Glow & Eternal Vision">桃笺流光 · 视听长青</span>
             </div>
             
-            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
             <div class="video-wrapper" id="video-wrapper">
                 <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
@@ -391,7 +395,6 @@
                 <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
             
-            <!-- 下一站链接 -->
             <a href="https://youtu.be/tvW4GgF4y1M" target="_blank" id="channel-link" class="channel-link">
                 <div style="display:flex; align-items:center; gap:12px;">
                     <span style="width:8px; height:8px; border-radius:50%; background:#D65A5A;"></span>
@@ -403,7 +406,6 @@
                 <span style="font-size:12px; color:#D65A5A; font-weight:bold;">➔</span>
             </a>
             
-            <!-- 动态交互大卡片 -->
             <div id="dynamic-pad" onclick="copyHex()" class="dynamic-pad">
                 <p id="dynamic-name" class="pad-name-style" style="font-size:12px; margin-bottom:4px;">桃花粉</p>
                 <div style="display:flex; align-items:center; gap:8px;">
@@ -414,7 +416,6 @@
             
             <input type="range" id="color-slider" min="0" max="5" value="0">
             
-            <!-- 意境山水诗词 -->
             <div style="border-top:1px solid rgba(0,0,0,0.05); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
                 <div id="poetry-container" style="margin-bottom:12px; min-height:75px; display:flex; flex-direction:column; justify-content:space-between;">
                     <p id="poetry-text" class="poetry-text-style">“枝上花开红艳艳，薛涛笺上写深情。”</p>
@@ -425,7 +426,7 @@
         </section>
     </main>
 
-    <!-- 页脚布局 -->
+    <!-- 页脚 -->
     <footer class="footer">
         <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
         <p style="display:flex; gap:6px;">
@@ -435,7 +436,7 @@
         </p>
     </footer>
 
-    <!-- 业务交互逻辑脚本 -->
+    <!-- 脚本 -->
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
@@ -615,7 +616,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             toggleLanguage(langParam === 'en' ? 'en' : 'zh');
+            renderGrid();
         });
     </script>
-<script>window.__CF$cv$params={r:'a53f214dce861611',t:'MTc5MzU4MDQ2OQ==',u:'01a09ab233d97573a30e14f9e94c0469',ut:'P.iHG3mWc55Ucehi8v0uxLYLB5lBTipglaneaIZGtpM-1793580469-1.2.1.1-gE7YTxLxg5cIFY4FxJGXSjtqwyiAJseL7Yo765SCcEZjJV_MZGmwUQhneMuen_EmO3Q_99blUcfSYVJdf0JHM2WAdWIE9LusF6f..abgN20',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a53f214dce861611',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script></body>
+</body>
 </html>
