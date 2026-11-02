@@ -34,6 +34,48 @@
             padding: 0 24px;
         }
 
+        /* 顶部导航与按键间距微调 */
+        .top-nav {
+            padding-top: 28px;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 20;
+        }
+
+        .return-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #737373;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .return-btn:hover {
+            color: #A68BBD;
+            background: rgba(166, 139, 189, 0.1);
+        }
+
+        .lang-switch-btn { 
+            font-family: "Times New Roman", Times, serif; 
+            background: rgba(166, 139, 189, 0.08); 
+            border: 1px solid rgba(166, 139, 189, 0.25); 
+            transition: all 0.3s ease; 
+            letter-spacing: 0.15em; 
+            cursor: pointer; 
+            padding: 8px 20px; 
+            border-radius: 9999px; 
+            font-size: 11px; 
+            color: #525252; 
+        }
+        .lang-switch-btn:hover { background: #A68BBD; color: white; border-color: #A68BBD; }
+
         .chinese-border { 
             border: 1px solid rgba(166, 139, 189, 0.15); 
             outline: 3px double rgba(166, 139, 189, 0.08); 
@@ -41,18 +83,6 @@
             background: rgba(253, 251, 255, 0.6); 
             border-radius: 16px;
             padding: 32px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            padding: 48px 0;
-        }
-        @media (min-width: 1024px) {
-            .grid-2 {
-                grid-template-columns: 1fr 1fr;
-            }
         }
 
         /* 纯净排版控制体系 */
@@ -77,10 +107,25 @@
         .vertical-wing { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.3em; font-size: 10px; color: #A68BBD; }
         .vertical-wing[data-lang="en"] { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.05em; font-family: "Times New Roman", Times, serif; font-size: 9px; }
 
-        .lang-switch-btn { font-family: "Times New Roman", Times, serif; background: rgba(166, 139, 189, 0.08); border: 1px solid rgba(166, 139, 189, 0.2); transition: all 0.3s ease; letter-spacing: 0.1em; cursor: pointer; padding: 6px 16px; border-radius: 9999px; font-size: 10px; color: #525252; }
-        .lang-switch-btn:hover { background: #A68BBD; color: white; border-color: #A68BBD; }
+        /* 海棠花窗剪裁及相关样式 */
+        .begonia-window-clip { clip-path: url(#begonia-clip); }
+        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .product-thumb { cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .product-thumb.active { border-color: #A68BBD; background: rgba(166, 139, 189, 0.08); transform: scale(1.05); }
 
-        /* 布局与组件细节 */
+        /* 左右平行双阁窗口布局 (色卡与视频观象台) */
+        .grid-2-parallel {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 32px 0 48px 0;
+        }
+        @media (min-width: 1024px) {
+            .grid-2-parallel {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .color-grid-box {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -190,15 +235,25 @@
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
         footer.footer { max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #a3a3a3; gap: 8px; }
         @media(min-width: 640px) { footer.footer { flex-direction: row; } }
+        @media (min-width: 1024px) { .side-wing-desktop { display: flex !important; } }
     </style>
 </head>
 <body style="selection-background-color: rgba(166, 139, 189, 0.25);">
 
-    <!-- 顶部导航：归隐与语言切换 -->
-    <div class="container" style="padding-top: 24px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 20;">
-        <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:8px; color:#a3a3a3;">
-            <span style="font-size:12px;">⇠</span>
-            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN">归隐</span>
+    <!-- SVG 海棠花窗形路径 -->
+    <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
+        <defs>
+            <clipPath id="begonia-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,0.02 C 0.63,0.02 0.71,0.09 0.76,0.22 C 0.89,0.27 0.98,0.36 0.98,0.5 C 0.98,0.64 0.89,0.73 0.76,0.78 C 0.71,0.91 0.63,0.98 0.5,0.98 C 0.37,0.98 0.29,0.91 0.24,0.78 C 0.11,0.73 0.02,0.64 0.02,0.5 C 0.02,0.36 0.11,0.27 0.24,0.22 C 0.29,0.09 0.37,0.02 0.5,0.02 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- 顶部导航：微调按键与文字的边距和间距 -->
+    <div class="container top-nav">
+        <button onclick="returnToPrevious()" class="return-btn">
+            <span style="font-size:14px; line-height:1;">⇠</span>
+            <span class="dynamic-sub" style="font-size:11px; letter-spacing:0.15em;" data-zh="归隐" data-en="RETURN">归隐</span>
         </button>
         
         <button onclick="toggleLanguage()" id="langBtn" class="lang-switch-btn">
@@ -207,7 +262,7 @@
     </div>
 
     <!-- 顶头画卷 -->
-    <header class="container" style="padding-top: 32px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative;">
+    <header class="container" style="padding-top: 24px; padding-bottom: 32px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative;">
         <!-- 左侧翼：动态竖排声明 -->
         <div style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); align-items:center; gap:8px;" class="side-wing-desktop">
             <span style="width:1px; height:48px; background:#d4d4d4;"></span>
@@ -232,10 +287,81 @@
         </div>
     </header>
 
-    <!-- 核心双阁布局 -->
-    <main class="container grid-2">
-        <!-- 左阁：色彩网格 -->
-        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:32px;">
+    <!-- 海棠花窗产品臻选展示（已放大尺寸居中） -->
+    <section class="container" style="padding-top: 40px;">
+        <div class="chinese-border" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 24px; background:rgba(253, 251, 255, 0.9); max-width: 840px; margin: 0 auto;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; background:rgba(166, 139, 189, 0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(166, 139, 189, 0.25);">
+                <span style="width:8px; height:8px; border-radius:50%; background:#A68BBD; display:inline-block;"></span>
+                <span class="dynamic-sub" style="font-weight:600; color:#A68BBD; font-size:11px;" data-zh="海棠花窗 · 典藏产品" data-en="BEGONIA GALLERY · COLLECTION">海棠花窗 · 典藏产品</span>
+            </div>
+
+            <h2 id="hero-product-title" style="font-size:2rem; font-family:'Songti SC','SimSun',serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="紫菀色 · 幽香紫水晶手串" data-en="Aster Purple · Amethyst Bracelet">紫菀色 · 幽香紫水晶手串</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#8c8c8c; margin-bottom:20px;" data-zh="Aster Purple Gemstone Bracelet Collection" data-en="Aster Purple Gemstone Bracelet Collection">Aster Purple Gemstone Bracelet Collection</p>
+
+            <!-- 放大后的海棠花窗视口 -->
+            <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
+                <!-- 切换导航按钮 -->
+                <button onclick="prevProduct()" style="position:absolute; left:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#A68BBD; border:1px solid rgba(166, 139, 189, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个">❮</button>
+                <button onclick="nextProduct()" style="position:absolute; right:-24px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#A68BBD; border:1px solid rgba(166, 139, 189, 0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个">❯</button>
+
+                <!-- 外边框装饰 -->
+                <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
+                    <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+                        <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" 
+                              fill="none" stroke="#A68BBD" stroke-width="2.5" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
+                    <div id="slider-track" class="slider-track" style="width:100%; height:100%;">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                            <img src="https://placehold.co/600x600/a68bbd/ffffff?text=Aster+Purple+Bracelet" alt="紫菀色手链" style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                            <img src="https://placehold.co/600x600/b9a3cb/ffffff?text=Muted+Lavender" alt="浅淡紫手链" style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                            <img src="https://placehold.co/600x600/cdb6de/ffffff?text=Interstellar+Violet" alt="云间紫手链" style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px;">
+                            <img src="https://placehold.co/600x600/e0c9ef/ffffff?text=Soft+Orchid" alt="柔雾紫手链" style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p id="hero-product-desc" class="poetry-text-style" style="font-size:0.95rem; color:#525252; max-width:620px; margin:16px 0; line-height:1.7;"
+                data-zh="“紫菀芳姿出幽径，秋风不改旧时情。” 选用天然透光紫水晶配清透饰珠，色泽恬静淡雅，修养沉静安详心境。"
+                data-en="&ldquo;The elegant aster emerges from the secluded path, unyielding to the autumn wind.&rdquo; Selected natural amethyst beads.">
+                “紫菀芳姿出幽径，秋风不改旧时情。” 选用天然透光紫水晶配清透饰珠，色泽恬静淡雅，修养沉静安详心境。
+            </p>
+
+            <!-- 款式缩略选择 -->
+            <div style="display:flex; gap:16px; margin-top:12px;">
+                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:#A68BBD;"></div>
+                    <span style="font-size:11px; font-family:serif;" data-zh="紫菀色" data-en="Aster">紫菀色</span>
+                </div>
+                <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:#B9A3CB;"></div>
+                    <span style="font-size:11px; font-family:serif;" data-zh="浅淡紫" data-en="Lavender">浅淡紫</span>
+                </div>
+                <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:#CDB6DE;"></div>
+                    <span style="font-size:11px; font-family:serif;" data-zh="云间紫" data-en="Violet">云间紫</span>
+                </div>
+                <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.9); text-align:center; display:flex; align-items:center; gap:6px;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:#E0C9EF;"></div>
+                    <span style="font-size:11px; font-family:serif;" data-zh="柔雾紫" data-en="Orchid">柔雾紫</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 左右平行双阁布局 (西阁：色彩卡片，东阁：视频与视听观象台) -->
+    <main class="container grid-2-parallel">
+        <!-- 西阁：色彩网格 (左窗口) -->
+        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:28px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:10px;" data-zh="西阁 · 紫菀幽香色卡" data-en="West Pavilion &bull; Aster Purple Palette">
                     <span style="display:inline-block; width:10px; height:10px; background:#A68BBD; border-radius:50%;"></span>
@@ -244,19 +370,19 @@
                 <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX 并唤醒诗意" data-en="Click to copy HEX & awaken verse">点击色块复制 HEX 并唤醒诗意</span>
             </div>
             <div id="color-grid" class="color-grid-box"></div>
-            <div style="padding-top:16px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
+            <div style="padding-top:12px; border-top:1px solid rgba(0,0,0,0.03); display:flex; justify-content:space-between; font-size:10px; color:#a3a3a3; letter-spacing:0.1em;">
                 <span></span><span></span>
             </div>
         </section>
 
-        <!-- 右阁：观象台与动态卡片 -->
+        <!-- 东阁：观象台与动态卡片 (右窗口，与左侧平行) -->
         <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
             <div class="flex-between" style="border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:16px;">
                 <h2 class="dynamic-text" style="font-weight:600; color:#262626;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion &bull; Observatory">东阁 · 听风听雨观象台</h2>
                 <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="紫菀流光 · 视听长青" data-en="Aster Glow & Eternal Vision">紫菀流光 · 视听长青</span>
             </div>
             
-            <!-- YouTube 视频安全确认与点击加载遮罩 -->
+            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
             <div class="video-wrapper" id="video-wrapper">
                 <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
@@ -312,29 +438,45 @@
         </p>
     </footer>
 
-    <!-- 响应式大屏侧翼显示控制样式 -->
-    <style>
-        @media (min-width: 1024px) {
-            .side-wing-desktop { display: flex !important; }
-        }
-    </style>
-
     <!-- 业务交互逻辑脚本 -->
     <script>
-        function loadYouTubeVideo() {
-            const container = document.getElementById('youtube-container');
-            const placeholder = document.getElementById('video-placeholder');
-            if (placeholder) { placeholder.style.display = 'none'; }
-            container.innerHTML = `
-                <iframe style="width:100%; height:100%; border:none;" 
-                        src="https://www.youtube.com/embed/Gq51qg9CwVs?autoplay=1" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            `;
-        }
-
         let currentLang = 'zh';
+        let currentProductIdx = 0;
+
+        const products = [
+            {
+                title_zh: "紫菀色 · 幽香紫水晶手串",
+                title_en: "Aster Purple · Amethyst Bracelet",
+                sub_zh: "Aster Purple Gemstone Bracelet Collection",
+                sub_en: "Aster Purple Gemstone Bracelet Collection",
+                desc_zh: "“紫菀芳姿出幽径，秋风不改旧时情。” 选用天然透光紫水晶配清透饰珠，色泽恬静淡雅，修养沉静安详心境。",
+                desc_en: "“The elegant aster emerges from the secluded path, unyielding to the autumn wind.” Selected natural amethyst beads."
+            },
+            {
+                title_zh: "浅淡紫手链",
+                title_en: "Muted Lavender Bracelet",
+                sub_zh: "Muted Lavender Gemstone Bracelet Collection",
+                sub_en: "Muted Lavender Gemstone Bracelet Collection",
+                desc_zh: "“幽香拂面润心田，紫气东来岁岁迁。” 淡雅熏衣草紫水晶，晶莹剔透，带来平和好运。",
+                desc_en: "“Muted lavender amethyst beads bringing inner peace.”"
+            },
+            {
+                title_zh: "云间紫玉手链",
+                title_en: "Interstellar Violet Jade Bracelet",
+                sub_zh: "Interstellar Violet Jade Bracelet Collection",
+                sub_en: "Interstellar Violet Jade Bracelet Collection",
+                desc_zh: "“冷艳何须人赏处，自开自落自清幽。” 细腻紫罗兰翡翠配珠，色泽柔和沉静。",
+                desc_en: "“Delicate lavender jadeite reflecting timeless solitude.”"
+            },
+            {
+                title_zh: "柔雾紫水晶手链",
+                title_en: "Soft Orchid Crystal Bracelet",
+                sub_zh: "Soft Orchid Crystal Bracelet Collection",
+                sub_en: "Soft Orchid Crystal Bracelet Collection",
+                desc_zh: "“紫菀含情露未晞，半生烟火半生诗。” 极具穿透力的柔雾紫晶，呈现东方诗意之美。",
+                desc_en: "“Soft orchid crystals expressing oriental poetic elegance.”"
+            }
+        ];
 
         const colors = [
             { hex: '#A68BBD', name_zh: '紫菀色', name_en: 'Aster Purple' },
@@ -351,6 +493,51 @@
             { text_zh: "冷艳何须人赏处，自开自落自清幽。", text_en: "What need for praise has its cold elegance? It blooms and fades in its own serene solitude.", source_zh: "—— 陆游", source_en: "— Lu You" },
             { text_zh: "紫菀含情露未晞，半生烟火半生诗。", text_en: "The aster holds its tender feelings before the dew dries, half spent in worldly noise, half in pure poetry.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Reflection" }
         ];
+
+        function switchProduct(idx) {
+            currentProductIdx = idx;
+            const track = document.getElementById('slider-track');
+            if (track) {
+                track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
+            }
+
+            document.querySelectorAll('.product-thumb').forEach((el, i) => {
+                if (i === idx) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+
+            const p = products[idx];
+            const titleEl = document.getElementById('hero-product-title');
+            const subTitleEl = document.getElementById('hero-product-subtitle');
+            const descEl = document.getElementById('hero-product-desc');
+
+            if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
+            if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
+            if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+        }
+
+        function nextProduct() {
+            currentProductIdx = (currentProductIdx + 1) % products.length;
+            switchProduct(currentProductIdx);
+        }
+
+        function prevProduct() {
+            currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
+            switchProduct(currentProductIdx);
+        }
+
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube.com/embed/Gq51qg9CwVs?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
 
         function copyHex() {
             const hexText = document.getElementById('dynamic-hex').innerText;
@@ -417,6 +604,7 @@
             const channelLink = document.getElementById('channel-link');
             if (channelLink) channelLink.href = `Color Orange.html?lang=${currentLang}`;
 
+            switchProduct(currentProductIdx);
             renderGrid();
             const currentIdx = document.getElementById('color-slider').value;
             updateDynamicPad(currentIdx);
