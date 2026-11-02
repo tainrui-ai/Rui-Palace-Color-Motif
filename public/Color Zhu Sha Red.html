@@ -576,7 +576,7 @@
 
                 <!-- 支付按钮区域 -->
                 <div style="margin-top: 8px;">
-                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€99.00 含邮)" data-en="Select payment method below after entering details (€99.00 incl. shipping)">完整填写后，请选择结算方式 (€99.00 含邮)</p>
+                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€0.01 含邮)" data-en="Select payment method below after entering details (€0.01 incl. shipping)">完整填写后，请选择结算方式 (€0.01 含邮)</p>
                     
                     <div id="paypal-button-container"></div>
                 </div>
@@ -598,7 +598,7 @@
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
-        let selectedProductModel = "朱砂红 · 高含量天然原矿手串 (特惠 €99.00)";
+        let selectedProductModel = "朱砂红 · 高含量天然原矿手串 (特惠 €0.01)";
 
         const products = [
             {
@@ -688,7 +688,7 @@
             if (modalTitleEl) {
                 modalTitleEl.innerText = currentLang === 'zh' ? `【${productTitleText}】· 臻藏结缘` : `[${productTitleText}] • Bespoke Order`;
             }
-            selectedProductModel = `${productTitleText} (原价 €199.00 / 特惠 €99.00)`;
+            selectedProductModel = `${productTitleText} (原价 €199.00 / 特惠 €0.01)`;
         }
 
         function nextProduct() {
