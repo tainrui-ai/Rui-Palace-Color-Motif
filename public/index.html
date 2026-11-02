@@ -564,6 +564,7 @@
 
         function renderUIStrings() {
             const t = uiTexts[currentLang];
+            safeSetText('trackBtn', t.trackBtn);
             safeSetText('brand-title', t.brand);
             safeSetText('hero-main-title', t.heroTitle);
             safeSetText('left-poem', t.heroSub);
