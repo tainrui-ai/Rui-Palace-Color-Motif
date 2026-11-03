@@ -760,7 +760,19 @@
             }).render('#paypal-button-container');
         }
 
-        // 页面加载完成后自动检测 URL 中的 ?lang= 参数进行无缝语言渲染
+ // 页面加载完成后自动检测 URL 中的 ?lang= 参数进行无缝语言渲染
+        window.addEventListener('DOMContentLoaded', () => {
+    // 1. 获取浏览器当前 URL 里的参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    
+    // 2. 如果 URL 带有 lang=en，则自动触发子页面的英文渲染函数
+    if (langParam === 'en') {
+        setLanguage('en'); // 假设子页面原有的切换语言函数叫 setLanguage
+    } else {
+        setLanguage('zh');
+    }
+});
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
