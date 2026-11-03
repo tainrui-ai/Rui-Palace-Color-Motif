@@ -5,7 +5,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
-    <!-- 【已完美对齐暮山紫】使用与暮山紫完全相同的官方 SDK 引用方式 -->
+    <!-- 使用官方稳定的 PayPal 线上 CDN 路径，彻底解决本地路径 404 问题 -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&components=buttons&currency=EUR&intent=capture&enable-funding=sepa,card"></script>
 
     <style>
@@ -496,7 +496,7 @@
         </p>
     </footer>
 
-    <!-- JS 业务交互逻辑（完全照抄暮山紫的付款与初始化框架） -->
+    <!-- JS 业务交互逻辑 -->
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
@@ -668,72 +668,14 @@
         }
 
         function openModal() {
-    const p = products[currentProductIdx];
-    const modalTitle = document.getElementById('modal-product-title');
-    if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
-    document.getElementById('buyModal').classList.add('active');
-    
-    // 弹窗打开后立刻渲染支付按钮
-    renderPayPalButtons();
-}
-
-function renderPayPalButtons() {
-    const container = document.getElementById('paypal-button-container');
-    if (!container || typeof paypal === 'undefined') return;
-
-    container.innerHTML = ''; // 清空防重复
-    paypal.Buttons({
-        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-        createOrder: function(data, actions) {
-            if (!validateOrderFields()) {
-                throw new Error('Missing address or contact info.');
-            }
-            const wristSize = document.getElementById('cust-wrist').value;
-            const street = document.getElementById('cust-street').value;
-            const city = document.getElementById('cust-city').value;
-            const fullDesc = `${selectedProductTitle} | [手围: ${wristSize}] | [地址: ${street}, ${city}]`;
-            const currentPriceVal = products[currentProductIdx].price.replace('€', '').trim().replace(',', '.');
-
-            return actions.order.create({
-                purchase_units: [{
-                    description: fullDesc,
-                    amount: { currency_code: 'EUR', value: currentPriceVal }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                const customerData = {
-                    name: document.getElementById('cust-name').value,
-                    email: document.getElementById('cust-email').value,
-                    phone: document.getElementById('cust-phone').value,
-                    street: document.getElementById('cust-street').value,
-                    zip: document.getElementById('cust-zip').value,
-                    city: document.getElementById('cust-city').value,
-                    wrist: document.getElementById('cust-wrist').value,
-                    model: selectedProductTitle,
-                    notes: document.getElementById('cust-notes').value.trim() || '无'
-                };
-
-                sendOrderEmail(customerData);
-
-                alert(currentLang === 'zh' ? 
-                    `感谢尊贵的客户 ${customerData.name}！支付成功。您的快递地址（${customerData.street}, ${customerData.city}）已记录并同步。` : 
-                    `Thank you ${customerData.name}! Payment successful. Shipping info registered.`
-                );
-                closeModal();
-            });
-        },
-        onCancel: function(data) {
-            alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
-        },
-        onError: function(err) {
-            console.error('PayPal 支付异常：', err);
-            alert(currentLang === 'zh' ? '支付遇到问题，请检查表单填写是否完整。' : 'Payment error. Please check form fields.');
+            const p = products[currentProductIdx];
+            const modalTitle = document.getElementById('modal-product-title');
+            if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
+            document.getElementById('buyModal').classList.add('active');
+            
+            // 弹窗打开后立刻渲染支付按钮
+            renderPayPalButtons();
         }
-    }).render('#paypal-button-container');
-}
-}
 
         function closeModal() {
             document.getElementById('buyModal').classList.remove('active');
@@ -791,8 +733,11 @@ function renderPayPalButtons() {
             }).catch(err => console.log('邮件发送提示:', err));
         }
 
-        // 【照抄暮山紫的初始化渲染框架】
-        if (typeof paypal !== 'undefined') {
+        function renderPayPalButtons() {
+            const container = document.getElementById('paypal-button-container');
+            if (!container || typeof paypal === 'undefined') return;
+
+            container.innerHTML = ''; // 清空防重复
             paypal.Buttons({
                 style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
                 createOrder: function(data, actions) {
@@ -803,11 +748,12 @@ function renderPayPalButtons() {
                     const street = document.getElementById('cust-street').value;
                     const city = document.getElementById('cust-city').value;
                     const fullDesc = `${selectedProductTitle} | [手围: ${wristSize}] | [地址: ${street}, ${city}]`;
+                    const currentPriceVal = products[currentProductIdx].price.replace('€', '').trim().replace(',', '.');
 
                     return actions.order.create({
                         purchase_units: [{
                             description: fullDesc,
-                            amount: { currency_code: 'EUR', value: '65.00' }
+                            amount: { currency_code: 'EUR', value: currentPriceVal }
                         }]
                     });
                 },
