@@ -154,7 +154,7 @@
             overflow: hidden;
             position: relative;
         }
-        .video-placeholder {
+        .video- {
             position: absolute;
             inset: 0;
             display: flex;
@@ -463,7 +463,7 @@
             
             <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
             <div class="video-wrapper" id="video-wrapper">
-                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                <div id="video-" class="video-" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
                         <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
@@ -523,36 +523,36 @@
                 <!-- 1. 客户姓名 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name"></label>
-                    <input type="text" id="cust-name" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
+                    <input type="text" id="cust-name" class="form-input" ="" data--zh="" data--en="">
                 </div>
 
                 <!-- 2. 联系邮箱与电话/微信 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email Address"></label>
-                        <input type="email" id="cust-email" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
+                        <input type="email" id="cust-email" class="form-input" ="" data--zh="" data--en="">
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone"></label>
-                        <input type="text" id="cust-phone" class="form-input" placeholder="" data-placeholder-zh="" data--en="">
+                        <input type="text" id="cust-phone" class="form-input" ="" data--zh="" data--en="">
                     </div>
                 </div>
 
                 <!-- 3. 街道与门牌号 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Shipping Address: Street & House No."></label>
-                    <input type="text" id="cust-street" class="form-input" placeholder="" data-placeholder-zh=" " data-placeholder-en="">
+                    <input type="text" id="cust-street" class="form-input" ="" data--zh=" " data--en="">
                 </div>
 
                 <!-- 4. 邮政编码与城市 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Zip Code / Postcode"></label>
-                        <input type="text" id="cust-zip" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
+                        <input type="text" id="cust-zip" class="form-input" ="" data--zh="" data--en="">
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City"></label>
-                        <input type="text" id="cust-city" class="form-input" placeholder="" data-placeholder-zh=" " data-placeholder-en="">
+                        <input type="text" id="cust-city" class="form-input" ="" data--zh=" " data--en="">
                     </div>
                 </div>
 
@@ -570,7 +570,7 @@
                 <!-- 6. 备注与礼盒需求 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes / Gift Wrap"></label>
-                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="" data-placeholder-zh="" data-placeholder-en=""></textarea>
+                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" ="" data--zh="" data--en=""></textarea>
                 </div>
 
                 <!-- 支付按钮区域 -->
@@ -830,7 +830,7 @@
 
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
-            const placeholder = document.getElementById('video-placeholder');
+            const  = document.getElementById('video-');
             if (placeholder) { placeholder.style.display = 'none'; }
             container.innerHTML = `
                 <iframe style="width:100%; height:100%; border:none;" 
