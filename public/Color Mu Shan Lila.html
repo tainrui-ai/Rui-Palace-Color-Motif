@@ -352,7 +352,43 @@
                 <span class="dynamic-text" style="font-size: 10px; color: #a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click to copy HEX" data-lang="zh">点击色块复制 HEX</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;" id="color-grid"></div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;" id="color-grid">
+                <div onclick="selectGridColor(0)" class="color-card">
+                    <div class="color-block" style="background-color:#8670A0"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">暮山紫</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#8670A0</p>
+                </div>
+            
+                <div onclick="selectGridColor(1)" class="color-card">
+                    <div class="color-block" style="background-color:#9887B0"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">烟光凝</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#9887B0</p>
+                </div>
+            
+                <div onclick="selectGridColor(2)" class="color-card">
+                    <div class="color-block" style="background-color:#ABB4C5"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">雪青蓝</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#ABB4C5</p>
+                </div>
+            
+                <div onclick="selectGridColor(3)" class="color-card">
+                    <div class="color-block" style="background-color:#BDCBD4"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">无尽夏</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#BDCBD4</p>
+                </div>
+            
+                <div onclick="selectGridColor(4)" class="color-card">
+                    <div class="color-block" style="background-color:#C6D8E2"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">月下白</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#C6D8E2</p>
+                </div>
+            
+                <div onclick="selectGridColor(5)" class="color-card">
+                    <div class="color-block" style="background-color:#D2E2E6"></div>
+                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="zh">清冷月白</p>
+                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#D2E2E6</p>
+                </div>
+            </div>
 
             <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; background: #8670A0; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.5s;">
                 <p id="dynamic-name" style="font-family: serif; font-size: 12px; font-weight: bold;" data-lang="zh">暮山紫</p>
@@ -760,25 +796,22 @@
             }).render('#paypal-button-container');
         }
 
- // 页面加载完成后自动检测 URL 中的 ?lang= 参数进行无缝语言渲染
-        window.addEventListener('DOMContentLoaded', () => {
-    // 1. 获取浏览器当前 URL 里的参数
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get('lang');
-    
-    // 2. 如果 URL 带有 lang=en，则自动触发子页面的英文渲染函数
-    if (langParam === 'en') {
-        setLanguage('en'); // 假设子页面原有的切换语言函数叫 setLanguage
-    } else {
-        setLanguage('zh');
-    }
-});
+        // 页面加载完成后自动检测 URL 中的 ?lang= 参数进行无缝语言渲染与链接同步
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             
             // 如果检测到 ?lang=en 则渲染英文，否则默认中文
-            setLanguage(langParam === 'en' ? 'en' : 'zh');
+            const resolvedLang = langParam === 'en' ? 'en' : 'zh';
+            setLanguage(resolvedLang);
+
+            // 自动为站内链接带上当前语言状态，防止切换英文后点进子页面又变回中文
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.endsWith('.html') && !href.includes('lang=')) {
+                    link.setAttribute('href', `${href}?lang=${resolvedLang}`);
+                }
+            });
 
             const slider = document.getElementById('color-slider');
             if (slider) {
