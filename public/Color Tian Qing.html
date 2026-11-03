@@ -6,7 +6,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
-    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
+    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK (严格对齐暮山紫配置) -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&amp;components=buttons&amp;currency=EUR&amp;intent=capture&amp;enable-funding=sepa,card"></script>
 
     <style>
@@ -253,7 +253,7 @@
             
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(93,122,138,0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(93,122,138,0.2);">
                 <span style="width:8px; height:8px; border-radius:50%; background:#5D7A8A; display:inline-block;"></span>
-                <span class="dynamic-sub" style="font-weight:600; color:#5D7A8A; font-size:11px;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">HERO COLLECTION · BEGONIA GALLERY</span>
+                <span class="dynamic-sub" style="font-weight:600; color:#5D7A8A; font-size:11px;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">臻选主打 · 海棠画廊</span>
             </div>
 
             <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #262626; margin-bottom: 8px;" data-zh="雨过天晴 · 汝窑冰裂天青石手串" data-en="Celadon Sky · Natural Celadon Stone Bracelet" data-lang="zh">雨过天晴 · 汝窑冰裂天青石手串</h2>
@@ -396,7 +396,7 @@
             <input type="range" id="color-slider" min="0" max="5" value="1" style="width: 100%; height: 4px; background: #e5e5e5; border-radius: 4px; appearance: none; cursor: pointer;">
         </section>
 
-        <!-- 右侧：东阁 · 研墨观象台（含 YouTube 隐私防呆提示与指定链接） -->
+        <!-- 右侧：东阁 · 研墨观象台 -->
         <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px;">
                 <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 研墨观象台" data-en="East Pavilion • Observatory" data-lang="zh">东阁 · 研墨观象台</h3>
@@ -408,7 +408,7 @@
                     <div class="play-btn">
                         <span style="font-size: 14px; margin-left: 2px;">▶</span>
                     </div>
-                    <p class="dynamic-text" style="color: white; font-size: 12px; margin-bottom: 4px;" data-zh="点击加载东阁影像（连接至第三方 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="zh">点击加载东阁影像（连接至第三方 YouTube）</p>
+                    <p class="dynamic-text" style="color: white; font-size: 12px; margin-bottom: 4px;" data-zh="<div>点击加载东阁影像（连接至第三方 YouTube）</div>" data-en="Load Craftsmanship Video (YouTube)" data-lang="zh">点击加载东阁影像（连接至第三方 YouTube）</p>
                     <p class="dynamic-text" style="font-size: 9px; color: #a3a3a3;" data-zh="加载即代表连接至第三方 YouTube 并同意 Google 隐私政策" data-en="Subject to Google Privacy Policy &amp; Third-Party YouTube Connection" data-lang="zh">加载即代表连接至第三方 YouTube 并同意 Google 隐私政策</p>
                 </div>
                 <div id="youtube-container" style="width: 100%; height: 100%;"></div>
@@ -424,7 +424,7 @@
         </section>
     </main>
 
-    <!-- 结缘模态框（完美对齐暮山紫的高级支付按钮外观） -->
+    <!-- 结缘模态框 (完全同步暮山紫付款区代码与交互逻辑) -->
     <div id="buyModal" class="modal">
         <div class="chinese-border" style="background: #FFF; width: 100%; max-width: 520px; padding: 32px 24px; position: relative; border-radius: 24px; text-align: center; max-height: 90vh; overflow-y: auto;">
             <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #737373; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
@@ -718,7 +718,7 @@
 
         function sendOrderEmail(customerData) {
             const formData = new FormData();
-            formData.append('_subject', '【蕊宫官网】雨过天晴手链新订单通知');
+            formData.append('_subject', '【雨过天晴官网】天青手链新订单通知');
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             formData.append('客户姓名', customerData.name);
@@ -737,7 +737,7 @@
             }).catch(err => console.log('邮件发送提示:', err));
         }
 
-        // 初始化 PayPal 按钮并对齐暮山紫的多合一支付外观
+        // 严格对齐暮山紫的 PayPal / SEPA / 信用卡多合一 SDK 支付初始化逻辑
         if (typeof paypal !== 'undefined') {
             paypal.Buttons({
                 style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
