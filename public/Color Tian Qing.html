@@ -6,7 +6,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
-    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
+    <!-- 严格同步暮山紫的官方多合一 SDK 引入路径与参数 -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp3D7kZB5LxFcj8I&currency=EUR"></script>
 
     <style>
@@ -395,7 +395,7 @@
         </section>
     </main>
 
-    <!-- 结缘模态框（完全同步暮山紫付款与表单构架） -->
+    <!-- 结缘模态框 -->
     <div id="buyModal" class="modal">
         <div class="chinese-border" style="background: #FFF; width: 100%; max-width: 520px; padding: 32px 24px; position: relative; border-radius: 24px; text-align: center; max-height: 90vh; overflow-y: auto;">
             <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #737373; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
@@ -651,7 +651,8 @@
             if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
             document.getElementById('buyModal').classList.add('active');
             
-            renderPayPalButtons();
+            // 确保每次打开弹窗时安全渲染 PayPal 按钮
+            setTimeout(renderPayPalButtons, 150);
         }
 
         function closeModal() {
@@ -691,7 +692,7 @@
 
         function sendOrderEmail(customerData) {
             const formData = new FormData();
-            formData.append('_subject', '【雨过天晴官网】天青手链新订单通知');
+            formData.append('_subject', '【雨过天青官网】天青手链新订单通知');
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             formData.append('客户姓名', customerData.name);
@@ -712,9 +713,15 @@
 
         function renderPayPalButtons() {
             const container = document.getElementById('paypal-button-container');
-            if (!container || typeof paypal === 'undefined') return;
+            if (!container) return;
 
-            container.innerHTML = ''; 
+            container.innerHTML = ''; // 清空以防重复渲染
+
+            if (typeof paypal === 'undefined') {
+                container.innerHTML = '<p style="font-size:12px; color:#d9534f; text-align:center; padding:10px;">支付组件加载中或被拦截，请检查网络或广告插件后刷新重试</p>';
+                return;
+            }
+
             paypal.Buttons({
                 style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
                 createOrder: function(data, actions) {
@@ -809,4 +816,3 @@
     </script>
 </body>
 </html>
-```[cite: 1, 2]
