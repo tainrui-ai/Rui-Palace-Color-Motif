@@ -7,7 +7,7 @@
     <title>芭蕉橙 · 暖阳入心美学色卡</title>
     
     <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAZBjJQVB0sdSCeQ-8us00ThhIHr6G6UzpUIQdSwVRnnGIL7eLqI2Xf_EBOCqBMZQ7mptJdRCzsMvBpzc&currency=EUR&components=buttons&enable-funding=venmo,paylater,sepa,card"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR&components=buttons&enable-funding=venmo,paylater,sepa,card"></script>
 
     <!-- 纯原生安全样式 -->
     <style>
@@ -162,7 +162,7 @@
             overflow: hidden;
             position: relative;
         }
-        .video-placeholder {
+        .video- {
             position: absolute;
             inset: 0;
             display: flex;
@@ -443,7 +443,7 @@
             
             <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
             <div class="video-wrapper" id="video-wrapper">
-                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                <div id="video-" class="video-" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
                         <span style="font-size:16px; margin-left:2px;">▶</span>
                     </div>
@@ -500,30 +500,30 @@
             <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
                 <div>
                     <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="尊姓大名" data-en="Full Name"></label>
-                    <input type="text" id="cust-name" required class="form-input" placeholder="">
+                    <input type="text" id="cust-name" required class="form-input" ="">
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                     <div>
                         <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系邮箱" data-en="Email"></label>
-                        <input type="email" id="cust-email" required class="form-input" placeholder="">
+                        <input type="email" id="cust-email" required class="form-input" ="">
                     </div>
                     <div>
                         <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系电话" data-en="Phone"></label>
-                        <input type="text" id="cust-phone" required class="form-input" placeholder=" ">
+                        <input type="text" id="cust-phone" required class="form-input" =" ">
                     </div>
                 </div>
                 <div>
                     <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street & House No."></label>
-                    <input type="text" id="cust-street" required class="form-input" placeholder="">
+                    <input type="text" id="cust-street" required class="form-input" ="">
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                     <div>
                         <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮政编码" data-en="Zip Code"></label>
-                        <input type="text" id="cust-zip" required class="form-input" placeholder="">
+                        <input type="text" id="cust-zip" required class="form-input" ="">
                     </div>
                     <div>
                         <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="城市" data-en="City"></label>
-                        <input type="text" id="cust-city" required class="form-input" placeholder="">
+                        <input type="text" id="cust-city" required class="form-input" ="">
                     </div>
                 </div>
                 <div>
@@ -532,11 +532,12 @@
                         <option value="14.0cm - 15.0cm">14.0cm - 15.0cm </option>
                         <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm </option>
                         <option value="16.5cm - 18.0cm">16.5cm - 18.0cm </option>
+                        
                     </select>
                 </div>
                 <div>
                     <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes"></label>
-                    <textarea id="cust-notes" rows="2" class="form-input" style="resize: none;" placeholder=""></textarea>
+                    <textarea id="cust-notes" rows="2" class="form-input" style="resize: none;" =""></textarea>
                 </div>
 
                 <div style="margin-top: 8px;">
@@ -666,8 +667,8 @@
 
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
-            const placeholder = document.getElementById('video-placeholder');
-            if (placeholder) { placeholder.style.display = 'none'; }
+            const  = document.getElementById('video-');
+            if () { .style.display = 'none'; }
             container.innerHTML = `
                 <iframe style="width:100%; height:100%; border:none;" 
                         src="https://www.youtube.com/embed/fM3HhVfDESE?autoplay=1" 
