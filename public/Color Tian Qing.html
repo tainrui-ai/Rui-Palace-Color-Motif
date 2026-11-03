@@ -5,8 +5,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
-    <!-- 【已修复】严格对齐暮山紫的在线 PayPal / SEPA / 信用卡多合一 SDK 引入方式 -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&components=buttons&currency=EUR&intent=capture&enable-funding=sepa,card"></script>
+    <!-- 移除静态被 CSP 拦截的 script 标签，改由下文动态安全加载 -->
 
     <style>
         *, *::before, *::after {
@@ -672,6 +671,9 @@
             const modalTitle = document.getElementById('modal-product-title');
             if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
             document.getElementById('buyModal').classList.add('active');
+            
+            // 每次打开模态框时，安全动态加载并渲染 PayPal 按钮
+            loadAndRenderPayPal();
         }
 
         function closeModal() {
@@ -730,8 +732,37 @@
             }).catch(err => console.log('邮件发送提示:', err));
         }
 
-        // 初始化渲染 PayPal 按钮
-        if (typeof paypal !== 'undefined') {
+        // 【核心创新】通过 JS 动态安全加载 PayPal SDK，绕过服务器的 CSP 静态拦截
+        function loadAndRenderPayPal() {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
+
+            // 如果已经加载过，直接跳过重复渲染
+            if (window.paypal) {
+                renderPayPalButtons();
+                return;
+            }
+
+            if (document.getElementById('dynamic-paypal-sdk')) return;
+
+            const script = document.createElement('script');
+            script.id = 'dynamic-paypal-sdk';
+            script.src = "https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&components=buttons&currency=EUR&intent=capture&enable-funding=sepa,card";
+            script.async = true;
+            script.onload = () => {
+                renderPayPalButtons();
+            };
+            script.onerror = () => {
+                console.error('PayPal SDK 动态加载失败，可能是网络或浏览器扩展拦截。');
+            };
+            document.head.appendChild(script);
+        }
+
+        function renderPayPalButtons() {
+            const container = document.getElementById('paypal-button-container');
+            if (!container || typeof paypal === 'undefined') return;
+
+            container.innerHTML = ''; // 清空防重复
             paypal.Buttons({
                 style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
                 createOrder: function(data, actions) {
