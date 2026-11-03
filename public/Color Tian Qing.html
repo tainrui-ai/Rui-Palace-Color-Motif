@@ -6,7 +6,7 @@
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
     <!-- 【已完美对齐暮山紫】使用与暮山紫完全相同的官方 SDK 引用方式 -->
-    <script src="./雨过天晴 · 天青玄妙美学色卡与定制臻藏_files/js" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&components=buttons&currency=EUR&intent=capture&enable-funding=sepa,card"></script>
 
     <style>
         *, *::before, *::after {
@@ -673,40 +673,15 @@
     if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
     document.getElementById('buyModal').classList.add('active');
     
-    // 【核心修复】每次打开弹窗时，自动动态加载并渲染 PayPal 支付按钮
-    loadAndRenderPayPal();
-}
-
-// 动态安全加载与渲染 PayPal 按钮核心函数
-function loadAndRenderPayPal() {
-    const container = document.getElementById('paypal-button-container');
-    if (!container) return;
-
-    if (window.paypal) {
-        renderPayPalButtons();
-        return;
-    }
-
-    if (document.getElementById('dynamic-paypal-sdk')) return;
-
-    const script = document.createElement('script');
-    script.id = 'dynamic-paypal-sdk';
-    script.src = "https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyuifuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&components=buttons&currency=EUR&intent=capture&enable-funding=sepa,card";
-    script.async = true;
-    script.onload = () => {
-        renderPayPalButtons();
-    };
-    script.onerror = () => {
-        console.error('PayPal SDK 动态加载失败');
-    };
-    document.head.appendChild(script);
+    // 弹窗打开后立刻渲染支付按钮
+    renderPayPalButtons();
 }
 
 function renderPayPalButtons() {
     const container = document.getElementById('paypal-button-container');
     if (!container || typeof paypal === 'undefined') return;
 
-    container.innerHTML = ''; // 防止重复渲染
+    container.innerHTML = ''; // 清空防重复
     paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
         createOrder: function(data, actions) {
@@ -757,6 +732,7 @@ function renderPayPalButtons() {
             alert(currentLang === 'zh' ? '支付遇到问题，请检查表单填写是否完整。' : 'Payment error. Please check form fields.');
         }
     }).render('#paypal-button-container');
+}
 }
 
         function closeModal() {
