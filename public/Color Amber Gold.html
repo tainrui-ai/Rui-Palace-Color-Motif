@@ -522,36 +522,36 @@
                 <!-- 1. 客户姓名 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name">尊姓大名</label>
-                    <input type="text" id="cust-name" class="form-input" placeholder="例如：张女士 / Alice Smith" data-placeholder-zh="例如：张女士 / Alice Smith" data-placeholder-en="e.g. Alice Smith">
+                    <input type="text" id="cust-name" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
                 </div>
 
                 <!-- 2. 联系邮箱与电话/微信 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email Address">联系邮箱</label>
-                        <input type="email" id="cust-email" class="form-input" placeholder="name@domain.com" data-placeholder-zh="name@domain.com" data-placeholder-en="name@domain.com">
+                        <input type="email" id="cust-email" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone">联系电话</label>
-                        <input type="text" id="cust-phone" class="form-input" placeholder="用于配送联系" data-placeholder-zh="" data-placeholder-en="For delivery updates">
+                        <input type="text" id="cust-phone" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
                     </div>
                 </div>
 
                 <!-- 3. 街道与门牌号 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Shipping Address: Street & House No.">邮寄地址：街道与门牌号</label>
-                    <input type="text" id="cust-street" class="form-input" placeholder="例如：Hauptstraße 123 " data-placeholder-zh="例如：Hauptstraße 123 " data-placeholder-en="e.g. Hauptstraße 123, Apt 4B">
+                    <input type="text" id="cust-street" class="form-input" placeholder="" data-placeholder-zh=" " data-placeholder-en="">
                 </div>
 
                 <!-- 4. 邮政编码与城市 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Zip Code / Postcode">邮政编码</label>
-                        <input type="text" id="cust-zip" class="form-input" placeholder="例如：80331" data-placeholder-zh="例如：80331" data-placeholder-en="e.g. 80331">
+                        <input type="text" id="cust-zip" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City">城市</label>
-                        <input type="text" id="cust-city" class="form-input" placeholder="例如：München / 慕尼黑" data-placeholder-zh="例如：München / 慕尼黑" data-placeholder-en="e.g. Munich">
+                        <input type="text" id="cust-city" class="form-input" placeholder="" data-placeholder-zh="" data-placeholder-en="">
                     </div>
                 </div>
 
@@ -569,12 +569,12 @@
                 <!-- 6. 备注与礼盒需求 -->
                 <div>
                     <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes / Gift Wrap"></label>
-                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="选填：礼品包装需求或特殊尺寸说明" data-placeholder-zh="" data-placeholder-en="Optional: Gift messaging or custom dimensions"></textarea>
+                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="" data-placeholder-zh="" data-placeholder-en=""></textarea>
                 </div>
 
                 <!-- 支付按钮区域 -->
                 <div style="margin-top: 8px;">
-                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€0.01 含邮)" data-en="Select payment method below after entering details (€0.01 incl. shipping)">完整填写后，请选择结算方式 (€0.01 含邮)</p>
+                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="完整填写后，请选择结算方式 (€0.01 含邮)" data-en="Select payment method below after entering details (€0.01 incl. shipping)"></p>
                     
                     <div id="paypal-button-container"></div>
                 </div>
