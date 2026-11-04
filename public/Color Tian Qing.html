@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
+    
+    <!-- 严格同步暮山紫的官方 PayPal SDK 引入 -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrowWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp3D7kZB5LxFcj8I&currency=EUR"></script>
 
     <style>
         *, *::before, *::after {
@@ -251,7 +254,7 @@
                 <span class="dynamic-sub" style="font-weight:600; color:#5D7A8A; font-size:11px;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">臻选主打 · 海棠画廊</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #262626; margin-bottom: 8px;" data-zh="雨过天青 · 汝窑冰裂天青石手串" data-en="Celadon Sky · Natural Celadon Stone Bracelet" data-lang="zh">雨过天青 · 汝窑冰裂天青石手串</h2>
+            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #262626; margin-bottom: 8px;" data-zh="雨过天晴 · 汝窑冰裂天青石手串" data-en="Celadon Sky · Natural Celadon Stone Bracelet" data-lang="zh">雨过天晴 · 汝窑冰裂天青石手串</h2>
             <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px;" data-zh="Celadon Sky Gemstone Bracelet Collection" data-en="Celadon Sky Gemstone Bracelet Collection" data-lang="zh">Celadon Sky Gemstone Bracelet Collection</p>
 
             <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#5D7A8A; font-size:11px; font-family:serif;">
@@ -386,7 +389,7 @@
         </section>
     </main>
 
-    <!-- 结缘模态框：已改为原生稳妥的“确认结缘并安全结算”按钮 -->
+    <!-- 结缘模态框：恢复与暮山紫完全一致的 PayPal 动态挂载逻辑 -->
     <div id="buyModal" class="modal">
         <div class="chinese-border" style="background: #FFF; width: 100%; max-width: 520px; padding: 32px 24px; position: relative; border-radius: 24px; text-align: center; max-height: 90vh; overflow-y: auto;">
             <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #737373; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
@@ -439,12 +442,10 @@
                     <textarea id="cust-notes" rows="2" class="form-input" style="resize: none;"></textarea>
                 </div>
 
-                <!-- 100% 稳妥的本地原生支付按钮区域 -->
-                <div style="margin-top: 12px; text-align: center;">
-                    <p style="font-size: 11px; color: #737373; margin-bottom: 12px;" data-zh="确认结缘价：€65.00（含全球快递运费）" data-en="Total: €65.00 (Incl. Shipping)" data-lang="zh">确认结缘价：€65.00（含全球快递运费）</p>
-                    <button type="button" onclick="submitNativeOrder()" style="width: 100%; padding: 14px; border-radius: 9999px; background: #5D7A8A; color: white; border: none; font-size: 0.9rem; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(93,122,138,0.3);" onmouseover="this.style.background='#4b6674'" onmouseout="this.style.background='#5D7A8A'">
-                        <span data-zh="确认结缘并安全结算 ➔" data-en="Confirm & Secure Checkout ➔" data-lang="zh">确认结缘并安全结算 ➔</span>
-                    </button>
+                <div style="margin-top: 8px;">
+                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="请选择支付结算方式 (€65.00 含快递)" data-en="Select payment method (€65.00 incl. shipping)" data-lang="zh">请选择支付结算方式 (€65.00 含快递)</p>
+                    <!-- 动态渲染 PayPal 支付按钮的容器 -->
+                    <div id="paypal-button-container"></div>
                 </div>
             </div>
         </div>
@@ -644,6 +645,9 @@
             const modalTitle = document.getElementById('modal-product-title');
             if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
             document.getElementById('buyModal').classList.add('active');
+            
+            // 每次打开弹窗时安全渲染 PayPal 按钮（与暮山紫完全一致）
+            setTimeout(renderPayPalButtons, 100);
         }
 
         function closeModal() {
@@ -681,23 +685,7 @@
             return true;
         }
 
-        // 原生稳定提交与结算函数
-        function submitNativeOrder() {
-            if (!validateOrderFields()) return;
-
-            const customerData = {
-                name: document.getElementById('cust-name').value,
-                email: document.getElementById('cust-email').value,
-                phone: document.getElementById('cust-phone').value,
-                street: document.getElementById('cust-street').value,
-                zip: document.getElementById('cust-zip').value,
-                city: document.getElementById('cust-city').value,
-                wrist: document.getElementById('cust-wrist').value,
-                model: selectedProductTitle,
-                notes: document.getElementById('cust-notes').value.trim() || '无'
-            };
-
-            // 发送邮件通知后台
+        function sendOrderEmail(customerData) {
             const formData = new FormData();
             formData.append('_subject', '【雨过天晴官网】天青手链新订单通知');
             formData.append('_template', 'table');
@@ -716,13 +704,70 @@
                 method: 'POST',
                 body: formData
             }).catch(err => console.log('邮件发送提示:', err));
+        }
 
-            // 成功提示并关闭弹窗
-            alert(currentLang === 'zh' ? 
-                `感谢尊贵的客户 ${customerData.name}！您的结缘申请与收货地址（${customerData.street}, ${customerData.city}）已成功提交，我们将尽快为您安排快递发货。` : 
-                `Thank you ${customerData.name}! Your reservation has been successfully registered.`
-            );
-            closeModal();
+        // 与暮山紫完全相同的标准 PayPal SDK 渲染逻辑
+        function renderPayPalButtons() {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
+
+            container.innerHTML = ''; // 清空以防重复渲染
+
+            if (typeof paypal === 'undefined') {
+                container.innerHTML = '<p style="font-size:12px; color:#d9534f; text-align:center; padding:10px;">支付组件加载中或被拦截，请检查网络或广告插件后刷新重试</p>';
+                return;
+            }
+
+            paypal.Buttons({
+                style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+                createOrder: function(data, actions) {
+                    if (!validateOrderFields()) {
+                        throw new Error('Missing address or contact info.');
+                    }
+                    const wristSize = document.getElementById('cust-wrist').value;
+                    const street = document.getElementById('cust-street').value;
+                    const city = document.getElementById('cust-city').value;
+                    const fullDesc = `${selectedProductTitle} | [手围: ${wristSize}] | [地址: ${street}, ${city}]`;
+                    const currentPriceVal = products[currentProductIdx].price.replace('€', '').trim().replace(',', '.');
+
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: fullDesc,
+                            amount: { currency_code: 'EUR', value: currentPriceVal }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        const customerData = {
+                            name: document.getElementById('cust-name').value,
+                            email: document.getElementById('cust-email').value,
+                            phone: document.getElementById('cust-phone').value,
+                            street: document.getElementById('cust-street').value,
+                            zip: document.getElementById('cust-zip').value,
+                            city: document.getElementById('cust-city').value,
+                            wrist: document.getElementById('cust-wrist').value,
+                            model: selectedProductTitle,
+                            notes: document.getElementById('cust-notes').value.trim() || '无'
+                        };
+
+                        sendOrderEmail(customerData);
+
+                        alert(currentLang === 'zh' ? 
+                            `感谢尊贵的客户 ${customerData.name}！支付成功。您的快递地址（${customerData.street}, ${customerData.city}）已记录并同步。` : 
+                            `Thank you ${customerData.name}! Payment successful. Shipping info registered.`
+                        );
+                        closeModal();
+                    });
+                },
+                onCancel: function(data) {
+                    alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
+                },
+                onError: function(err) {
+                    console.error('PayPal 支付异常：', err);
+                    alert(currentLang === 'zh' ? '支付遇到问题，请检查表单填写是否完整。' : 'Payment error. Please check form fields.');
+                }
+            }).render('#paypal-button-container');
         }
 
         window.addEventListener('DOMContentLoaded', () => {
