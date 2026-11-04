@@ -7,7 +7,7 @@
     <title>朱砂红 · 宫廷美学色卡与定制臻藏</title>
     
     <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-     <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
 
     <style>
         *, *::before, *::after {
@@ -18,7 +18,7 @@
 
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
-            background-color: #FDFBF8; 
+            background-color: #FDF4F2; 
             color: #262626;
             min-height: 100vh;
             display: flex;
@@ -37,20 +37,20 @@
         }
 
         .chinese-border { 
-            border: 1px solid rgba(134, 112, 160, 0.18); 
-            outline: 3px double rgba(134, 112, 160, 0.1); 
+            border: 1px solid rgba(192, 57, 43, 0.18); 
+            outline: 3px double rgba(192, 57, 43, 0.1); 
             outline-offset: -8px; 
-            background: rgba(255, 255, 255, 0.85); 
+            background: rgba(255, 250, 249, 0.85); 
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 32px;
-            box-shadow: 0 15px 35px -10px rgba(134, 112, 160, 0.12);
+            box-shadow: 0 15px 35px -10px rgba(192, 57, 43, 0.12);
         }
 
         .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
         .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.05em; font-size: 1.9rem; font-weight: 500; }
 
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #8670A0; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #C0392B; }
         .dynamic-sub[data-lang="en"] { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7rem; }
 
         .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
@@ -82,7 +82,7 @@
             text-orientation: upright; 
             letter-spacing: 0.3em; 
             font-size: 10px; 
-            color: #8670A0; 
+            color: #C0392B; 
             margin-top: 24px; 
         }
         .vertical-wing[data-lang="en"] { 
@@ -103,9 +103,9 @@
             transition: all 0.3s ease;
         }
         .color-card:hover {
-            border-color: #8670A0;
+            border-color: #C0392B;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(134, 112, 160, 0.15);
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
         }
         .color-block {
             height: 40px;
@@ -139,20 +139,20 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: #8670A0;
+            background: #C0392B;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             margin-bottom: 8px;
-            box-shadow: 0 2px 10px rgba(134,112,160,0.4);
+            box-shadow: 0 2px 10px rgba(192,57,43,0.4);
             transition: transform 0.3s;
         }
         .play-btn:hover { transform: scale(1.1); }
 
         .hero-podium {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(243, 238, 248, 0.7) 60%, rgba(230, 220, 240, 0.3) 100%);
-            box-shadow: inset 0 0 30px rgba(134, 112, 160, 0.08), 0 20px 40px -15px rgba(134, 112, 160, 0.15);
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(254, 245, 243, 0.7) 60%, rgba(250, 235, 233, 0.3) 100%);
+            box-shadow: inset 0 0 30px rgba(192, 57, 43, 0.08), 0 20px 40px -15px rgba(192, 57, 43, 0.15);
         }
 
         .begonia-window-clip {
@@ -174,8 +174,8 @@
             border: 2px solid transparent;
         }
         .product-thumb.active {
-            border-color: #8670A0;
-            background: rgba(134, 112, 160, 0.08);
+            border-color: #C0392B;
+            background: rgba(192, 57, 43, 0.08);
             transform: scale(1.05);
         }
 
@@ -195,7 +195,7 @@
         .form-input {
             width: 100%;
             padding: 10px 14px;
-            border: 1px solid rgba(134, 112, 160, 0.25);
+            border: 1px solid rgba(192, 57, 43, 0.25);
             border-radius: 8px;
             outline: none;
             font-size: 13px;
@@ -203,7 +203,7 @@
             transition: all 0.2s;
         }
         .form-input:focus {
-            border-color: #8670A0;
+            border-color: #C0392B;
             background: #FFF;
         }
     </style>
@@ -223,7 +223,7 @@
     <header class="container" style="padding-top: 32px; padding-bottom: 24px; text-align: center; position: relative;">
         <!-- 左侧翼：归隐按钮与竖文 -->
         <div class="side-wing-left">
-            <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;" onmouseover="this.style.color='#8670A0'" onmouseout="this.style.color='#a3a3a3'">
+            <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;" onmouseover="this.style.color='#C0392B'" onmouseout="this.style.color='#a3a3a3'">
                 <span style="font-size:12px;">⇠</span>
                 <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="en">RETURN</span>
             </button>
@@ -251,15 +251,15 @@
     <section class="container" style="padding-top: 32px; padding-bottom: 16px;">
         <div class="chinese-border hero-podium" style="display:flex; flex-direction:column; align-items:center; text-align:center; max-width: 840px; margin: 0 auto;">
             
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(134,112,160,0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(134,112,160,0.2);">
-                <span style="width:8px; height:8px; border-radius:50%; background:#8670A0; display:inline-block;"></span>
-                <span class="dynamic-sub" style="font-weight:600; color:#8670A0; font-size:11px;" data-zh="海棠花窗 · 典藏产品" data-en="BEGONIA GALLERY · COLLECTION" data-lang="en">BEGONIA GALLERY · COLLECTION</span>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(192,57,43,0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(192,57,43,0.2);">
+                <span style="width:8px; height:8px; border-radius:50%; background:#C0392B; display:inline-block;"></span>
+                <span class="dynamic-sub" style="font-weight:600; color:#C0392B; font-size:11px;" data-zh="海棠花窗 · 典藏产品" data-en="BEGONIA GALLERY · COLLECTION" data-lang="en">BEGONIA GALLERY · COLLECTION</span>
             </div>
 
             <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #262626; margin-bottom: 8px;" data-zh="朱砂红 · 高含量天然原矿手串" data-en="Cinnabar Red · Natural High-Grade Bracelet" data-lang="en">Cinnabar Red · Natural High-Grade Bracelet</h2>
             <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px;" data-zh="Imperial Cinnabar Collection" data-en="Imperial Cinnabar Collection" data-lang="en">Imperial Cinnabar Collection</p>
 
-            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#8670A0; font-size:11px; font-family:serif;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#C0392B; font-size:11px; font-family:serif;">
                 <span>⇠</span>
                 <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="en">Slide Left &amp; Right / Click to Enlarge</span>
                 <span>⇢</span>
@@ -267,19 +267,19 @@
 
             <!-- 海棠花窗视口展示区 -->
             <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
-                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(134,112,160,0.2) 0%, transparent 70%); filter:blur(20px);"></div>
+                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(192,57,43,0.2) 0%, transparent 70%); filter:blur(20px);"></div>
 
-                <button onclick="prevProduct()" style="position:absolute; left:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134,112,160,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个款式">❮</button>
-                <button onclick="nextProduct()" style="position:absolute; right:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134,112,160,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个款式">❯</button>
+                <button onclick="prevProduct()" style="position:absolute; left:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#C0392B; border:1px solid rgba(192,57,43,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个款式">❮</button>
+                <button onclick="nextProduct()" style="position:absolute; right:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#C0392B; border:1px solid rgba(192,57,43,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个款式">❯</button>
 
                 <!-- 外边框装饰 -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
-                        <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#524066" stroke-width="2.5" stroke-linejoin="round"></path>
+                        <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#C0392B" stroke-width="2.5" stroke-linejoin="round"></path>
                     </svg>
                 </div>
 
-                <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
+                <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FDFBF8; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
                     <div id="slider-track" class="slider-track" style="transform: translateX(0%);">
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(0)">
                             <img src="./朱砂红 · 宫廷美学色卡与定制臻藏_files/ffffff" alt="朱砂红手串" style="width:100%; height:100%; object-fit:contain;">
@@ -303,12 +303,12 @@
                 <div style="text-align: center;">
                     <span style="font-size: 10px; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.1em; display: block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="en">SPECIAL PRICE (INCL. BOX)</span>
                     <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-top: 4px;">
-                        <span id="hero-price" style="font-size: 1.8rem; font-family: serif; font-weight: bold; color: #8670A0;">€ 99,00</span>
+                        <span id="hero-price" style="font-size: 1.8rem; font-family: serif; font-weight: bold; color: #C0392B;">€ 99,00</span>
                         <span style="font-size: 0.85rem; color: #a3a3a3; text-decoration: line-through;">€ 199,00</span>
                     </div>
                 </div>
 
-                <button onclick="openModal()" style="padding: 12px 32px; border-radius: 9999px; background: #8670A0; color: white; border: none; font-size: 0.8rem; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(134,112,160,0.3);" onmouseover="this.style.background='#725c8c'" onmouseout="this.style.background='#8670A0'">
+                <button onclick="openModal()" style="padding: 12px 32px; border-radius: 9999px; background: #C0392B; color: white; border: none; font-size: 0.8rem; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(192,57,43,0.3);" onmouseover="this.style.background='#a93226'" onmouseout="this.style.background='#C0392B'">
                     <span data-zh="立即臻藏 / Buy Now" data-en="BUY NOW / 立即臻藏" data-lang="en">BUY NOW / 立即臻藏</span> ➔
                 </button>
             </div>
@@ -424,7 +424,7 @@
                     <p id="poetry-text" class="poetry-text-style" data-zh="“丹砂含灵气，烁石映宫墙。”" data-en="“Cinnabar holds spiritual energy, gleaming stones mirror imperial walls.”" data-lang="en">“Cinnabar holds spiritual energy, gleaming stones mirror imperial walls.”</p>
                     <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;" data-zh="—— 蕊宫原创" data-en="— Rui Palace Original" data-lang="en">— Rui Palace Original</p>
                 </div>
-                <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: none; border: none; cursor: pointer; padding: 0; color: #8670A0;" data-zh="换一首诗 ➔" data-en="Next Verse ➔" data-lang="en">Next Verse ➔</button>
+                <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: none; border: none; cursor: pointer; padding: 0; color: #C0392B;" data-zh="换一首诗 ➔" data-en="Next Verse ➔" data-lang="en">Next Verse ➔</button>
             </div>
         </section>
     </main>
@@ -434,7 +434,7 @@
         <div class="chinese-border" style="background: #FFF; width: 100%; max-width: 520px; padding: 32px 24px; position: relative; border-radius: 24px; text-align: center; max-height: 90vh; overflow-y: auto;">
             <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #737373; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
             
-            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(134,112,160,0.1); border: 1px solid rgba(134,112,160,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; color: #8670A0; font-size: 14px;">✦</div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; color: #C0392B; font-size: 14px;">✦</div>
 
             <h3 id="modal-product-title" style="font-family: serif; font-size: 1.25rem; font-weight: bold; color: #262626; margin-bottom: 6px;" data-zh="【朱砂红】手串 · 臻藏结缘" data-en="[Cinnabar Red] Bracelet Reservation" data-lang="en">[Cinnabar Red] Bracelet Reservation</h3>
             <p class="dynamic-text" style="font-size: 11px; color: #8c8c8c; margin-bottom: 20px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please provide your contact details &amp; shipping address" data-lang="en">Please provide your contact details &amp; shipping address</p>
@@ -835,4 +835,3 @@
         });
     </script>
 </body></html>
-```[cite: 11, 12]
