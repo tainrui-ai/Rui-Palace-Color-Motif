@@ -386,13 +386,14 @@ background-attachment: fixed;
             <input type="range" id="color-slider" min="0" max="5" value="0" style="width: 100%; height: 4px; background: #e5e5e5; border-radius: 4px; appearance: none; cursor: pointer;">
         </section>
 
-        <!-- 右侧：听风听雨观象台 & 诗词轮播 -->
+        <!-- 右侧：听风听雨观象台 & 诗词轮播（同步暮山紫遮罩结构） -->
         <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px;">
                 <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion • Audio Observatory" data-lang="zh">东阁 · 听风听雨观象台</h3>
                 <span class="dynamic-text" style="font-size: 10px; color: #a3a3a3;" data-zh="杏雨流光 · 视听长青" data-en="Apricot Rain & Vision" data-lang="zh">杏雨流光 · 视听长青</span>
             </div>
 
+            <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
             <div class="video-wrapper" id="video-wrapper">
                 <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
@@ -406,8 +407,8 @@ background-attachment: fixed;
 
             <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div id="poetry-container" style="margin-bottom: 12px; min-height: 60px;">
-                    <p id="poetry-text" class="poetry-text-style">“杏花天影尘埃起，欲道清愁还说休。”</p>
-                    <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;">—— 蕊宫原创</p>
+                    <p id="poetry-text" class="poetry-text-style" data-zh="“杏花天影尘埃起，欲道清愁还说休。”" data-en="“Apricot blossom shadows stir the dust; when I wish to speak of pure sorrow, I hesitate and say no more.”" data-lang="zh">“杏花天影尘埃起，欲道清愁还说休。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;" data-zh="—— 蕊宫原创" data-en="— Rui Palace Original" data-lang="zh">—— 蕊宫原创</p>
                 </div>
                 <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: none; border: none; cursor: pointer; padding: 0; color: #C2785C;" data-zh="感悟下一首诗意 ➔" data-en="Next Verse ➔" data-lang="zh">感悟下一首诗意 ➔</button>
             </div>
@@ -650,7 +651,7 @@ background-attachment: fixed;
             if (slider) updateDynamicPad(slider.value);
         }
 
-        function loadYouTubeVideo() {
+function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
             const placeholder = document.getElementById('video-placeholder');
             if (placeholder) { placeholder.style.display = 'none'; }
