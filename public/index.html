@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="lang-en-mode">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0034)https://www.rui-palace.de/?lang=zh -->
+<html lang="zh-CN" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Soul of Oriental Aesthetics | RUI PALACE</title>
     
     <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR" data-uid-auto="uid_cart_sdk"></script>
+    <script src="./The Soul of Oriental Aesthetics _ RUI PALACE_files/js" data-uid-auto="uid_cart_sdk"></script>
 
     <style>
         /* 本地字体定义 */
@@ -191,13 +191,13 @@
         .lang-en-mode .smart-glass-dock { letter-spacing: 0.05em !important; }
         .lang-en-mode .trigger-btn { letter-spacing: 0.06em !important; }
     </style>
-</head>
+<script src="./The Soul of Oriental Aesthetics _ RUI PALACE_files/main.js.Herunterladen"></script></head>
 <body onclick="closeAllPanels()">
 
     <!-- 舞台核心：转动的罗盘/宝相花与水滴/涟漪特效画布 -->
     <div id="stage-container">
-        <img id="baoxiang-img" src="images/baoxianghua.jpg" alt="核心纹样">
-        <canvas id="inkCanvas"></canvas>
+        <img id="baoxiang-img" src="./The Soul of Oriental Aesthetics _ RUI PALACE_files/baoxianghua.jpg" alt="核心纹样">
+        <canvas id="inkCanvas" width="1912" height="948"></canvas>
     </div>
 
     <!-- 顶部导航 -->
@@ -215,11 +215,11 @@
             <!-- 购物车快捷入口（实时收集并映射所有子页面及首页加购记录） -->
             <button onclick="openCartModal()" class="about-btn" style="background:rgba(255,255,255,0.25); border-color:rgba(254,243,199,0.6);">
                 <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
-                <span id="cart-count-badge" style="background:#B22222; color:white; border-radius:9999px; padding:1px 7px; font-size:10px; margin-left:6px; font-weight:bold;">0</span>
+                <span id="cart-count-badge" style="background:#B22222; color:white; border-radius:9999px; padding:1px 7px; font-size:10px; margin-left:6px; font-weight:bold;">1</span>
             </button>
-            <a href="track.html" id="trackBtn" class="about-btn" data-zh="[ 订单查询 ]" data-en="[ Track Order ]">[ Track Your Order ]</a>
-            <a href="store.html" id="storeBtn" class="about-btn" data-zh="[ 蕊宫珍藏 ]" data-en="[ Collection ]">[ Palace Store ]</a>
-            <a href="about.html" id="aboutBtn" class="about-btn" data-zh="[ 关于蕊宫 ]" data-en="[ About Us ]">[ About Rui Palace ]</a>
+            <a href="https://www.rui-palace.de/track.html?lang=zh" id="trackBtn" class="about-btn" data-zh="[ 订单查询 ]" data-en="[ Track Order ]">[ 订单查询 ]</a>
+            <a href="https://www.rui-palace.de/store.html?lang=zh" id="storeBtn" class="about-btn" data-zh="[ 蕊宫珍藏 ]" data-en="[ Collection ]">[ 蕊宫珍藏 ]</a>
+            <a href="https://www.rui-palace.de/about.html?lang=zh" id="aboutBtn" class="about-btn" data-zh="[ 关于蕊宫 ]" data-en="[ About Us ]">[ 关于蕊宫 ]</a>
             <button onclick="toggleLanguage(event)" id="langBtn" class="lang-switch">EN / 中</button>
         </div>
     </header>
@@ -251,21 +251,38 @@
                 <h3 id="panel-pattern-title">大千传统纹样</h3>
                 <span>SACRED MOTIFS</span>
             </div>
-            <div class="panel-list" id="pattern-list-container"></div>
+            <div class="panel-list" id="pattern-list-container">
+                <div class="pool-card" onclick="selectPattern(0)">
+                    <div class="pool-card-title">经典宝相花</div>
+                    <p class="pool-card-desc">大唐卷草与莲花交融之作，独具端庄与圆融之美。</p>
+                </div>
+            
+                <div class="pool-card" onclick="selectPattern(1)">
+                    <div class="pool-card-title">敦煌大藻井</div>
+                    <p class="pool-card-desc">高昌及盛唐莫高窟窟顶核心华彩，层叠方井演化宇宙秩序。</p>
+                </div>
+            
+                <div class="pool-card" onclick="selectPattern(2)">
+                    <div class="pool-card-title">盛唐忍冬纹</div>
+                    <p class="pool-card-desc">丝路东传的经典藤蔓纹，叶片三裂，连绵不绝象征永生。</p>
+                </div>
+            </div>
         </div>
         <div class="panel-footer">
             <button onclick="closePatternPool()" id="close-pattern-text">✕ 收起纹样</button>
         </div>
     </div>
 
-    <!-- 右侧：色池面板（点击触发水滴与页面渐变融合，并同步更新全局购物车） -->
+    <!-- 右侧：色池面板（点击触发水滴与页面渐变融合，并跳转至主题色单页） -->
     <div id="colorPool" class="side-panel" onclick="event.stopPropagation()">
         <div>
             <div class="panel-header">
                 <h3 id="panel-color-title">天然色彩池</h3>
                 <span>NATURAL REVELATION</span>
             </div>
-            <div class="panel-list" id="pool-list-container"></div>
+            <div class="panel-list" id="pool-list-container">
+                <!-- 动态渲染 -->
+            </div>
         </div>
         <div class="panel-footer">
             <button onclick="closeColorPool()" id="close-color-text">✕ 收起色池</button>
@@ -282,7 +299,7 @@
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(178, 34, 34, 0.15); color:#B22222; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
                     <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【灵犀鉴】全站臻藏购物车" data-en="[Rui Palace] Global Shopping Cart" data-lang="en">[Rui Palace] Global Shopping Cart</h3>
-                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="搜集自各色彩页面与主典藏的所有珍品" data-en="Collected across all color realms & boutique pages" data-lang="en">Collected across all color realms & boutique pages</p>
+                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="搜集自各色彩页面与主典藏的所有珍品" data-en="Collected across all color realms &amp; boutique pages" data-lang="en">Collected across all color realms &amp; boutique pages</p>
                 </div>
 
                 <!-- 购物车商品列表渲染区 -->
@@ -293,37 +310,37 @@
                 <div style="display:flex; flex-direction:column; gap:10px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
-                        <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                        <input type="text" id="form-name" required="" placeholder="e.g. Alice Smith" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
-                            <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                            <input type="email" id="form-email" required="" placeholder="name@example.com" class="form-input">
                         </div>
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
-                            <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                            <input type="text" id="form-phone" required="" placeholder="Phone Number" class="form-input">
                         </div>
                     </div>
                     <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address & House No." data-lang="en">Street Address & House No.</label>
-                        <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
+                        <input type="text" id="form-address" required="" placeholder="e.g. Musterstraße 12" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="en">Postal Code</label>
-                            <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                            <input type="text" id="form-zip" required="" placeholder="e.g. 10115" class="form-input">
                         </div>
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
-                            <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                            <input type="text" id="form-city" required="" placeholder="e.g. Berlin" class="form-input">
                         </div>
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
                         <select id="cust-wrist" class="form-input" style="cursor: pointer;">
                             <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                            <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                            <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
                             <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
                             <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="en">Custom Size</option>
                         </select>
@@ -374,9 +391,9 @@
         </div>
 
         <div class="legal-footer">
-            <div><a class="legal-wing-link" href="impressum.html" id="footer-link-impressum">Legal Notice (Impressum)</a></div>
-            <div style="text-align: center;" id="footer-motto">© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. Stay pure, cherish humanity.</div>
-            <div><a class="legal-wing-link" href="Datenschutz.html" id="footer-link-Datenschutz">Privacy Policy (Datenschutz)</a></div>
+            <div><a class="legal-wing-link" href="https://www.rui-palace.de/impressum.html?lang=zh" id="footer-link-impressum">法律声明 (Impressum)</a></div>
+            <div style="text-align: center;" id="footer-motto">© 2026 蕊宫 mail@rui-palace.com - Rui Palace. All rights reserved. 保持纯粹，珍藏人性。</div>
+            <div><a class="legal-wing-link" href="https://www.rui-palace.de/Datenschutz.html?lang=zh" id="footer-link-Datenschutz">隐私政策 (Datenschutz)</a></div>
         </div>
     </footer>
 
@@ -459,17 +476,17 @@
         ];
 
         const orientalPalettes = [
-            { name_zh: "暮山紫 · 紫陌手链", name_en: "Mushan Purple", hex: "#8670A0", price: 65.00, origin_zh: "烟光凝而暮山紫，无尽夏开月独白。", origin_en: "The evening light condenses into purple mountains.", url: "Color Mu Shan Lila.html" },
-            { name_zh: "艾青 · 凝露白", name_en: "Mugwort Green", hex: "#4A6741", price: 58.00, origin_zh: "正气化青，温婉入药。", origin_en: "Vital harmony distills into sapphire.", url: "ColorAiQing.html" },
-            { name_zh: "芭蕉橙 · 暖阳", name_en: "Plantain Orange", hex: "#D97706", price: 58.00, origin_zh: "日光斜照芭蕉之脉络，取大地与韶华之暖色。", origin_en: "Warm hues from sunlit plantain leaves.", url: "Color Orange.html" },
-            { name_zh: "紫菀 · 幽香", name_en: "Aster Purple", hex: "#A68BBD", price: 62.00, origin_zh: "草木紫菀之幽远，将静谧与端庄沉淀于方寸间。", origin_en: "Distilled aster essence anchoring serene depths.", url: "Color Purple.html" },
-            { name_zh: "涌帝青 · 奇峰", name_en: "Imperial Blue", hex: "#1E3A8A", price: 72.00, origin_zh: "深邃如帝王法界之青，锁住全图的精神力量。", origin_en: "Deep imperial indigo carrying celestial order.", url: "Color Sky Blue.html" },
-            { name_zh: "雨过天晴 · 天青", name_en: "Sky Blue Celadon", hex: "#4B6674", price: 68.00, origin_zh: "柴窑传世之大美，取雨后苍穹初开之温润。", origin_en: "Legendary celadon capturing post-rain sky clarity.", url: "Color Tian Qing.html" },
-            { name_zh: "朱砂落 · 宫墙红", name_en: "Cinnabar Red", hex: "#B12224", price: 78.00, origin_zh: "大唐宫墙与汉玉凝脂之经典撞色，刚柔并济。", origin_en: "Classic contrast of palace red and jade cream.", url: "Color Zhu Sha Red.html" },
-            { name_zh: "桃花红笺 · 流霞", name_en: "Peach Crimson", hex: "#E05263", price: 58.00, origin_zh: "薛涛红笺之流霞，将诗意风骨熔铸为淡雅绯红。", origin_en: "Poetic letter paper stained with peach blossom hues.", url: "Color_Xue_Tao_Red.html" },
-            { name_zh: "玄武黑 · 墨韵", name_en: "Xuanwu Obsidian", hex: "#1A1A1A", price: 75.00, origin_zh: "五方正色之玄黑，如泼墨入水，沉稳内敛。", origin_en: "The deep obsidian black, representing timeless depth.", url: "Color Distant Mountain.html" },
-            { name_zh: "琥珀金 · 金泽流光", name_en: "Amber Gold", hex: "#D4A017", price: 85.00, origin_zh: "流光不掩本真，岁月沉淀清气。", origin_en: "Time’s shifting light cannot veil the true self.", url: "Color Amber Gold.html" },
-            { name_zh: "杏花天 · 医道", name_en: "Apricot Blossom", hex: "#E9A68D", price: 65.00, origin_zh: "杏花微雨霓裳舞，曾忆锦瑟五十弦？", origin_en: "Apricot blossoms dance in light rain.", url: "Color Apricot Blossom_3.html" }
+            { name_zh: "暮山紫 · 紫陌手链", name_en: "Mushan Purple", hex: "#8670A0", origin_zh: "烟光凝而暮山紫，无尽夏开月独白。", origin_en: "The evening light condenses into purple mountains.", url: "Color Mu Shan Lila.html" },
+            { name_zh: "艾青 · 凝露白", name_en: "Mugwort Green", hex: "#4A6741", origin_zh: "正气化青，温婉入药。", origin_en: "Vital harmony distills into sapphire.", url: "ColorAiQing.html" },
+            { name_zh: "芭蕉橙 · 暖阳", name_en: "Plantain Orange", hex: "#D97706", origin_zh: "日光斜照芭蕉之脉络，取大地与韶华之暖色。", origin_en: "Warm hues from sunlit plantain leaves.", url: "Color Orange.html" },
+            { name_zh: "紫菀 · 幽香", name_en: "Aster Purple", hex: "#A68BBD", origin_zh: "草木紫菀之幽远，将静谧与端庄沉淀于方寸间。", origin_en: "Distilled aster essence anchoring serene depths.", url: "Color Purple.html" },
+            { name_zh: "涌帝青 · 奇峰", name_en: "Imperial Blue", hex: "#1E3A8A", origin_zh: "深邃如帝王法界之青，锁住全图的精神力量。", origin_en: "Deep imperial indigo carrying celestial order.", url: "Color Sky Blue.html" },
+            { name_zh: "雨过天晴 · 天青", name_en: "Sky Blue Celadon", hex: "#4B6674", origin_zh: "柴窑传世之大美，取雨后苍穹初开之温润。", origin_en: "Legendary celadon capturing post-rain sky clarity.", url: "Color Tian Qing.html" },
+            { name_zh: "朱砂落 · 宫墙红", name_en: "Cinnabar Red", hex: "#B12224", origin_zh: "大唐宫墙与汉玉凝脂之经典撞色，刚柔并济。", origin_en: "Classic contrast of palace red and jade cream.", url: "Color Zhu Sha Red.html" },
+            { name_zh: "桃花红笺 · 流霞", name_en: "Peach Crimson", hex: "#E05263", origin_zh: "薛涛红笺之流霞，将诗意风骨熔铸为淡雅绯红。", origin_en: "Poetic letter paper stained with peach blossom hues.", url: "Color_Xue_Tao_Red.html" },
+            { name_zh: "玄武黑 · 墨韵", name_en: "Xuanwu Obsidian", hex: "#1A1A1A", origin_zh: "五方正色之玄黑，如泼墨入水，沉稳内敛。", origin_en: "The deep obsidian black, representing timeless depth.", url: "Color Distant Mountain.html" },
+            { name_zh: "琥珀金 · 金泽流光", name_en: "Amber Gold", hex: "#D4A017", origin_zh: "流光不掩本真，岁月沉淀清气。", origin_en: "Time’s shifting light cannot veil the true self.", url: "Color Amber Gold.html" },
+            { name_zh: "杏花天 · 医道", name_en: "Apricot Blossom", hex: "#E9A68D", origin_zh: "杏花微雨霓裳舞，曾忆锦瑟五十弦？", origin_en: "Apricot blossoms dance in light rain.", url: "Color Apricot Blossom_3.html" }
         ];
 
         function initializeApp() {
@@ -549,13 +566,12 @@
             const container = document.getElementById('pool-list-container');
             if (!container) return;
             container.innerHTML = orientalPalettes.map((item, idx) => `
-                <div class="pool-card" onclick="selectPaletteAndAddCart(${idx})">
+                <div class="pool-card" onclick="selectPaletteAndNavigate(${idx})">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="display: flex; align-items: center; gap: 0.75rem;">
                             <span style="width: 1rem; height: 1rem; border-radius: 9999px; background-color: ${item.hex}; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);"></span>
                             <span class="pool-card-title">${currentLang === 'zh' ? item.name_zh : item.name_en}</span>
                         </div>
-                        <span style="font-size: 0.7rem; font-family: serif; color: #B22222; font-weight: bold;">€ ${item.price.toFixed(2).replace('.', ',')} ➔</span>
                     </div>
                     <p class="pool-card-desc">${currentLang === 'zh' ? item.origin_zh : item.origin_en}</p>
                 </div>
@@ -572,24 +588,9 @@
             safeSetText('current-pattern-name', currentLang === 'zh' ? `当前境象：${p.name_zh}` : `Pattern: ${p.name_en}`);
         }
 
-        function selectPaletteAndAddCart(index) {
+        // 修改后：仅触发生色特效与页面跳转，不自动加入购物车
+        function selectPaletteAndNavigate(index) {
             const item = orientalPalettes[index];
-            const itemTitle = currentLang === 'zh' ? item.name_zh : item.name_en;
-
-            // 自动加入全局跨页购物车
-            const existing = shoppingCart.find(i => i.title === itemTitle);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                shoppingCart.push({
-                    title: itemTitle,
-                    priceNum: item.price,
-                    priceStr: `€ ${item.price.toFixed(2).replace('.', ',')}`,
-                    quantity: 1
-                });
-            }
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-            updateCartCountBadge();
 
             if (canvas) {
                 createImpact(canvas.width / 2, canvas.height / 2, item);
