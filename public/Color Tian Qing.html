@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)https://www.rui-palace.de/Color%20Tian%20Qing?lang=en -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>雨过天晴 · 天青玄妙美学色卡与定制臻藏</title>
     
-    <!-- 严格同步暮山紫的多合一支付 SDK 引入 -->
+    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
 
     <style>
@@ -31,20 +31,20 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         .chinese-border { 
-            border: 1px solid rgba(93, 122, 138, 0.18); 
-            outline: 3px double rgba(93, 122, 138, 0.1); 
+            border: 1px solid rgba(93, 122, 138, 0.25); 
+            outline: 3px double rgba(93, 122, 138, 0.12); 
             outline-offset: -8px; 
-            background: rgba(253, 251, 255, 0.85); 
+            background: rgba(253, 251, 255, 0.9); 
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 32px;
-            box-shadow: 0 15px 35px -10px rgba(93, 122, 138, 0.12);
+            box-shadow: 0 15px 35px -10px rgba(93, 122, 138, 0.15);
         }
 
         .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
@@ -66,7 +66,9 @@
             display: none;
             position: absolute;
             top: 24px;
+            bottom: 24px;
             flex-direction: column;
+            justify-content: space-between;
             align-items: center;
             z-index: 20;
         }
@@ -83,7 +85,6 @@
             letter-spacing: 0.3em; 
             font-size: 10px; 
             color: #5D7A8A; 
-            margin-top: 24px; 
         }
         .vertical-wing[data-lang="en"] { 
             writing-mode: vertical-rl; 
@@ -91,21 +92,34 @@
             letter-spacing: 0.05em; 
             font-family: "Times New Roman", Times, serif; 
             font-size: 9px; 
-            margin-top: 24px;
         }
+
+        .lang-switch-btn { 
+            font-family: "Times New Roman", Times, serif; 
+            background: rgba(93, 122, 138, 0.12); 
+            border: 1px solid rgba(93, 122, 138, 0.35); 
+            transition: all 0.3s ease; 
+            letter-spacing: 0.1em; 
+            cursor: pointer; 
+            padding: 6px 16px; 
+            border-radius: 9999px; 
+            font-size: 11px; 
+            color: #4B6674; 
+        }
+        .lang-switch-btn:hover { background: #5D7A8A; color: white; border-color: #5D7A8A; }
 
         .color-card {
             cursor: pointer;
             padding: 12px;
             background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(93, 122, 138, 0.2);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
         .color-card:hover {
             border-color: #5D7A8A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(93, 122, 138, 0.15);
+            box-shadow: 0 4px 12px rgba(93, 122, 138, 0.2);
         }
         .color-block {
             height: 40px;
@@ -120,6 +134,7 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(93, 122, 138, 0.2);
         }
         .video-placeholder {
             position: absolute;
@@ -151,8 +166,8 @@
         .play-btn:hover { transform: scale(1.1); }
 
         .hero-podium {
-            background: radial-gradient(circle at 50% 50%, rgba(253, 251, 255, 0.95) 0%, rgba(235, 243, 246, 0.7) 60%, rgba(215, 230, 235, 0.3) 100%);
-            box-shadow: inset 0 0 30px rgba(93, 122, 138, 0.08), 0 20px 40px -15px rgba(93, 122, 138, 0.15);
+            background: radial-gradient(circle at 50% 50%, rgba(253, 251, 255, 0.98) 0%, rgba(235, 243, 246, 0.85) 70%, rgba(215, 230, 235, 0.6) 100%);
+            box-shadow: inset 0 0 30px rgba(93, 122, 138, 0.1), 0 20px 40px -15px rgba(93, 122, 138, 0.15);
         }
 
         .begonia-window-clip {
@@ -175,7 +190,7 @@
         }
         .product-thumb.active {
             border-color: #5D7A8A;
-            background: rgba(93, 122, 138, 0.08);
+            background: rgba(93, 122, 138, 0.1);
             transform: scale(1.05);
         }
 
@@ -188,23 +203,41 @@
             z-index: 100;
             align-items: center;
             justify-content: center;
-            padding: 16px;
         }
         .modal.active { display: flex; }
 
+        .grid-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        @media (min-width: 1024px) {
+            .grid-main { grid-template-columns: 1fr 1fr; }
+        }
+        .grid-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .grid-colors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
         .form-input {
             width: 100%;
-            padding: 10px 14px;
-            border: 1px solid rgba(93, 122, 138, 0.25);
+            padding: 8px 12px;
+            font-size: 12px;
+            border: 1px solid rgba(93, 122, 138, 0.3);
             border-radius: 8px;
-            outline: none;
-            font-size: 13px;
             background: #FAFAFA;
-            transition: all 0.2s;
+            color: #262626;
+            outline: none;
         }
         .form-input:focus {
             border-color: #5D7A8A;
-            background: #FFF;
+            background: #FFFFFF;
         }
     </style>
 </head>
@@ -221,186 +254,158 @@
 
     <!-- 顶部 Header -->
     <header class="container" style="padding-top: 32px; padding-bottom: 24px; text-align: center; position: relative;">
+        <!-- 左侧翼：归隐按钮与竖文 -->
         <div class="side-wing-left">
             <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;" onmouseover="this.style.color='#5D7A8A'" onmouseout="this.style.color='#a3a3a3'">
                 <span style="font-size:12px;">⇠</span>
-                <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="en">RETURN</span>
+                <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="zh">归隐</span>
             </button>
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <span class="vertical-wing" data-zh="蕊宫 · 汝窑格物" data-en="RUI PALACE · CELADON" data-lang="en">RUI PALACE · CELADON</span>
+                <span class="vertical-wing" data-zh="蕊宫 · 汝窑格物" data-en="RUI PALACE · CELADON" data-lang="zh">蕊宫 · 汝窑格物</span>
             </div>
+            <div></div>
         </div>
 
-        <h1 id="main-title" class="dynamic-title" data-zh="雨过天晴 · 汝窑天青" data-en="Sky Blue &amp; Celadon Sky" data-lang="en">Sky Blue &amp; Celadon Sky</h1>
-        <p class="dynamic-sub" style="margin-bottom: 16px;" data-zh="SKY BLUE &amp; CELADON SPECTRUM" data-en="SKY BLUE &amp; CELADON SPECTRUM" data-lang="en">SKY BLUE &amp; CELADON SPECTRUM</p>
+        <h1 id="main-title" class="dynamic-title" data-zh="雨过天晴 · 汝窑天青" data-en="Sky Blue &amp; Celadon Sky" data-lang="zh">雨过天晴 · 汝窑天青</h1>
+        <p class="dynamic-sub" style="margin-bottom: 12px;" data-zh="SKY BLUE &amp; CELADON SPECTRUM" data-en="SKY BLUE &amp; CELADON SPECTRUM" data-lang="zh">SKY BLUE &amp; CELADON SPECTRUM</p>
         
         <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
-            <p id="main-desc" class="dynamic-text" style="line-height: 1.6;" data-zh="“雨过天晴云破处，这般颜色做将来。”<br>于大雨初霁之刹那，捕捉天地间最清澈高远的深邃与静默。" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.”<br>At the split second when the storm ends, capture the clearest, highest depth and silence." data-lang="en">“The sky clears after rain where the clouds break; let this color be made for the future.”<br>At the split second when the storm ends, capture the clearest, highest depth and silence.</p>
+            <p id="main-desc" class="dynamic-text" style="line-height: 1.6;" data-zh="“雨过天晴云破处，这般颜色做将来。”&lt;br&gt;于大雨初霁之刹那，捕捉天地间最清澈高远的深邃与静默。" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.”&lt;br&gt;At the split second when the storm ends, capture the clearest, highest depth and silence." data-lang="zh">“雨过天晴云破处，这般颜色做将来。”<br>于大雨初霁之刹那，捕捉天地间最清澈高远的深邃与静默。</p>
         </div>
 
-        <div class="side-wing-right" style="top: 36px;">
+        <!-- 右侧翼：购物车快捷入口与竖排文案 -->
+        <div class="side-wing-right">
+            <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(93, 122, 138, 0.15); border-color:#5D7A8A;">
+                <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="zh">🛒 Cart</span>
+                <span id="cart-count-badge" style="background:#5D7A8A; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">0</span>
+            </button>
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <span class="vertical-wing" style="margin-top: 0;" data-zh="千峰翠色 · 归于本真" data-en="INNER ESSENCE · CELADON ENDURES" data-lang="en">INNER ESSENCE · CELADON ENDURES</span>
+                <span class="vertical-wing" data-zh="千峰翠色 · 归于本真" data-en="INNER ESSENCE · CELADON ENDURES" data-lang="zh">千峰翠色 · 归于本真</span>
             </div>
+            <div></div>
         </div>
     </header>
 
-    <!-- 核心 Hero 产品展示中心 -->
+    <!-- 核心 Hero 产品展示中心（海棠花窗视口） -->
     <section class="container" style="padding-top: 32px; padding-bottom: 16px;">
-        <div class="chinese-border hero-podium" style="display:flex; flex-direction:column; align-items:center; text-align:center; max-width: 840px; margin: 0 auto;">
+        <div class="chinese-border hero-podium" style="position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 16px;">
             
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(93,122,138,0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(93,122,138,0.2);">
-                <span style="width:8px; height:8px; border-radius:50%; background:#5D7A8A; display:inline-block;"></span>
-                <span class="dynamic-sub" style="font-weight:600; color:#5D7A8A; font-size:11px;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="en">HERO COLLECTION · BEGONIA GALLERY</span>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(93,122,138,0.12); padding:4px 16px; border-radius:9999px; border:1px solid rgba(93,122,138,0.3);">
+                <span style="width:8px; height:8px; border-radius:50%; background:#5D7A8A; display:inline-block; box-shadow:0 0 8px #5D7A8A;"></span>
+                <span class="dynamic-sub" style="font-weight:600; color:#5D7A8A; font-size:12px; letter-spacing:0.15em;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">臻选主打 · 海棠画廊</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #262626; margin-bottom: 8px;" data-zh="雨过天晴 · 汝窑冰裂天青石手串" data-en="Celadon Sky · Natural Celadon Stone Bracelet" data-lang="en">Celadon Sky · Natural Celadon Stone Bracelet</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px;" data-zh="Celadon Sky Gemstone Bracelet Collection" data-en="Celadon Sky Gemstone Bracelet Collection" data-lang="en">Celadon Sky Gemstone Bracelet Collection</p>
+            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #171717; letter-spacing:0.05em; margin-bottom: 8px;" data-zh="雨过天晴 · 汝窑冰裂天青石手串" data-en="Celadon Sky · Natural Celadon Stone Bracelet" data-lang="zh">雨过天晴 · 汝窑冰裂天青石手串</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px; max-width:512px;" data-zh="Celadon Sky Gemstone Bracelet Collection" data-en="Celadon Sky Gemstone Bracelet Collection" data-lang="zh">Celadon Sky Gemstone Bracelet Collection</p>
 
-            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#5D7A8A; font-size:11px; font-family:serif;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#5D7A8A; font-size:12px; font-family:serif; opacity:0.85;">
                 <span>⇠</span>
-                <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="en">Slide Left &amp; Right / Click to Enlarge</span>
+                <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="zh">支持左右滑动 / 点击放大全貌</span>
                 <span>⇢</span>
             </div>
 
-            <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
-                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(93,122,138,0.2) 0%, transparent 70%); filter:blur(20px);"></div>
+            <!-- 海棠花窗视口展示区 -->
+            <div style="position:relative; width:320px; height:320px; margin:16px 0; display:flex; align-items:center; justify-content:center; user-select:none;">
+                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(93,122,138,0.2) 0%, transparent 70%); filter:blur(24px);"></div>
 
-                <button onclick="prevProduct()" style="position:absolute; left:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#5D7A8A; border:1px solid rgba(93,122,138,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个款式">❮</button>
-                <button onclick="nextProduct()" style="position:absolute; right:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#5D7A8A; border:1px solid rgba(93,122,138,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个款式">❯</button>
+                <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#5D7A8A; border:1px solid rgba(93,122,138,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">❮</button>
+                <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#5D7A8A; border:1px solid rgba(93,122,138,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">❯</button>
 
+                <!-- 外边框装饰 -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
                         <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#5D7A8A" stroke-width="2.5" stroke-linejoin="round"></path>
                     </svg>
                 </div>
 
-                <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
+                <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
                     <div id="slider-track" class="slider-track" style="transform: translateX(0%);">
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(0)">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
                             <img src="https://placehold.co/600x600/5d7a8a/ffffff?text=Celadon+Sky+Bracelet" alt="雨过天青手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(1)">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(1)">
                             <img src="https://placehold.co/600x600/4b6674/ffffff?text=Deep+Sky+Blue" alt="深天青手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(2)">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(2)">
                             <img src="https://placehold.co/600x600/7997a6/ffffff?text=Thousand+Peaks" alt="千峰翠色手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(3)">
+                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(3)">
                             <img src="https://placehold.co/600x600/9ab3bc/ffffff?text=Sky+Clearing" alt="天霁青手链" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p id="hero-product-desc" class="poetry-text-style" style="color: #525252; max-width: 620px; margin: 16px 0; line-height: 1.7;" data-zh="“雨过天晴云破处，这般颜色做将来。” 精选天然天青石与温润玉髓，如汝窑开片般温润脱俗，蕴含天地灵秀与无界静谧。" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.” Selected natural celadon stones and chalcedony." data-lang="en">“The sky clears after rain where the clouds break; let this color be made for the future.” Selected natural celadon stones and chalcedony.</p>
+            <p id="hero-product-desc" class="poetry-text-style" style="font-size: 0.875rem; color: #525252; max-width: 576px; margin: 16px 0; line-height: 1.7;" data-zh="“雨过天晴云破处，这般颜色做将来。” 精选天然天青石与温润玉髓，如汝窑开片般温润脱俗，蕴含天地灵秀与无界静谧。" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.” Selected natural celadon stones and chalcedony." data-lang="zh">“雨过天晴云破处，这般颜色做将来。” 精选天然天青石与温润玉髓，如汝窑开片般温润脱俗，蕴含天地灵秀与无界静谧。</p>
 
-            <div style="margin-top: 12px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
+            <div style="margin-top: 8px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
                 <div style="text-align: center;">
-                    <span style="font-size: 10px; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.1em; display: block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="en">SPECIAL PRICE (INCL. BOX)</span>
-                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-top: 4px;">
-                        <span id="hero-price" style="font-size: 1.8rem; font-family: serif; font-weight: bold; color: #5D7A8A;">€ 65,00</span>
-                        <span style="font-size: 0.85rem; color: #a3a3a3; text-decoration: line-through;">€ 112,00</span>
+                    <span style="font-size: 10px; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.1em; display: block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="zh">结缘售价 (含典藏木盒)</span>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+                        <span id="hero-price" style="font-size: 1.875rem; font-family: serif; font-weight: bold; color: #5D7A8A;">€ 65,00</span>
+                        <span style="font-size: 12px; color: #a3a3a3; text-decoration: line-through;">€ 112,00</span>
                     </div>
                 </div>
 
-                <button onclick="openModal()" style="padding: 12px 32px; border-radius: 9999px; background: #5D7A8A; color: white; border: none; font-size: 0.8rem; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(93,122,138,0.3);" onmouseover="this.style.background='#4b6674'" onmouseout="this.style.background='#5D7A8A'">
-                    <span data-zh="立即臻藏 / Buy Now" data-en="BUY NOW / 立即臻藏" data-lang="en">BUY NOW / 立即臻藏</span> ➔
+                <!-- 加入购物车按钮 -->
+                <button onclick="addToCart(currentProductIdx)" style="padding: 14px 32px; border-radius: 9999px; background: #5D7A8A; color: white; font-size: 12px; letter-spacing: 0.15em; border: none; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 15px -3px rgba(93, 122, 138, 0.4);">
+                    <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="zh">加入购物车 / Add to Cart</span>
+                    <span style="font-size:14px;">🛒</span>
                 </button>
             </div>
 
-            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); width: 100%; max-width: 440px;">
-                <p style="font-size: 11px; color: #a3a3a3; font-family: serif; margin-bottom: 12px; letter-spacing: 0.1em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.06); width: 100%; max-width: 448px;">
+                <p style="font-size: 11px; color: #a3a3a3; font-family: serif; margin-bottom: 12px; letter-spacing: 0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="zh">—— 点击切换同系列款式 ——</p>
+                <div class="grid-thumbs">
                     <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
-                        <div style="width: 24px; height: 24px; margin: 0 auto 4px auto; border-radius: 50%; background: #5D7A8A;"></div>
-                        <span style="font-size: 10px; font-family: serif;" data-zh="雨过天青" data-en="Celadon" data-lang="en">Celadon</span>
+                        <div style="width: 24px; height: 24px; margin: 0 auto 4px; border-radius: 50%; background: #5D7A8A;"></div>
+                        <span style="font-size: 10px; font-family: serif; display: block; color: #262626;" data-zh="雨过天青" data-en="Celadon" data-lang="zh">雨过天青</span>
                     </div>
                     <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
-                        <div style="width: 24px; height: 24px; margin: 0 auto 4px auto; border-radius: 50%; background: #4B6674;"></div>
-                        <span style="font-size: 10px; font-family: serif;" data-zh="深天青" data-en="Deep Sky" data-lang="en">Deep Sky</span>
+                        <div style="width: 24px; height: 24px; margin: 0 auto 4px; border-radius: 50%; background: #4B6674;"></div>
+                        <span style="font-size: 10px; font-family: serif; display: block; color: #262626;" data-zh="深天青" data-en="Deep Sky" data-lang="zh">深天青</span>
                     </div>
                     <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
-                        <div style="width: 24px; height: 24px; margin: 0 auto 4px auto; border-radius: 50%; background: #7997A6;"></div>
-                        <span style="font-size: 10px; font-family: serif;" data-zh="千峰翠" data-en="Peaks" data-lang="en">Peaks</span>
+                        <div style="width: 24px; height: 24px; margin: 0 auto 4px; border-radius: 50%; background: #7997A6;"></div>
+                        <span style="font-size: 10px; font-family: serif; display: block; color: #262626;" data-zh="千峰翠" data-en="Peaks" data-lang="zh">千峰翠</span>
                     </div>
                     <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding: 8px; border-radius: 12px; background: rgba(255,255,255,0.9); text-align: center;">
-                        <div style="width: 24px; height: 24px; margin: 0 auto 4px auto; border-radius: 50%; background: #9AB3BC;"></div>
-                        <span style="font-size: 10px; font-family: serif;" data-zh="天霁青" data-en="Clearing" data-lang="en">Clearing</span>
+                        <div style="width: 24px; height: 24px; margin: 0 auto 4px; border-radius: 50%; background: #9AB3BC;"></div>
+                        <span style="font-size: 10px; font-family: serif; display: block; color: #262626;" data-zh="天霁青" data-en="Clearing" data-lang="zh">天霁青</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 辅助展示区域 -->
-    <main class="container" style="padding: 24px 24px 48px 24px; display: grid; grid-template-columns: 1fr; gap: 32px;">
-        <style>
-            @media (min-width: 1024px) {
-                main.container { grid-template-columns: 1fr 1fr !important; }
-            }
-        </style>
-
-        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px;">
-                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="西阁 · 汝窑天青色卡" data-en="West Pavilion • Celadon Palette" data-lang="en">West Pavilion • Celadon Palette</h3>
-                <span class="dynamic-text" style="font-size: 10px; color: #a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click to copy HEX" data-lang="en">Click to copy HEX</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;" id="color-grid">
-                <div onclick="selectGridColor(0)" class="color-card">
-                    <div class="color-block" style="background-color:#4B6674"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Deep Sky Blue</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#4B6674</p>
-                </div>
-            
-                <div onclick="selectGridColor(1)" class="color-card">
-                    <div class="color-block" style="background-color:#5D7A8A"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Celadon Sky</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#5D7A8A</p>
-                </div>
-            
-                <div onclick="selectGridColor(2)" class="color-card">
-                    <div class="color-block" style="background-color:#7997A6"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Thousand Peaks</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#7997A6</p>
-                </div>
-            
-                <div onclick="selectGridColor(3)" class="color-card">
-                    <div class="color-block" style="background-color:#9AB3BC"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Sky Clearing Blue</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#9AB3BC</p>
-                </div>
-            
-                <div onclick="selectGridColor(4)" class="color-card">
-                    <div class="color-block" style="background-color:#BCD2D6"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Cracked Ice Celadon</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#BCD2D6</p>
-                </div>
-            
-                <div onclick="selectGridColor(5)" class="color-card">
-                    <div class="color-block" style="background-color:#E1ECEE"></div>
-                    <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="en">Cloud Break White</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">#E1ECEE</p>
-                </div>
-            </div>
-
-            <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; background: #5D7A8A; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.5s;">
-                <p id="dynamic-name" style="font-family: serif; font-size: 12px; font-weight: bold;" data-zh="雨过天青" data-en="Celadon Sky" data-lang="en">Celadon Sky</p>
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <p id="dynamic-hex" style="font-size: 10px; font-family: monospace; opacity: 0.9;">#5D7A8A</p>
-                    <span id="copy-badge" style="font-size: 8px; border: 1px solid rgba(255,255,255,0.4); padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY" data-lang="en">CLICK TO COPY</span>
-                </div>
+    <!-- 双阁主体布局 -->
+    <main class="container grid-main" style="padding-top: 16px; padding-bottom: 16px;">
+        <!-- 西阁：汝窑天青色卡 -->
+        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(93, 122, 138, 0.2);">
+                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="西阁 · 汝窑天青色卡" data-en="West Pavilion • Celadon Palette" data-lang="zh">西阁 · 汝窑天青色卡</h3>
+                <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX" data-lang="zh">Click block to copy HEX</span>
             </div>
             
-            <input type="range" id="color-slider" min="0" max="5" value="1" style="width: 100%; height: 4px; background: #e5e5e5; border-radius: 4px; appearance: none; cursor: pointer;">
+            <div class="grid-colors" id="color-grid">
+                <!-- 动态由 JS 渲染 -->
+            </div>
+
+            <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #5D7A8A; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
+                <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">雨过天青</p>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9;">#5D7A8A</p>
+                    <span id="copy-badge" style="font-size:9px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.2);" data-zh="点击复制" data-en="CLICK TO COPY" data-lang="zh">点击复制</span>
+                </div>
+            </div>
+            <input type="range" id="color-slider" min="0" max="5" value="1" style="width: 100%; height: 4px; background: #e5e5e5; border-radius: 4px; cursor: pointer;">
         </section>
 
-        <!-- 东阁 · 研墨观象台 (修复嵌入链接逻辑) -->
-        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px;">
-                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 研墨观象台" data-en="East Pavilion • Observatory" data-lang="en">East Pavilion • Observatory</h3>
-                <span class="dynamic-text" style="font-size: 10px; color: #a3a3a3;" data-zh="天青流光 · 视听长青" data-en="Celadon Glow &amp; Vision" data-lang="en">Celadon Glow &amp; Vision</span>
+        <!-- 东阁：视听与诗词 -->
+        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(93, 122, 138, 0.2);">
+                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 研墨观象台" data-en="East Pavilion • Observatory" data-lang="zh">东阁 · 研墨观象台</h3>
+                <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="天青流光 · 视听长青" data-en="Celadon Glow &amp; Vision" data-lang="zh">天青流光 · 视听长青</span>
             </div>
 
             <div class="video-wrapper" id="video-wrapper">
@@ -408,98 +413,128 @@
                     <div class="play-btn">
                         <span style="font-size: 14px; margin-left: 2px;">▶</span>
                     </div>
-                    <p class="dynamic-text" style="color: white; font-size: 12px; margin-bottom: 4px;" data-zh="点击加载东阁影像（连接至第三方 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="en">Load Craftsmanship Video (YouTube)</p>
-                    <p class="dynamic-text" style="font-size: 9px; color: #a3a3a3;" data-zh="加载即代表连接至第三方 YouTube 并同意 Google 隐私政策" data-en="Subject to Google Privacy Policy &amp; Third-Party YouTube Connection" data-lang="en">Subject to Google Privacy Policy &amp; Third-Party YouTube Connection</p>
+                    <p class="dynamic-text" style="color: white; font-size: 12px; margin-bottom: 4px;" data-zh="点击加载东阁影像（连接至 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="zh">点击加载东阁影像（连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size: 9px; color: #a3a3a3;" data-zh="加载即代表同意 Google 隐私政策" data-en="Subject to Google Privacy Policy" data-lang="zh">加载即代表同意 Google 隐私政策</p>
                 </div>
                 <div id="youtube-container" style="width: 100%; height: 100%;"></div>
             </div>
 
-            <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
-                <div id="poetry-container" style="margin-bottom: 12px; min-height: 60px;">
-                    <p id="poetry-text" class="poetry-text-style" data-zh="“雨过天晴云破处，这般颜色做将来。”" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.”" data-lang="en">“The sky clears after rain where the clouds break; let this color be made for the future.”</p>
-                    <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;" data-zh="—— 宋徽宗 · 《宣和画谱》" data-en="— Emperor Huizong, Xuanhe Painting Manual" data-lang="en">— Emperor Huizong, Xuanhe Painting Manual</p>
+            <div style="padding-top: 12px; border-top: 1px solid rgba(93, 122, 138, 0.2); display: flex; flex-direction: column; justify-content: space-between; min-height: 80px;">
+                <div id="poetry-container" style="margin-bottom: 8px;">
+                    <p id="poetry-text" class="poetry-text-style" style="font-size: 12px;" data-zh="“雨过天晴云破处，这般颜色做将来。”" data-en="“The sky clears after rain where the clouds break; let this color be made for the future.”">“雨过天晴云破处，这般颜色做将来。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;" data-zh="—— 宋徽宗 · 《宣和画谱》" data-en="— Emperor Huizong, Xuanhe Painting Manual">—— 宋徽宗 · 《宣和画谱》</p>
                 </div>
-                <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: none; border: none; cursor: pointer; padding: 0; color: #5D7A8A;" data-zh="感悟下一首诗意 ➔" data-en="Next Verse ➔" data-lang="en">Next Verse ➔</button>
+                <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: transparent; border: 0; cursor: pointer; padding: 0; color: #5D7A8A; font-size: 11px;" data-zh="感悟下一首诗意 ➔" data-en="Next Verse ➔" data-lang="zh">感悟下一首诗意 ➔</button>
             </div>
         </section>
     </main>
 
-    <!-- 结缘模态框 -->
+    <!-- 灯箱弹窗 -->
+    <div id="imageLightbox" class="modal" onclick="closeLightbox()">
+        <div style="position: relative; width: 100%; height: 100%; max-width: 1280px; max-height: 96vh; display: flex; align-items: center; justify-content: center;" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" style="position: absolute; top: 16px; right: 16px; z-index: 50; color: white; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 24px; cursor: pointer;">✕</button>
+            <img id="lightbox-img" src="" alt="手链超清大图" style="max-width: 95vw; max-height: 92vh; object-fit: contain; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15);">
+        </div>
+    </div>
+
+    <!-- 购物车与统一结算 Modal 弹窗 -->
     <div id="buyModal" class="modal">
-        <div class="chinese-border" style="background: #FFF; width: 100%; max-width: 520px; padding: 32px 24px; position: relative; border-radius: 24px; text-align: center; max-height: 90vh; overflow-y: auto;">
-            <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 18px; cursor: pointer; color: #737373; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">✕</button>
+        <div style="background: #FFFFFF; border: 1px solid rgba(93, 122, 138, 0.4); border-radius: 16px; padding: 24px; max-width: 480px; width: 100%; margin: 0 16px; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2); color: #262626; max-height: 95vh; overflow-y: auto;">
+            <button onclick="closeModal()" style="position: absolute; top: 16px; right: 16px; color: #737373; background: none; border: none; font-size: 18px; cursor: pointer;">✕</button>
             
-            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(93,122,138,0.1); border: 1px solid rgba(93,122,138,0.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; color: #5D7A8A; font-size: 14px;">✦</div>
-
-            <h3 id="modal-product-title" style="font-family: serif; font-size: 1.25rem; font-weight: bold; color: #262626; margin-bottom: 6px;" data-zh="【雨过天青】手串 · 臻藏结缘" data-en="[Celadon Sky] Bracelet Reservation" data-lang="en">[Celadon Sky] Bracelet Reservation</h3>
-            <p class="dynamic-text" style="font-size: 11px; color: #8c8c8c; margin-bottom: 20px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please provide your contact details &amp; shipping address" data-lang="en">Please provide your contact details &amp; shipping address</p>
-            
-            <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
-                <div>
-                    <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
-                    <input type="text" id="cust-name" required="" class="form-input">
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                    <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
-                        <input type="email" id="cust-email" required="" class="form-input">
-                    </div>
-                    <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
-                        <input type="text" id="cust-phone" required="" class="form-input">
-                    </div>
-                </div>
-                <div>
-                    <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street &amp; House No." data-lang="en">Street &amp; House No.</label>
-                    <input type="text" id="cust-street" required="" class="form-input">
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                    <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮政编码" data-en="Zip Code" data-lang="en">Zip Code</label>
-                        <input type="text" id="cust-zip" required="" class="form-input">
-                    </div>
-                    <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
-                        <input type="text" id="cust-city" required="" class="form-input">
-                    </div>
-                </div>
-                <div>
-                    <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
-                    <select id="cust-wrist" class="form-input" style="cursor: pointer;">
-                        <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                        <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
-                        <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
-                        <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="en">Custom Size</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes" data-lang="en">Special Notes</label>
-                    <textarea id="cust-notes" rows="2" class="form-input" style="resize: none;"></textarea>
+            <!-- 第一步：购物车明细与详细邮寄信息表单 -->
+            <div id="modal-step-form" style="display: block;">
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <span style="display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: rgba(93, 122, 138, 0.15); color: #5D7A8A; font-size: 14px; line-height: 32px; margin-bottom: 8px;">🛒</span>
+                    <h3 style="font-size: 1.125rem; font-family: serif; font-weight: bold; color: #171717;" data-zh="【蕊宫】您的臻藏购物车" data-en="[Rui Palace] Your Shopping Cart" data-lang="zh">[Rui Palace] Your Shopping Cart</h3>
+                    <p style="font-size: 12px; color: #737373; margin-top: 4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="zh">Please enter your shipping address details</p>
                 </div>
 
-                <div style="margin-top: 8px;">
-                    <p style="font-size: 11px; color: #737373; margin-bottom: 10px; text-align: center;" data-zh="请选择支付结算方式 (€65.00 含快递)" data-en="Select payment method (€65.00 incl. shipping)" data-lang="en">Select payment method (€65.00 incl. shipping)</p>
-                    <div id="paypal-button-container"></div>
+                <!-- 购物车商品列表渲染区 -->
+                <div id="cart-items-container" style="margin-bottom: 16px; max-height: 150px; overflow-y: auto; border: 1px solid rgba(93, 122, 138, 0.2); border-radius: 8px; padding: 12px; background: #FAF7F2;">
+                    <!-- 动态填充 -->
                 </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="zh">Full Name</label>
+                        <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系邮箱" data-en="Email" data-lang="zh">Email</label>
+                            <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系电话" data-en="Phone" data-lang="zh">Phone</label>
+                            <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="zh">Street Address &amp; House No.</label>
+                        <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="zh">Postal Code</label>
+                            <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="城市" data-en="City" data-lang="zh">City</label>
+                            <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="zh">Wrist Size (cm)</label>
+                        <select id="cust-wrist" class="form-input" style="cursor: pointer;">
+                            <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
+                            <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                            <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
+                            <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="zh">Custom Size</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="zh">Notes</label>
+                        <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
+                    </div>
+                    <button type="button" onclick="goToConfirmStep()" style="width: 100%; padding: 12px; margin-top: 8px; background: #5D7A8A; color: white; font-size: 12px; border-radius: 12px; letter-spacing: 0.1em; border: none; cursor: pointer; font-weight: bold;">
+                        <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="zh">Next: Confirm Order ➔</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 第二步：订单确认预览与官方 PayPal 多合一支付结算 SDK -->
+            <div id="modal-step-confirm" style="display: none;">
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <span style="display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: #10B981; font-size: 14px; line-height: 32px; margin-bottom: 8px;">✓</span>
+                    <h3 style="font-size: 1.125rem; font-family: serif; font-weight: bold; color: #171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="zh">Please Confirm Order Details</h3>
+                    <p style="font-size: 12px; color: #737373; margin-top: 4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="zh">Select payment method below after review</p>
+                </div>
+
+                <!-- 预览详情卡片 -->
+                <div id="confirm-details-box" style="background: #FAF7F2; border: 1px solid rgba(93, 122, 138, 0.2); border-radius: 8px; padding: 12px; font-size: 12px; color: #525252; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; max-height: 200px; overflow-y: auto;">
+                    <!-- 动态填充 -->
+                </div>
+
+                <p style="text-align: center; font-size: 11px; color: #737373; margin-bottom: 12px;">
+                    <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="zh">Please select payment method</span> (<span id="confirm-price-tag" style="color: #5D7A8A; font-weight: bold;">€ 0,00</span>)
+                </p>
+
+                <!-- PayPal, SEPA, 信用卡多合一 SDK 官方组件挂载节点 -->
+                <div id="paypal-button-container" style="min-height: 150px; z-index: 0;"></div>
+
+                <button type="button" onclick="backToFormStep()" style="width: 100%; background: transparent; border: none; color: #737373; font-size: 11px; cursor: pointer; margin-top: 12px; text-align: center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="zh">⇠ Back to edit info</button>
             </div>
         </div>
     </div>
 
-    <!-- 超高清图片灯箱 -->
-    <div id="imageLightbox" style="display: none; position: fixed; inset: 0; z-index: 150; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 16px; cursor: pointer;" onclick="closeLightbox()">
-        <div style="position: relative; width: 100%; height: 100%; max-width: 1200px; max-height: 92vh; display: flex; align-items: center; justify-content: center;" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" style="position: absolute; top: 10px; right: 10px; z-index: 50; color: white; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
-            <img id="lightbox-img" src="" alt="手链超清大图" style="max-width: 95vw; max-height: 90vh; object-fit: contain; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-        </div>
-    </div>
-
     <!-- 页脚 Footer -->
-    <footer class="container" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 10px; color: #a3a3a3; gap: 8px;">
+    <footer class="container" style="padding-top: 24px; padding-bottom: 24px; border-top: 1px solid rgba(93, 122, 138, 0.2); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 10px; color: #a3a3a3; gap: 8px;">
         <p>© 2026 蕊宫 - <span style="font-family: monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p style="display: flex; gap: 6px;">
-            <a href="https://www.rui-palace.de/impressum.html?lang=zh" style="color: inherit; text-decoration: none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="en">Legal Notice (Impressum)</a> 
+        <p style="display: flex; gap: 8px;">
+            <a href="https://www.rui-palace.com/impressum.html" style="color: inherit; text-decoration: none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="zh">Legal Notice (Impressum)</a> 
             <span>|</span> 
-            <a href="https://www.rui-palace.de/Datenschutz.html?lang=zh" style="color: inherit; text-decoration: none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="en">Privacy Policy (Datenschutz)</a>
+            <a href="https://www.rui-palace.com/Datenschutz.html" style="color: inherit; text-decoration: none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="zh">Privacy Policy (Datenschutz)</a>
         </p>
     </footer>
 
@@ -507,7 +542,11 @@
     <script>
         let currentLang = 'zh';
         let currentProductIdx = 0;
-        let selectedProductTitle = "雨过天晴 · 汝窑冰裂天青石手串";
+        let isDragging = false;
+        let startX = 0;
+        
+        // 全局购物车数据管理（采用独立的天青色存储健壮性设计）
+        let shoppingCart = JSON.parse(localStorage.getItem('rui_cart_tianqing')) || [];
 
         const products = [
             {
@@ -564,8 +603,7 @@
         const poetries = [
             { text_zh: "雨过天晴云破处，这般颜色做将来。", text_en: "The sky clears after rain where the clouds break; let this color be made for the future.", source_zh: "—— 宋徽宗 · 《宣和画谱》", source_en: "— Emperor Huizong, Xuanhe Painting Manual" },
             { text_zh: "九秋风露越窑开，夺得千峰翠色来。", text_en: "When the Yue kilns open amid autumn winds and dew, they capture the emerald green of a thousand peaks.", source_zh: "—— 陆龟蒙 · 《秘色越器》", source_en: "— Lu Guimeng, Secret Ware of Yue" },
-            { text_zh: "巧剜明月染春水，轻旋薄冰盛绿云。", text_en: "Masterfully carving the bright moon to dye spring water, gently spinning thin ice to hold green clouds.", source_zh: "—— 徐夤 · 《贡余秘色茶盏》", source_en: "— Xu Yin, Tribute Tea Cup" },
-            { text_zh: "天青色等烟雨，而我在等你。", text_en: "The celadon sky awaits the misty rain, just as I await you.", source_zh: "—— 方文山 · 《青花瓷》", source_en: "— Vincent Fang, Blue and White Porcelain" }
+            { text_zh: "巧剜明月染春水，轻旋薄冰盛绿云。", text_en: "Masterfully carving the bright moon to dye spring water, gently spinning thin ice to hold green clouds.", source_zh: "—— 徐夤 · 《贡余秘色茶盏》", source_en: "— Xu Yin, Tribute Tea Cup" }
         ];
 
         function returnToPrevious() {
@@ -606,7 +644,6 @@
             document.getElementById('hero-product-subtitle').innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
             document.getElementById('hero-product-desc').innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
             document.getElementById('hero-price').innerText = p.price;
-            selectedProductTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
         }
 
         function renderGrid() {
@@ -616,7 +653,7 @@
                 <div onclick="selectGridColor(${idx})" class="color-card">
                     <div class="color-block" style="background-color:${c.hex}"></div>
                     <p class="dynamic-text" style="font-size: 10px; font-weight: bold; color: #262626; line-height: 1.2;" data-lang="${currentLang}">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                    <p style="font-size: 9px; color: #a3a3a3; font-family: monospace; margin-top: 2px;">${c.hex}</p>
+                    <p style="font-size: 9px; color: #5D7A8A; font-family: monospace; margin-top: 2px;">${c.hex}</p>
                 </div>
             `).join('');
         }
@@ -638,8 +675,18 @@
 
         function copyHex() {
             const hexText = document.getElementById('dynamic-hex').innerText;
-            navigator.clipboard.writeText(hexText);
-            alert(currentLang === 'zh' ? `已复制色号: ${hexText}` : `Hex copied: ${hexText}`);
+            const tempInput = document.createElement('textarea');
+            tempInput.value = hexText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            const badge = document.getElementById('copy-badge');
+            if(badge) {
+                const originalText = badge.innerText;
+                badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
+                setTimeout(() => { badge.innerText = originalText; }, 1500);
+            }
         }
 
         function setLanguage(lang) {
@@ -657,9 +704,9 @@
             renderGrid();
             const slider = document.getElementById('color-slider');
             if (slider) updateDynamicPad(slider.value);
+            renderCartItems();
         }
 
-        // 核心修复点：将点击加载的 iframe src 修改为嵌入专用的 /embed/ 路径
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
             const placeholder = document.getElementById('video-placeholder');
@@ -667,7 +714,7 @@
             if (container) {
                 container.innerHTML = `
                     <iframe style="width: 100%; height: 100%; border: none;" 
-                            src="https://www.youtube.com/embed/74mTVx_yk-s?autoplay=1" 
+                            src="https://www.youtube-nocookie.com/embed/74mTVx_yk-s?autoplay=1&rel=0&modestbranding=1" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                     </iframe>
@@ -675,17 +722,186 @@
             }
         }
 
-        function openModal() {
-            const p = products[currentProductIdx];
-            const modalTitle = document.getElementById('modal-product-title');
-            if (modalTitle) modalTitle.innerText = currentLang === 'zh' ? `【${p.title_zh}】· 臻藏结缘` : `[${p.title_en}] Reservation`;
-            document.getElementById('buyModal').classList.add('active');
-            
-            setTimeout(renderPayPalButtons, 100);
+        // --- 购物车与多步骤结算核心逻辑 ---
+        function addToCart(idx) {
+            const p = products[idx];
+            const itemTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
+            const priceNum = parseFloat(p.price.replace('€', '').replace(',', '.').trim());
+
+            const existingIndex = shoppingCart.findIndex(item => item.title === itemTitle);
+            if (existingIndex > -1) {
+                shoppingCart[existingIndex].quantity += 1;
+            } else {
+                shoppingCart.push({
+                    title: itemTitle,
+                    priceNum: priceNum,
+                    priceStr: p.price,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('rui_cart_tianqing', JSON.stringify(shoppingCart));
+            updateCartCountBadge();
+            openCartModal();
+        }
+
+        function updateCartCountBadge() {
+            const totalCount = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) badge.innerText = totalCount;
+        }
+
+        function openCartModal() {
+            renderCartItems();
+            document.getElementById('modal-step-form').style.display = 'block';
+            document.getElementById('modal-step-confirm').style.display = 'none';
+            document.getElementById('buyModal')?.classList.add('active');
         }
 
         function closeModal() {
-            document.getElementById('buyModal').classList.remove('active');
+            document.getElementById('buyModal')?.classList.remove('active');
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-container');
+            if (!container) return;
+
+            if (shoppingCart.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">${currentLang === 'zh' ? '购物车还是空的，快去挑选款式吧~' : 'Your cart is empty.'}</p>`;
+                return;
+            }
+
+            let html = '';
+            let grandTotal = 0;
+
+            shoppingCart.forEach((item, i) => {
+                const itemTotal = item.priceNum * item.quantity;
+                grandTotal += itemTotal;
+                html += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(93,122,138,0.2); padding-bottom:6px;">
+                        <div>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
+                            <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <span style="font-size:12px; color:#5D7A8A; font-weight:bold;">€ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                            <button type="button" onclick="changeQuantity(${i}, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
+                            <button type="button" onclick="changeQuantity(${i}, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
+                            <button type="button" onclick="removeFromCart(${i})" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#5D7A8A; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
+            container.innerHTML = html;
+        }
+
+        function changeQuantity(index, delta) {
+            shoppingCart[index].quantity += delta;
+            if (shoppingCart[index].quantity <= 0) {
+                shoppingCart.splice(index, 1);
+            }
+            localStorage.setItem('rui_cart_tianqing', JSON.stringify(shoppingCart));
+            updateCartCountBadge();
+            renderCartItems();
+        }
+
+        function removeFromCart(index) {
+            shoppingCart.splice(index, 1);
+            localStorage.setItem('rui_cart_tianqing', JSON.stringify(shoppingCart));
+            updateCartCountBadge();
+            renderCartItems();
+        }
+
+        function goToConfirmStep() {
+            if (shoppingCart.length === 0) {
+                alert(currentLang === 'zh' ? '购物车还是空的！' : 'Your cart is empty!');
+                return;
+            }
+
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const address = document.getElementById('form-address').value.trim();
+            const zip = document.getElementById('form-zip').value.trim();
+            const city = document.getElementById('form-city').value.trim();
+            const wristSelect = document.getElementById('cust-wrist');
+            const wrist = wristSelect.options[wristSelect.selectedIndex].text;
+
+            if (!name || !email || !phone || !address || !zip || !city) {
+                alert(currentLang === 'zh' ? '请完整填写各项必填联系与地址信息！' : 'Please fill in all required fields.');
+                return;
+            }
+
+            const notes = document.getElementById('form-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
+            let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
+            let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join('<br>');
+
+            const box = document.getElementById('confirm-details-box');
+            box.innerHTML = `
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
+                <hr style="border:0; border-top:1px solid rgba(93,122,138,0.2); margin:4px 0;">
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
+                <div><strong style="color:#5D7A8A;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
+            `;
+
+            document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
+
+            document.getElementById('modal-step-form').style.display = 'none';
+            document.getElementById('modal-step-confirm').style.display = 'block';
+
+            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes });
+        }
+
+        function backToFormStep() {
+            document.getElementById('modal-step-form').style.display = 'block';
+            document.getElementById('modal-step-confirm').style.display = 'none';
+        }
+
+        function renderPayPalButtons(totalAmount, customerInfo) {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'paypal'
+                    },
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                description: `Rui Palace - Celadon Sky Order: ${customerInfo.name} (${customerInfo.wrist})`,
+                                amount: {
+                                    currency_code: 'EUR',
+                                    value: totalAmount.toFixed(2)
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+                            localStorage.removeItem('rui_cart_tianqing');
+                            shoppingCart = [];
+                            updateCartCountBadge();
+                            closeModal();
+                        });
+                    },
+                    onError: function(err) {
+                        console.error('PayPal Error:', err);
+                        alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
+                    }
+                }).render('#paypal-button-container');
+            }
         }
 
         function openLightbox(idx = currentProductIdx) {
@@ -702,120 +918,13 @@
             if (lightbox) lightbox.style.display = 'none';
         }
 
-        function validateOrderFields() {
-            const name = document.getElementById('cust-name').value.trim();
-            const email = document.getElementById('cust-email').value.trim();
-            const street = document.getElementById('cust-street').value.trim();
-            const zip = document.getElementById('cust-zip').value.trim();
-            const city = document.getElementById('cust-city').value.trim();
-
-            if (!name || !email || !street || !zip || !city) {
-                alert(currentLang === 'zh' ? 
-                    '请完整填写尊姓大名、联系邮箱以及详细的邮寄地址（街道门牌号、邮编和城市）。' : 
-                    'Please enter your full name, email address, and complete shipping address (street, zip code, city).'
-                );
-                return false;
-            }
-            return true;
-        }
-
-        function sendOrderEmail(customerData) {
-            const formData = new FormData();
-            formData.append('_subject', '【雨过天晴官网】天青手链新订单通知');
-            formData.append('_template', 'table');
-            formData.append('_captcha', 'false');
-            formData.append('客户姓名', customerData.name);
-            formData.append('联系邮箱', customerData.email);
-            formData.append('电话', customerData.phone);
-            formData.append('街道门牌号', customerData.street);
-            formData.append('邮政编码', customerData.zip);
-            formData.append('城市', customerData.city);
-            formData.append('手围尺寸', customerData.wrist);
-            formData.append('定制款式', customerData.model);
-            formData.append('其他备注', customerData.notes);
-
-            fetch('https://formsubmit.co/ajax/mai@rui-palace.de', {
-                method: 'POST',
-                body: formData
-            }).catch(err => console.log('邮件发送提示:', err));
-        }
-
-        function renderPayPalButtons() {
-            const container = document.getElementById('paypal-button-container');
-            if (!container) return;
-
-            container.innerHTML = '';
-
-            if (typeof paypal === 'undefined') {
-                container.innerHTML = '<p style="font-size:12px; color:#d9534f; text-align:center; padding:10px;">支付组件加载中或被拦截，请检查网络后刷新重试</p>';
-                return;
-            }
-
-            paypal.Buttons({
-                style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-                createOrder: function(data, actions) {
-                    if (!validateOrderFields()) {
-                        throw new Error('Missing address or contact info.');
-                    }
-                    const wristSize = document.getElementById('cust-wrist').value;
-                    const street = document.getElementById('cust-street').value;
-                    const city = document.getElementById('cust-city').value;
-                    const fullDesc = `${selectedProductTitle} | [手围: ${wristSize}] | [地址: ${street}, ${city}]`;
-                    const currentPriceVal = products[currentProductIdx].price.replace('€', '').trim().replace(',', '.');
-
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: fullDesc,
-                            amount: { currency_code: 'EUR', value: currentPriceVal }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        const customerData = {
-                            name: document.getElementById('cust-name').value,
-                            email: document.getElementById('cust-email').value,
-                            phone: document.getElementById('cust-phone').value,
-                            street: document.getElementById('cust-street').value,
-                            zip: document.getElementById('cust-zip').value,
-                            city: document.getElementById('cust-city').value,
-                            wrist: document.getElementById('cust-wrist').value,
-                            model: selectedProductTitle,
-                            notes: document.getElementById('cust-notes').value.trim() || '无'
-                        };
-
-                        sendOrderEmail(customerData);
-
-                        alert(currentLang === 'zh' ? 
-                            `感谢尊贵的客户 ${customerData.name}！支付成功。您的快递地址（${customerData.street}, ${customerData.city}）已记录并同步。` : 
-                            `Thank you ${customerData.name}! Payment successful. Shipping info registered.`
-                        );
-                        closeModal();
-                    });
-                },
-                onCancel: function(data) {
-                    alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
-                },
-                onError: function(err) {
-                    console.error('PayPal 支付异常：', err);
-                    alert(currentLang === 'zh' ? '支付遇到问题，请检查表单填写是否完整。' : 'Payment error. Please check form fields.');
-                }
-            }).render('#paypal-button-container');
-        }
-
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
             
             const resolvedLang = langParam === 'en' ? 'en' : 'zh';
             setLanguage(resolvedLang);
-
-            document.querySelectorAll('a').forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.endsWith('.html') && !href.includes('lang=')) {
-                    link.setAttribute('href', `${href}?lang=${resolvedLang}`);
-                }
-            });
+            updateCartCountBadge();
 
             const slider = document.getElementById('color-slider');
             if (slider) {
@@ -843,5 +952,5 @@
             }
         });
     </script>
-
-</body></html>
+</body>
+</html>
