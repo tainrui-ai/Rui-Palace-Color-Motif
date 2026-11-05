@@ -1,1188 +1,1162 @@
+<!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR" data-uid-auto="uid_cart_sdk"></script>
 
-<!DOCTYPE html>
-<!-- saved from url=(0058)https://www.rui-palace.de/Color%20Mu%20Shan%20Lila?lang=en -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 暮山紫专属美学样式 -->
+<style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
+        background-color: #FDFBF8; 
+        color: #262626;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* 密集的四方连续如意云纹背景（暮山紫描边） */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238670A0' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.12'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        user-select: none;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .chinese-border { 
+        border: 1px solid rgba(134, 112, 160, 0.25); 
+        outline: 3px double rgba(134, 112, 160, 0.12); 
+        outline-offset: -8px; 
+        background: rgba(255, 255, 255, 0.9); 
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 15px 35px -10px rgba(134, 112, 160, 0.15);
+    }
+
+    .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
+    .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.05em; font-size: 1.9rem; font-weight: 500; }
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>暮山紫 · 紫陌手链典藏推广</title>
+    .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #8670A0; }
+    .dynamic-sub[data-lang="en"] { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7rem; }
     
-    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-    <script src="./暮山紫 · 紫陌手链典藏推广_files/js" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
+    .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+    .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+    
+    .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+    .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
+    
+    .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
+    .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-    <!-- 暮山紫专属美学样式（完全对齐琥珀金架构与排版规整） -->
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .side-wing-left, .side-wing-right {
+        display: none;
+        position: absolute;
+        top: 24px;
+        bottom: 24px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 20;
+    }
+    .side-wing-left { left: 32px; }
+    .side-wing-right { right: 32px; }
+    @media (min-width: 1024px) {
+        .side-wing-left, .side-wing-right { display: flex; }
+    }
 
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
-            background-color: #FDFBF8; 
-            color: #262626;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            /* 密集的四方连续如意云纹背景（暮山紫描边） */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238670A0' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.12'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
-            background-attachment: fixed;
-            user-select: none;
-            -webkit-font-smoothing: antialiased;
-        }
+    .vertical-wing { 
+        writing-mode: vertical-rl; 
+        text-orientation: upright; 
+        letter-spacing: 0.3em; 
+        font-size: 10px; 
+        color: #8670A0; 
+    }
+    .vertical-wing[data-lang="en"] { 
+        writing-mode: vertical-rl; 
+        text-orientation: mixed; 
+        letter-spacing: 0.05em; 
+        font-family: "Times New Roman", Times, serif; 
+        font-size: 9px; 
+    }
 
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+    .lang-switch-btn { 
+        font-family: "Times New Roman", Times, serif; 
+        background: rgba(134, 112, 160, 0.12); 
+        border: 1px solid rgba(134, 112, 160, 0.35); 
+        transition: all 0.3s ease; 
+        letter-spacing: 0.1em; 
+        cursor: pointer; 
+        padding: 6px 16px; 
+        border-radius: 9999px; 
+        font-size: 11px; 
+        color: #725C8C; 
+    }
+    .lang-switch-btn:hover { background: #8670A0; color: white; border-color: #8670A0; }
 
-        .chinese-border { 
-            border: 1px solid rgba(134, 112, 160, 0.25); 
-            outline: 3px double rgba(134, 112, 160, 0.12); 
-            outline-offset: -8px; 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 15px 35px -10px rgba(134, 112, 160, 0.15);
-        }
+    .color-card {
+        cursor: pointer;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(134, 112, 160, 0.2);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+    .color-card:hover {
+        border-color: #8670A0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(134, 112, 160, 0.2);
+    }
+    .color-block {
+        height: 40px;
+        border-radius: 8px;
+        margin-bottom: 6px;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
 
-        .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
-        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.05em; font-size: 1.9rem; font-weight: 500; }
-        
-        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #8670A0; }
-        .dynamic-sub[data-lang="en"] { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7rem; }
-        
-        .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
-        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
-        
-        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
-        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
-        
-        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
-        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+    .video-wrapper {
+        aspect-ratio: 16 / 9;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(134, 112, 160, 0.2);
+    }
+    .video-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        text-align: center;
+        background: rgba(30, 25, 38, 0.88);
+        cursor: pointer;
+        transition: opacity 0.3s;
+        z-index: 10;
+    }
+    .play-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #8670A0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 8px;
+        box-shadow: 0 2px 10px rgba(134, 112, 160, 0.4);
+        transition: transform 0.3s;
+    }
+    .play-btn:hover { transform: scale(1.1); }
 
-        .side-wing-left, .side-wing-right {
-            display: none;
-            position: absolute;
-            top: 24px;
-            bottom: 24px;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 20;
-        }
-        .side-wing-left { left: 32px; }
-        .side-wing-right { right: 32px; }
-        @media (min-width: 1024px) {
-            .side-wing-left, .side-wing-right { display: flex; }
-        }
+    .hero-podium {
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(246, 243, 250, 0.85) 70%, rgba(235, 228, 242, 0.6) 100%);
+        box-shadow: inset 0 0 30px rgba(134, 112, 160, 0.1), 0 20px 40px -15px rgba(134, 112, 160, 0.15);
+    }
 
-        .vertical-wing { 
-            writing-mode: vertical-rl; 
-            text-orientation: upright; 
-            letter-spacing: 0.3em; 
-            font-size: 10px; 
-            color: #8670A0; 
-        }
-        .vertical-wing[data-lang="en"] { 
-            writing-mode: vertical-rl; 
-            text-orientation: mixed; 
-            letter-spacing: 0.05em; 
-            font-family: "Times New Roman", Times, serif; 
-            font-size: 9px; 
-        }
+    .begonia-window-clip {
+        clip-path: url(#begonia-clip);
+    }
 
-        .lang-switch-btn { 
-            font-family: "Times New Roman", Times, serif; 
-            background: rgba(134, 112, 160, 0.12); 
-            border: 1px solid rgba(134, 112, 160, 0.35); 
-            transition: all 0.3s ease; 
-            letter-spacing: 0.1em; 
-            cursor: pointer; 
-            padding: 6px 16px; 
-            border-radius: 9999px; 
-            font-size: 11px; 
-            color: #725C8C; 
-        }
-        .lang-switch-btn:hover { background: #8670A0; color: white; border-color: #8670A0; }
+    .slider-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: grab;
+    }
+    .slider-track:active {
+        cursor: grabbing;
+    }
 
-        .color-card {
-            cursor: pointer;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(134, 112, 160, 0.2);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        .color-card:hover {
-            border-color: #8670A0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(134, 112, 160, 0.2);
-        }
-        .color-block {
-            height: 40px;
-            border-radius: 8px;
-            margin-bottom: 6px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
-        }
+    .product-thumb {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    .product-thumb.active {
+        border-color: #8670A0;
+        background: rgba(134, 112, 160, 0.1);
+        transform: scale(1.05);
+    }
 
-        .video-wrapper {
-            aspect-ratio: 16 / 9;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(134, 112, 160, 0.2);
-        }
-        .video-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            text-align: center;
-            background: rgba(30, 25, 38, 0.88);
-            cursor: pointer;
-            transition: opacity 0.3s;
-            z-index: 10;
-        }
-        .play-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #8670A0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-bottom: 8px;
-            box-shadow: 0 2px 10px rgba(134, 112, 160, 0.4);
-            transition: transform 0.3s;
-        }
-        .play-btn:hover { transform: scale(1.1); }
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal.active {
+        display: flex;
+    }
 
-        .hero-podium {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(246, 243, 250, 0.85) 70%, rgba(235, 228, 242, 0.6) 100%);
-            box-shadow: inset 0 0 30px rgba(134, 112, 160, 0.1), 0 20px 40px -15px rgba(134, 112, 160, 0.15);
-        }
+    .channel-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border: 1px solid rgba(134, 112, 160, 0.3);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(246, 243, 250, 0.5));
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .channel-link:hover { border-color: rgba(134, 112, 160, 0.7); transform: translateY(-1px); }
 
-        .begonia-window-clip {
-            clip-path: url(#begonia-clip);
-        }
+    .grid-main {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    @media (min-width: 1024px) {
+        .grid-main { grid-template-columns: 1fr 1fr; }
+    }
+    .grid-thumbs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+    .grid-colors {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .form-input {
+        width: 100%; 
+        padding: 8px 12px; 
+        font-size: 12px; 
+        border: 1px solid rgba(134, 112, 160, 0.3); 
+        border-radius: 8px; 
+        background: #FAFAFA; 
+        color: #262626;
+        outline: none;
+    }
+    .form-input:focus {
+        border-color: #8670A0;
+        background: #FFFFFF;
+    }
+</style>
 
-        .slider-track {
-            display: flex;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: grab;
-        }
-        .slider-track:active {
-            cursor: grabbing;
-        }
+<!-- 隐私 Cookie 弹窗样式 -->
+<style id="rui-cookie-banner-style">
+    #cookie-consent {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.45);
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #cookie-consent .modal-box {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 16px;
+        max-width: 450px;
+        width: 90%;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        text-align: left;
+        border: 1px solid rgba(134, 112, 160, 0.3);
+    }
+    #cookie-consent h3 {
+        margin-top: 0;
+        font-size: 1.15rem;
+        color: #171717;
+        margin-bottom: 12px;
+        font-family: serif;
+    }
+    #cookie-consent p {
+        font-size: 0.9rem;
+        color: #525252;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    #cookie-consent .button-group {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+    }
+    #cookie-consent button {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 1px solid #8670A0;
+        transition: all 0.3s;
+    }
+    #cookie-consent #reject-btn {
+        background: transparent;
+        color: #525252;
+        border-color: #d4d4d4;
+    }
+    #cookie-consent #reject-btn:hover {
+        background: #f5f5f5;
+    }
+    #cookie-consent #accept-btn {
+        background: #8670A0;
+        color: white;
+    }
+    #cookie-consent #accept-btn:hover {
+        background: #725C8C;
+    }
+    #cookie-consent .footer-links {
+        font-size: 0.75rem;
+        color: #a3a3a3;
+        text-align: center;
+        border-top: 1px solid #f5f5f5;
+        padding-top: 12px;
+    }
+    #cookie-consent .footer-links a {
+        color: #737373;
+        text-decoration: none;
+        margin: 0 8px;
+    }
+    #cookie-consent .footer-links a:hover {
+        text-decoration: underline;
+    }
+</style>
 
-        .product-thumb {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .product-thumb.active {
-            border-color: #8670A0;
-            background: rgba(134, 112, 160, 0.1);
-            transform: scale(1.05);
-        }
 
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(6px);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal.active {
-            display: flex;
-        }
-
-        .channel-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border: 1px solid rgba(134, 112, 160, 0.3);
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(246, 243, 250, 0.5));
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .channel-link:hover { border-color: rgba(134, 112, 160, 0.7); transform: translateY(-1px); }
-
-        .grid-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-        @media (min-width: 1024px) {
-            .grid-main { grid-template-columns: 1fr 1fr; }
-        }
-        .grid-thumbs {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-        .grid-colors {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        
-        .form-input {
-            width: 100%; 
-            padding: 8px 12px; 
-            font-size: 12px; 
-            border: 1px solid rgba(134, 112, 160, 0.3); 
-            border-radius: 8px; 
-            background: #FAFAFA; 
-            color: #262626;
-            outline: none;
-        }
-        .form-input:focus {
-            border-color: #8670A0;
-            background: #FFFFFF;
-        }
-    </style>
-
-    <!-- 隐私 Cookie 弹窗样式 -->
-    <style id="rui-cookie-banner-style">
-        #cookie-consent {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.45);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        #cookie-consent .modal-box {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            text-align: left;
-            border: 1px solid rgba(134, 112, 160, 0.3);
-        }
-        #cookie-consent h3 {
-            margin-top: 0;
-            font-size: 1.15rem;
-            color: #171717;
-            margin-bottom: 12px;
-            font-family: serif;
-        }
-        #cookie-consent p {
-            font-size: 0.9rem;
-            color: #525252;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        #cookie-consent .button-group {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-            margin-bottom: 15px;
-        }
-        #cookie-consent button {
-            padding: 10px 18px;
-            font-size: 0.85rem;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 1px solid #8670A0;
-            transition: all 0.3s;
-        }
-        #cookie-consent #reject-btn {
-            background: transparent;
-            color: #525252;
-            border-color: #d4d4d4;
-        }
-        #cookie-consent #reject-btn:hover {
-            background: #f5f5f5;
-        }
-        #cookie-consent #accept-btn {
-            background: #8670A0;
-            color: white;
-        }
-        #cookie-consent #accept-btn:hover {
-            background: #725C8C;
-        }
-        #cookie-consent .footer-links {
-            font-size: 0.75rem;
-            color: #a3a3a3;
-            text-align: center;
-            border-top: 1px solid #f5f5f5;
-            padding-top: 12px;
-        }
-        #cookie-consent .footer-links a {
-            color: #737373;
-            text-decoration: none;
-            margin: 0 8px;
-        }
-        #cookie-consent .footer-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
-<script src="./暮山紫 · 紫陌手链典藏推广_files/main.js.Herunterladen"></script></head>
-<body>
-    <!-- SVG 海棠窗形态定义 -->
-    <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
         <defs>
-            <clippath id="begonia-clip" clipPathUnits="objectBoundingBox">
+            <clipPath id="begonia-clip" clipPathUnits="objectBoundingBox">
                 <path d="M 0.5,0.02 C 0.63,0.02 0.71,0.09 0.76,0.22 C 0.89,0.27 0.98,0.36 0.98,0.5 C 0.98,0.64 0.89,0.73 0.76,0.78 C 0.71,0.91 0.63,0.98 0.5,0.98 C 0.37,0.98 0.29,0.91 0.24,0.78 C 0.11,0.73 0.02,0.64 0.02,0.5 C 0.02,0.36 0.11,0.27 0.24,0.22 C 0.29,0.09 0.37,0.02 0.5,0.02 Z"></path>
-            </clippath>
+            </clipPath>
         </defs>
     </svg>
 
-    <!-- 顶部 Header -->
-    <header style="position:relative; padding-top:32px; padding-bottom:24px; border-bottom:1px solid rgba(134, 112, 160, 0.2); text-align:center;" class="container">
-        <div class="side-wing-left">
-            <button onclick="returnToPrevious()" style="background:transparent; border:0; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;">
-                <span style="font-size:12px;">⇠</span>
-                <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="en">RETURN</span>
-            </button>
-            <div style="display:flex; flex-direction:column; align-items:center;">
-                <span class="vertical-wing" data-zh="灵犀鉴 · 暮色格物" data-en="RUI PALACE · TWILIGHT" data-lang="en">RUI PALACE · TWILIGHT</span>
-            </div>
-            <div></div>
-        </div>
+<!-- 顶部 Header -->
+<header style="position:relative; padding-top:32px; padding-bottom:24px; border-bottom:1px solid rgba(134, 112, 160, 0.2); text-align:center;" class="container">
+    <div class="side-wing-left">
+        <button onclick="returnToPrevious()" style="background:transparent; border:0; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;">
+            <span style="font-size:12px;">⇠</span>
+            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="en">RETURN</span>
+        </button>
+        <div></div>
+        <div></div>
+    </div>
 
-        <h1 id="main-title" class="dynamic-title" data-zh="暮山紫 · 月白无尽夏" data-en="Mushan Purple &amp; Yuebai Collection" data-lang="en">Mushan Purple &amp; Yuebai Collection</h1>
-        <p class="dynamic-sub" style="margin-bottom:12px;" data-zh="EASTERN AESTHETICS &amp; FINE JEWELRY" data-en="EASTERN AESTHETICS &amp; FINE JEWELRY" data-lang="en">EASTERN AESTHETICS &amp; FINE JEWELRY</p>
+    <h1 id="main-title" class="dynamic-title" data-zh="暮山紫 · 月白无尽夏" data-en="Mushan Purple &amp; Yuebai" data-lang="en">Mushan Purple &amp; Yuebai</h1>
+    <p class="dynamic-sub" style="margin-bottom:12px;" data-zh="EASTERN AESTHETICS &amp; FINE JEWELRY" data-en="AESTHETICS &amp; JEWELRY" data-lang="en">AESTHETICS &amp; JEWELRY</p>
+    
+    <div style="max-width:576px; margin:0 auto; padding:0 16px;">
+        <p id="main-desc" class="dynamic-text" style="line-height:1.6;" data-zh="“烟光凝而暮山紫，无尽夏开月独白。”&lt;br&gt;将东方温润水墨意境融入天然晶石手链，呈献典雅独到的腕间灵光。" data-en="“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”&lt;br&gt;Infusing oriental ink poetry into fine natural gemstone bracelets." data-lang="en">“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”<br>Infusing oriental ink poetry into fine natural gemstone bracelets.</p>
+    </div>
+
+    <div class="side-wing-right">
+        <!-- 购物车快捷入口按钮 -->
+        <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(134, 112, 160, 0.15); border-color:#8670A0;">
+            <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
+            <span id="cart-count-badge" style="background:#8670A0; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">3</span>
+        </button>
+        <div></div>
+        <div></div>
+    </div>
+</header>
+
+<!-- 核心 Hero 海棠画廊展示中心 -->
+<section class="container" style="padding-top:32px; padding-bottom:16px;">
+    <div class="chinese-border hero-podium" style="position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 16px;">
         
-        <div style="max-width:576px; margin:0 auto; padding:0 16px;">
-            <p id="main-desc" class="dynamic-text" style="line-height:1.6;" data-zh="“烟光凝而暮山紫，无尽夏开月独白。”&lt;br&gt;将东方温润水墨意境融入天然晶石手链，呈献典雅独到的腕间灵光。" data-en="“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”&lt;br&gt;Infusing oriental ink poetry into fine natural gemstone bracelets." data-lang="en">“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”<br>Infusing oriental ink poetry into fine natural gemstone bracelets.</p>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(134, 112, 160, 0.12); padding:4px 16px; border-radius:9999px; border:1px solid rgba(134, 112, 160, 0.3);">
+            <span style="width:8px; height:8px; border-radius:50%; background:#8670A0; display:inline-block; box-shadow:0 0 8px #8670A0;"></span>
+            <span class="dynamic-sub" style="font-weight:600; color:#8670A0; font-size:12px; letter-spacing:0.15em;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · GALLERY" data-lang="en">HERO COLLECTION · GALLERY</span>
         </div>
 
-        <div class="side-wing-right">
-            <!-- 购物车快捷入口按钮 -->
-            <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(134, 112, 160, 0.15); border-color:#8670A0;">
-                <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
-                <span id="cart-count-badge" style="background:#8670A0; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">0</span>
-            </button>
-            <div style="display:flex; flex-direction:column; align-items:center;">
-                <span class="vertical-wing" data-zh="向内深种 · 守白知黑" data-en="INWARD GROWTH · EMBRACE SHADOW" data-lang="en">INWARD GROWTH · EMBRACE SHADOW</span>
-            </div>
-            <div></div>
-        </div>
-    </header>
+        <h2 id="hero-product-title" style="font-size:2rem; font-family:serif; font-weight:bold; color:#171717; letter-spacing:0.05em; margin-bottom:8px;" data-zh="紫陌 · 暮山紫手链" data-en="Zi Mo · Twilight Purple" data-lang="en">Zi Mo · Twilight Purple</h2>
+        <p id="hero-product-subtitle" class="dynamic-sub" style="color:#737373; margin-bottom:16px; max-width:512px;" data-zh="Zi Mo · Twilight Purple Gemstone Bracelet" data-en="Zi Mo · Twilight Purple Bracelet" data-lang="en">Zi Mo · Twilight Purple Bracelet</p>
 
-    <!-- 核心 Hero 海棠画廊展示中心 -->
-    <section class="container" style="padding-top:32px; padding-bottom:16px;">
-        <div class="chinese-border hero-podium" style="position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 16px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#8670A0; font-size:12px; font-family:serif; opacity:0.85;">
+            <span>⇠</span>
+            <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="en">Slide Left &amp; Right / Click to Enlarge</span>
+            <span>⇢</span>
+        </div>
+
+        <!-- 海棠花窗交互视口 -->
+        <div style="position:relative; width:320px; height:320px; margin:16px 0; display:flex; align-items:center; justify-content:center; user-select:none;">
             
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(134, 112, 160, 0.12); padding:4px 16px; border-radius:9999px; border:1px solid rgba(134, 112, 160, 0.3);">
-                <span style="width:8px; height:8px; border-radius:50%; background:#8670A0; display:inline-block; box-shadow:0 0 8px #8670A0;"></span>
-                <span class="dynamic-sub" style="font-weight:600; color:#8670A0; font-size:12px; letter-spacing:0.15em;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="en">HERO COLLECTION · BEGONIA GALLERY</span>
+            <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(134,112,160,0.2) 0%, transparent 70%); filter:blur(24px);"></div>
+
+            <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">
+                ❮
+            </button>
+            <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">
+                ❯
+            </button>
+
+            <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
+                <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+                    <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#8670A0" stroke-width="2.5" stroke-linejoin="round"></path>
+                </svg>
             </div>
 
-            <h2 id="hero-product-title" style="font-size:2rem; font-family:serif; font-weight:bold; color:#171717; letter-spacing:0.05em; margin-bottom:8px;" data-zh="紫陌 · 暮山紫手链" data-en="Zi Mo · Twilight Purple Bracelet" data-lang="en">Zi Mo · Twilight Purple Bracelet</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color:#737373; margin-bottom:16px; max-width:512px;" data-zh="Zi Mo · Twilight Purple Gemstone Bracelet" data-en="Zi Mo · Twilight Purple Gemstone Bracelet" data-lang="en">Zi Mo · Twilight Purple Gemstone Bracelet</p>
-
-            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#8670A0; font-size:12px; font-family:serif; opacity:0.85;">
-                <span>⇠</span>
-                <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="en">Slide Left &amp; Right / Click to Enlarge</span>
-                <span>⇢</span>
-            </div>
-
-            <!-- 海棠花窗交互视口 -->
-            <div style="position:relative; width:320px; height:320px; margin:16px 0; display:flex; align-items:center; justify-content:center; user-select:none;">
-                
-                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(134,112,160,0.2) 0%, transparent 70%); filter:blur(24px);"></div>
-
-                <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">
-                    ❮
-                </button>
-                <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">
-                    ❯
-                </button>
-
-                <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
-                    <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
-                        <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#8670A0" stroke-width="2.5" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-
-                <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
-                    <div id="slider-track" class="slider-track" style="width: 100%; height: 100%; align-items: center; transform: translateX(0%);">
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
-                            <img src="./暮山紫 · 紫陌手链典藏推广_files/ffffff" alt="紫陌手链" style="width:100%; height:100%; object-fit:contain;">
-                        </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(1)">
-                            <img src="./暮山紫 · 紫陌手链典藏推广_files/ffffff(1)" alt="春几许手链" style="width:100%; height:100%; object-fit:contain;">
-                        </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(2)">
-                            <img src="./暮山紫 · 紫陌手链典藏推广_files/ffffff(2)" alt="紫珑手链" style="width:100%; height:100%; object-fit:contain;">
-                        </div>
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(3)">
-                            <img src="./暮山紫 · 紫陌手链典藏推广_files/ffffff(3)" alt="玉棠手链" style="width:100%; height:100%; object-fit:contain;">
-                        </div>
+            <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
+                <div id="slider-track" class="slider-track" style="width: 100%; height: 100%; align-items: center; transform: translateX(0%);">
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
+                        <img src="https://placehold.co/600x600/8670a0/ffffff?text=Zi+Mo+Purple+Bracelet" alt="紫陌手链" style="width:100%; height:100%; object-fit:contain;">
                     </div>
-                </div>
-            </div>
-
-            <p id="hero-product-desc" class="poetry-text-style" style="font-size:0.875rem; color:#525252; max-width:576px; margin:16px 0; line-height:1.7;" data-zh="“紫陌红尘，暮色深种。” 天然猫眼紫水晶与特级南红主珠相呼应，温润灵动，修养身心心境。" data-en="“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace." data-lang="en">“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace.</p>
-
-            <div style="margin-top:8px; display:flex; flex-direction:column; align-items:center; gap:24px;">
-                <div style="text-align:center;">
-                    <span style="font-size:10px; color:#a3a3a3; text-transform:uppercase; letter-spacing:0.1em; display:block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="en">SPECIAL PRICE (INCL. BOX)</span>
-                    <div style="display:flex; align-items:baseline; justify-content:center; gap:8px;">
-                        <span id="hero-price" style="font-size:1.875rem; font-family:serif; font-weight:bold; color:#8670A0;">€ 65,00</span>
-                        <span style="font-size:12px; color:#a3a3a3; text-decoration:line-through;">€ 105,00</span>
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(1)">
+                        <img src="https://placehold.co/600x600/e64a65/ffffff?text=Chun+Ji+Rose+Quartz" alt="春几许手链" style="width:100%; height:100%; object-fit:contain;">
                     </div>
-                </div>
-                <!-- 加入购物车按钮 -->
-                <button onclick="addToCart(currentProductIdx)" style="padding:14px 32px; border-radius:9999px; background:#8670A0; color:white; font-size:12px; letter-spacing:0.15em; border:none; cursor:pointer; display:flex; align-items:center; gap:12px; box-shadow:0 10px 15px -3px rgba(134, 112, 160, 0.4);">
-                    <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="en">ADD TO CART / 加入购物车</span>
-                    <span style="font-size:14px;">🛒</span>
-                </button>
-            </div>
-
-            <div style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(0,0,0,0.06); width:100%; max-width:448px;">
-                <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
-                <div class="grid-thumbs">
-                    <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                        <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#8670A0;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="紫陌" data-en="Zi Mo" data-lang="en">Zi Mo</span>
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(2)">
+                        <img src="https://placehold.co/600x600/abb4c5/ffffff?text=Zi+Long+Lavender+Jade" alt="紫珑手链" style="width:100%; height:100%; object-fit:contain;">
                     </div>
-                    <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                        <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#E64A65;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="春几许" data-en="Chun Ji" data-lang="en">Chun Ji</span>
-                    </div>
-                    <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                        <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#ABB4C5;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="紫珑" data-en="Zi Long" data-lang="en">Zi Long</span>
-                    </div>
-                    <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                        <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#800020;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="玉棠" data-en="Yu Tang" data-lang="en">Yu Tang</span>
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(3)">
+                        <img src="https://placehold.co/600x600/800020/ffffff?text=Yu+Tang+Cinnabar" alt="玉棠手链" style="width:100%; height:100%; object-fit:contain;">
                     </div>
                 </div>
             </div>
         </div>
+
+        <p id="hero-product-desc" class="poetry-text-style" style="font-size:0.875rem; color:#525252; max-width:576px; margin:16px 0; line-height:1.7;" data-zh="“紫陌红尘，暮色深种。” 天然猫眼紫水晶与特级南红主珠相呼应，温润灵动，修养身心心境。" data-en="“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace." data-lang="en">“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace.</p>
+
+        <div style="margin-top:8px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+            <div style="text-align:center;">
+                <span style="font-size:10px; color:#a3a3a3; text-transform:uppercase; letter-spacing:0.1em; display:block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="en">SPECIAL PRICE (INCL. BOX)</span>
+                <div style="display:flex; align-items:baseline; justify-content:center; gap:8px;">
+                    <span id="hero-price" style="font-size:1.875rem; font-family:serif; font-weight:bold; color:#8670A0;">€ 65,00</span>
+                    <span style="font-size:12px; color:#a3a3a3; text-decoration:line-through;">€ 105,00</span>
+                </div>
+            </div>
+            <!-- 加入购物车按钮：点击仅加入购物车并更新Badge，不再强制弹出结算弹窗 -->
+            <button onclick="addToCart(currentProductIdx)" style="padding:14px 32px; border-radius:9999px; background:#8670A0; color:white; font-size:12px; letter-spacing:0.15em; border:none; cursor:pointer; display:flex; align-items:center; gap:12px; box-shadow:0 10px 15px -3px rgba(134, 112, 160, 0.4);">
+                <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="en">ADD TO CART / 加入购物车</span>
+                <span style="font-size:14px;">🛒</span>
+            </button>
+        </div>
+
+        <div style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(0,0,0,0.06); width:100%; max-width:448px;">
+            <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
+            <div class="grid-thumbs">
+                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
+                    <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#8670A0;"></div>
+                    <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="紫陌" data-en="Zi Mo" data-lang="en">Zi Mo</span>
+                </div>
+                <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
+                    <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#E64A65;"></div>
+                    <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="春几许" data-en="Chun Ji" data-lang="en">Chun Ji</span>
+                </div>
+                <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
+                    <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#ABB4C5;"></div>
+                    <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="紫珑" data-en="Zi Long" data-lang="en">Zi Long</span>
+                </div>
+                <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
+                    <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#800020;"></div>
+                    <span style="font-size:10px; font-family:serif; display:block; color:#262626;" data-zh="玉棠" data-en="Yu Tang" data-lang="en">Yu Tang</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 双阁主体布局 -->
+<main class="container grid-main" style="padding-top:16px; padding-bottom:16px;">
+    <!-- 西阁：冷暖交界色卡 -->
+    <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid rgba(134, 112, 160, 0.2);">
+            <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="西阁 · 冷暖交界色卡" data-en="West Pavilion • Palette" data-lang="en">West Pavilion • Palette</h3>
+            <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click to copy HEX" data-lang="en">Click to copy HEX</span>
+        </div>
+        <div class="grid-colors" id="color-grid">
+            <div onclick="selectGridColor(0)" class="color-card">
+                <div class="color-block" style="background-color:#8670A0"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Twilight Purple</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#8670A0</p>
+            </div>
+        
+            <div onclick="selectGridColor(1)" class="color-card">
+                <div class="color-block" style="background-color:#9887B0"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Condensed Mist</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#9887B0</p>
+            </div>
+        
+            <div onclick="selectGridColor(2)" class="color-card">
+                <div class="color-block" style="background-color:#ABB4C5"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Lilac Snow Blue</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#ABB4C5</p>
+            </div>
+        
+            <div onclick="selectGridColor(3)" class="color-card">
+                <div class="color-block" style="background-color:#BDCBD4"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Endless Summer</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#BDCBD4</p>
+            </div>
+        
+            <div onclick="selectGridColor(4)" class="color-card">
+                <div class="color-block" style="background-color:#C6D8E2"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Moonlit White</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#C6D8E2</p>
+            </div>
+        
+            <div onclick="selectGridColor(5)" class="color-card">
+                <div class="color-block" style="background-color:#D2E2E6"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Pure Yuebai</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">#D2E2E6</p>
+            </div>
+        </div>
+        <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #8670A0; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
+            <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">Twilight Purple</p>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9;">#8670A0</p>
+                <span id="copy-badge" style="font-size:9px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.2);" data-zh="点击复制" data-en="COPY" data-lang="en">COPY</span>
+            </div>
+        </div>
+        <input type="range" id="color-slider" min="0" max="5" value="0" style="width:100%; height:4px; background:#e5e5e5; border-radius:4px; cursor:pointer;">
     </section>
 
-    <!-- 双阁主体布局 -->
-    <main class="container grid-main" style="padding-top:16px; padding-bottom:16px;">
-        <!-- 西阁：冷暖交界色卡 -->
-        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid rgba(134, 112, 160, 0.2);">
-                <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="西阁 · 冷暖交界色卡" data-en="West Pavilion • Boundary Palette" data-lang="en">West Pavilion • Boundary Palette</h3>
-                <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX" data-lang="en">Click block to copy HEX</span>
-            </div>
-            <div class="grid-colors" id="color-grid">
-                <div onclick="selectGridColor(0)" class="color-card">
-                    <div class="color-block" style="background-color:#8670A0"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Twilight Purple</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#8670A0</p>
-                </div>
-            
-                <div onclick="selectGridColor(1)" class="color-card">
-                    <div class="color-block" style="background-color:#9887B0"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Condensed Mist</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#9887B0</p>
-                </div>
-            
-                <div onclick="selectGridColor(2)" class="color-card">
-                    <div class="color-block" style="background-color:#ABB4C5"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Lilac Snow Blue</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#ABB4C5</p>
-                </div>
-            
-                <div onclick="selectGridColor(3)" class="color-card">
-                    <div class="color-block" style="background-color:#BDCBD4"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Endless Summer</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#BDCBD4</p>
-                </div>
-            
-                <div onclick="selectGridColor(4)" class="color-card">
-                    <div class="color-block" style="background-color:#C6D8E2"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Moonlit White</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#C6D8E2</p>
-                </div>
-            
-                <div onclick="selectGridColor(5)" class="color-card">
-                    <div class="color-block" style="background-color:#D2E2E6"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Pure Yuebai</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#D2E2E6</p>
-                </div>
-            </div>
-            <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #8670A0; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
-                <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">Twilight Purple</p>
-                <div style="display:flex; align-items:center; justify-content:space-between;">
-                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9;">#8670A0</p>
-                    <span id="copy-badge" style="font-size:9px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.2);" data-zh="点击复制" data-en="CLICK TO COPY" data-lang="en">CLICK TO COPY</span>
-                </div>
-            </div>
-            <input type="range" id="color-slider" min="0" max="5" value="0" style="width:100%; height:4px; background:#e5e5e5; border-radius:4px; cursor:pointer;">
-        </section>
-
-        <!-- 东阁：视听与诗词 -->
-        <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid rgba(134, 112, 160, 0.2);">
-                <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="东阁 · 研墨观象台" data-en="East Pavilion • Ink Observatory" data-lang="en">East Pavilion • Ink Observatory</h3>
-                <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="暮色流光 · 视听长青" data-en="Twilight &amp; Vision" data-lang="en">Twilight &amp; Vision</span>
-            </div>
-
-            <div class="video-wrapper" id="video-wrapper">
-                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
-                    <div class="play-btn">
-                        <span style="font-size:14px; margin-left:2px;">▶</span>
-                    </div>
-                    <p class="dynamic-text" style="color:white; font-size:12px; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (Connects to YouTube)" data-lang="en">Click to load video (Connects to YouTube)</p>
-                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies consent to Google's privacy policy" data-lang="en">Loading implies consent to Google's privacy policy</p>
-                </div>
-                <div id="youtube-container" style="width:100%; height:100%;"></div>
-            </div>
-
-            <a href="https://www.rui-palace.de/Color%20Apricot%20Blossom.html?lang=en" id="channel-link" class="channel-link">
-                <div style="display:flex; align-items:center; gap:12px;">
-                    <span style="width:8px; height:8px; border-radius:50%; background:#8670A0;"></span>
-                    <div>
-                        <h4 class="dynamic-text" style="font-size:12px; font-weight:600; color:#262626;" data-zh="流转通道：琥珀金流光，寻得本真清光" data-en="Channel Switch: Path to Amber Gold" data-lang="en">Channel Switch: Path to Amber Gold</h4>
-                        <p class="dynamic-text" style="font-size:10px; color:#737373; margin-top:2px;" data-zh="流光不掩本真，岁月沉淀清气" data-en="Time cannot obscure true essence." data-lang="en">Time cannot obscure true essence.</p>
-                    </div>
-                </div>
-                <span style="font-size:12px; color:#8670A0; font-weight:bold;">➔</span>
-            </a>
-
-            <div style="padding-top:12px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; min-height:80px;">
-                <div id="poetry-container" style="margin-bottom:8px;">
-                    <p id="poetry-text" class="poetry-text-style" style="font-size:12px;" data-zh="“烟光凝而暮山紫，潦水尽而寒潭清。”" data-en="“The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.”" data-lang="en">“The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.”</p>
-                    <p id="poetry-source" class="poetry-source-style" style="text-align:right; margin-top:4px;" data-zh="—— 王勃 · 《滕王阁序》" data-en="— Wang Bo" data-lang="en">— Wang Bo</p>
-                </div>
-                <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:transparent; border:0; cursor:pointer; padding:0; color:#8670A0; font-size:11px;" data-zh="换一首诗 ➔" data-en="Next Verse ➔" data-lang="en">Next Verse ➔</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- 灯箱弹窗 -->
-    <div id="imageLightbox" class="modal" onclick="closeLightbox()">
-        <div style="position:relative; width:100%; height:100%; max-width:1280px; max-height:96vh; display:flex; align-items:center; justify-content:center;" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" style="position:absolute; top:16px; right:16px; z-index:50; color:white; background:rgba(0,0,0,0.6); border:none; border-radius:50%; width:48px; height:48px; font-size:24px; cursor:pointer;">✕</button>
-            <img id="lightbox-img" src="https://www.rui-palace.de/Color%20Mu%20Shan%20Lila?lang=en" alt="手链超清大图" style="max-width:95vw; max-height:92vh; object-fit:contain; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
+    <!-- 东阁：视听与诗词 -->
+    <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid rgba(134, 112, 160, 0.2);">
+            <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="东阁 · 研墨观象台" data-en="East Pavilion • Observatory" data-lang="en">East Pavilion • Observatory</h3>
+            <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="暮色流光 · 视听长青" data-en="Twilight &amp; Vision" data-lang="en">Twilight &amp; Vision</span>
         </div>
-    </div>
 
-    <!-- 购物车与统一结算 Modal 弹窗（琥珀金高级多步骤构架） -->
-    <div id="buyModal" class="modal">
-        <div style="background:#FFFFFF; border:1px solid rgba(134, 112, 160, 0.4); border-radius:16px; padding:24px; max-width:480px; width:100%; margin:0 16px; position:relative; box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.2); color:#262626; max-height:95vh; overflow-y:auto;">
-            <button onclick="closeModal()" style="position:absolute; top:16px; right:16px; color:#737373; background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
-            
-            <!-- 第一步：购物车明细与详细邮寄信息表单 -->
-            <div id="modal-step-form" style="display: block;">
-                <div style="text-align:center; margin-bottom:16px;">
-                    <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(134, 112, 160, 0.15); color:#8670A0; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
-                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【灵犀鉴】您的臻藏购物车" data-en="[Rui Palace] Your Shopping Cart" data-lang="en">[Rui Palace] Your Shopping Cart</h3>
-                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="en">Please enter your shipping address details</p>
+        <div class="video-wrapper" id="video-wrapper">
+            <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                <div class="play-btn">
+                    <span style="font-size:14px; margin-left:2px;">▶</span>
                 </div>
-
-                <!-- 购物车商品列表渲染区 -->
-                <div id="cart-items-container" style="margin-bottom:16px; max-height:150px; overflow-y:auto; border:1px solid rgba(134, 112, 160, 0.2); border-radius:8px; padding:12px; background:#FAF7F2;"><p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">Your cart is empty.</p></div>
-
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                    <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
-                        <input type="text" id="form-name" required="" placeholder="e.g. Alice Smith" class="form-input">
-                    </div>
-                    <div style="display:flex; gap:10px;">
-                        <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
-                            <input type="email" id="form-email" required="" placeholder="name@example.com" class="form-input">
-                        </div>
-                        <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
-                            <input type="text" id="form-phone" required="" placeholder="Phone Number" class="form-input">
-                        </div>
-                    </div>
-                    <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
-                        <input type="text" id="form-address" required="" placeholder="e.g. Musterstraße 12" class="form-input">
-                    </div>
-                    <div style="display:flex; gap:10px;">
-                        <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="en">Postal Code</label>
-                            <input type="text" id="form-zip" required="" placeholder="e.g. 10115" class="form-input">
-                        </div>
-                        <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
-                            <input type="text" id="form-city" required="" placeholder="e.g. Berlin" class="form-input">
-                        </div>
-                    </div>
-                    <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
-                        <select id="cust-wrist" class="form-input" style="cursor: pointer;">
-                            <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                            <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
-                            <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
-                            <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="en">Custom Size</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="en">Notes</label>
-                        <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
-                    </div>
-                    <button type="button" onclick="goToConfirmStep()" style="width:100%; padding:12px; margin-top:8px; background:#8670A0; color:white; font-size:12px; border-radius:12px; letter-spacing:0.1em; border:none; cursor:pointer; font-weight:bold;">
-                        <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="en">Next: Confirm Order ➔</span>
-                    </button>
-                </div>
+                <p class="dynamic-text" style="color:white; font-size:12px; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (YouTube)" data-lang="en">Click to load video (YouTube)</p>
+                <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies Google privacy consent" data-lang="en">Loading implies Google privacy consent</p>
             </div>
-
-            <!-- 第二步：订单确认预览与官方 PayPal 多合一支付结算 SDK -->
-            <div id="modal-step-confirm" style="display:none;">
-                <div style="text-align:center; margin-bottom:16px;">
-                    <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:32px; margin-bottom:8px;">✓</span>
-                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="en">Please Confirm Order Details</h3>
-                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="en">Select payment method below after review</p>
-                </div>
-
-                <!-- 预览详情卡片 -->
-                <div id="confirm-details-box" style="background:#FAF7F2; border:1px solid rgba(134, 112, 160, 0.2); border-radius:8px; padding:12px; font-size:12px; color:#525252; display:flex; flex-direction:column; gap:6px; margin-bottom:16px; max-height:200px; overflow-y:auto;">
-                    <!-- 动态填充 -->
-                </div>
-
-                <p style="text-align:center; font-size:11px; color:#737373; margin-bottom:12px;">
-                    <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="en">Please select payment method</span> (<span id="confirm-price-tag" style="color:#8670A0; font-weight:bold;">€ 0,00</span>)
-                </p>
-
-                <!-- PayPal, SEPA, 信用卡多合一 SDK 官方组件挂载节点 -->
-                <div id="paypal-button-container" style="min-height:150px; z-index:0;"></div>
-
-                <button type="button" onclick="backToFormStep()" style="width:100%; background:transparent; border:none; color:#737373; font-size:11px; cursor:pointer; margin-top:12px; text-align:center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="en">⇠ Back to edit info</button>
-            </div>
-
+            <div id="youtube-container" style="width:100%; height:100%;"></div>
         </div>
+
+        <a href="https://www.rui-palace.de/Color%20Apricot%20Blossom_3.html?lang=en" id="channel-link" class="channel-link">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#8670A0;"></span>
+                <div>
+                    <h4 class="dynamic-text" style="font-size:12px; font-weight:600; color:#262626;" data-zh="流转通道：琥珀金流光，寻得本真清光" data-en="Channel Switch: Amber Gold" data-lang="en">Channel Switch: Amber Gold</h4>
+                    <p class="dynamic-text" style="font-size:10px; color:#737373; margin-top:2px;" data-zh="流光不掩本真，岁月沉淀清气" data-en="Time cannot obscure true essence." data-lang="en">Time cannot obscure true essence.</p>
+                </div>
+            </div>
+            <span style="font-size:12px; color:#8670A0; font-weight:bold;">➔</span>
+        </a>
+
+        <div style="padding-top:12px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; min-height:80px;">
+            <div id="poetry-container" style="margin-bottom:8px;">
+                <p id="poetry-text" class="poetry-text-style" style="font-size:12px;" data-zh="“烟光凝而暮山紫，潦水尽而寒潭清。”" data-en="“The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.”" data-lang="en">“The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.”</p>
+                <p id="poetry-source" class="poetry-source-style" style="text-align:right; margin-top:4px;" data-zh="—— 王勃 · 《滕王阁序》" data-en="— Wang Bo" data-lang="en">— Wang Bo</p>
+            </div>
+            <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:transparent; border:0; cursor:pointer; padding:0; color:#8670A0; font-size:11px;" data-zh="换一首诗 ➔" data-en="Next Verse ➔" data-lang="en">Next Verse ➔</button>
+        </div>
+    </section>
+</main>
+
+<!-- 灯箱弹窗 -->
+<div id="imageLightbox" class="modal" onclick="closeLightbox()">
+    <div style="position:relative; width:100%; height:100%; max-width:1280px; max-height:96vh; display:flex; align-items:center; justify-content:center;" onclick="event.stopPropagation()">
+        <button onclick="closeLightbox()" style="position:absolute; top:16px; right:16px; z-index:50; color:white; background:rgba(0,0,0,0.6); border:none; border-radius:50%; width:48px; height:48px; font-size:24px; cursor:pointer;">✕</button>
+        <img id="lightbox-img" src="" alt="手链超清大图" style="max-width:95vw; max-height:92vh; object-fit:contain; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
     </div>
+</div>
 
-    <!-- 页脚 -->
-    <footer class="container" style="padding-top:24px; padding-bottom:24px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; align-items:center; font-size:10px; color:#a3a3a3; gap:8px;">
-        <p>© 2026 灵犀鉴 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-        <p style="display:flex; gap:8px;">
-            <a href="https://www.rui-palace.de/impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="en">Legal Notice (Impressum)</a> 
-            <span>|</span> 
-            <a href="https://www.rui-palace.de/Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="en">Privacy Policy (Datenschutz)</a>
-        </p>
-        <span style="margin-left: 10px;"> | <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color: inherit; text-decoration: none; cursor: pointer;">Cookie-Einstellungen</a></span>
-    </footer>
-
-    <!-- 交互逻辑脚本（同步琥珀金的高级多步骤购物车与结算架构） -->
-    <script>
-        let currentLang = 'en'; // 默认语言设为英文
-        let currentProductIdx = 0;
-        let isDragging = false;
-        let startX = 0;
+<!-- 购物车与统一结算 Modal 弹窗 -->
+<div id="buyModal" class="modal">
+    <div style="background:#FFFFFF; border:1px solid rgba(134, 112, 160, 0.4); border-radius:16px; padding:24px; max-width:480px; width:100%; margin:0 16px; position:relative; box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.2); color:#262626; max-height:95vh; overflow-y:auto;">
+        <button onclick="closeModal()" style="position:absolute; top:16px; right:16px; color:#737373; background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
         
-        // 全局购物车数据管理
-        let shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
-
-        // 监听其他网页（如首页或其他颜色页）对购物车的修改，实现实时跨页同步
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'rui_palace_global_cart') {
-                shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
-                updateCartCountBadge();
-                if (typeof renderCartItems === 'function' && document.getElementById('buyModal')?.classList.signed !== undefined || document.getElementById('buyModal')?.classList.contains('active')) {
-                    renderCartItems();
-                }
-            }
-        });
-
-        const products = [
-            {
-                title_zh: "紫陌 · 暮山紫手链",
-                title_en: "Zi Mo · Twilight Purple Bracelet",
-                sub_zh: "Zi Mo · Twilight Purple Gemstone Bracelet",
-                sub_en: "Zi Mo · Twilight Purple Gemstone Bracelet",
-                desc_zh: "“紫陌红尘，暮色深种。” 天然猫眼紫水晶与特级南红主珠相呼应，温润灵动，修养身心心境。",
-                desc_en: "“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace.",
-                price: "€ 65,00",
-                img: "https://placehold.co/600x600/8670a0/ffffff?text=Zi+Mo+Purple+Bracelet"
-            },
-            {
-                title_zh: "春几许 · 粉晶手串",
-                title_en: "Chun Ji · Rose Quartz Bracelet",
-                sub_zh: "Chun Ji · Blossom Rose Quartz Bracelet",
-                sub_en: "Chun Ji · Blossom Rose Quartz Bracelet",
-                desc_zh: "“樱桃千万枝，照耀如雪天。” 质感草莓晶与粉水晶交织，展现春日桃花般的温柔灵气。",
-                desc_en: "“Thousands of cherry blossoms shining like snow.” Rose quartz reflecting the tender breath of spring.",
-                price: "€ 58,00",
-                img: "https://placehold.co/600x600/e64a65/ffffff?text=Chun+Ji+Rose+Quartz"
-            },
-            {
-                title_zh: "紫珑 · 浅紫青玉手串",
-                title_en: "Zi Long · Lavender Jade Bracelet",
-                sub_zh: "Zi Long · Ethereal Lavender Jade Bracelet",
-                sub_en: "Zi Long · Ethereal Lavender Jade Bracelet",
-                desc_zh: "“紫藤挂云木，花蔓宜阳春。” 淡雅熏衣草紫水晶，搭配晴水绿配珠，清冷高洁。",
-                desc_en: "“Wisteria hanging on ancient trees.” Delicate lavender amethyst paired with icy jadeite beads.",
-                price: "€ 72,00",
-                img: "https://placehold.co/600x600/abb4c5/ffffff?text=Zi+Long+Lavender+Jade"
-            },
-            {
-                title_zh: "玉棠 · 朱砂红韵手串",
-                title_en: "Yu Tang · Cinnabar Red Bracelet",
-                sub_zh: "Yu Tang · Royal Cinnabar Red Bracelet",
-                sub_en: "Yu Tang · Royal Cinnabar Red Bracelet",
-                desc_zh: "“仙鹤凌云，赤心灼灼。” 高含量天然帝王红朱砂，护佑平安，定心安神。",
-                desc_en: "“Cranes flying above clouds.” Royal red cinnabar beads bringing good fortune and tranquil mind.",
-                price: "€ 78,00",
-                img: "https://placehold.co/600x600/800020/ffffff?text=Yu+Tang+Cinnabar"
-            }
-        ];
-
-        const colors = [
-            { hex: '#8670A0', name_zh: '暮山紫', name_en: 'Twilight Purple' },
-            { hex: '#9887B0', name_zh: '烟光凝', name_en: 'Condensed Mist' },
-            { hex: '#ABB4C5', name_zh: '雪青蓝', name_en: 'Lilac Snow Blue' },
-            { hex: '#BDCBD4', name_zh: '无尽夏', name_en: 'Endless Summer' },
-            { hex: '#C6D8E2', name_zh: '月下白', name_en: 'Moonlit White' },
-            { hex: '#D2E2E6', name_zh: '清冷月白', name_en: 'Pure Yuebai' }
-        ];
-
-        const poetries = [
-            { text_zh: "烟光凝而暮山紫，潦水尽而寒潭清。", text_en: "The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.", source_zh: "—— 王勃 · 《滕王阁序》", source_en: "— Wang Bo" },
-            { text_zh: "风定池莲自在香，月明庭树无尽夏。", text_en: "As the breeze settles, pond lilies release their spontaneous scent; under the bright moon, garden trees embrace the endless summer.", source_zh: "—— 文人意境 · 《夏夜格物》", source_en: "— Literary Echoes" },
-            { text_zh: "紫陌红尘拂面来，无人不道看花回。", text_en: "Red dust flutters across the purple avenues as travelers return after admiring the spring blooms.", source_zh: "—— 刘禹锡 · 《元和十年》", source_en: "— Liu Yuxi" },
-            { text_zh: "冷艳争春喜烂然，孤标独步月白寒。", text_en: "While bright blooms clash in spring radiance, a solitary grace wanders alone in the cold moonlight white.", source_zh: "—— 古诗逸句 · 《独步月色》", source_en: "— Ancient Verse" }
-        ];
-
-        function returnToPrevious() {
-            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
-        }
-
-        function updateSliderPosition() {
-            const track = document.getElementById('slider-track');
-            if (track) {
-                track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
-            }
-        }
-
-        function switchProduct(idx) {
-            currentProductIdx = idx;
-            updateSliderPosition();
-            updateProductInfo(idx);
-        }
-
-        function nextProduct() {
-            currentProductIdx = (currentProductIdx + 1) % products.length;
-            switchProduct(currentProductIdx);
-        }
-
-        function prevProduct() {
-            currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
-            switchProduct(currentProductIdx);
-        }
-
-        function updateProductInfo(idx) {
-            document.querySelectorAll('.product-thumb').forEach((el, i) => {
-                if(i === idx) el.classList.add('active');
-                else el.classList.remove('active');
-            });
-
-            const p = products[idx];
-            const titleEl = document.getElementById('hero-product-title');
-            const subTitleEl = document.getElementById('hero-product-subtitle');
-            const descEl = document.getElementById('hero-product-desc');
-            const priceEl = document.getElementById('hero-price');
-
-            if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
-            if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
-            if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
-            if (priceEl) priceEl.innerText = p.price;
-        }
-
-        function renderGrid() {
-            const grid = document.getElementById('color-grid');
-            if (!grid) return;
-            grid.innerHTML = colors.map((c, idx) => `
-                <div onclick="selectGridColor(${idx})" class="color-card">
-                    <div class="color-block" style="background-color:${c.hex}"></div>
-                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">${c.hex}</p>
-                </div>
-            `).join('');
-        }
-
-        function selectGridColor(idx) {
-            const slider = document.getElementById('color-slider');
-            if (slider) slider.value = idx;
-            updateDynamicPad(idx);
-        }
-
-        function updateDynamicPad(idx) {
-            const c = colors[idx];
-            const pad = document.getElementById('dynamic-pad');
-            const nameEl = document.getElementById('dynamic-name');
-            const hexEl = document.getElementById('dynamic-hex');
-
-            if (pad) pad.style.backgroundColor = c.hex;
-            if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
-            if (hexEl) hexEl.innerText = c.hex;
-        }
-
-        function copyHex() {
-            const hexText = document.getElementById('dynamic-hex')?.innerText;
-            if (hexText) {
-                const tempInput = document.createElement('textarea');
-                tempInput.value = hexText;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                const badge = document.getElementById('copy-badge');
-                if(badge) {
-                    const originalText = badge.innerText;
-                    badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
-                    setTimeout(() => { badge.innerText = originalText; }, 1500);
-                }
-            }
-        }
-
-        function setLanguage(targetLang) {
-            if (targetLang) {
-                currentLang = targetLang;
-            }
-
-            document.querySelectorAll('[data-zh]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (text) {
-                    el.innerHTML = text;
-                }
-                el.setAttribute('data-lang', currentLang);
-            });
-
-            const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color Apricot Blossom_3.html?lang=${currentLang}`;
-
-            switchProduct(currentProductIdx);
-            renderGrid();
-            const slider = document.getElementById('color-slider');
-            if (slider) updateDynamicPad(slider.value);
-            renderCartItems();
-        }
-
-        function loadYouTubeVideo() {
-            const container = document.getElementById('youtube-container');
-            const placeholder = document.getElementById('video-placeholder');
-            if (placeholder) { placeholder.style.display = 'none'; }
-            if (container) {
-                container.innerHTML = `
-                    <iframe style="width:100%; height:100%; border:none;" 
-                            src="https://www.youtube.com/embed/OjbyzAyLodc?autoplay=1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                `;
-            }
-        }
-
-        // --- 购物车与多步骤结算核心逻辑 ---
-        function addToCart(idx) {
-            const p = products[idx];
-            const itemTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
-            const priceNum = parseFloat(p.price.replace('€', '').replace(',', '.').trim());
-
-            const existingIndex = shoppingCart.findIndex(item => item.title === itemTitle);
-            if (existingIndex > -1) {
-                shoppingCart[existingIndex].quantity += 1;
-            } else {
-                shoppingCart.push({
-                    title: itemTitle,
-                    priceNum: priceNum,
-                    priceStr: p.price,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-            updateCartCountBadge();
-            openCartModal();
-        }
-
-        function updateCartCountBadge() {
-            const totalCount = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
-            const badge = document.getElementById('cart-count-badge');
-            if (badge) badge.innerText = totalCount;
-        }
-
-        function openCartModal() {
-            renderCartItems();
-            document.getElementById('modal-step-form').style.display = 'block';
-            document.getElementById('modal-step-confirm').style.display = 'none';
-            document.getElementById('buyModal')?.classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('buyModal')?.classList.remove('active');
-        }
-
-        function renderCartItems() {
-            const container = document.getElementById('cart-items-container');
-            if (!container) return;
-
-            if (shoppingCart.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">${currentLang === 'zh' ? '购物车还是空的，快去挑选款式吧~' : 'Your cart is empty.'}</p>`;
-                return;
-            }
-
-            let html = '';
-            let grandTotal = 0;
-
-            shoppingCart.forEach((item, i) => {
-                const itemTotal = item.priceNum * item.quantity;
-                grandTotal += itemTotal;
-                html += `
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(134,112,160,0.2); padding-bottom:6px;">
-                        <div>
-                            <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
-                            <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:6px;">
-                            <span style="font-size:12px; color:#8670A0; font-weight:bold;">€ ${itemTotal.toFixed(2).replace('.', ',')}</span>
-                            <button type="button" onclick="changeQuantity(${i}, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
-                            <button type="button" onclick="changeQuantity(${i}, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
-                            <button type="button" onclick="removeFromCart(${i})" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#8670A0; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
-            container.innerHTML = html;
-        }
-
-        function changeQuantity(index, delta) {
-            shoppingCart[index].quantity += delta;
-            if (shoppingCart[index].quantity <= 0) {
-                shoppingCart.splice(index, 1);
-            }
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-            updateCartCountBadge();
-            renderCartItems();
-        }
-
-        function removeFromCart(index) {
-            shoppingCart.splice(index, 1);
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-            updateCartCountBadge();
-            renderCartItems();
-        }
-
-        function goToConfirmStep() {
-            if (shoppingCart.length === 0) {
-                alert(currentLang === 'zh' ? '购物车还是空的！' : 'Your cart is empty!');
-                return;
-            }
-
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const phone = document.getElementById('form-phone').value.trim();
-            const address = document.getElementById('form-address').value.trim();
-            const zip = document.getElementById('form-zip').value.trim();
-            const city = document.getElementById('form-city').value.trim();
-            const wristSelect = document.getElementById('cust-wrist');
-            const wrist = wristSelect.options[wristSelect.selectedIndex].text;
-
-            if (!name || !email || !phone || !address || !zip || !city) {
-                alert(currentLang === 'zh' ? '请完整填写各项必填联系与地址信息！' : 'Please fill in all required fields.');
-                return;
-            }
-
-            const notes = document.getElementById('form-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
-            let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
-            let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join('<br>');
-
-            const box = document.getElementById('confirm-details-box');
-            box.innerHTML = `
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
-                <hr style="border:0; border-top:1px solid rgba(134,112,160,0.2); margin:4px 0;">
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
-            `;
-
-            document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
-
-            document.getElementById('modal-step-form').style.display = 'none';
-            document.getElementById('modal-step-confirm').style.display = 'block';
-
-            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes });
-        }
-
-        function backToFormStep() {
-            document.getElementById('modal-step-form').style.display = 'block';
-            document.getElementById('modal-step-confirm').style.display = 'none';
-        }
-
-        function renderPayPalButtons(totalAmount, customerInfo) {
-            const container = document.getElementById('paypal-button-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            if (typeof paypal !== 'undefined') {
-                paypal.Buttons({
-                    style: {
-                        layout: 'vertical',
-                        color:  'gold',
-                        shape:  'rect',
-                        label:  'paypal'
-                    },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                description: `Rui Palace - Twilight Purple Order: ${customerInfo.name} (${customerInfo.wrist})`,
-                                amount: {
-                                    currency_code: 'EUR',
-                                    value: totalAmount.toFixed(2)
-                                }
-                            }]
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
-                            localStorage.removeItem('rui_palace_global_cart');
-                            shoppingCart = [];
-                            updateCartCountBadge();
-                            closeModal();
-                        });
-                    },
-                    onError: function(err) {
-                        console.error('PayPal Error:', err);
-                        alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
-                    }
-                }).render('#paypal-button-container');
-            }
-        }
-
-        function initDragEvents() {
-            const track = document.getElementById('slider-track');
-            if (!track) return;
-            
-            track.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.clientX;
-            });
-
-            track.addEventListener('mouseup', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                const diffX = e.clientX - startX;
-                if (diffX < -50) nextProduct();
-                else if (diffX > 50) prevProduct();
-            });
-
-            track.addEventListener('mouseleave', () => { isDragging = false; });
-
-            track.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-
-            track.addEventListener('touchend', (e) => {
-                const diffX = e.changedTouches[0].clientX - startX;
-                if (diffX < -40) nextProduct();
-                else if (diffX > 40) prevProduct();
-            });
-        }
-
-        function openLightbox(idx = currentProductIdx) {
-            const currentImgSrc = products[idx].img;
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            if (lightboxImg) lightboxImg.src = currentImgSrc;
-            if (lightbox) lightbox.style.display = 'flex';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('imageLightbox');
-            if (lightbox) lightbox.style.display = 'none';
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextProduct();
-            if (e.key === 'ArrowLeft') prevProduct();
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const langParam = urlParams.get('lang');
-            if (langParam === 'zh') {
-                setLanguage('zh');
-            } else {
-                setLanguage('en');
-            }
-
-            initDragEvents();
-            updateCartCountBadge();
-
-            const slider = document.getElementById('color-slider');
-            if (slider) {
-                slider.oninput = function() { updateDynamicPad(this.value); };
-            }
-
-            const nextPoetryBtn = document.getElementById('next-poetry');
-            if (nextPoetryBtn) {
-                nextPoetryBtn.onclick = () => {
-                    const p = poetries[Math.floor(Math.random() * poetries.length)];
-                    const tEl = document.getElementById('poetry-text');
-                    const sEl = document.getElementById('poetry-source');
-                    if (tEl) {
-                        tEl.setAttribute('data-zh', `“${p.text_zh}”`);
-                        tEl.setAttribute('data-en', `&ldquo;${p.text_en}&rdquo;`);
-                        tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
-                    }
-                    if (sEl) {
-                        sEl.setAttribute('data-zh', p.source_zh);
-                        sEl.setAttribute('data-en', p.source_en);
-                        sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-                    }
-                };
-            }
-        });
-    </script>
-
-    <!-- 模拟隐私 Cookie 横幅脚本支持 -->
-    <div id="cookie-consent" style="display: none;">
-        <div class="modal-box">
-            <h3>灵犀鉴隐私说明 / Privacy Notice</h3>
-            <p>灵犀鉴尊重并珍视您的隐私。为了提供安全的服务，本站使用必要的 Cookie 与技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。<br><span style="font-size: 0.8rem; color: #a3a3a3;">Rui Palace values your privacy. By clicking 'Accept All', you consent to our use of cookies.</span></p>
-            <div class="button-group">
-                <button id="reject-btn" onclick="document.getElementById('cookie-consent').style.display='none';">全部拒绝 / Reject All</button>
-                <button id="accept-btn" onclick="document.getElementById('cookie-consent').style.display='none';">全部同意 / Accept All</button>
+        <!-- 第一步：购物车明细与详细邮寄信息表单 -->
+        <div id="modal-step-form" style="display: block;">
+            <div style="text-align:center; margin-bottom:16px;">
+                <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(134, 112, 160, 0.15); color:#8670A0; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
+                <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【灵犀鉴】您的臻藏购物车" data-en="[Rui Palace] Shopping Cart" data-lang="en">[Rui Palace] Shopping Cart</h3>
+                <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="en">Please enter your shipping address details</p>
             </div>
-            <div class="footer-links">
-                <a href="https://www.rui-palace.de/impressum.html">Impressum</a> | 
-                <a href="https://www.rui-palace.de/Datenschutz.html">Datenschutz</a>
+
+            <!-- 购物车商品列表渲染区 -->
+            <div id="cart-items-container" style="margin-bottom:16px; max-height:150px; overflow-y:auto; border:1px solid rgba(134, 112, 160, 0.2); border-radius:8px; padding:12px; background:#FAF7F2;">
+                <!-- 动态渲染 -->
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
+                    <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
+                        <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                    </div>
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
+                        <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                    </div>
+                </div>
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
+                    <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="en">Postal Code</label>
+                        <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                    </div>
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
+                        <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                    </div>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
+                    <select id="cust-wrist" class="form-input" style="cursor: pointer;">
+                        <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
+                        <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                        <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
+                        <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="en">Custom Size</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="en">Notes</label>
+                    <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
+                </div>
+                <button type="button" onclick="goToConfirmStep()" style="width:100%; padding:12px; margin-top:8px; background:#8670A0; color:white; font-size:12px; border-radius:12px; letter-spacing:0.1em; border:none; cursor:pointer; font-weight:bold;">
+                    <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="en">Next: Confirm Order ➔</span>
+                </button>
             </div>
         </div>
-    </div>
-    <script>
-        function resetCookieConsent() {
-            document.getElementById('cookie-consent').style.display = 'flex';
-        }
-    </script>
-<script>window.__CF$cv$params={r:'a55e7a6a790291fe',t:'MTc5MzkwOTE3Nw==',u:'01a09ab233d97573a30e14f9e94c0469',ut:'V.LWcKnKR41k7P3IzPOZ8euq4byAlvE0dk3eTGExdYQ-1793909178-1.2.1.1-a_y0RF8W32wGX9A.j7aSXH0BoWvKeVEiGjKsz3Kj7tjMZp0cckBj9NOwjaliyzo4D7QExUBBag24ItzR071RXS8YI8JIddzpvDC6hAfmpBs',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a55e7a6a790291fe',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script>
 
-</body></html>
+        <!-- 第二步：订单确认预览与官方 PayPal 多合一支付结算 SDK -->
+        <div id="modal-step-confirm" style="display:none;">
+            <div style="text-align:center; margin-bottom:16px;">
+                <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:32px; margin-bottom:8px;">✓</span>
+                <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="en">Please Confirm Order Details</h3>
+                <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="en">Select payment method below after review</p>
+            </div>
+
+            <!-- 预览详情卡片 -->
+            <div id="confirm-details-box" style="background:#FAF7F2; border:1px solid rgba(134, 112, 160, 0.2); border-radius:8px; padding:12px; font-size:12px; color:#525252; display:flex; flex-direction:column; gap:6px; margin-bottom:16px; max-height:200px; overflow-y:auto;"></div>
+
+            <p style="text-align:center; font-size:11px; color:#737373; margin-bottom:12px;">
+                <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="en">Please select payment method</span> (<span id="confirm-price-tag" style="color:#8670A0; font-weight:bold;">€ 0,00</span>)
+            </p>
+
+            <div id="paypal-button-container" style="min-height:150px; z-index:0;"></div>
+
+            <button type="button" onclick="backToFormStep()" style="width:100%; background:transparent; border:none; color:#737373; font-size:11px; cursor:pointer; margin-top:12px; text-align:center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="en">⇠ Back to edit info</button>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="container" style="padding-top:24px; padding-bottom:24px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; align-items:center; font-size:10px; color:#a3a3a3; gap:8px;">
+    <p>© 2026 灵犀鉴 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+    <p style="display:flex; gap:8px;">
+        <a href="https://www.rui-palace.de/impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="en">Legal Notice (Impressum)</a> 
+        <span>|</span> 
+        <a href="https://www.rui-palace.de/Datenschutz.html" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="en">Privacy Policy (Datenschutz)</a>
+    </p>
+    <span style="margin-left: 10px;"> | <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color: inherit; text-decoration: none; cursor: pointer;">Cookie-Einstellungen</a></span>
+</footer>
+
+<!-- 交互逻辑脚本 -->
+<script>
+    let currentLang = 'en';
+    let currentProductIdx = 0;
+    let isDragging = false;
+    let startX = 0;
+    
+    let shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'rui_palace_global_cart') {
+            shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+            updateCartCountBadge();
+            const modal = document.getElementById('buyModal');
+            if (modal && modal.classList.contains('active')) {
+                renderCartItems();
+            }
+        }
+    });
+
+    const products = [
+        {
+            title_zh: "紫陌 · 暮山紫手链",
+            title_en: "Zi Mo · Twilight Purple",
+            sub_zh: "Zi Mo · Twilight Purple Gemstone Bracelet",
+            sub_en: "Zi Mo · Twilight Purple Bracelet",
+            desc_zh: "“紫陌红尘，暮色深种。” 天然猫眼紫水晶与特级南红主珠相呼应，温润灵动，修养身心心境。",
+            desc_en: "“Deep twilight hues woven into rare amethyst.” Featuring natural cat-eye amethyst paired with vivid tourmaline for inner peace.",
+            price: "€ 65,00",
+            img: "https://placehold.co/600x600/8670a0/ffffff?text=Zi+Mo+Purple+Bracelet"
+        },
+        {
+            title_zh: "春几许 · 粉晶手串",
+            title_en: "Chun Ji · Rose Quartz",
+            sub_zh: "Chun Ji · Blossom Rose Quartz Bracelet",
+            sub_en: "Chun Ji · Rose Quartz Bracelet",
+            desc_zh: "“樱桃千万枝，照耀如雪天。” 质感草莓晶与粉水晶交织，展现春日桃花般的温柔灵气。",
+            desc_en: "“Thousands of cherry blossoms shining like snow.” Rose quartz reflecting the tender breath of spring.",
+            price: "€ 58,00",
+            img: "https://placehold.co/600x600/e64a65/ffffff?text=Chun+Ji+Rose+Quartz"
+        },
+        {
+            title_zh: "紫珑 · 浅紫青玉手串",
+            title_en: "Zi Long · Lavender Jade",
+            sub_zh: "Zi Long · Ethereal Lavender Jade Bracelet",
+            sub_en: "Zi Long · Lavender Jade Bracelet",
+            desc_zh: "“紫藤挂云木，花蔓宜阳春。” 淡雅熏衣草紫水晶，搭配晴水绿配珠，清冷高洁。",
+            desc_en: "“Wisteria hanging on ancient trees.” Delicate lavender amethyst paired with icy jadeite beads.",
+            price: "€ 72,00",
+            img: "https://placehold.co/600x600/abb4c5/ffffff?text=Zi+Long+Lavender+Jade"
+        },
+        {
+            title_zh: "玉棠 · 朱砂红韵手串",
+            title_en: "Yu Tang · Cinnabar Red",
+            sub_zh: "Yu Tang · Royal Cinnabar Red Bracelet",
+            sub_en: "Yu Tang · Cinnabar Red Bracelet",
+            desc_zh: "“仙鹤凌云，赤心灼灼。” 高含量天然帝王红朱砂，护佑平安，定心安神。",
+            desc_en: "“Cranes flying above clouds.” Royal red cinnabar beads bringing good fortune and tranquil mind.",
+            price: "€ 78,00",
+            img: "https://placehold.co/600x600/800020/ffffff?text=Yu+Tang+Cinnabar"
+        }
+    ];
+
+    const colors = [
+        { hex: '#8670A0', name_zh: '暮山紫', name_en: 'Twilight Purple' },
+        { hex: '#9887B0', name_zh: '烟光凝', name_en: 'Condensed Mist' },
+        { hex: '#ABB4C5', name_zh: '雪青蓝', name_en: 'Lilac Snow Blue' },
+        { hex: '#BDCBD4', name_zh: '无尽夏', name_en: 'Endless Summer' },
+        { hex: '#C6D8E2', name_zh: '月下白', name_en: 'Moonlit White' },
+        { hex: '#D2E2E6', name_zh: '清冷月白', name_en: 'Pure Yuebai' }
+    ];
+
+    const poetries = [
+        { text_zh: "烟光凝而暮山紫，潦水尽而寒潭清。", text_en: "The evening mist condenses into a deep twilight purple; the floodwaters recede, leaving the cold pool crystal clear.", source_zh: "—— 王勃 · 《滕王阁序》", source_en: "— Wang Bo" },
+        { text_zh: "风定池莲自在香，月明庭树无尽夏。", text_en: "As the breeze settles, pond lilies release their spontaneous scent; under the bright moon, garden trees embrace the endless summer.", source_zh: "—— 文人意境 · 《夏夜格物》", source_en: "— Literary Echoes" },
+        { text_zh: "紫陌红尘拂面来，无人不道看花回。", text_en: "Red dust flutters across the purple avenues as travelers return after admiring the spring blooms.", source_zh: "—— 刘禹锡 · 《元和十年》", source_en: "— Liu Yuxi" },
+        { text_zh: "冷艳争春喜烂然，孤标独步月白寒。", text_en: "While bright blooms clash in spring radiance, a solitary grace wanders alone in the cold moonlight white.", source_zh: "—— 古诗逸句 · 《独步月色》", source_en: "— Ancient Verse" }
+    ];
+
+    function returnToPrevious() {
+        window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
+    }
+
+    function updateSliderPosition() {
+        const track = document.getElementById('slider-track');
+        if (track) {
+            track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
+        }
+    }
+
+    function switchProduct(idx) {
+        currentProductIdx = idx;
+        updateSliderPosition();
+        updateProductInfo(idx);
+    }
+
+    function nextProduct() {
+        currentProductIdx = (currentProductIdx + 1) % products.length;
+        switchProduct(currentProductIdx);
+    }
+
+    function prevProduct() {
+        currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
+        switchProduct(currentProductIdx);
+    }
+
+    function updateProductInfo(idx) {
+        document.querySelectorAll('.product-thumb').forEach((el, i) => {
+            if(i === idx) el.classList.add('active');
+            else el.classList.remove('active');
+        });
+
+        const p = products[idx];
+        const titleEl = document.getElementById('hero-product-title');
+        const subTitleEl = document.getElementById('hero-product-subtitle');
+        const descEl = document.getElementById('hero-product-desc');
+        const priceEl = document.getElementById('hero-price');
+
+        if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
+        if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
+        if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+        if (priceEl) priceEl.innerText = p.price;
+    }
+
+    function renderGrid() {
+        const grid = document.getElementById('color-grid');
+        if (!grid) return;
+        grid.innerHTML = colors.map((c, idx) => `
+            <div onclick="selectGridColor(${idx})" class="color-card">
+                <div class="color-block" style="background-color:${c.hex}"></div>
+                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                <p style="font-size:9px; color:#8670A0; font-family:monospace;">${c.hex}</p>
+            </div>
+        `).join('');
+    }
+
+    function selectGridColor(idx) {
+        const slider = document.getElementById('color-slider');
+        if (slider) slider.value = idx;
+        updateDynamicPad(idx);
+    }
+
+    function updateDynamicPad(idx) {
+        const c = colors[idx];
+        const pad = document.getElementById('dynamic-pad');
+        const nameEl = document.getElementById('dynamic-name');
+        const hexEl = document.getElementById('dynamic-hex');
+
+        if (pad) pad.style.backgroundColor = c.hex;
+        if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+        if (hexEl) hexEl.innerText = c.hex;
+    }
+
+    function copyHex() {
+        const hexText = document.getElementById('dynamic-hex')?.innerText;
+        if (hexText) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = hexText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            const badge = document.getElementById('copy-badge');
+            if(badge) {
+                const originalText = badge.innerText;
+                badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
+                setTimeout(() => { badge.innerText = originalText; }, 1500);
+            }
+        }
+    }
+
+    function setLanguage(targetLang) {
+        if (targetLang) {
+            currentLang = targetLang;
+        }
+
+        document.querySelectorAll('[data-zh]').forEach(el => {
+            const text = el.getAttribute(`data-${currentLang}`);
+            if (text) {
+                el.innerHTML = text;
+            }
+            el.setAttribute('data-lang', currentLang);
+        });
+
+        const channelLink = document.getElementById('channel-link');
+        if (channelLink) channelLink.href = `Color Apricot Blossom_3.html?lang=${currentLang}`;
+
+        switchProduct(currentProductIdx);
+        renderGrid();
+        const slider = document.getElementById('color-slider');
+        if (slider) updateDynamicPad(slider.value);
+        renderCartItems();
+    }
+
+    function loadYouTubeVideo() {
+        const container = document.getElementById('youtube-container');
+        const placeholder = document.getElementById('video-placeholder');
+        if (placeholder) { placeholder.style.display = 'none'; }
+        if (container) {
+            container.innerHTML = `
+                <iframe style="width:100%; height:100%; border:none;" 
+                        src="https://www.youtube.com/embed/OjbyzAyLodc?autoplay=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
+    }
+
+    // --- 购物车与多步骤结算核心逻辑 ---
+    function addToCart(idx) {
+        const p = products[idx];
+        const itemTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
+        const priceNum = parseFloat(p.price.replace('€', '').replace(',', '.').trim());
+
+        const existingIndex = shoppingCart.findIndex(item => item.title === itemTitle);
+        if (existingIndex > -1) {
+            shoppingCart[existingIndex].quantity += 1;
+        } else {
+            shoppingCart.push({
+                title: itemTitle,
+                priceNum: priceNum,
+                priceStr: p.price,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+        updateCartCountBadge();
+        
+        // 点击加入购物车时仅在顶部Badge显示数量增加，不再自动弹出结缘信息填写表单
+        const feedbackSpan = document.createElement('div');
+        feedbackSpan.style.position = 'fixed';
+        feedbackSpan.style.bottom = '30px';
+        feedbackSpan.style.right = '30px';
+        feedbackSpan.style.background = '#8670A0';
+        feedbackSpan.style.color = '#FFFFFF';
+        feedbackSpan.style.padding = '10px 20px';
+        feedbackSpan.style.borderRadius = '8px';
+        feedbackSpan.style.fontSize = '12px';
+        feedbackSpan.style.zIndex = '9999';
+        feedbackSpan.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        feedbackSpan.innerText = currentLang === 'zh' ? '✓ 已成功加入购物车' : '✓ Added to Cart';
+        document.body.appendChild(feedbackSpan);
+        setTimeout(() => feedbackSpan.remove(), 2000);
+    }
+
+    function updateCartCountBadge() {
+        const totalCount = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
+        const badge = document.getElementById('cart-count-badge');
+        if (badge) badge.innerText = totalCount;
+    }
+
+    function openCartModal() {
+        renderCartItems();
+        document.getElementById('modal-step-form').style.display = 'block';
+        document.getElementById('modal-step-confirm').style.display = 'none';
+        document.getElementById('buyModal')?.classList.add('active');
+    }
+
+    function closeModal() {
+        document.getElementById('buyModal')?.classList.remove('active');
+    }
+
+    function renderCartItems() {
+        const container = document.getElementById('cart-items-container');
+        if (!container) return;
+
+        if (shoppingCart.length === 0) {
+            container.innerHTML = `<p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">${currentLang === 'zh' ? '购物车还是空的，快去挑选款式吧~' : 'Your cart is empty.'}</p>`;
+            return;
+        }
+
+        let html = '';
+        let grandTotal = 0;
+
+        shoppingCart.forEach((item, i) => {
+            const itemTotal = item.priceNum * item.quantity;
+            grandTotal += itemTotal;
+            html += `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(134,112,160,0.2); padding-bottom:6px;">
+                    <div>
+                        <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
+                        <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span style="font-size:12px; color:#8670A0; font-weight:bold;">€ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                        <button type="button" onclick="changeQuantity(${i}, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
+                        <button type="button" onclick="changeQuantity(${i}, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
+                        <button type="button" onclick="removeFromCart(${i})" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#8670A0; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
+        container.innerHTML = html;
+    }
+
+    function changeQuantity(index, delta) {
+        shoppingCart[index].quantity += delta;
+        if (shoppingCart[index].quantity <= 0) {
+            shoppingCart.splice(index, 1);
+        }
+        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+        updateCartCountBadge();
+        renderCartItems();
+    }
+
+    function removeFromCart(index) {
+        shoppingCart.splice(index, 1);
+        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+        updateCartCountBadge();
+        renderCartItems();
+    }
+
+    function goToConfirmStep() {
+        if (shoppingCart.length === 0) {
+            alert(currentLang === 'zh' ? '购物车还是空的！' : 'Your cart is empty!');
+            return;
+        }
+
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const phone = document.getElementById('form-phone').value.trim();
+        const address = document.getElementById('form-address').value.trim();
+        const zip = document.getElementById('form-zip').value.trim();
+        const city = document.getElementById('form-city').value.trim();
+        const wristSelect = document.getElementById('cust-wrist');
+        const wrist = wristSelect.options[wristSelect.selectedIndex].text;
+
+        if (!name || !email || !phone || !address || !zip || !city) {
+            alert(currentLang === 'zh' ? '请完整填写各项必填联系与地址信息！' : 'Please fill in all required fields.');
+            return;
+        }
+
+        const notes = document.getElementById('form-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
+        let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
+        let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join('<br>');
+
+        const box = document.getElementById('confirm-details-box');
+        box.innerHTML = `
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
+            <hr style="border:0; border-top:1px solid rgba(134,112,160,0.2); margin:4px 0;">
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
+            <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
+        `;
+
+        document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
+
+        document.getElementById('modal-step-form').style.display = 'none';
+        document.getElementById('modal-step-confirm').style.display = 'block';
+
+        renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes });
+    }
+
+    function backToFormStep() {
+        document.getElementById('modal-step-form').style.display = 'block';
+        document.getElementById('modal-step-confirm').style.display = 'none';
+    }
+
+    function renderPayPalButtons(totalAmount, customerInfo) {
+        const container = document.getElementById('paypal-button-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (typeof paypal !== 'undefined') {
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color:  'gold',
+                    shape:  'rect',
+                    label:  'paypal'
+                },
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: `Rui Palace - Twilight Purple Order: ${customerInfo.name} (${customerInfo.wrist})`,
+                            amount: {
+                                currency_code: 'EUR',
+                                value: totalAmount.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+                        localStorage.removeItem('rui_palace_global_cart');
+                        shoppingCart = [];
+                        updateCartCountBadge();
+                        closeModal();
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal Error:', err);
+                    alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
+                }
+            }).render('#paypal-button-container');
+        }
+    }
+
+    function initDragEvents() {
+        const track = document.getElementById('slider-track');
+        if (!track) return;
+        
+        track.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        track.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diffX = e.clientX - startX;
+            if (diffX < -50) nextProduct();
+            else if (diffX > 50) prevProduct();
+        });
+
+        track.addEventListener('mouseleave', () => { isDragging = false; });
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        track.addEventListener('touchend', (e) => {
+            const diffX = e.changedTouches[0].clientX - startX;
+            if (diffX < -40) nextProduct();
+            else if (diffX > 40) prevProduct();
+        });
+    }
+
+    function openLightbox(idx = currentProductIdx) {
+        const currentImgSrc = products[idx].img;
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        if (lightboxImg) lightboxImg.src = currentImgSrc;
+        if (lightbox) lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('imageLightbox');
+        if (lightbox) lightbox.style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextProduct();
+        if (e.key === 'ArrowLeft') prevProduct();
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam === 'zh') {
+            setLanguage('zh');
+        } else {
+            setLanguage('en');
+        }
+
+        initDragEvents();
+        updateCartCountBadge();
+
+        const slider = document.getElementById('color-slider');
+        if (slider) {
+            slider.oninput = function() { updateDynamicPad(this.value); };
+        }
+
+        const nextPoetryBtn = document.getElementById('next-poetry');
+        if (nextPoetryBtn) {
+            nextPoetryBtn.onclick = () => {
+                const p = poetries[Math.floor(Math.random() * poetries.length)];
+                const tEl = document.getElementById('poetry-text');
+                const sEl = document.getElementById('poetry-source');
+                if (tEl) {
+                    tEl.setAttribute('data-zh', `“${p.text_zh}”`);
+                    tEl.setAttribute('data-en', `&ldquo;${p.text_en}&rdquo;`);
+                    tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+                }
+                if (sEl) {
+                    sEl.setAttribute('data-zh', p.source_zh);
+                    sEl.setAttribute('data-en', p.source_en);
+                    sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+                }
+            };
+        }
+    });
+</script>
