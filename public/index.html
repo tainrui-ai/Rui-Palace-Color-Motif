@@ -361,6 +361,17 @@
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="en">Notes</label>
                         <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
                     </div>
+                    <!-- 商业条款与撤回权的强勾选确认 (Opt-in) -->
+                    <div style="margin-top: 6px; display: flex; align-items: flex-start; gap: 8px;">
+                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required>
+                        <label for="legal-consent" style="font-size: 11px; color: #737373; line-height: 1.4; cursor: pointer;">
+                            <span data-zh="我已阅读并同意通用商业条款 (AGB)。" data-en="I have read and agree to the Terms & Conditions (AGB)." data-lang="en">
+                                I have read and agree to the Terms & Conditions (AGB) and the 14-day Right of Withdrawal.
+                            </span>
+                        </label>
+                    </div>
+
+                    
                     <button type="button" onclick="goToConfirmStep()" style="width:100%; padding:12px; margin-top:8px; background:#B22222; color:white; font-size:12px; border-radius:12px; letter-spacing:0.1em; border:none; cursor:pointer; font-weight:bold;">
                         <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="en">Next: Confirm Order ➔</span>
                     </button>
@@ -405,8 +416,14 @@
 
         <div class="legal-footer">
             <div><a class="legal-wing-link" href="https://www.rui-palace.de/impressum.html?lang=en" id="footer-link-impressum">Legal Notice (Impressum)</a></div>
+            <span>|</span>
             <div style="text-align: center;" id="footer-motto">© 2026 Rui Palace mail@rui-palace.com - All rights reserved. Stay pure, cherish humanity.</div>
+            <span>|</span>
             <div><a class="legal-wing-link" href="https://www.rui-palace.de/Datenschutz.html?lang=en" id="footer-link-Datenschutz">Privacy Policy (Datenschutz)</a></div>
+            <span>|</span>
+            <a href="https://www.rui-palace.de/agb.html" style="color:inherit; text-decoration:none;" data-zh="服务条款 (AGB)" data-en="Terms & Conditions (AGB)" data-lang="en">Terms & Conditions (AGB)</a>
+            <span>|</span>
+            <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color: inherit; text-decoration: none; cursor: pointer;" data-zh="Cookie 设置" data-en="Cookie Settings" data-lang="en">Cookie-Einstellungen</a>
         </div>
     </footer>
 
