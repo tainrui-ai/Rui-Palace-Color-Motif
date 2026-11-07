@@ -232,7 +232,7 @@
 
     <!-- 舞台核心区 -->
     <div id="stage-container">
-        <img id="baoxiang-img" src="images/baoxianghua.jpg" alt="核心纹样">
+        <img id="baoxiang-img" src="./The Soul of Oriental Aesthetics _ RUI PALACE_files/baoxianghua.jpg" alt="核心纹样">
         <canvas id="inkCanvas" width="1272" height="588"></canvas>
     </div>
 
@@ -986,31 +986,69 @@
         function initPayPalButtons(totalAmount, customerInfo) {
             const container = document.getElementById('paypal-button-container');
             if (!container) return;
+            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center;">Loading secure payment gateway...</p>`;
+
+            if (typeof paypal === 'undefined') {
+                const script = document.createElement('script');
+                // 注意：这里使用的是沙箱环境的 Client ID
+                script.src = "https://www.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR";
+                script.onload = () => executePayPalRender(customerInfo);
+                script.onerror = () => {
+                    container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">Failed to load payment gateway. Please verify your connection.</p>`;
+                };
+                document.head.appendChild(script);
+            } else {
+                executePayPalRender(customerInfo);
+            }
+        }
+
+        function executePayPalRender(customerInfo) {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
             container.innerHTML = '';
 
             if (typeof paypal !== 'undefined') {
                 paypal.Buttons({
                     style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                description: `Rui Palace Order - ${customerInfo.name}`,
-                                amount: { 
-                                    currency_code: 'EUR', 
-                                    value: totalAmount.toFixed(2) 
-                                }
-                            }]
+                    
+                    // 1. 向本地 Node.js 后端发起请求，由服务端安全核算金额并创建订单
+                    createOrder: function() {
+                        return fetch('http://localhost:3000/api/orders/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                items: shoppingCart,
+                                customer: customerInfo
+                            })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) throw new Error(data.error);
+                            return data.id; // 返回后端拿到的 PayPal 订单号
                         });
                     },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
-                            localStorage.removeItem('rui_palace_global_cart');
-                            shoppingCart = [];
-                            updateCartCountBadge();
-                            closeCartModal();
+
+                    // 2. 支付成功后由后端捕获确认
+                    onApprove: function(data) {
+                        return fetch('http://localhost:3000/api/orders/capture', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ orderID: data.orderID })
+                        })
+                        .then(res => res.json())
+                        .then(details => {
+                            if (details.status === "SUCCESS") {
+                                alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+                                localStorage.removeItem('rui_palace_global_cart');
+                                shoppingCart = [];
+                                updateCartCountBadge();
+                                closeCartModal();
+                            } else {
+                                alert(currentLang === 'zh' ? '支付确认失败，请联系客服。' : 'Payment verification failed.');
+                            }
                         });
                     },
+
                     onError: function(err) {
                         console.error('PayPal Error:', err);
                         alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
