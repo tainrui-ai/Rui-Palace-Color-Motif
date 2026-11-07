@@ -966,96 +966,78 @@
         }
 
         function renderPayPalButtons(totalAmount, customerInfo) {
-            const container = document.getElementById('paypal-button-container');
-            if (!container) return;
-            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center;">Loading secure payment gateway...</p>`;
+    const container = document.getElementById('paypal-button-container');
+    if (!container) return;
+    container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center;">Loading secure payment gateway...</p>`;
 
-            if (typeof paypal === 'undefined') {
-                const script = document.createElement('script');
-                script.src = "https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR";
-                script.onload = () => initPayPalButtons(totalAmount, customerInfo);
-                script.onerror = () => {
-                    container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">Failed to load payment gateway. Please verify your connection.</p>`;
-                };
-                document.head.appendChild(script);
-            } else {
-                initPayPalButtons(totalAmount, customerInfo);
-            }
-        }
+    if (typeof paypal === 'undefined') {
+        const script = document.createElement('script');
+        // 这里的 client-id 请替换为你从 PayPal Dashboard 拿到的 Sandbox Client ID
+        script.src = "https://www.paypal.com/sdk/js?client-id=YOUR_SANDBOX_CLIENT_ID&currency=EUR";
+        script.onload = () => executePayPalRender(customerInfo);
+        script.onerror = () => {
+            container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">Failed to load payment gateway. Please verify your connection.</p>`;
+        };
+        document.head.appendChild(script);
+    } else {
+        executePayPalRender(customerInfo);
+    }
+}
 
-        function initPayPalButtons(totalAmount, customerInfo) {
-            const container = document.getElementById('paypal-button-container');
-            if (!container) return;
-            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center;">Loading secure payment gateway...</p>`;
+function executePayPalRender(customerInfo) {
+    const container = document.getElementById('paypal-button-container');
+    if (!container) return;
+    container.innerHTML = '';
 
-            if (typeof paypal === 'undefined') {
-                const script = document.createElement('script');
-                // 注意：这里使用的是沙箱环境的 Client ID
-                script.src = "https://www.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR";
-                script.onload = () => executePayPalRender(customerInfo);
-                script.onerror = () => {
-                    container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">Failed to load payment gateway. Please verify your connection.</p>`;
-                };
-                document.head.appendChild(script);
-            } else {
-                executePayPalRender(customerInfo);
-            }
-        }
+    if (typeof paypal !== 'undefined') {
+        paypal.Buttons({
+            style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+            
+            // 1. 向本地 Node.js 后端创建订单
+            createOrder: function() {
+                return fetch('http://localhost:3000/api/orders/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: shoppingCart,
+                        customer: customerInfo
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) throw new Error(data.error);
+                    return data.id; // 返回后端生成的 PayPal 订单 ID
+                });
+            },
 
-        function executePayPalRender(customerInfo) {
-            const container = document.getElementById('paypal-button-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            if (typeof paypal !== 'undefined') {
-                paypal.Buttons({
-                    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-                    
-                    // 1. 向本地 Node.js 后端发起请求，由服务端安全核算金额并创建订单
-                    createOrder: function() {
-                        return fetch('http://localhost:3000/api/orders/create', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                items: shoppingCart,
-                                customer: customerInfo
-                            })
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.error) throw new Error(data.error);
-                            return data.id; // 返回后端拿到的 PayPal 订单号
-                        });
-                    },
-
-                    // 2. 支付成功后由后端捕获确认
-                    onApprove: function(data) {
-                        return fetch('http://localhost:3000/api/orders/capture', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ orderID: data.orderID })
-                        })
-                        .then(res => res.json())
-                        .then(details => {
-                            if (details.status === "SUCCESS") {
-                                alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
-                                localStorage.removeItem('rui_palace_global_cart');
-                                shoppingCart = [];
-                                updateCartCountBadge();
-                                closeCartModal();
-                            } else {
-                                alert(currentLang === 'zh' ? '支付确认失败，请联系客服。' : 'Payment verification failed.');
-                            }
-                        });
-                    },
-
-                    onError: function(err) {
-                        console.error('PayPal Error:', err);
-                        alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
+            // 2. 支付成功后由后端捕获确认
+            onApprove: function(data) {
+                return fetch('http://localhost:3000/api/orders/capture', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderID: data.orderID })
+                })
+                .then(res => res.json())
+                .then(details => {
+                    if (details.status === "SUCCESS") {
+                        alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+                        localStorage.removeItem('rui_palace_global_cart');
+                        shoppingCart = [];
+                        updateCartCountBadge();
+                        closeCartModal();
+                    } else {
+                        alert(currentLang === 'zh' ? '支付确认失败，请联系客服。' : 'Payment verification failed.');
                     }
-                }).render('#paypal-button-container');
+                });
+            },
+
+            onError: function(err) {
+                console.error('PayPal Error:', err);
+                alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
             }
-        }
+        }).render('#paypal-button-container');
+    }
+}
 
         function toggleLanguage(e) {
             e.stopPropagation();
