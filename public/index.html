@@ -1086,7 +1086,24 @@ function executePayPalRender(customerInfo) {
                 cancelAnimationFrame(animationId);
             }
         }
+// 重置 Cookie 设置并重新弹出授权弹窗
+function resetCookieConsent() {
+    try {
+        // 清除保存的 consent 状态
+        localStorage.removeItem('rui_palace_cookie_consent');
+    } catch (e) {
+        console.error('Failed to clear consent from localStorage:', e);
+    }
+    
+    // 解除隐私锁定
+    window.__RUI_PRIVACY_LOCKED__ = false;
 
+    // 显示 Cookie 弹窗
+    const consentBanner = document.getElementById('cookie-consent');
+    if (consentBanner) {
+        consentBanner.classList.remove('hidden');
+    }
+}
        
 window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
