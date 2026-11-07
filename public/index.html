@@ -994,22 +994,22 @@ function executePayPalRender(customerInfo) {
         paypal.Buttons({
             style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
             
-            // 1. 向本地 Node.js 后端创建订单
-            createOrder: function() {
-                return fetch('http://localhost:3000/api/orders/create', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        items: shoppingCart,
-                        customer: customerInfo
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.error) throw new Error(data.error);
-                    return data.id; // 返回后端生成的 PayPal 订单 ID
-                });
-            },
+           // 1. 向线上 Vercel Serverless 后端创建订单
+    createOrder: function() {
+        return fetch('/api/orders/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                items: shoppingCart,
+                customer: customerInfo
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) throw new Error(data.error);
+            return data.id; // 返回后端生成的 PayPal 订单 ID
+        });
+    },
 
             // 2. 支付成功后由后端捕获确认
             onApprove: function(data) {
