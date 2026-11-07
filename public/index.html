@@ -1011,9 +1011,10 @@ function executePayPalRender(customerInfo) {
         });
     },
 
+
             // 2. 支付成功后由后端捕获确认
             onApprove: function(data) {
-                return fetch('http://localhost:3000/api/orders/capture', {
+                return fetch('/api/orders/capture', { // ✅ 改为相对路径
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ orderID: data.orderID })
@@ -1031,6 +1032,7 @@ function executePayPalRender(customerInfo) {
                     }
                 });
             },
+           
 
             onError: function(err) {
                 console.error('PayPal Error:', err);
