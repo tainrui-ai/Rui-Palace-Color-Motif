@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ruipalacecolormotif",
+  "main": "worker.js",       // 👈 确保这行指明了入口文件是 worker.js
   "compatibility_date": "2026-09-11",
   "assets": {
     "directory": "public"
