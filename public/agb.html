@@ -1,83 +1,489 @@
-<h2>§ 1 Geltungsbereich und Anbieterkennzeichnung</h2>
-<p>(1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB“) gelten für alle Verträge über die Lieferung von Waren, die ein Verbraucher oder Unternehmer (nachfolgend „Kunde“) mit der Firma <strong>Rui Palace</strong> (nachfolgend „Verkäufer“) über die Website <code>www.rui-palace.de</code> schließt.</p>
-<p>(2) Verbraucher im Sinne dieser AGB ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB).</p>
-<p>(3) Abweichende oder entgegenstehende Bedingungen des Kunden werden nicht anerkannt, es sei denn, der Verkäufer hat ihrer Geltung ausdrücklich schriftlich zugestimmt.</p>
 
-<h2>§ 2 Vertragsschluss</h2>
-<p>(1) Die im Online-Shop des Verkäufers enthaltenen Produktbeschreibungen stellen keine verbindlichen Angebote seitens des Verkäufers dar, sondern dienen zur Abgabe eines verbindlichen Angebots durch den Kunden.</p>
-<p>(2) Der Kunde kann das Angebot über das in die Website integrierte Online-Bestellformular (Warenkorb-Modal) abgeben. Nach Eingabe seiner persönlichen Daten, Auswahl der Produkte sowie Bestätigung der AGB und Widerrufsbelehrung gibt der Kunde durch Anklicken des den Bestellvorgang abschließenden Buttons (z. B. PayPal-Zahlungsauslösung) ein rechtlich verbindliches Vertragsangebot in Bezug auf die im Warenkorb enthaltenen Waren ab.</p>
-<p>(3) Der Verkäufer kann das Angebot des Kunden innerhalb von fünf Tagen annehmen,</p>
-<ul>
-    <li>indem er dem Kunden eine schriftliche Auftragsbestätigung oder eine Auftragsbestätigung in Textform (E-Mail) übermittelt, oder</li>
-    <li>indem er dem Kunden die bestellte Ware liefert, oder</li>
-    <li>indem er den Kunden nach Abgabe von dessen Bestellung zur Zahlung auffordert (z. B. bei unmittelbarer PayPal-Zahlungsabwicklung).</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions (AGB) - Rui Palace (灵犀鉴)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-<h2>§ 3 Preise, Versandkosten und Zahlungsbedingungen</h2>
-<p>(1) Alle angegebenen Preise sind Gesamtpreise in Euro (€). Gemäß der deutschen Preisangabenverordnung (PangV) enthalten die angegebenen Preise die gesetzliche Mehrwertsteuer (MwSt.).</p>
-<p>(2) Zuzüglich anfallende Liefer- und Versandkosten werden in der jeweiligen Produktbeschreibung sowie im Bestellvorgang gesondert ausgewiesen.</p>
-<p>(3) Dem Kunden stehen verschiedene Zahlungsmodalitäten zur Verfügung, die im Online-Shop angegeben werden (u. a. PayPal, Kreditkarte, SEPA-Lastschrift über den Zahlungsdienstleister PayPal Hub/SDK).</p>
-<p>(4) Bei Zahlung mittels einer von PayPal angebotenen Zahlungsart erfolgt die Zahlungsabwicklung über den Zahlungsdienstleister PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg.</p>
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-<h2>§ 4 Liefer- und Versandbedingungen</h2>
-<p>(1) Die Lieferung von Waren erfolgt auf dem Versandweg an die vom Kunden angegebene Lieferadresse, sofern nichts anderes vereinbart ist.</p>
-<p>(2) Ist eine Lieferung an den Kunden nicht möglich, weil die gelieferte Ware nicht durch die Eingangstür, Haustür oder den Treppenaufgang des Kunden passt oder weil der Kunde unter der von ihm angegebenen Lieferadresse nicht angetroffen wird, trägt der Kunde die Kosten für den erfolglosen Versand.</p>
+        header .brand {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #111;
+        }
 
-<h2>§ 5 Widerrufsrecht für Verbraucher</h2>
-<p>Verbrauchern steht grundsätzlich ein gesetzliches Widerrufsrecht zu. Detaillierte Informationen zum Widerrufsrecht ergeben sich aus der nachfolgenden Widerrufsbelehrung.</p>
+        header nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
 
-<div class="legal-box">
-    <h2>WIDERRUFSBELEHRUNG</h2>
-    <p><strong>Widerrufsrecht</strong></p>
-    <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat.</p>
-    
-    <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Rui Palace, E-Mail: support@rui-palace.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+        header nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
 
-    <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+        header nav a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
 
-    <p><strong>Folgen des Widerrufs</strong></p>
-    <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
-    <p>Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben.</p>
-    <p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden. Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p>
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+        }
 
-    <p><strong>Ausschluss bzw. vorzeitiges Erlöschen des Widerrufsrechts</strong></p>
-    <p>Das Widerrufsrecht besteht gemäß § 312g Abs. 2 Nr. 1 BGB <strong>nicht</strong> bei Verträgen zur Lieferung von Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist oder die eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind (z. B. speziell angefertigte Handgelenksgrößen / „Custom Size“ auf Kundenwunsch).</p>
-</div>
+        .lang-btn {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-<h2>§ 6 Eigentumsvorbehalt</h2>
-<p>Treten wir in Vorleistung, behalten wir uns bis zur vollständigen Begleichung des geschuldeten Kaufpreises das Eigentum an der gelieferten Ware vor.</p>
+        .lang-btn:hover {
+            background: #e8e8e8;
+        }
 
-<h2>§ 7 Mängelhaftung (Gewährleistung)</h2>
-<p>(1) Es gelten die gesetzlichen Bestimmungen der Mängelhaftung (§§ 434 ff. BGB).</p>
-<p>(2) Naturprodukte (wie echte Edelsteine, Südrot-Achate oder Amethyste) können in Farbe, Struktur und Maserung geringfügig von den Abbildungen auf der Website abweichen. Solche naturbedingten Abweichungen stellen keinen Sachmangel dar, solange die gelieferte Ware der vereinbarten Spezifikation entspricht.</p>
+        .lang-btn.active {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
 
-<h2>§ 8 Haftungsbeschränkung</h2>
-<p>(1) Der Verkäufer haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, die auf einer vorsätzlichen oder fahrlässigen Pflichtverletzung beruhen, sowie für sonstige Schäden, die auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung beruhen.</p>
-<p>(2) Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) ist die Haftung des Verkäufers auf den vertragstypischen, vorhersehbaren Schaden begrenzt.</p>
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
 
-<h2>§ 9 Anwendbares Recht und Gerichtsstand</h2>
-<p>(1) Für sämtliche Rechtsbeziehungen der Parteien gilt das Recht der Bundesrepublik Deutschland unter Ausschluss der Gesetze über den internationalen Kauf beweglicher Waren (UN-Kaufrecht/CISG).</p>
-<p>(2) Bei Verbrauchern gilt diese Rechtswahl nur insoweit, als nicht der gewährte Schutz durch zwingende Bestimmungen des Rechts des Staates, in dem der Verbraucher seinen gewöhnlichen Aufenthalt hat, entzogen wird.</p>
+        .lang-section {
+            display: none;
+        }
 
-<h2>§ 10 Alternative Streitbeilegung</h2>
-<p>(1) Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) unter folgender Adresse bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>.</p>
-<p>(2) Der Verkäufer ist weder verpflichtet noch bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        .lang-section.active {
+            display: block;
+        }
 
-<div class="legal-box" style="margin-top: 32px;">
-    <h2>Muster-Widerrufsformular</h2>
-    <p><em>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</em></p>
-    <p>An:<br>
-    <strong>Rui Palace (灵犀鉴)</strong><br>
-    E-Mail: mail@rui-palace.com</p>
-    <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*):</p>
-    <p>Bestellt am (*) / erhalten am (*): ________________________</p>
-    <p>Name des/der Verbraucher(s): ________________________</p>
-    <p>Anschrift des/der Verbraucher(s): ________________________</p>
-    <p>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier): ________________________</p>
-    <p>Datum: ________________________</p>
-    <p><small>(*) Unzutreffendes streichen.</small></p>
-</div>
+        h1 {
+            font-size: 2rem;
+            color: #111;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
 
-<div class="footer-note">
-    <p>&copy; 2026 Rui Palace (灵犀鉴). Alle Rechte vorbehalten. | <a href="https://www.rui-palace.de/impressum.html">Impressum</a> | <a href="https://www.rui-palace.de/Datenschutz.html">Datenschutz</a></p>
-</div>
+        h2 {
+            font-size: 1.3rem;
+            color: #222;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        strong {
+            color: #111;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #222;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-box {
+            background-color: #fafafa;
+            border: 1px solid #eee;
+            padding: 1.25rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .legal-box h2 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #555;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            main {
+                margin: 1rem auto;
+                padding: 0 1rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">蕊宫 - Rui Palace</div>
+        <nav>
+            <a href="https://www.rui-palace.de/index.html">返回首页</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="switchLang('en')">English</button>
+                <button class="lang-btn" onclick="switchLang('de')">Deutsch</button>
+                <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ENGLISH VERSION (DEFAULT) -->
+        <section id="sec-en" class="lang-section active">
+            <h1>General Terms and Conditions (AGB)</h1>
+
+            <h2>§ 1 Scope & Provider Identification</h2>
+            <p>(1) These General Terms and Conditions (hereinafter "GTC" / "AGB") apply to all contracts for the delivery of goods concluded between a consumer or business customer (hereinafter "Customer") and <strong>Rui Palace</strong> (Proprietor: Rui Tian, Hohenbrunner Str. 9, 85579 Neubiberg, Germany, E-Mail: mail@rui-palace.com; hereinafter "Seller") via the website <code>www.rui-palace.de</code>.</p>
+            <p>(2) A consumer within the meaning of these GTC is any natural person who enters into a legal transaction for purposes that predominantly cannot be attributed to their commercial or independent professional activity (§ 13 German Civil Code - BGB).</p>
+            <p>(3) Deviating or conflicting terms of the Customer shall not be recognized unless the Seller has expressly agreed to their validity in writing.</p>
+
+            <h2>§ 2 Conclusion of Contract</h2>
+            <p>(1) The product descriptions contained in the Seller's online shop do not constitute binding offers on the part of the Seller, but serve for the submission of a binding offer by the Customer.</p>
+            <p>(2) The Customer can submit the offer via the online ordering form integrated into the website. After placing the selected goods in the virtual shopping cart, entering personal data, and completing the order process (e.g. by clicking the button completing the order process or initiating PayPal payment), the Customer submits a legally binding contract offer for the goods contained in the shopping cart.</p>
+            <p>(3) The Seller may accept the Customer's offer within five days:</p>
+            <ul>
+                <li>by sending a written order confirmation or an order confirmation in text form (e-mail), or</li>
+                <li>by delivering the ordered goods to the Customer, or</li>
+                <li>by requesting payment from the Customer after placement of the order (e.g. during immediate PayPal payment processing).</li>
+            </ul>
+
+            <h2>§ 3 Prices, Shipping Costs & Payment Terms</h2>
+            <p>(1) All prices quoted are total prices in Euro (€). Pursuant to the German Price Indication Ordinance (PangV), prices include statutory value-added tax (VAT).</p>
+            <p>(2) Any additional delivery and shipping costs will be explicitly stated in the respective product description and during the checkout process.</p>
+            <p>(3) Payment options are displayed in the online shop (including PayPal, credit card, SEPA direct debit via PayPal Hub/SDK).</p>
+            <p>(4) For payments made via a payment method offered by PayPal, payment processing is carried out by PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg.</p>
+
+            <h2>§ 4 Delivery & Shipping Conditions</h2>
+            <p>(1) Goods are delivered by dispatch to the delivery address specified by the Customer, unless otherwise agreed.</p>
+            <p>(2) If delivery fails because the goods cannot be delivered to the Customer's delivery address or the Customer cannot be reached, the Customer shall bear the reasonable costs incurred for the unsuccessful shipment.</p>
+
+            <h2>§ 5 Right of Withdrawal for Consumers</h2>
+            <p>Consumers are entitled to a statutory right of withdrawal as described in the instructions below.</p>
+
+            <div class="legal-box">
+                <h2>INSTRUCTIONS ON WITHDRAWAL</h2>
+                <p><strong>Right of Withdrawal</strong></p>
+                <p>You have the right to withdraw from this contract within fourteen days without giving any reason. The withdrawal period is fourteen days from the day on which you or a third party named by you, who is not the carrier, have taken possession of the last goods.</p>
+                
+                <p>To exercise your right of withdrawal, you must inform us (Rui Palace, Hohenbrunner Str. 9, 85579 Neubiberg, Germany, E-Mail: support@rui-palace.de / mail@rui-palace.com) of your decision to withdraw from this contract by means of an unequivocal statement (e.g. a letter sent by post or an e-mail). You may use the attached model withdrawal form, but it is not obligatory.</p>
+
+                <p>To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired.</p>
+
+                <p><strong>Effects of Withdrawal</strong></p>
+                <p>If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and at the latest within fourteen days from the day on which we are informed about your decision to withdraw from this contract.</p>
+                <p>We will carry out such reimbursement using the same means of payment as you used for the initial transaction, unless you have expressly agreed otherwise. We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest.</p>
+                <p>You shall send back the goods or hand them over to us without undue delay and in any event not later than fourteen days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of 14 days has expired. You will have to bear the direct cost of returning the goods.</p>
+
+                <p><strong>Exceptions / Premature Expiration of Withdrawal Right</strong></p>
+                <p>According to § 312g (2) No. 1 BGB, the right of withdrawal does <strong>not</strong> apply to contracts for the supply of goods that are not prefabricated and for the manufacture of which an individual selection or determination by the consumer is decisive or which are clearly tailored to the personal needs of the consumer (e.g. customized wrist sizes / "Custom Size" requested by the customer).</p>
+            </div>
+
+            <h2>§ 6 Retention of Title</h2>
+            <p>If the Seller makes advance deliveries, ownership of the delivered goods remains with the Seller until the purchase price owed has been paid in full.</p>
+
+            <h2>§ 7 Liability for Defects (Statutory Warranty)</h2>
+            <p>(1) The statutory provisions regarding liability for defects apply (§§ 434 et seq. BGB).</p>
+            <p>(2) Natural products (such as natural gemstones, South Red Agates, or Amethysts) may vary slightly in color, texture, and pattern from the illustrations on the website. Such natural variations do not constitute a defect, provided the delivered goods match the agreed specification.</p>
+
+            <h2>§ 8 Limitation of Liability</h2>
+            <p>(1) The Seller shall be liable without limitation for damages resulting from injury to life, body, or health arising from intentional or negligent breach of duty, as well as for other damages based on an intentional or grossly negligent breach of duty.</p>
+            <p>(2) In the case of slight negligence involving essential contractual obligations (cardinal duties), the Seller's liability shall be limited to the foreseeable damage typical for the contract.</p>
+
+            <h2>§ 9 Applicable Law & Jurisdiction</h2>
+            <p>(1) All legal relationships between the parties shall be governed by the laws of the Federal Republic of Germany, excluding the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
+            <p>(2) For consumers, this choice of law applies only to the extent that the protection granted by mandatory provisions of the law of the state in which the consumer has their habitual residence is not withdrawn.</p>
+
+            <h2>§ 10 Consumer Dispute Resolution</h2>
+            <p>(1) Pursuant to § 36 VSBG (Consumer Dispute Resolution Act), the Seller informs that it is neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+
+            <div class="legal-box" style="margin-top: 32px;">
+                <h2>Model Withdrawal Form</h2>
+                <p><em>(If you wish to withdraw from the contract, please fill out this form and return it.)</em></p>
+                <p>To:<br>
+                <strong>Rui Palace (灵犀鉴)</strong><br>
+                Hohenbrunner Str. 9, 85579 Neubiberg, Germany<br>
+                E-Mail: mail@rui-palace.com</p>
+                <p>I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods (*):</p>
+                <p>Ordered on (*) / received on (*): ________________________</p>
+                <p>Name of consumer(s): ________________________</p>
+                <p>Address of consumer(s): ________________________</p>
+                <p>Signature of consumer(s) (only if this form is notified on paper): ________________________</p>
+                <p>Date: ________________________</p>
+                <p><small>(*) Delete as appropriate.</small></p>
+            </div>
+        </section>
+
+        <!-- GERMAN VERSION -->
+        <section id="sec-de" class="lang-section">
+            <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+
+            <h2>§ 1 Geltungsbereich und Anbieterkennzeichnung</h2>
+            <p>(1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB“) gelten für alle Verträge über die Lieferung von Waren, die ein Verbraucher oder Unternehmer (nachfolgend „Kunde“) mit der Firma <strong>Rui Palace</strong> (Inhaber: Rui Tian, Hohenbrunner Str. 9, 85579 Neubiberg, E-Mail: mail@rui-palace.com; nachfolgend „Verkäufer“) über die Website <code>www.rui-palace.de</code> schließt.</p>
+            <p>(2) Verbraucher im Sinne dieser AGB ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB).</p>
+            <p>(3) Abweichende oder entgegenstehende Bedingungen des Kunden werden nicht anerkannt, es sei denn, der Verkäufer hat ihrer Geltung ausdrücklich schriftlich zugestimmt.</p>
+
+            <h2>§ 2 Vertragsschluss</h2>
+            <p>(1) Die im Online-Shop des Verkäufers enthaltenen Produktbeschreibungen stellen keine verbindlichen Angebote seitens des Verkäufers dar, sondern dienen zur Abgabe eines verbindlichen Angebots durch den Kunden.</p>
+            <p>(2) Der Kunde kann das Angebot über das in die Website integrierte Online-Bestellformular abgeben. Nach Eingabe seiner persönlichen Daten, Auswahl der Produkte sowie Bestätigung der AGB und Widerrufsbelehrung gibt der Kunde durch Anklicken des den Bestellvorgang abschließenden Buttons ein rechtlich verbindliches Vertragsangebot in Bezug auf die im Warenkorb enthaltenen Waren ab.</p>
+            <p>(3) Der Verkäufer kann das Angebot des Kunden innerhalb von fünf Tagen annehmen,</p>
+            <ul>
+                <li>indem er dem Kunden eine schriftliche Auftragsbestätigung oder eine Auftragsbestätigung in Textform (E-Mail) übermittelt, oder</li>
+                <li>indem er dem Kunden die bestellte Ware liefert, oder</li>
+                <li>indem er den Kunden nach Abgabe von dessen Bestellung zur Zahlung auffordert (z. B. bei unmittelbarer PayPal-Zahlungsabwicklung).</li>
+            </ul>
+
+            <h2>§ 3 Preise, Versandkosten und Zahlungsbedingungen</h2>
+            <p>(1) Alle angegebenen Preise sind Gesamtpreise in Euro (€). Gemäß der deutschen Preisangabenverordnung (PangV) enthalten die angegebenen Preise die gesetzliche Mehrwertsteuer (MwSt.).</p>
+            <p>(2) Zuzüglich anfallende Liefer- und Versandkosten werden in der jeweiligen Produktbeschreibung sowie im Bestellvorgang gesondert ausgewiesen.</p>
+            <p>(3) Dem Kunden stehen verschiedene Zahlungsmodalitäten zur Verfügung, die im Online-Shop angegeben werden (u. a. PayPal, Kreditkarte, SEPA-Lastschrift über PayPal Hub/SDK).</p>
+            <p>(4) Bei Zahlung mittels einer von PayPal angebotenen Zahlungsart erfolgt die Zahlungsabwicklung über den Zahlungsdienstleister PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg.</p>
+
+            <h2>§ 4 Liefer- und Versandbedingungen</h2>
+            <p>(1) Die Lieferung von Waren erfolgt auf dem Versandweg an die vom Kunden angegebene Lieferadresse, sofern nichts anderes vereinbart ist.</p>
+            <p>(2) Ist eine Lieferung an den Kunden nicht möglich, weil die gelieferte Ware nicht zugestellt werden kann oder der Kunde unter der angegebenen Lieferadresse nicht angetroffen wird, trägt der Kunde die angemessenen Kosten für den erfolglosen Versand.</p>
+
+            <h2>§ 5 Widerrufsrecht für Verbraucher</h2>
+            <p>Verbrauchern steht grundsätzlich ein gesetzliches Widerrufsrecht zu. Detaillierte Informationen zum Widerrufsrecht ergeben sich aus der nachfolgenden Widerrufsbelehrung.</p>
+
+            <div class="legal-box">
+                <h2>WIDERRUFSBELEHRUNG</h2>
+                <p><strong>Widerrufsrecht</strong></p>
+                <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat.</p>
+                
+                <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Rui Palace, Hohenbrunner Str. 9, 85579 Neubiberg, E-Mail: support@rui-palace.de / mail@rui-palace.com) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+
+                <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+
+                <p><strong>Folgen des Widerrufs</strong></p>
+                <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
+                <p>Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben.</p>
+                <p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden. Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p>
+
+                <p><strong>Ausschluss bzw. vorzeitiges Erlöschen des Widerrufsrechts</strong></p>
+                <p>Das Widerrufsrecht besteht gemäß § 312g Abs. 2 Nr. 1 BGB <strong>nicht</strong> bei Verträgen zur Lieferung von Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist oder die eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind (z. B. speziell angefertigte Handgelenksgrößen / „Custom Size“ auf Kundenwunsch).</p>
+            </div>
+
+            <h2>§ 6 Eigentumsvorbehalt</h2>
+            <p>Treten wir in Vorleistung, behalten wir uns bis zur vollständigen Begleichung des geschuldeten Kaufpreises das Eigentum an der gelieferten Ware vor.</p>
+
+            <h2>§ 7 Mängelhaftung (Gewährleistung)</h2>
+            <p>(1) Es gelten die gesetzlichen Bestimmungen der Mängelhaftung (§§ 434 ff. BGB).</p>
+            <p>(2) Naturprodukte (wie echte Edelsteine, Südrot-Achate oder Amethyste) können in Farbe, Struktur und Maserung geringfügig von den Abbildungen auf der Website abweichen. Solche naturbedingten Abweichungen stellen keinen Sachmangel dar, solange die gelieferte Ware der vereinbarten Spezifikation entspricht.</p>
+
+            <h2>§ 8 Haftungsbeschränkung</h2>
+            <p>(1) Der Verkäufer haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, die auf einer vorsätzlichen oder fahrlässigen Pflichtverletzung beruhen, sowie für sonstige Schäden, die auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung beruhen.</p>
+            <p>(2) Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) ist die Haftung des Verkäufers auf den vertragstypischen, vorhersehbaren Schaden begrenzt.</p>
+
+            <h2>§ 9 Anwendbares Recht und Gerichtsstand</h2>
+            <p>(1) Für sämtliche Rechtsbeziehungen der Parteien gilt das Recht der Bundesrepublik Deutschland unter Ausschluss der Gesetze über den internationalen Kauf beweglicher Waren (UN-Kaufrecht/CISG).</p>
+            <p>(2) Bei Verbrauchern gilt diese Rechtswahl nur insoweit, als nicht der gewährte Schutz durch zwingende Bestimmungen des Rechts des Staates, in dem der Verbraucher seinen gewöhnlichen Aufenthalt hat, entzogen wird.</p>
+
+            <h2>§ 10 Alternative Streitbeilegung</h2>
+            <p>(1) Gemäß § 36 VSBG (Verbraucherstreitbeilegungsgesetz) weist der Verkäufer darauf hin, dass er weder verpflichtet noch bereit ist, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+            <div class="legal-box" style="margin-top: 32px;">
+                <h2>Muster-Widerrufsformular</h2>
+                <p><em>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</em></p>
+                <p>An:<br>
+                <strong>Rui Palace (灵犀鉴)</strong><br>
+                Hohenbrunner Str. 9, 85579 Neubiberg<br>
+                E-Mail: mail@rui-palace.com</p>
+                <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*):</p>
+                <p>Bestellt am (*) / erhalten am (*): ________________________</p>
+                <p>Name des/der Verbraucher(s): ________________________</p>
+                <p>Anschrift des/der Verbraucher(s): ________________________</p>
+                <p>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier): ________________________</p>
+                <p>Datum: ________________________</p>
+                <p><small>(*) Unzutreffendes streichen.</small></p>
+            </div>
+        </section>
+
+        <!-- CHINESE VERSION -->
+        <section id="sec-zh" class="lang-section">
+            <h1>通用条款与条件 (AGB / 条款与细则)</h1>
+
+            <h2>§ 1 适用范围与商家信息</h2>
+            <p>(1) 本通用交易条款与条件（以下简称“AGB”）适用于消费者或企业客户（以下简称“客户”）与 <strong>Rui Palace 蕊宫 / 灵犀鉴</strong>（负责人：Rui Tian，地址：Hohenbrunner Str. 9, 85579 Neubiberg, 德国，邮箱：mail@rui-palace.com；以下简称“卖家”）通过网站 <code>www.rui-palace.de</code> 签署的所有商品供货合同。</p>
+            <p>(2) 本条款所称“消费者”，指出于主要既不能归属于其商业活动也不能归属于其独立职业活动的目的而订立法律行为的任何自然人（《德国民法典》BGB 第 13 条）。</p>
+            <p>(3) 除非卖家以书面形式明确同意，否则不认可客户偏离或冲突的条款。</p>
+
+            <h2>§ 2 合同订立</h2>
+            <p>(1) 卖家在线商店中包含的产品描述不构成卖家的要约，而是供客户提交有约束力要约的邀请。</p>
+            <p>(2) 客户可通过整合在网站上的在线订单表格提交要约。在将选定商品放入购物车、输入个人信息并确认 AGB 和退货/撤单须知后，客户通过点击完成订购流程的按钮（如 PayPal 支付确认）即提交了关于购物车内商品具有法律约束力的合同要约。</p>
+
+            <p>(3) 卖家可在 5 天内通过以下方式接受客户的要约：</p>
+            <ul>
+                <li>向客户发送书面订单确认或文本形式（电子邮件）的订单确认；或</li>
+                <li>向客户交付所订购的商品；或</li>
+                <li>在客户下单后要求其付款（例如使用 PayPal 实时结算支付时）。</li>
+            </ul>
+
+            <h2>§ 3 价格、运费与支付条款</h2>
+            <p>(1) 所有标注价格均为以欧元（€）计价的总价。根据德国《价格标注条例》（PangV），标注价格已包含法定增值税（MwSt.）。</p>
+            <p>(2) 额外产生的配送和邮寄费用将在相应的商品描述及订购流程中另行明确标明。</p>
+            <p>(3) 在线商店向客户提供多种支付方式（包括 PayPal、信用卡、通过 PayPal Hub/SDK 进行的 SEPA 直接扣款）。</p>
+            <p>(4) 若使用 PayPal 提供的支付方式进行支付，结算将由支付服务商 PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg 处理。</p>
+
+            <h2>§ 4 配送与发货条件</h2>
+            <p>(1) 除非另有约定，商品将通过邮寄方式送达客户指定的送货地址。</p>
+            <p>(2) 若因商品无法送达指定地址或客户在指定送货地址未被联系到而导致配送失败，客户须承担因配送失败产生的合理费用。</p>
+
+            <h2>§ 5 消费者撤单权（退货政策）</h2>
+            <p>消费者依法享有撤单权（解约权）。详细说明见下文撤单须知。</p>
+
+            <div class="legal-box">
+                <h2>撤单须知 (Widerrufsbelehrung)</h2>
+                <p><strong>撤单权</strong></p>
+                <p>您有权在 14 天内无须说明理由撤销本合同。撤单期限为自您或您指定的非承运人第三方收到最后一件商品之日起 14 天。</p>
+                
+                <p>要行使撤单权，您必须通过明确声明（例如通过邮寄信件或电子邮件）通知我们（Rui Palace, Hohenbrunner Str. 9, 85579 Neubiberg, 德国，电子邮箱：support@rui-palace.de / mail@rui-palace.com），告知您撤销本合同的决定。您可以使用附带的撤单表格模板，但并非强制要求。</p>
+
+                <p>只要您在撤单期限届满前发出关于行使撤单权的通知，即视为遵守了撤单期限。</p>
+
+                <p><strong>撤单后果</strong></p>
+                <p>如果您撤销本合同，我们将无迟销地，且最迟在收到您撤销本合同通知之日起 14 天内，向您退还从您处收取的所有款项，包括配送费用（但不包括因您选择我们提供的最便宜标准配送以外的其他配送方式而产生的额外费用）。</p>
+                <p>退款时我们将使用您在初始交易中使用的相同支付方式，除非与您另有明确约定。在收到退回的商品或您提供已寄回商品的证明之前（以较早者为准），我们可以拒绝退款。</p>
+                <p>您必须无迟延地，且最迟在向我们通知撤销本合同之日起 14 天内，将商品寄回或移交给我们。只要您在 14 天期限届满前寄出商品，即视为遵守了期限。您需承担退回商品产生的直接费用。</p>
+
+                <p><strong>撤单权排除及提前失效情形</strong></p>
+                <p>根据《德国民法典》（BGB）第 312g 条第 2 款第 1 项规定，撤单权<strong>不适用于</strong>非预制且其生产取决于消费者的个人选择或指定，或明确根据消费者个人需求定制的商品供货合同（例如根据客户要求定制的手腕尺寸 / "Custom Size" 定制款）。</p>
+            </div>
+
+            <h2>§ 6 保留所有权</h2>
+            <p>若卖家先行发货，在应付购货款全额结清之前，卖家保留对交付商品的所有权。</p>
+
+            <h2>§ 7 瑕疵担保与质保责任 (Gewährleistung)</h2>
+            <p>(1) 适用于法定瑕疵担保规定（《德国民法典》BGB 第 434 条及其后条款）。</p>
+            <p>(2) 天然产品（如天然宝石、南红玛瑙、紫水晶等）在颜色、纹理和结构上可能与网站上的展示图片略有差异。只要交付的商品符合约定的规格，此类天然差异不构成质量瑕疵。</p>
+
+            <h2>§ 8 责任限制</h2>
+            <p>(1) 对于因故意或疏忽违反义务而导致生命、身体或健康受到伤害的损害，以及因故意或重大过失违反义务而引起的其他损害，卖家承担无限制责任。</p>
+            <p>(2) 对于因轻微过失违反基本合同义务（核心义务）的情况，卖家的赔偿责任仅限于合同典型的、可预见的损害。</p>
+
+            <h2>§ 9 适用法律与管辖法院</h2>
+            <p>(1) 双方之间的所有法律关系均受德意志联邦共和国法律管辖，排除《联合国国际货物销售合同公约》（CISG）。</p>
+            <p>(2) 对于消费者，此法律选择仅在不剥夺消费者常居国强制性法律规定所给予的保护的范围内适用。</p>
+
+            <h2>§ 10 消费者争议解决</h2>
+            <p>(1) 根据《德国消费者争议解决法》（VSBG）第 36 条，卖家声明其既无义务也无意愿参与消费者争议调解机构的调解程序。</p>
+
+            <div class="legal-box" style="margin-top: 32px;">
+                <h2>撤单表格模板 (Muster-Widerrufsformular)</h2>
+                <p><em>（如果您想撤销合同，请填写此表格并寄回。）</em></p>
+                <p>收件人：<br>
+                <strong>Rui Palace (蕊宫 / 灵犀鉴)</strong><br>
+                Hohenbrunner Str. 9, 85579 Neubiberg, Germany<br>
+                电子邮箱：mail@rui-palace.com</p>
+                <p>本人/我们 (*) 特此撤销本人/我们 (*) 关于购买以下商品 (*) 的合同：</p>
+                <p>订购日期 (*) / 收到日期 (*)：________________________</p>
+                <p>消费者姓名：________________________</p>
+                <p>消费者地址：________________________</p>
+                <p>消费者签名（仅在纸质通知时需要）：________________________</p>
+                <p>日期：________________________</p>
+                <p><small>(*) 请划掉不适用项。</small></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 蕊宫 - Rui Palace</p>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const targetSec = document.getElementById('sec-' + lang);
+            if(targetSec) {
+                targetSec.classList.add('active');
+            }
+            
+            event.target.classList.add('active');
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
