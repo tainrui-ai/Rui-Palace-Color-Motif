@@ -3,21 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const acceptBtn = document.getElementById("accept-btn");
     const rejectBtn = document.getElementById("reject-btn");
 
-    export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-
-    // 🔴【关键新增】如果请求路径以 /cdn-cgi/ 开头，直接交由 Cloudflare 处理，绝对不转发给 Vercel
-    if (url.pathname.startsWith('/cdn-cgi/')) {
-      return fetch(request);
-    }
-
-    // --- 以下是你原本将流量转发到 Vercel 的代码 ---
-    url.host = 'ruipalacede-glq4cmj08-tainrui-ais-projects.vercel.app';
-    
-    return fetch(url, request);
-  }
-};
+   
 
     // 1. 统一检查逻辑：同时检查 Cookie 和 LocalStorage
     const hasConsent = document.cookie.split('; ').find(row => row.startsWith('cookie_consent=true')) || 
