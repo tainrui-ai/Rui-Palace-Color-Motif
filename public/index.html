@@ -974,8 +974,9 @@
     if (typeof paypal === 'undefined') {
         const script = document.createElement('script');
         // 这里的 client-id 请替换为你从 PayPal Dashboard 拿到的 Sandbox Client ID
-        script.src = "https://www.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR";
-        script.onload = () => executePayPalRender(customerInfo);
+        // 修改为 sandbox 域名的 SDK 地址
+script.src = "https://www.sandbox.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR";
+script.onload = () => executePayPalRender(customerInfo);
         script.onerror = () => {
             container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">Failed to load payment gateway. Please verify your connection.</p>`;
         };
