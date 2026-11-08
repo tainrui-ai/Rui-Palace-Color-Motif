@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕊宫 Rui Palace - 终极管理控制台</title>
-    <!-- 引入 Chart.js 用于收入图形化分析 -->
+    <!-- 引入 CDN Chart.js 用于收入图形化分析 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -168,7 +168,7 @@
                             <th>金额</th>
                             <th>推广码</th>
                             <th>物流状态</th>
-                            <th>DHL 运单号 & 操作</th>
+                            <th>DHL 运单号 &amp; 操作</th>
                         </tr>
                     </thead>
                     <tbody id="orders-table-body">
@@ -270,11 +270,11 @@
                     
                     <div style="margin-top:15px;">
                         <label style="font-size:11px; font-weight:bold;">中文邀约信（含 #Werbung 法规要求）：</label>
-                        <textarea id="output-cn" readonly></textarea>
+                        <textarea id="output-cn" readonly=""></textarea>
                     </div>
                     <div style="margin-top:10px;">
                         <label style="font-size:11px; font-weight:bold;">英文邀约信 (English):</label>
-                        <textarea id="output-en" readonly></textarea>
+                        <textarea id="output-en" readonly=""></textarea>
                     </div>
                 </div>
             </div>
