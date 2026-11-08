@@ -1,13 +1,10 @@
+
 {
   "version": 2,
-  "headers": [
+  "rewrites": [
     {
       "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "https://www.rui-palace.de" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
-      ]
+      "destination": "/api/$1"
     }
   ]
 }
