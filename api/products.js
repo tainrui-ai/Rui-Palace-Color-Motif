@@ -1,28 +1,27 @@
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 
-const supabase = createClient(
-  process.env.SUPABASE_URL, 
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.rui-palace.de');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method !== 'GET') {
+        return res.status(405).json({ success: false, error: 'Method not allowed' });
+    }
 
-  if (req.method === 'OPTIONS') return res.status(200).end();
+    try {
+        const { data: products, error } = await supabase
+            .from('RuiPalaceProduct')
+            .select('*');
 
-  try {
-    // 👈 完美对接您在 Supabase 中新建的表名
-    const { data: products, error } = await supabase
-      .from('RuiPalaceProduct')
-      .select('*')
-      .order('id', { ascending: true });
+        if (error) {
+            console.error('Supabase fetch error:', error);
+            return res.status(500).json({ success: false, error: error.message });
+        }
 
-    if (error) throw error;
-
-    return res.status(200).json({ success: true, products });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
-  }
+        return res.status(200).json({ success: true, products: products || [] });
+    } catch (err) {
+        console.error('API products error:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
 }
