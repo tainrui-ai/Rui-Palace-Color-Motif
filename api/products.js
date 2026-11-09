@@ -1,27 +1,36 @@
 const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
 export default async function handler(req, res) {
-    if (req.method !== 'GET') {
-        return res.status(405).json({ success: false, error: 'Method not allowed' });
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+
+  try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return res.status(500).json({ success: false, error: 'Missing Supabase environment variables on Vercel.' });
     }
 
-    try {
-        const { data: products, error } = await supabase
-            .from('RuiPalaceProduct')
-            .select('*');
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
-        if (error) {
-            console.error('Supabase fetch error:', error);
-            return res.status(500).json({ success: false, error: error.message });
-        }
+    // 🌟 查询 Supabase 中的 RuiPalaceProduct 表
+    const { data: products, error } = await supabase
+      .from('RuiPalaceProduct')
+      .select('*')
+      .order('id', { ascending: true });
 
-        return res.status(200).json({ success: true, products: products || [] });
-    } catch (err) {
-        console.error('API products error:', err);
-        return res.status(500).json({ success: false, error: err.message });
+    if (error) {
+      console.error('Supabase query error:', error);
+      return res.status(500).json({ success: false, error: error.message });
     }
+
+    return res.status(200).json({ success: true, products: products || [] });
+  } catch (err) {
+    console.error('API products fatal error:', err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
 }
