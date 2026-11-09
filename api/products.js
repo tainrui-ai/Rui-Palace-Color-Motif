@@ -1,6 +1,6 @@
 const { createClient } = require('@supabase/supabase-js');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -12,12 +12,11 @@ export default async function handler(req, res) {
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !supabaseKey) {
-      return res.status(500).json({ success: false, error: 'Missing Supabase environment variables on Vercel.' });
+      return res.status(500).json({ success: false, error: 'Missing Supabase environment variables.' });
     }
 
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // 🌟 查询 Supabase 中的 RuiPalaceProduct 表
     const { data: products, error } = await supabase
       .from('RuiPalaceProduct')
       .select('*')
@@ -33,4 +32,4 @@ export default async function handler(req, res) {
     console.error('API products fatal error:', err);
     return res.status(500).json({ success: false, error: err.message });
   }
-}
+};
