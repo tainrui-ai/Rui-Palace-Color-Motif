@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0058)https://www.rui-palace.de/Color%20Mu%20Shan%20Lila?lang=en -->
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>暮山紫 · 紫陌手链典藏推广</title>
 
-    <!-- 【GDPR 合规修复】已移除静态引入的 PayPal SDK，改由用户同意 Cookie 后动态按需加载 (Lazy Loading)，避免违反 GDPR/TTDSG -->
+    <!-- 【GDPR 合规】已移除静态引入的 PayPal SDK，改由用户同意 Cookie 后动态按需加载 (Lazy Loading)，避免违反 GDPR/TTDSG -->
     
     <style>
         *, *::before, *::after {
@@ -445,7 +444,7 @@
             <div style="margin-top:32px; padding-top:24px; border-top:none; width:100%; max-width:448px;">
                 <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
                 <div class="grid-thumbs">
-                    <!-- 由 Supabase 动态生成 4 款缩略图切块 -->
+                    <!-- 由 Supabase 动态生成款式缩略图切块 -->
                 </div>
             </div>
         </div>
@@ -513,7 +512,7 @@
                 <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="暮色流光 · 视听长青" data-en="Twilight &amp; Vision" data-lang="en">Twilight &amp; Vision</span>
             </div>
 
-            <!-- 视频默认阻断第三方连接，按需加载保护隐私 -->
+            <!-- 视频阻断第三方连接，按需加载 -->
             <div class="video-wrapper" id="video-wrapper">
                 <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
                     <div class="play-btn">
@@ -563,7 +562,7 @@
             <div id="modal-step-form" style="display: block;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(134, 112, 160, 0.15); color:#8670A0; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
-                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【灵犀鉴】您的臻藏购物车" data-en="[Rui Palace] Shopping Cart" data-lang="en">[Rui Palace] Shopping Cart</h3>
+                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【蕊宫】您的臻藏购物车" data-en="[Rui Palace] Shopping Cart" data-lang="en">[Rui Palace] Shopping Cart</h3>
                     <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="en">Please enter your shipping address details</p>
                 </div>
 
@@ -628,7 +627,7 @@
                 </div>
             </div>
 
-            <!-- 第二步：订单确认预览与官方 PayPal 多合一支付结算 SDK -->
+            <!-- 第二步：订单确认预览与官方 PayPal 结算 -->
             <div id="modal-step-confirm" style="display:none;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:32px; margin-bottom:8px;">✓</span>
@@ -651,7 +650,7 @@
 
     <!-- 页脚法律声明链接 -->
     <footer class="container" style="padding-top:24px; padding-bottom:24px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; align-items:center; font-size:10px; color:#a3a3a3; gap:8px;">
-        <p>© 2026 灵犀鉴 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
         <p style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;">
             <a href="https://www.rui-palace.de/impressum.html" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="en">Legal Notice (Impressum)</a> 
             <span>|</span> 
@@ -671,11 +670,11 @@
         let startX = 0;
         let cookieConsentGiven = false;
 
-        // 全局动态商品数组（从 Supabase 实时拉取）
         let products = [];
         let shoppingCart = [];
+        let refId = null;
 
-        // 本地购物车安全读写
+        // 本地购物车读写
         try {
             const stored = localStorage.getItem('rui_palace_global_cart');
             if (stored) shoppingCart = JSON.parse(stored);
@@ -703,11 +702,16 @@
             checkCookieConsent();
             initDragEvents();
             
-            // 🌟 1. 从 Supabase 后端 /api/products 动态拉取商品数据
+            // 🌟 1. 解析 URL 中的 ?ref= 推广员参数并保存
+            const urlParams = new URLSearchParams(window.location.search);
+            refId = urlParams.get('ref') || localStorage.getItem('rui_palace_ref_id') || null;
+            if (refId) {
+                try { localStorage.setItem('rui_palace_ref_id', refId); } catch(e) {}
+            }
+
+            // 🌟 2. 从后端 /api/products 动态拉取数据
             await fetchProductsFromDatabase();
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const refId = urlParams.get('ref') || localStorage.getItem('rui_palace_ref_id') || null;
             if (urlParams.get('lang') === 'zh') {
                 setLanguage('zh');
             } else {
@@ -741,14 +745,13 @@
             }
         });
 
-        // 🌟 2. 异步对接 /api/products 获取 Supabase 数据库真实数据
+        // 对接 /api/products 获取数据库真实数据
         async function fetchProductsFromDatabase() {
             try {
                 const res = await fetch('/api/products');
                 const data = await res.json();
                 
                 if (data.success && data.products && data.products.length > 0) {
-                    // 映射 Supabase 真实字段 (id, name, short_name, subtitle, price, old_price, color_code, image_url, description)
                     products = data.products.map(p => ({
                         id: p.id,
                         title_zh: p.name,
@@ -772,7 +775,6 @@
             }
         }
 
-        // 动态渲染下方系列缩略切块
         function renderThumbs() {
             const container = document.querySelector('.grid-thumbs');
             if (!container || products.length === 0) return;
@@ -945,7 +947,6 @@
             }
         }
 
-        // 🌟 3. 加入购物车（带 Supabase 商品 ID 映射）
         function addToCart(idx) {
             if (!products[idx]) return;
             const p = products[idx];
@@ -1096,7 +1097,8 @@
             document.getElementById('modal-step-form').style.display = 'none';
             document.getElementById('modal-step-confirm').style.display = 'block';
 
-            renderPayPalButtons(grandTotal, { name,email, phone, address, zip, city, wrist, notes，ref: refId // 👈 传入推广员 ID，后端会自动存入 Supabase orders 表 });
+            // 🌟 正确传入 JavaScript 对象与推广员 ID
+            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes, ref: refId });
         }
 
         function backToFormStep() {
@@ -1104,6 +1106,7 @@
             document.getElementById('modal-step-confirm').style.display = 'none';
         }
 
+        // 对接后端 /api/orders/create 与 /api/orders/capture API
         function renderPayPalButtons(totalAmount, customerInfo) {
             const container = document.getElementById('paypal-button-container');
             if (!container) return;
@@ -1129,7 +1132,6 @@
                     label:  'paypal'
                 },
                 createOrder: async function(data, actions) {
-                    // 🌟 调用后端 api/orders/create.js[cite: 14]
                     const response = await fetch('/api/orders/create', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -1146,37 +1148,17 @@
                     }
                 },
                 onApprove: async function(data, actions) {
-                    // 🌟 调用后端 api/orders/capture.js[cite: 15]
                     const response = await fetch('/api/orders/capture', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            orderID: data.orderID
+                            orderID: data.orderID,
+                            customer: customerInfo
                         })
                     });
                     const captureData = await response.json();
                     
                     if (captureData.status === 'SUCCESS') {
-                        // 支付成功后同步保存订单到数据库
-                        try {
-                            await fetch('/api/checkout/save-order', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    order_id: captureData.details.id,
-                                    customer_name: customerInfo.name,
-                                    customer_email: customerInfo.email,
-                                    customer_phone: customerInfo.phone,
-                                    shipping_address: `${customerInfo.address}, ${customerInfo.zip} ${customerInfo.city}`,
-                                    wrist_size: customerInfo.wrist,
-                                    amount: totalAmount,
-                                    items: shoppingCart
-                                })
-                            });
-                        } catch(e) {
-                            console.error('订单写入数据库后台异常:', e);
-                        }
-
                         alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
                         try {
                             localStorage.removeItem('rui_palace_global_cart');
@@ -1194,7 +1176,6 @@
                 }
             }).render('#paypal-button-container');
         }
-
 
         // Cookie 合规管理
         function checkCookieConsent() {
