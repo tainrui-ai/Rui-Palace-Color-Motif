@@ -1,12 +1,14 @@
+
 {
-  "name": "rui-palace-backend",
+  "name": "rui-palace-store",
   "version": "1.0.0",
-  "description": "Rui Palace Serverless API for PayPal",
-  "main": "index.js",
-  "engines": {
-    "node": ">=18.x"
+  "private": true,
+  "scripts": {
+    "start": "serve public",
+    "build": "echo 'No build step required for static site'"
   },
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "@supabase/supabase-js": "^2.39.0",
+    "node-fetch": "^2.7.0"
   }
 }
