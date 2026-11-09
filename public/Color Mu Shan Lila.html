@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- saved from url=(0058)https://www.rui-palace.de/Color%20Mu%20Shan%20Lila?lang=en -->
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -363,7 +364,7 @@
         <p class="dynamic-sub" style="margin-bottom:12px;" data-zh="EASTERN AESTHETICS &amp; FINE JEWELRY" data-en="AESTHETICS &amp; JEWELRY" data-lang="en">AESTHETICS &amp; JEWELRY</p>
         
         <div style="max-width:576px; margin:0 auto; padding:0 16px;">
-            <p id="main-desc" class="dynamic-text" style="line-height:1.6;" data-zh="“烟光凝而暮山紫，无尽夏开月独白。”&lt;br&gt;将东方温润水墨意境融入天然晶石手链，呈献典雅独到的腕间灵光。" data-en="“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”&lt;br&gt;Infusing oriental ink poetry into fine natural gemstone bracelets." data-lang="en">“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”<br>Infusing oriental ink poetry into fine natural gemstone bracelets.</p>
+            <p id="main-desc" class="dynamic-text" style="line-height:1.6;" data-zh="“烟光凝而暮山紫，无尽夏开月独白。”<br>将东方温润水墨意境融入天然晶石手链，呈献典雅独到的腕间灵光。" data-en="“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”<br>Infusing oriental ink poetry into fine natural gemstone bracelets." data-lang="en">“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”<br>Infusing oriental ink poetry into fine natural gemstone bracelets.</p>
         </div>
 
         <div class="side-wing-right">
@@ -459,7 +460,41 @@
                 <span class="dynamic-text" style="font-size:12px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click to copy HEX" data-lang="en">Click to copy HEX</span>
             </div>
             <div class="grid-colors" id="color-grid">
-                <!-- 动态色卡 -->
+                <div onclick="selectGridColor(0)" class="color-card">
+                    <div class="color-block" style="background-color:#8670A0"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Twilight Purple</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#8670A0</p>
+                </div>
+            
+                <div onclick="selectGridColor(1)" class="color-card">
+                    <div class="color-block" style="background-color:#9887B0"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Condensed Mist</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#9887B0</p>
+                </div>
+            
+                <div onclick="selectGridColor(2)" class="color-card">
+                    <div class="color-block" style="background-color:#ABB4C5"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Lilac Snow Blue</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#ABB4C5</p>
+                </div>
+            
+                <div onclick="selectGridColor(3)" class="color-card">
+                    <div class="color-block" style="background-color:#BDCBD4"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Endless Summer</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#BDCBD4</p>
+                </div>
+            
+                <div onclick="selectGridColor(4)" class="color-card">
+                    <div class="color-block" style="background-color:#C6D8E2"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Moonlit White</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#C6D8E2</p>
+                </div>
+            
+                <div onclick="selectGridColor(5)" class="color-card">
+                    <div class="color-block" style="background-color:#D2E2E6"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">Pure Yuebai</p>
+                    <p style="font-size:9px; color:#8670A0; font-family:monospace;">#D2E2E6</p>
+                </div>
             </div>
             <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #8670A0; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
                 <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">Twilight Purple</p>
@@ -668,10 +703,11 @@
             checkCookieConsent();
             initDragEvents();
             
-            // 🌟 1. 从 Supabase 动态拉取商品数据
+            // 🌟 1. 从 Supabase 后端 /api/products 动态拉取商品数据
             await fetchProductsFromDatabase();
 
             const urlParams = new URLSearchParams(window.location.search);
+            const refId = urlParams.get('ref') || localStorage.getItem('rui_palace_ref_id') || null;
             if (urlParams.get('lang') === 'zh') {
                 setLanguage('zh');
             } else {
@@ -736,7 +772,7 @@
             }
         }
 
-        // 动态渲染下方 4 款系列缩略切块
+        // 动态渲染下方系列缩略切块
         function renderThumbs() {
             const container = document.querySelector('.grid-thumbs');
             if (!container || products.length === 0) return;
@@ -814,7 +850,6 @@
             if (priceEl) priceEl.innerText = p.price;
             if (oldPriceEl) oldPriceEl.innerText = p.old_price;
 
-            // 动态填充海棠视口大图
             const sliderTrack = document.getElementById('slider-track');
             if (sliderTrack) {
                 sliderTrack.innerHTML = `
@@ -1061,7 +1096,7 @@
             document.getElementById('modal-step-form').style.display = 'none';
             document.getElementById('modal-step-confirm').style.display = 'block';
 
-            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes });
+            renderPayPalButtons(grandTotal, { name,email, phone, address, zip, city, wrist, notes，ref: refId // 👈 传入推广员 ID，后端会自动存入 Supabase orders 表 });
         }
 
         function backToFormStep() {
@@ -1093,26 +1128,42 @@
                     shape:  'rect',
                     label:  'paypal'
                 },
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: `Rui Palace - Order: ${customerInfo.name} (${customerInfo.wrist})`,
-                            amount: {
-                                currency_code: 'EUR',
-                                value: totalAmount.toFixed(2)
-                            }
-                        }]
+                createOrder: async function(data, actions) {
+                    // 🌟 调用后端 api/orders/create.js[cite: 14]
+                    const response = await fetch('/api/orders/create', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: shoppingCart,
+                            customer: customerInfo
+                        })
                     });
+                    const orderData = await response.json();
+                    if (orderData.id) {
+                        return orderData.id;
+                    } else {
+                        throw new Error(orderData.error || 'Init order failed');
+                    }
                 },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(async function(details) {
-                        // 🌟 4. 支付成功后自动将订单异步写入 Supabase 后端
+                onApprove: async function(data, actions) {
+                    // 🌟 调用后端 api/orders/capture.js[cite: 15]
+                    const response = await fetch('/api/orders/capture', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            orderID: data.orderID
+                        })
+                    });
+                    const captureData = await response.json();
+                    
+                    if (captureData.status === 'SUCCESS') {
+                        // 支付成功后同步保存订单到数据库
                         try {
                             await fetch('/api/checkout/save-order', {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
-                                    order_id: details.id,
+                                    order_id: captureData.details.id,
                                     customer_name: customerInfo.name,
                                     customer_email: customerInfo.email,
                                     customer_phone: customerInfo.phone,
@@ -1133,7 +1184,9 @@
                         shoppingCart = [];
                         updateCartCountBadge();
                         closeModal();
-                    });
+                    } else {
+                        alert(currentLang === 'zh' ? '支付捕获遇到问题，请重试。' : 'Payment capture failed.');
+                    }
                 },
                 onError: function(err) {
                     console.error('PayPal Error:', err);
@@ -1141,6 +1194,7 @@
                 }
             }).render('#paypal-button-container');
         }
+
 
         // Cookie 合规管理
         function checkCookieConsent() {
