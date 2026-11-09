@@ -1,14 +1,14 @@
 
+
 {
   "name": "rui-palace-store",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "serve public",
     "build": "echo 'No build step required for static site'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^3.3.2"
   }
 }
