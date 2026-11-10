@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     // 查询数据库
     const { data: products, error } = await supabase
-      .from('RuiPalaceProduct')
+      .from('orders')
       .select('*')
       .order('id', { ascending: true });
 
