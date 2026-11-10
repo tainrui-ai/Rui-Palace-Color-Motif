@@ -1,5 +1,3 @@
-
-
 {
   "name": "rui-palace-store",
   "version": "1.0.0",
@@ -8,7 +6,6 @@
     "build": "echo 'No build step required for static site'"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "node-fetch": "^3.3.2"
+    "@supabase/supabase-js": "^2.39.0"
   }
 }
