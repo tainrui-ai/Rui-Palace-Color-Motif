@@ -323,22 +323,79 @@
             });
         }
 
-        function handleSearch(event) {
+        async function handleSearch(event) {
             event.preventDefault();
             const email = document.getElementById('search-email').value.trim();
             const orderId = document.getElementById('search-id').value.trim();
 
             if (!email || !orderId) return;
 
-            // 显示查询结果面板
-            const resultPanel = document.getElementById('result-panel');
-            resultPanel.style.display = 'block';
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerText = currentLang === 'zh' ? '查询中...' : 'Searching...';
+            submitBtn.disabled = true;
 
-            // 填充示例数据
-            document.getElementById('res-order-id').innerText = orderId;
-            
-            // 滚动到查询结果位置
-            resultPanel.scrollIntoView({ behavior: 'smooth' });
+            try {
+                // 调用后端查询接口
+                const res = await fetch('/api/orders/track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, orderId })
+                });
+
+                const result = await res.json();
+
+                if (!result.success || !result.order) {
+                    alert(result.error || (currentLang === 'zh' ? '未找到相关订单' : 'Order not found'));
+                    document.getElementById('result-panel').style.display = 'none';
+                    return;
+                }
+
+                const o = result.order;
+
+                // 填充真实数据库数据
+                document.getElementById('res-order-id').innerText = o.paypal_order_id || o.order_id;
+                document.getElementById('res-model').innerText = o.items_summary || o.title || (currentLang === 'zh' ? '蕊宫定制饰品' : 'Rui Palace Bespoke Item');
+                document.getElementById('res-wrist').innerText = o.wrist_size ? `${o.wrist_size} cm` : '-';
+                
+                // 物流单号与状态
+                const trackingNum = o.tracking_number || (currentLang === 'zh' ? '暂无运单号' : 'No tracking number yet');
+                const shippingStatus = o.shipping_status || 'Preparing';
+                document.getElementById('res-tracking').innerText = `DHL Express: ${trackingNum} (${shippingStatus === 'Shipped' ? '已发货' : '准备中'})`;
+
+                // 根据 shipping_status 动态点亮进度条
+                updateTimelineProgress(shippingStatus);
+
+                // 显示结果面板
+                const resultPanel = document.getElementById('result-panel');
+                resultPanel.style.display = 'block';
+                resultPanel.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (err) {
+                console.error('Track error:', err);
+                alert(currentLang === 'zh' ? '网络连接错误，请稍后重试' : 'Network error, please try again later.');
+            } finally {
+                submitBtn.innerText = currentLang === 'zh' ? '立即查询进度' : 'TRACK ORDER STATUS';
+                submitBtn.disabled = false;
+            }
+        }
+
+        // 辅助函数：根据后端状态动态控制前端进度条高亮
+        function updateTimelineProgress(status) {
+            const progressLine = document.getElementById('progress-line');
+            const step3 = document.getElementById('step-3');
+            const step4 = document.getElementById('step-4');
+
+            if (status === 'Shipped') {
+                progressLine.style.width = '66%';
+                step3.classList.add('active');
+                step3.querySelector('.step-node').innerText = '✓';
+                document.getElementById('res-notes').innerText = currentLang === 'zh' ? '您的包裹已由德国发货，正在通过 DHL 飞往您的手中。' : 'Your package has been dispatched from Germany via DHL.';
+            } else {
+                progressLine.style.width = '33%';
+                step3.classList.remove('active');
+                step3.querySelector('.step-node').innerText = '3';
+                document.getElementById('res-notes').innerText = currentLang === 'zh' ? '已收到您的款项，匠人正在精心为您手工串制与打理。' : 'Payment received, our artisan is carefully hand-crafting your piece.';
+            }
         }
     </script>
 </body>
