@@ -1006,8 +1006,7 @@
         function closeModal() {
             document.getElementById('buyModal')?.classList.remove('active');
         }
-
-        function renderCartItems() {
+function renderCartItems() {
             const container = document.getElementById('cart-items-container');
             if (!container) return;
 
@@ -1023,8 +1022,13 @@
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
 
-                // 🌟 核心修改 2：根据当前语言环境动态切换显示的标题（中文用 title_zh，英文用 subtitle 对应的 title_en）
-                const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title_zh);
+                // 🌟 终极兜底：如果 item 里面没有 title_en，或者需要实时从最新 products 拿，优先匹配
+                const matchedProduct = products.find(p => p.id === item.id);
+                
+                const titleZh = item.title_zh || matchedProduct?.title_zh || item.title || '商品';
+                const titleEn = item.title_en || matchedProduct?.title_en || matchedProduct?.subtitle || titleZh;
+
+                const displayTitle = currentLang === 'zh' ? titleZh : titleEn;
 
                 html += `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:none; padding-bottom:6px;">
@@ -1045,6 +1049,11 @@
             html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#8670A0; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
             container.innerHTML = html;
         }
+
+
+
+        
+       
 
         function changeQuantity(index, delta) {
             shoppingCart[index].quantity += delta;
