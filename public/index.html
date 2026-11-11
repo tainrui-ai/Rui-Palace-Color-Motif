@@ -242,7 +242,7 @@
         </div>
       
         <div class="header-right-actions">
-            <<button onclick="openCartModal()" class="about-btn" style="background:rgba(255,255,255,0.25); border-color:rgba(254,243,199,0.6);">
+            <button onclick="openCartModal()" class="about-btn" style="background:rgba(255,255,255,0.25); border-color:rgba(254,243,199,0.6);">
     <span id="cart-btn-text" data-zh="🛒 购物车" data-en="🛒 Cart">🛒 Cart</span>
     <span id="cart-count-badge" style="background:#B22222; color:white; border-radius:9999px; padding:1px 7px; font-size:10px; margin-left:4px; font-weight:bold;">0</span>
 </button>
@@ -872,7 +872,11 @@ function renderUIStrings() {
             updateAllLinks();
             
             // 如果购物车弹窗开着，切换语言时顺便刷新购物车里的商品名称与总计文字
-            const modal = document
+            const modal = document.getElementById('buyModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                renderCartItems();
+            }
+        }
         
         function updateAllLinks() {
             document.querySelectorAll('a').forEach(link => {
