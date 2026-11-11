@@ -242,10 +242,10 @@
         </div>
       
         <div class="header-right-actions">
-            <button onclick="openCartModal()" class="about-btn" style="background:rgba(255,255,255,0.25); border-color:rgba(254,243,199,0.6);">
-                <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
-                <span id="cart-count-badge" style="background:#B22222; color:white; border-radius:9999px; padding:1px 7px; font-size:10px; margin-left:4px; font-weight:bold;">0</span>
-            </button>
+            <<button onclick="openCartModal()" class="about-btn" style="background:rgba(255,255,255,0.25); border-color:rgba(254,243,199,0.6);">
+    <span id="cart-btn-text" data-zh="🛒 购物车" data-en="🛒 Cart">🛒 Cart</span>
+    <span id="cart-count-badge" style="background:#B22222; color:white; border-radius:9999px; padding:1px 7px; font-size:10px; margin-left:4px; font-weight:bold;">0</span>
+</button>
             <a href="https://www.rui-palace.de/track.html?lang=en" id="trackBtn" class="about-btn" data-zh="[ 订单查询 ]" data-en="[ Track Order ]">[ Track Your Order ]</a>
             <a href="https://www.rui-palace.de/store.html?lang=en" id="storeBtn" class="about-btn" data-zh="[ 蕊宫珍藏 ]" data-en="[ Collection ]">[ Palace Store ]</a>
             <a href="https://www.rui-palace.de/about.html?lang=en" id="aboutBtn" class="about-btn" data-zh="[ 关于蕊宫 ]" data-en="[ About Us ]">[ About Rui Palace ]</a>
@@ -482,6 +482,7 @@
                 brand: "蕊宫 · 灵犀鉴",
                 heroTitle: "东方美学的灵魂",
                 heroSub: "献给现代创作者的精准色彩标准与永恒纹样，兼具情绪解药之效。",
+                cartBtn: "🛒 购物车", // 🌟 新增
                 trackBtn: "[ 订单查询 ]",
                 storeBtn: "[ 蕊宫珍藏 ]",
                 aboutBtn: "[ 关于蕊宫 ]",
@@ -497,6 +498,7 @@
                 brand: "Rui Palace · Spiritual Mirror",
                 heroTitle: "The Soul of Oriental Aesthetics",
                 heroSub: "Precision Color Standards & Timeless Patterns as Emotional Antidotes for Modern Creators.",
+                cartBtn: "🛒 Cart", // 🌟 新增
                 trackBtn: "[ Track Your Order ]",
                 storeBtn: "[ Palace Store ]",
                 aboutBtn: "[ About Rui Palace ]",
@@ -571,6 +573,7 @@ function renderUIStrings() {
             safeSetText('dock-btn-drop', t.dockDrop);
             safeSetText('dock-btn-clear', t.dockClear);
             safeSetText('footer-motto', t.motto);
+            safeSetText('cart-btn-text', t.cartBtn);
 
             // 🌟 统一刷新所有带有 data-zh 和 data-en 的元素（包括弹窗内部的标题、表单标签和按钮）
             document.querySelectorAll('[data-zh]').forEach(el => {
