@@ -759,7 +759,7 @@
                         sub_zh: p.short_name || p.name,
                         sub_en: p.subtitle || p.name,
                         desc_zh: p.description || '',
-                        desc_en: p.description || '',
+                        desc_en: p.description_EN || p.description || '',
                         price: `€ ${parseFloat(p.price).toFixed(2).replace('.', ',')}`,
                         priceNum: parseFloat(p.price),
                         old_price: `€ ${parseFloat(p.old_price).toFixed(2).replace('.', ',')}`,
