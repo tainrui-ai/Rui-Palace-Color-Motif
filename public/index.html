@@ -556,8 +556,7 @@
             const el = document.getElementById(id);
             if (el) el.innerText = text;
         }
-
-       function renderUIStrings() {
+function renderUIStrings() {
             const t = uiTexts[currentLang];
             safeSetText('brand-title', t.brand);
             safeSetText('hero-main-title', t.heroTitle);
@@ -573,7 +572,7 @@
             safeSetText('dock-btn-clear', t.dockClear);
             safeSetText('footer-motto', t.motto);
 
-            // 🌟 新增：同步更新购物车及结算弹窗内的所有静态文本
+            // 🌟 统一刷新所有带有 data-zh 和 data-en 的元素（包括弹窗内部的标题、表单标签和按钮）
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const zhText = el.getAttribute('data-zh');
                 const enText = el.getAttribute('data-en');
@@ -868,8 +867,10 @@
             renderUIStrings();
             renderColorPool();
             updateAllLinks();
-        }
-
+            
+            // 如果购物车弹窗开着，切换语言时顺便刷新购物车里的商品名称与总计文字
+            const modal = document
+        
         function updateAllLinks() {
             document.querySelectorAll('a').forEach(link => {
                 let href = link.getAttribute('href');
