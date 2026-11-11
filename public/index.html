@@ -692,10 +692,19 @@
                 const priceStr = item.priceStr || `€ ${priceNum.toFixed(2).replace('.', ',')}`;
                 const itemTotal = priceNum * item.quantity;
                 grandTotal += itemTotal;
+
+                // 🌟 核心修复：多重字段兜底（依次检查 title, title_zh/en, name, sub_zh/en），防止名称丢失变空白
+                let displayTitle = '';
+                if (currentLang === 'zh') {
+                    displayTitle = item.title_zh || item.title || item.name || item.sub_zh || '蕊宫臻藏手链';
+                } else {
+                    displayTitle = item.title_en || item.title || item.name || item.sub_en || 'Rui Palace Fine Bracelet';
+                }
+
                 html += `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(178,34,34,0.2); padding-bottom:6px;">
                         <div>
-                            <p style="font-size:12px; font-weight:bold; color:#262626;">${escapeHtml(item.title)}</p>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${escapeHtml(displayTitle)}</p>
                             <p style="font-size:10px; color:#737373;">${escapeHtml(priceStr)} × ${item.quantity}</p>
                         </div>
                         <div style="display:flex; align-items:center; gap:6px;">
