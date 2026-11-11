@@ -814,7 +814,7 @@
             }
         }
 
-        function switchProduct(idx) {
+       function switchProduct(idx) {
             if (!products[idx]) return;
             currentProductIdx = idx;
             updateSliderPosition();
@@ -848,7 +848,10 @@
 
             if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
             if (subTitleEl) subTitleEl.innerText = p.sub_en;
-            if (descEl) descEl.innerText = p.desc_zh;
+            
+            // 🌟 核心修改点：这里会根据当前语言自动切换显示中文描述或英文描述
+            if (descEl) descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+            
             if (priceEl) priceEl.innerText = p.price;
             if (oldPriceEl) oldPriceEl.innerText = p.old_price;
 
