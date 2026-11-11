@@ -955,7 +955,7 @@
             }
         }
 
-        function addToCart(idx) {
+       function addToCart(idx) {
             if (!products[idx]) return;
             const p = products[idx];
 
@@ -965,7 +965,9 @@
             } else {
                 shoppingCart.push({
                     id: p.id,
-                    title: p.title_zh,
+                    // 🌟 核心修改 1：同时保存中英文标题（英文对应数据库的 subtitle 字段，即 p.title_en）
+                    title_zh: p.title_zh,
+                    title_en: p.title_en || p.title_zh,
                     priceNum: p.priceNum,
                     priceStr: p.price,
                     quantity: 1
@@ -980,7 +982,10 @@
             
             const feedbackSpan = document.createElement('div');
             feedbackSpan.style.cssText = 'position:fixed; bottom:30px; right:30px; background:#8670A0; color:#FFFFFF; padding:10px 20px; border-radius:8px; font-size:12px; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
-            feedbackSpan.innerText = currentLang === 'zh' ? `✓ 已成功将「${p.sub_zh}」加入购物车` : `✓ Added to Cart`;
+            // 🌟 提示反馈也根据当前语言自适应
+            feedbackSpan.innerText = currentLang === 'zh' 
+                ? `✓ 已成功将「${p.sub_zh}」加入购物车` 
+                : `✓ Added "${p.title_en || 'Item'}" to Cart`;
             document.body.appendChild(feedbackSpan);
             setTimeout(() => feedbackSpan.remove(), 2000);
         }
@@ -1017,10 +1022,14 @@
             shoppingCart.forEach((item, i) => {
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
+
+                // 🌟 核心修改 2：根据当前语言环境动态切换显示的标题（中文用 title_zh，英文用 subtitle 对应的 title_en）
+                const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title_zh);
+
                 html += `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:none; padding-bottom:6px;">
                         <div>
-                            <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${displayTitle}</p>
                             <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
                         </div>
                         <div style="display:flex; align-items:center; gap:6px;">
@@ -1057,6 +1066,11 @@
             updateCartCountBadge();
             renderCartItems();
         }
+```[cite: 1]
+
+### 修改后的效果
+* 当你在英文界面（`?lang=en`）点击加购或打开购物车弹窗时，商品名称会自动对应展示数据库中的 **`subtitle`**（即英文副标题）[cite: 1]。
+* 当你切换回中文界面时，购物车内的商品名也会无缝切回中文名[cite: 1]。
 
         function goToConfirmStep() {
             if (shoppingCart.length === 0) {
