@@ -788,7 +788,7 @@
                     products = data.products.map(p => ({
                         id: p.id,
                         title_zh: p.name,
-                        title_en: p.subtitle || p.name,
+                        title_en: p.title_en || p.subtitle || p.title_zh, //🌟 核心：保存数据库的 subtitle 作为英文名
                         sub_zh: p.short_name || p.name,
                         sub_en: p.subtitle || p.name,
                         desc_zh: p.description || '',
@@ -997,7 +997,8 @@
             } else {
                 shoppingCart.push({
                     id: p.id,
-                    title: p.title_zh,
+                    title_zh: p.title_zh,
+                    title_en: p.title_en || p.subtitle || p.title_zh,
                     priceNum: p.priceNum,
                     priceStr: p.price,
                     quantity: 1
@@ -1049,10 +1050,14 @@
             shoppingCart.forEach((item, i) => {
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
+
+                // 🌟 核心：根据当前语言环境动态选择显示中文名或英文副标题 (subtitle)
+                const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
+
                 html += `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:none; padding-bottom:6px;">
                         <div>
-                            <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${displayTitle}</p>
                             <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
                         </div>
                         <div style="display:flex; align-items:center; gap:6px;">
@@ -1067,6 +1072,7 @@
 
             html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#8670A0; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
             container.innerHTML = html;
+        }
         }
 
         function changeQuantity(index, delta) {
