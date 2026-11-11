@@ -322,7 +322,7 @@
         </div>
     </div>
 
-    <!-- 购物车与多步骤结算 Modal -->
+   <!-- 购物车与多步骤结算 Modal -->
     <div id="buyModal" class="modal hidden" onclick="event.stopPropagation()">
         <div style="background:#FFFFFF; border:1px solid rgba(178, 34, 34, 0.4); border-radius:16px; padding:24px; max-width:480px; width:90%; margin:auto; position:relative; box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.25); color:#262626; max-height:95vh; overflow-y:auto; text-align:left;">
             <button onclick="closeCartModal()" style="position:absolute; top:16px; right:16px; color:#737373; background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
@@ -331,66 +331,68 @@
             <div id="modal-step-form" style="display: block;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(178, 34, 34, 0.15); color:#B22222; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
-                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【灵犀鉴】全站臻藏购物车" data-en="[Rui Palace] Global Shopping Cart" data-lang="en">[Rui Palace] Global Shopping Cart</h3>
-                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="搜集自各色彩页面与主典藏的所有珍品" data-en="Collected across all color realms &amp; boutique pages" data-lang="en">Collected across all color realms &amp; boutique pages</p>
+                    <h3 id="cart-modal-title" style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【蕊宫】全球臻藏购物车" data-en="[Rui Palace] Global Shopping Cart">【蕊宫】全球臻藏购物车</h3>
+                    <p id="cart-modal-desc" style="font-size:12px; color:#737373; margin-top:4px;" data-zh="搜集自各色彩页面与主典藏的所有珍品" data-en="Collected across all color realms &amp; boutique pages">搜集自各色彩页面与主典藏的所有珍品</p>
                 </div>
 
-                <div id="cart-items-container" style="margin-bottom:16px; max-height:160px; overflow-y:auto; border:1px solid rgba(178,34,34,0.2); border-radius:8px; padding:12px; background:#FAF7F2;"></div>
+                <div id="cart-items-container" style="margin-bottom:16px; max-height:160px; overflow-y:auto; border:1px solid rgba(178,34,34,0.2); border-radius:8px; padding:12px; background:#FAF7F2;">
+                    <!-- 动态商品渲染区域 -->
+                </div>
 
                 <div style="display:flex; flex-direction:column; gap:10px;">
                     <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
-                        <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                        <label id="label-name" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name">尊姓大名</label>
+                        <input type="text" id="form-name" required="" placeholder="e.g. Alice Smith" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
-                            <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                            <label id="label-email" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email">联系邮箱</label>
+                            <input type="email" id="form-email" required="" placeholder="name@example.com" class="form-input">
                         </div>
                         <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
-                            <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                            <label id="label-phone" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone">联系电话</label>
+                            <input type="text" id="form-phone" required="" placeholder="Phone Number" class="form-input">
                         </div>
                     </div>
                     <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
-                        <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                        <label id="label-address" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address & House No.">邮寄地址：街道与门牌号</label>
+                        <input type="text" id="form-address" required="" placeholder="e.g. Musterstraße 12" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="en">Postal Code</label>
-                            <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                            <label id="label-zip" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code">邮政编码</label>
+                            <input type="text" id="form-zip" required="" placeholder="e.g. 10115" class="form-input">
                         </div>
                         <div style="flex:1;">
-                            <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
-                            <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                            <label id="label-city" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City">城市</label>
+                            <input type="text" id="form-city" required="" placeholder="e.g. Berlin" class="form-input">
                         </div>
                     </div>
                     <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
+                        <label id="label-wrist" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)">手围尺寸 (cm)</label>
                         <select id="cust-wrist" class="form-input" style="cursor: pointer;">
                             <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                            <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                            <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
                             <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
-                            <option value="定制专属尺寸">Custom Size</option>
+                            <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size">定制专属尺寸</option>
                         </select>
                     </div>
                     <div>
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="en">Notes</label>
+                        <label id="label-notes" style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Notes">其他备注或礼盒需求</label>
                         <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
                     </div>
                    
                     <div style="margin-top: 6px; display: flex; align-items: flex-start; gap: 8px;">
-                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required>
+                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required="">
                         <label for="legal-consent" style="font-size: 11px; color: #737373; line-height: 1.4; cursor: pointer;">
-                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="en">
-                                I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal.
+                            <span id="label-agb" data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms & Conditions (AGB) and the 14-day Right of Withdrawal.">
+                                我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。
                             </span>
                         </label>
                     </div>
 
                     <button type="button" onclick="goToConfirmStep()" style="width:100%; padding:12px; margin-top:8px; background:#B22222; color:white; font-size:12px; border-radius:12px; letter-spacing:0.1em; border:none; cursor:pointer; font-weight:bold;">
-                        <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="en">Next: Confirm Order ➔</span>
+                        <span id="btn-next-confirm" data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔">下一步：确认订单信息 ➔</span>
                     </button>
                 </div>
             </div>
@@ -399,19 +401,19 @@
             <div id="modal-step-confirm" style="display: none;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:32px; margin-bottom:8px;">✓</span>
-                    <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="en">Please Confirm Order Details</h3>
-                    <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="en">Select payment method below after review</p>
+                    <h3 id="confirm-step-title" style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details">请核对您的订单与地址信息</h3>
+                    <p id="confirm-step-desc" style="font-size:12px; color:#737373; margin-top:4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review">确认无误后请选择下方支付方式完成结缘</p>
                 </div>
 
                 <div id="confirm-details-box" style="background:#FAF7F2; border:1px solid rgba(178,34,34,0.2); border-radius:8px; padding:12px; font-size:12px; color:#525252; display:flex; flex-direction:column; gap:6px; margin-bottom:16px; max-height:180px; overflow-y:auto;"></div>
 
                 <p style="text-align:center; font-size:11px; color:#737373; margin-bottom:12px;">
-                    <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="en">Please select payment method</span> (<span id="confirm-price-tag" style="color:#B22222; font-weight:bold;">€ 0,00</span>)
+                    <span id="select-payment-text" data-zh="请选择支付结算方式" data-en="Please select payment method">请选择支付结算方式</span> (<span id="confirm-price-tag" style="color:#B22222; font-weight:bold;">€ 0,00</span>)
                 </p>
 
                 <div id="paypal-button-container" style="min-height:150px; z-index:0;"></div>
 
-                <button type="button" onclick="backToFormStep()" style="width:100%; background:transparent; border:none; color:#737373; font-size:11px; cursor:pointer; margin-top:12px; text-align:center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="en">⇠ Back to edit info</button>
+                <button type="button" onclick="backToFormStep()" style="width:100%; background:transparent; border:none; color:#737373; font-size:11px; cursor:pointer; margin-top:12px; text-align:center;" id="btn-back-form" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info">⇠ 返回修改填写信息</button>
             </div>
         </div>
     </div>
