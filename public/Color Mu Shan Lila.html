@@ -53,9 +53,10 @@
         
         .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
         .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
-        
+
         .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
         .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
+        
         
         .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
         .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
@@ -843,6 +844,10 @@
             const titleEl = document.getElementById('hero-product-title');
             const subTitleEl = document.getElementById('hero-product-subtitle');
             const descEl = document.getElementById('hero-product-desc');
+            if (descEl) {
+        descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+        descEl.setAttribute('data-lang', currentLang); // 确保英文状态下能精准触发衬线斜体样式
+    }
             const priceEl = document.getElementById('hero-price');
             const oldPriceEl = document.getElementById('hero-old-price');
 
