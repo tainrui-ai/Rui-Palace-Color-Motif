@@ -695,9 +695,9 @@
         </p>
     </footer>
 
-    <!-- 交互与 Supabase 动态数据联动脚本 -->
    
 <!-- 交互与 Supabase 动态数据联动脚本 -->
+    <!-- 交互与 Supabase 动态数据联动脚本（含最新 PayPal 沙盒/Live 动态加载机制） -->
     <script>
         let currentLang = 'en';
         let currentProductIdx = 0;
@@ -708,6 +708,13 @@
         let products = [];
         let shoppingCart = [];
         let refId = null;
+
+        // 🌟 PayPal 环境配置：可根据需要将 USE_SANDBOX 设为 true (沙盒测试) 或 false (Live 正式收款)
+        const PAYPAL_CONFIG = {
+            USE_SANDBOX: false, 
+            CLIENT_ID: "Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5",
+            CURRENCY: "EUR"
+        };
 
         // 本地购物车读写
         try {
@@ -790,7 +797,7 @@
                     products = data.products.map(p => ({
                         id: p.id,
                         title_zh: p.name,
-                        title_en: p.subtitle || p.title_zh, // 🌟 核心：英文名直接对应数据库的 subtitle 字段
+                        title_en: p.subtitle || p.title_zh,
                         sub_zh: p.short_name || p.name,
                         sub_en: p.subtitle || p.name,
                         desc_zh: p.description || '',
@@ -1049,7 +1056,6 @@
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
 
-                // 🌟 核心：英文界面精准展示数据库 subtitle 对应的英文名 (item.title_en)
                 const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
 
                 html += `
@@ -1106,7 +1112,7 @@
             const zip = document.getElementById('form-zip').value.trim();
             const city = document.getElementById('form-city').value.trim();
             const wristSelect = document.getElementById('cust-wrist');
-            const wrist = wristSelect.options[wristSelect.selectedIndex].text;
+            const wrist = wristSelect ? wristSelect.options[wristSelect.selectedIndex].text : 'Standard';
             const consentCheckbox = document.getElementById('legal-consent');
 
             if (!name || !email || !phone || !address || !zip || !city) {
@@ -1127,18 +1133,21 @@
             }).join('<br>');
 
             const box = document.getElementById('confirm-details-box');
-            box.innerHTML = `
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
-                <hr style="border:0; border-top:1px solid rgba(134,112,160,0.2); margin:4px 0;">
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
-                <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
-            `;
+            if (box) {
+                box.innerHTML = `
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
+                    <hr style="border:0; border-top:1px solid rgba(134,112,160,0.2); margin:4px 0;">
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
+                    <div><strong style="color:#8670A0;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
+                `;
+            }
 
-            document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
+            const priceTag = document.getElementById('confirm-price-tag');
+            if (priceTag) priceTag.innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
 
             document.getElementById('modal-step-form').style.display = 'none';
             document.getElementById('modal-step-confirm').style.display = 'block';
@@ -1151,83 +1160,117 @@
             document.getElementById('modal-step-confirm').style.display = 'none';
         }
 
-        // 对接后端 /api/orders/create 与 /api/orders/capture API
+        // 🌟 核心：统一的 PayPal 动态加载与渲染函数（兼容沙盒/Live及Cookie合规）
         function renderPayPalButtons(totalAmount, customerInfo) {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
+            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center;">${currentLang === 'zh' ? '正在加载安全支付网关...' : 'Loading secure payment gateway...'}</p>`;
+
+            if (typeof paypal === 'undefined') {
+                const scriptId = 'paypal-sdk-script';
+                if (!document.getElementById(scriptId)) {
+                    const script = document.createElement('script');
+                    script.id = scriptId;
+                    // 根据 PAYPAL_CONFIG.USE_SANDBOX 自动切换 sandbox 还是 live 链接
+                    const domain = PAYPAL_CONFIG.USE_SANDBOX ? "https://www.sandbox.paypal.com" : "https://www.paypal.com";
+                    script.src = `${domain}/sdk/js?client-id=${PAYPAL_CONFIG.CLIENT_ID}&currency=${PAYPAL_CONFIG.CURRENCY}`;
+                    script.crossOrigin = "anonymous";
+                    script.onload = () => executePayPalRender(customerInfo);
+                    script.onerror = () => {
+                        container.innerHTML = `<p style="color:#B22222; font-size:12px; text-align:center;">${currentLang === 'zh' ? '支付网关加载失败，请检查 Cookie 权限或网络。' : 'Failed to load payment gateway.'}</p>`;
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    // 如果脚本已经存在但还没加载完，轮询或等待
+                    const checkInterval = setInterval(() => {
+                        if (typeof paypal !== 'undefined') {
+                            clearInterval(checkInterval);
+                            executePayPalRender(customerInfo);
+                        }
+                    }, 200);
+                }
+            } else {
+                executePayPalRender(customerInfo);
+            }
+        }
+
+        function executePayPalRender(customerInfo) {
             const container = document.getElementById('paypal-button-container');
             if (!container) return;
             container.innerHTML = '';
 
-            if (typeof paypal === 'undefined') {
-                container.innerHTML = `
-                    <div style="text-align:center; padding: 20px; font-size: 12px; color: #737373;">
-                        <p style="margin-bottom: 8px;">${currentLang === 'zh' ? '为了加载安全支付组件，需要您同意 Cookie 权限。' : 'PayPal SDK requires cookie consent to load.'}</p>
-                        <button type="button" onclick="acceptCookies(true); setTimeout(openCartModal, 300);" style="padding: 6px 12px; background:#8670A0; color:white; border:none; border-radius:6px; cursor:pointer;">
-                            ${currentLang === 'zh' ? '点击同意并加载支付' : 'Consent & Load Payment'}
-                        </button>
-                    </div>
-                `;
-                return;
-            }
-
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color:  'gold',
-                    shape:  'rect',
-                    label:  'paypal'
-                },
-                createOrder: async function(data, actions) {
-                    const response = await fetch('/api/orders/create', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            items: shoppingCart,
-                            customer: customerInfo
-                        })
-                    });
-                    const orderData = await response.json();
-                    if (orderData.id) {
-                        return orderData.id;
-                    } else {
-                        throw new Error(orderData.error || 'Init order failed');
-                    }
-                },
-                onApprove: async function(data, actions) {
-                    const response = await fetch('/api/orders/capture', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            orderID: data.orderID,
-                            customer: customerInfo
-                        })
-                    });
-                    const captureData = await response.json();
-                    
-                    if (captureData.status === 'SUCCESS') {
-                        alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'paypal'
+                    },
+                    createOrder: async function(data, actions) {
                         try {
-                            localStorage.removeItem('rui_palace_global_cart');
-                        } catch(e) {}
-                        shoppingCart = [];
-                        updateCartCountBadge();
-                        closeModal();
-                    } else {
-                        alert(currentLang === 'zh' ? '支付捕获遇到问题，请重试。' : 'Payment capture failed.');
+                            const response = await fetch('/api/orders/create', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    items: shoppingCart,
+                                    customer: customerInfo
+                                })
+                            });
+                            const orderData = await response.json();
+                            if (orderData.id) {
+                                return orderData.id;
+                            } else {
+                                throw new Error(orderData.error || 'Init order failed');
+                            }
+                        } catch (err) {
+                            console.error('Create Order Error:', err);
+                            throw err;
+                        }
+                    },
+                    onApprove: async function(data, actions) {
+                        try {
+                            const response = await fetch('/api/orders/capture', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    customer: customerInfo
+                                })
+                            });
+                            const captureData = await response.json();
+                            
+                            if (captureData.status === 'SUCCESS' || captureData.status === 'COMPLETED') {
+                                alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+                                try {
+                                    localStorage.removeItem('rui_palace_global_cart');
+                                } catch(e) {}
+                                shoppingCart = [];
+                                updateCartCountBadge();
+                                closeModal();
+                            } else {
+                                alert(currentLang === 'zh' ? '支付捕获遇到问题，请重试。' : 'Payment capture failed.');
+                            }
+                        } catch (err) {
+                            console.error('Capture Error:', err);
+                            alert(currentLang === 'zh' ? '支付确认失败，请联系客服。' : 'Payment verification failed.');
+                        }
+                    },
+                    onError: function(err) {
+                        console.error('PayPal Error:', err);
+                        alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
                     }
-                },
-                onError: function(err) {
-                    console.error('PayPal Error:', err);
-                    alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
-                }
-            }).render('#paypal-button-container');
+                }).render('#paypal-button-container');
+            }
         }
 
         // Cookie 合规管理
         function checkCookieConsent() {
-            const consent = localStorage.getItem('rui_cookie_consent');
+            const consent = localStorage.getItem('rui_cookie_consent') || localStorage.getItem('rui_palace_cookie_consent');
             if (!consent) {
-                document.getElementById('cookie-consent').style.display = 'flex';
-            } else if (consent === 'all') {
+                const banner = document.getElementById('cookie-consent');
+                if (banner) banner.style.display = 'flex';
+            } else if (consent === 'all' || consent === 'accepted') {
                 cookieConsentGiven = true;
                 loadPayPalSDK();
             }
@@ -1235,8 +1278,10 @@
 
         function acceptCookies(allowAll) {
             localStorage.setItem('rui_cookie_consent', allowAll ? 'all' : 'essential');
+            localStorage.setItem('rui_palace_cookie_consent', allowAll ? 'accepted' : 'rejected');
             cookieConsentGiven = allowAll;
-            document.getElementById('cookie-consent').style.display = 'none';
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'none';
             if (allowAll) {
                 loadPayPalSDK();
             }
@@ -1244,14 +1289,17 @@
 
         function resetCookieConsent() {
             localStorage.removeItem('rui_cookie_consent');
-            document.getElementById('cookie-consent').style.display = 'flex';
+            localStorage.removeItem('rui_palace_cookie_consent');
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'flex';
         }
 
         function loadPayPalSDK() {
             if (document.getElementById('paypal-sdk-script')) return;
             const script = document.createElement('script');
             script.id = 'paypal-sdk-script';
-            script.src = "https://www.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR";
+            const domain = PAYPAL_CONFIG.USE_SANDBOX ? "https://www.sandbox.paypal.com" : "https://www.paypal.com";
+            script.src = `${domain}/sdk/js?client-id=${PAYPAL_CONFIG.CLIENT_ID}&currency=${PAYPAL_CONFIG.CURRENCY}`;
             script.crossOrigin = "anonymous";
             document.head.appendChild(script);
         }
@@ -1306,4 +1354,3 @@
             if (e.key === 'ArrowLeft') prevProduct();
         });
     </script>
-<span data-test-id="pinterest-save-button" style="border-radius:10px !important;text-indent:12px !important;width:auto !important;height:20px !important;padding:0px 8px !important;text-align:center !important;vertical-align:middle !important;font:bold 11px / 20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important;color:rgb(255, 255, 255) !important;background:url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNFNjAwMjMiPjwvY2lyY2xlPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgNkMwIDguNTYxNSAxLjYwNTUgMTAuNzQ4NSAzLjg2NSAxMS42MDlDMy44MSAxMS4xNDA1IDMuNzUxNSAxMC4zNjggMy44Nzc1IDkuODI2QzMuOTg2IDkuMzYgNC41NzggNi44NTcgNC41NzggNi44NTdDNC41NzggNi44NTcgNC4zOTk1IDYuNDk5NSA0LjM5OTUgNS45N0M0LjM5OTUgNS4xNCA0Ljg4MDUgNC41MiA1LjQ4IDQuNTJDNS45OSA0LjUyIDYuMjM2IDQuOTAyNSA2LjIzNiA1LjM2MUM2LjIzNiA1Ljg3MzUgNS45MDk1IDYuNjM5NSA1Ljc0MSA3LjM1QzUuNjAwNSA3Ljk0NDUgNi4wMzk1IDguNDI5NSA2LjYyNTUgOC40Mjk1QzcuNjg3IDguNDI5NSA4LjUwMzUgNy4zMSA4LjUwMzUgNS42OTRDOC41MDM1IDQuMjYzNSA3LjQ3NTUgMy4yNjQgNi4wMDggMy4yNjRDNC4zMDkgMy4yNjQgMy4zMTE1IDQuNTM4NSAzLjMxMTUgNS44NTZDMy4zMTE1IDYuMzY5NSAzLjUwOSA2LjkxOTUgMy43NTYgNy4yMTlDMy44MDQ1IDcuMjc4NSAzLjgxMiA3LjMzIDMuNzk3NSA3LjM5MDVDMy43NTIgNy41Nzk1IDMuNjUxIDcuOTg1IDMuNjMxNSA4LjA2OEMzLjYwNSA4LjE3NyAzLjU0NSA4LjIwMDUgMy40MzE1IDguMTQ3NUMyLjY4NTUgNy44MDA1IDIuMjE5NSA2LjcxIDIuMjE5NSA1LjgzNEMyLjIxOTUgMy45NDk1IDMuNTg4IDIuMjE5NSA2LjE2NTUgMi4yMTk1QzguMjM3NSAyLjIxOTUgOS44NDggMy42OTYgOS44NDggNS42NjlDOS44NDggNy43Mjc1IDguNTUwNSA5LjM4NDUgNi43NDg1IDkuMzg0NUM2LjE0MyA5LjM4NDUgNS41NzQ1IDkuMDY5NSA1LjM3OTUgOC42OThDNS4zNzk1IDguNjk4IDUuMDggOS44MzkgNS4wMDc1IDEwLjExOEM0Ljg2NjUgMTAuNjYgNC40NzU1IDExLjM0NiA0LjIzMyAxMS43MzU1QzQuNzkyIDExLjkwNzUgNS4zODUgMTIgNiAxMkM5LjMxMzUgMTIgMTIgOS4zMTM1IDEyIDZDMTIgMi42ODY1IDkuMzEzNSAwIDYgMEMyLjY4NjUgMCAwIDIuNjg2NSAwIDZaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 4px 50% / 12px 12px no-repeat rgb(230, 0, 35) !important;position:absolute !important;opacity:1 !important;z-index:9007199254740990 !important;display:none !important;cursor:pointer !important;border:none !important;-webkit-font-smoothing:antialiased !important;top:0 !important;left:0 !important;display:none !important;top:482px !important;left:843px !important">Merken</span></body></html>
