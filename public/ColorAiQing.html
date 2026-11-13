@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>艾青 · 仙草正气美学色卡与定制臻藏 | 蕊宫 · RUI PALACE</title>
-    
-    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5&currency=EUR" crossorigin="anonymous"></script>
 
     <style>
         *, *::before, *::after {
@@ -27,6 +24,7 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238DA382' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.15'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             user-select: none;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -85,13 +83,6 @@
             letter-spacing: 0.3em; 
             font-size: 10px; 
             color: #6B8E60; 
-        }
-        .vertical-wing[data-lang="en"] { 
-            writing-mode: vertical-rl; 
-            text-orientation: mixed; 
-            letter-spacing: 0.05em; 
-            font-family: "Times New Roman", Times, serif; 
-            font-size: 9px; 
         }
 
         .lang-switch-btn { 
@@ -240,8 +231,95 @@
             background: #FFFFFF;
         }
     </style>
+
+    <!-- GDPR / TTDSG 隐私 Cookie 弹窗样式 -->
+    <style id="rui-cookie-banner-style">
+        #cookie-consent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        #cookie-consent .modal-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            text-align: left;
+            border: 1px solid rgba(107, 142, 96, 0.3);
+        }
+        #cookie-consent h3 {
+            margin-top: 0;
+            font-size: 1.15rem;
+            color: #171717;
+            margin-bottom: 12px;
+            font-family: serif;
+        }
+        #cookie-consent p {
+            font-size: 0.9rem;
+            color: #525252;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        #cookie-consent .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        #cookie-consent button {
+            padding: 10px 18px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #6B8E60;
+            transition: all 0.3s;
+        }
+        #cookie-consent #reject-btn {
+            background: transparent;
+            color: #525252;
+            border-color: #d4d4d4;
+        }
+        #cookie-consent #reject-btn:hover { background: #f5f5f5; }
+        #cookie-consent #accept-btn { background: #6B8E60; color: white; }
+        #cookie-consent #accept-btn:hover { background: #4A6741; }
+        #cookie-consent .footer-links {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+            text-align: center;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 12px;
+        }
+        #cookie-consent .footer-links a { color: #737373; text-decoration: none; margin: 0 8px; }
+        #cookie-consent .footer-links a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
+
+    <!-- GDPR / TTDSG 弹窗结构 -->
+    <div id="cookie-consent" style="display:none;">
+        <div class="modal-box">
+            <h3 data-zh="Cookie 隐私提示" data-en="Cookie Privacy Preferences" data-lang="en">Cookie Privacy Preferences</h3>
+            <p data-zh="我们使用必要的 Cookie 以确保网站正常运转。如获得您的许可，我们可能会利用可选分析体验提升服务。" data-en="We use essential cookies to provide site functionality. Optional media and scripts require your prior consent under GDPR/TTDSG." data-lang="en">We use essential cookies to provide site functionality. Optional media and scripts require your prior consent under GDPR/TTDSG.</p>
+            <div class="button-group">
+                <button id="reject-btn" onclick="acceptCookies(false)" data-zh="仅保留必要" data-en="Essential Only" data-lang="en">Essential Only</button>
+                <button id="accept-btn" onclick="acceptCookies(true)" data-zh="同意全部" data-en="Accept All" data-lang="en">Accept All</button>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.rui-palace.de/Datenschutz.html" target="_blank" data-zh="隐私政策" data-en="Privacy Policy" data-lang="en">Privacy Policy</a> | 
+                <a href="https://www.rui-palace.de/impressum.html" target="_blank" data-zh="法律声明" data-en="Impressum" data-lang="en">Impressum</a>
+            </div>
+        </div>
+    </div>
 
     <!-- SVG 海棠窗花路径剪切定义 -->
     <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
@@ -254,7 +332,6 @@
 
     <!-- 顶部 Header -->
     <header class="container" style="padding-top: 32px; padding-bottom: 24px; text-align: center; position: relative;">
-        <!-- 左侧翼 -->
         <div class="side-wing-left">
             <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;" onmouseover="this.style.color='#6B8E60'" onmouseout="this.style.color='#a3a3a3'">
                 <span style="font-size:12px;">⇠</span>
@@ -273,7 +350,6 @@
             <p id="main-desc" class="dynamic-text" style="line-height: 1.6;" data-zh="“正气化青，温婉入药。”&lt;br&gt;于药田深处与晨露微凉之间，寻得一抹斩断寒邪、静守本真之风骨。" data-en="“Vital harmony distills into green, while gentle elegance becomes the cure.”&lt;br&gt;Deep within the herb fields and cool morning dew, discovering a botanical spirit that dispels cold and guards true inner purity." data-lang="en">“Vital harmony distills into green, while gentle elegance becomes the cure.”<br>Deep within the herb fields and cool morning dew, discovering a botanical spirit that dispels cold and guards true inner purity.</p>
         </div>
 
-        <!-- 右侧翼：购物车快捷入口与竖排文案 -->
         <div class="side-wing-right">
             <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(107, 142, 96, 0.15); border-color:#6B8E60;">
                 <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
@@ -295,8 +371,8 @@
                 <span class="dynamic-sub" style="font-weight:600; color:#6B8E60; font-size:12px; letter-spacing:0.15em;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="en">HERO COLLECTION · BEGONIA GALLERY</span>
             </div>
 
-            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #171717; letter-spacing:0.05em; margin-bottom: 8px;">Nanyang Mugwort · Green Jasper Bracelet</h2>
-            <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px; max-width:512px;">Mugwort Green &amp; Dewy White Collection</p>
+            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #171717; letter-spacing:0.05em; margin-bottom: 8px;">Nanyang Mugwort</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px; max-width:512px;">Nanyang</p>
 
             <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#6B8E60; font-size:12px; font-family:serif; opacity:0.85;">
                 <span>⇠</span>
@@ -311,7 +387,6 @@
                 <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#6B8E60; border:1px solid rgba(107,142,96,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">❮</button>
                 <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#6B8E60; border:1px solid rgba(107,142,96,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">❯</button>
 
-                <!-- 外边框装饰 -->
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
                         <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#6B8E60" stroke-width="2.5" stroke-linejoin="round"></path>
@@ -319,9 +394,9 @@
                 </div>
 
                 <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#F4F7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
-                    <div id="slider-track" class="slider-track" style="transform: translateX(0%);">
+                    <div id="slider-track" class="slider-track" style="width:100%; height:100%; align-items:center; transform: translateX(0%);">
                         <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
-                            <img src="https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort" alt="南阳艾绿" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort" alt="南阳艾草" style="width:100%; height:100%; object-fit:contain;">
                         </div>
                     </div>
                 </div>
@@ -336,19 +411,19 @@
                         <span id="hero-price" style="font-size: 1.875rem; font-family: serif; font-weight: bold; color: #6B8E60;">€ 89,00</span>
                         <span id="hero-old-price" style="font-size: 12px; color: #a3a3a3; text-decoration: line-through;">€ 189,00</span>
                     </div>
+                    <p style="font-size: 11px; color: #737373; margin-top: 4px;" data-zh="含增值税 | 免运费 (德国及欧盟区域)" data-en="incl. VAT | free shipping (EU)" data-lang="en">incl. VAT | free shipping (EU)</p>
                 </div>
 
-                <!-- 加入购物车按钮 -->
                 <button onclick="addToCart(currentProductIdx)" style="padding: 14px 32px; border-radius: 9999px; background: #6B8E60; color: white; font-size: 12px; letter-spacing: 0.15em; border: none; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 15px -3px rgba(107, 142, 96, 0.4);">
                     <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="en">ADD TO CART / 加入购物车</span>
                     <span style="font-size:14px;">🛒</span>
                 </button>
             </div>
 
-            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.06); width: 100%; max-width: 448px;">
+            <div style="margin-top: 32px; padding-top: 24px; width: 100%; max-width: 448px;">
                 <p style="font-size: 11px; color: #a3a3a3; font-family: serif; margin-bottom: 12px; letter-spacing: 0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
                 <div class="grid-thumbs">
-                    <!-- 动态渲染款式缩略图 (P05 - P08) -->
+                    <!-- 动态生成的缩略图挂载点 -->
                 </div>
             </div>
         </div>
@@ -358,12 +433,14 @@
     <main class="container grid-main" style="padding-top: 16px; padding-bottom: 16px;">
         <!-- 西阁：艾青凝露色卡 -->
         <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(107, 142, 96, 0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px;">
                 <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="西阁 · 艾青凝露色卡" data-en="West Pavilion • Mugwort Palette" data-lang="en">West Pavilion • Mugwort Palette</h3>
                 <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX" data-lang="en">Click block to copy HEX</span>
             </div>
             
-            <div class="grid-colors" id="color-grid"></div>
+            <div class="grid-colors" id="color-grid">
+                <!-- 动态色卡生成 -->
+            </div>
 
             <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #4A6741; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
                 <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">Nanyang Mugwort</p>
@@ -377,7 +454,7 @@
 
         <!-- 东阁：视听与诗词 -->
         <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(107, 142, 96, 0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px;">
                 <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion • Observatory" data-lang="en">East Pavilion • Observatory</h3>
                 <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="仙草流光 · 视听长青" data-en="Herbal Glow &amp; Vision" data-lang="en">Herbal Glow &amp; Vision</span>
             </div>
@@ -416,7 +493,7 @@
         <div style="background: #FFFFFF; border: 1px solid rgba(107, 142, 96, 0.4); border-radius: 16px; padding: 24px; max-width: 480px; width: 90%; margin: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2); color: #262626; max-height: 95vh; overflow-y: auto; text-align: left;">
             <button onclick="closeModal()" style="position: absolute; top: 16px; right: 16px; color: #737373; background: none; border: none; font-size: 18px; cursor: pointer;">✕</button>
             
-            <!-- 第一步：购物车明细与详细邮寄信息表单 -->
+            <!-- 第一步：购物车明细与邮寄地址表单 -->
             <div id="modal-step-form" style="display: block;">
                 <div style="text-align: center; margin-bottom: 16px;">
                     <span style="display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: rgba(107, 142, 96, 0.15); color: #6B8E60; font-size: 14px; line-height: 32px; margin-bottom: 8px;">🛒</span>
@@ -424,7 +501,9 @@
                     <p style="font-size: 12px; color: #737373; margin-top: 4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="en">Please enter your shipping address details</p>
                 </div>
 
-                <div id="cart-items-container" style="margin-bottom: 16px; max-height: 150px; overflow-y: auto; border: 1px solid rgba(107, 142, 96, 0.2); border-radius: 8px; padding: 12px; background: #FAF7F2;"></div>
+                <div id="cart-items-container" style="margin-bottom: 16px; max-height: 150px; overflow-y: auto; border: 1px solid rgba(107, 142, 96, 0.2); border-radius: 8px; padding: 12px; background: #FAF7F2;">
+                    <!-- 动态购物车项 -->
+                </div>
 
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     <div>
@@ -442,7 +521,7 @@
                         </div>
                     </div>
                     <div>
-                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address & House No." data-lang="en">Street Address & House No.</label>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
                         <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
                     </div>
                     <div style="display: flex; gap: 10px;">
@@ -472,7 +551,7 @@
                     <div style="margin-top: 6px; display: flex; align-items: flex-start; gap: 8px;">
                         <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required>
                         <label for="legal-consent" style="font-size: 11px; color: #737373; line-height: 1.4; cursor: pointer;">
-                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms & Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="en">I have read and agree to the Terms & Conditions (AGB) and the 14-day Right of Withdrawal.</span>
+                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="en">I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal.</span>
                         </label>
                     </div>
 
@@ -496,7 +575,6 @@
                     <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="en">Please select payment method</span> (<span id="confirm-price-tag" style="color: #6B8E60; font-weight: bold;">€ 0,00</span>)
                 </p>
 
-                <!-- PayPal 官方 SDK 多合一结算按钮挂载节点 -->
                 <div id="paypal-button-container" style="min-height: 150px; z-index: 0;"></div>
 
                 <button type="button" onclick="backToFormStep()" style="width: 100%; background: transparent; border: none; color: #737373; font-size: 11px; cursor: pointer; margin-top: 12px; text-align: center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="en">⇠ Back to edit info</button>
@@ -511,105 +589,79 @@
             <a href="https://www.rui-palace.de/impressum.html" style="color: inherit; text-decoration: none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="en">Legal Notice (Impressum)</a> 
             <span>|</span> 
             <a href="https://www.rui-palace.de/Datenschutz.html" style="color: inherit; text-decoration: none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="en">Privacy Policy (Datenschutz)</a>
+            <span>|</span>
+            <a href="https://www.rui-palace.de/agb.html" style="color: inherit; text-decoration: none;" data-zh="服务条款 (AGB)" data-en="Terms &amp; Conditions (AGB)" data-lang="en">Terms &amp; Conditions (AGB)</a>
+            <span>|</span>
+            <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color: inherit; text-decoration: none; cursor: pointer;" data-zh="Cookie 设置" data-en="Cookie Settings" data-lang="en">Cookie Settings</a>
         </p>
     </footer>
 
-    <!-- JS 业务逻辑：严格指定艾青系列专属产品数据 (P05 - P08)，避免误读暮山紫产品 -->
+    <!-- JS 业务交互逻辑 -->
     <script>
         let currentLang = 'en';
         let currentProductIdx = 0;
         let isDragging = false;
         let startX = 0;
+        let cookieConsentGiven = false;
 
-        let shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+        let products = [];
+        let shoppingCart = [];
+        let refId = null;
 
-        // 艾青系列专属产品数组 (ID: P05 - P08)
-        const products = [
-            {
-                id: 'P05',
-                title_zh: "南阳艾草 · 高纯原矿艾绿手串",
-                title_en: "Nanyang Mugwort · Green Jasper Bracelet",
-                sub_zh: "南阳艾绿",
-                sub_en: "Nanyang",
-                desc_zh: "“手持艾叶驱寒气，正气存内百邪除。” 精选南阳优质艾草与草木玉石，色泽苍翠温润，佩之清心宁神，辟邪纳福。",
-                desc_en: "“Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.”",
-                price: "€ 89,00",
-                priceNum: 89.00,
-                old_price: "€ 189,00",
-                color_code: "#4A6741",
-                img: "https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort"
-            },
-            {
-                id: 'P06',
-                title_zh: "苍青草色 · 深绿玉髓手串",
-                title_en: "Deep Grass Flora · Chalcedony Bracelet",
-                sub_zh: "苍青草色",
-                sub_en: "Grass Flora",
-                desc_zh: "“绿叶丛中藏仙草，清风徐来药韵长。” 苍青纯净的草木色泽，带来无限生机与内敛宁静。",
-                desc_en: "“Sacred herbs hidden amidst verdant leaves; gentle breeze carries enduring herbal resonance.”",
-                price: "€ 89,00",
-                priceNum: 89.00,
-                old_price: "€ 189,00",
-                color_code: "#6B8E60",
-                img: "https://placehold.co/600x600/6b8e60/ffffff?text=Deep+Grass+Flora"
-            },
-            {
-                id: 'P07',
-                title_zh: "晨露浅草 · 冰透绿幽灵手串",
-                title_en: "Dewy Meadow · Green Phantom Quartz",
-                sub_zh: "晨露浅草",
-                sub_en: "Dewy Meadow",
-                desc_zh: "“晨露凝青如玉润，静守本真待岁长。” 晶体纯净伴随天然草木幽灵，灵动脱俗。",
-                desc_en: "“Morning dew condensing like flawless jade, guarding authentic self through years.”",
-                price: "€ 89,00",
-                priceNum: 89.00,
-                old_price: "€ 189,00",
-                color_code: "#8FA984",
-                img: "https://placehold.co/600x600/8fa984/ffffff?text=Dewy+Meadow"
-            },
-            {
-                id: 'P08',
-                title_zh: "凝露白 · 羊脂白玉髓手串",
-                title_en: "Dewy Alabaster · Chalcedony Bracelet",
-                sub_zh: "凝露白",
-                sub_en: "Alabaster",
-                desc_zh: "“清风拂面晨露散，玉润冰清意自闲。” 如早春晨露般的温润白色玉髓，纯粹清爽。",
-                desc_en: "“Pure alabaster chalcedony capturing the pristine freshness of morning dew.”",
-                price: "€ 89,00",
-                priceNum: 89.00,
-                old_price: "€ 189,00",
-                color_code: "#F0F5EF",
-                img: "https://placehold.co/600x600/f0f5ef/262626?text=Dewy+Alabaster"
+        const PAYPAL_CONFIG = {
+            USE_SANDBOX: false,
+            LIVE_CLIENT_ID: "Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5",
+            SANDBOX_CLIENT_ID: "AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXw_BP8XjA9_xVwU31i3w9qC-Gv9wXvYf123456789abc",
+            CURRENCY: "EUR"
+        };
+
+        function getPayPalSDKUrl() {
+            const isSandbox = PAYPAL_CONFIG.USE_SANDBOX;
+            const clientId = isSandbox ? PAYPAL_CONFIG.SANDBOX_CLIENT_ID : PAYPAL_CONFIG.LIVE_CLIENT_ID;
+            const domain = isSandbox ? "https://www.sandbox.paypal.com" : "https://www.paypal.com";
+            return `${domain}/sdk/js?client-id=${clientId}&currency=${PAYPAL_CONFIG.CURRENCY}`;
+        }
+
+        try {
+            const stored = localStorage.getItem('rui_palace_global_cart');
+            if (stored) shoppingCart = JSON.parse(stored);
+        } catch(e) {
+            shoppingCart = [];
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'rui_palace_global_cart') {
+                try {
+                    shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+                } catch(err) {
+                    shoppingCart = [];
+                }
+                updateCartCountBadge();
+                const modal = document.getElementById('buyModal');
+                if (modal && modal.classList.contains('active')) {
+                    renderCartItems();
+                }
             }
-        ];
+        });
 
-        const colors = [
-            { hex: '#4A6741', name_zh: '南阳艾绿', name_en: 'Nanyang Mugwort' },
-            { hex: '#6B8E60', name_zh: '苍青草色', name_en: 'Deep Grass Flora' },
-            { hex: '#8FA984', name_zh: '晨露浅草', name_en: 'Dewy Meadow' },
-            { hex: '#B2C6A8', name_zh: '薄青云雾', name_en: 'Mist Pale Green' },
-            { hex: '#D6E3CF', name_zh: '初荷凝露', name_en: 'Lotus Condensation' },
-            { hex: '#F0F5EF', name_zh: '凝露白', name_en: 'Dewy Alabaster' }
-        ];
+        window.addEventListener('DOMContentLoaded', async () => {
+            checkCookieConsent();
+            initDragEvents();
 
-        const poetries = [
-            { text_zh: "手持艾叶驱寒气，正气存内百邪除。", text_en: "Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.", source_zh: "—— 医家语", source_en: "— Medical Archives" },
-            { text_zh: "绿叶丛中藏仙草，清风徐来药韵长。", text_en: "Sacred herbs lie hidden amidst verdant leaves; as the gentle breeze arrives, the healing fragrance lingers.", source_zh: "—— 采药人语", source_en: "— Herbalist Whispers" },
-            { text_zh: "晨露凝青如玉润，静守本真待岁长。", text_en: "Morning dew condenses into flawless jade; guard your authentic self quietly through the unfolding years.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" }
-        ];
-
-        window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
+            refId = urlParams.get('ref') || localStorage.getItem('rui_palace_ref_id') || null;
+            if (refId) {
+                try { localStorage.setItem('rui_palace_ref_id', refId); } catch(e) {}
+            }
+
+            await fetchProductsFromDatabase();
+
             if (urlParams.get('lang') === 'zh') {
                 setLanguage('zh');
             } else {
                 setLanguage('en');
             }
 
-            renderThumbs();
-            switchProduct(0);
-            renderGrid();
-            initDragEvents();
             updateCartCountBadge();
 
             const slider = document.getElementById('color-slider');
@@ -637,13 +689,102 @@
             }
         });
 
-        function returnToPrevious() {
-            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
+        async function fetchProductsFromDatabase() {
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                
+                if (data.success && data.products && data.products.length > 0) {
+                    // 🌟 动态切片锁定编号 P05 到 P08（索引 4 到 8）
+                    let rawSlice = data.products.slice(4, 8);
+                    products = rawSlice.map(p => ({
+                        id: p.id,
+                        title_zh: p.name,
+                        title_en: p.subtitle || p.name,
+                        sub_zh: p.short_name || p.name,
+                        sub_en: p.subtitle || p.name,
+                        desc_zh: p.description || '',
+                        desc_en: p.description_EN || p.description || '',
+                        price: `€ ${parseFloat(p.price).toFixed(2).replace('.', ',')}`,
+                        priceNum: parseFloat(p.price),
+                        old_price: `€ ${parseFloat(p.old_price).toFixed(2).replace('.', ',')}`,
+                        color_code: p.color_code || '#6B8E60',
+                        img: p.image_url
+                    }));
+                }
+            } catch (err) {
+                console.warn('后端动态加载失败，启用本地保底数据:', err);
+            }
+
+            if (!products || products.length === 0) {
+                products = [
+                    {
+                        id: 'P05',
+                        title_zh: "南阳艾草 · 高纯原矿艾绿手串",
+                        title_en: "Nanyang Mugwort · Green Jasper Bracelet",
+                        sub_zh: "南阳艾绿",
+                        sub_en: "Nanyang",
+                        desc_zh: "“手持艾叶驱寒气，正气存内百邪除。” 精选南阳优质艾草与草木玉石，色泽苍翠温润，佩之清心宁神，辟邪纳福。",
+                        desc_en: "“Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.”",
+                        price: "€ 89,00",
+                        priceNum: 89.00,
+                        old_price: "€ 189,00",
+                        color_code: "#4A6741",
+                        img: "https://placehold.co/600x600/4a6741/ffffff?text=Nanyang+Mugwort"
+                    },
+                    {
+                        id: 'P06',
+                        title_zh: "苍青草色 · 深绿玉髓手串",
+                        title_en: "Deep Grass Flora · Chalcedony Bracelet",
+                        sub_zh: "苍青草色",
+                        sub_en: "Grass Flora",
+                        desc_zh: "“绿叶丛中藏仙草，清风徐来药韵长。” 苍青纯净的草木色泽，带来无限生机与内敛宁静。",
+                        desc_en: "“Sacred herbs hidden amidst verdant leaves; gentle breeze carries enduring herbal resonance.”",
+                        price: "€ 89,00",
+                        priceNum: 89.00,
+                        old_price: "€ 189,00",
+                        color_code: "#6B8E60",
+                        img: "https://placehold.co/600x600/6b8e60/ffffff?text=Deep+Grass+Flora"
+                    },
+                    {
+                        id: 'P07',
+                        title_zh: "晨露浅草 · 冰透绿幽灵手串",
+                        title_en: "Dewy Meadow · Green Phantom Quartz",
+                        sub_zh: "晨露浅草",
+                        sub_en: "Dewy Meadow",
+                        desc_zh: "“晨露凝青如玉润，静守本真待岁长。” 晶体纯净伴随天然草木幽灵，灵动脱俗。",
+                        desc_en: "“Morning dew condensing like flawless jade, guarding authentic self through years.”",
+                        price: "€ 89,00",
+                        priceNum: 89.00,
+                        old_price: "€ 189,00",
+                        color_code: "#8FA984",
+                        img: "https://placehold.co/600x600/8fa984/ffffff?text=Dewy+Meadow"
+                    },
+                    {
+                        id: 'P08',
+                        title_zh: "凝露白 · 羊脂白玉髓手串",
+                        title_en: "Dewy Alabaster · Chalcedony Bracelet",
+                        sub_zh: "凝露白",
+                        sub_en: "Alabaster",
+                        desc_zh: "“清风拂面晨露散，玉润冰清意自闲。” 如早春晨露般的温润白色玉髓，纯粹清爽。",
+                        desc_en: "“Pure alabaster chalcedony capturing the pristine freshness of morning dew.”",
+                        price: "€ 89,00",
+                        priceNum: 89.00,
+                        old_price: "€ 189,00",
+                        color_code: "#F0F5EF",
+                        img: "https://placehold.co/600x600/f0f5ef/262626?text=Dewy+Alabaster"
+                    }
+                ];
+            }
+
+            renderThumbs();
+            switchProduct(0);
+            renderGrid();
         }
 
         function renderThumbs() {
             const container = document.querySelector('.grid-thumbs');
-            if (!container) return;
+            if (!container || products.length === 0) return;
 
             container.innerHTML = products.map((p, i) => `
                 <div onclick="switchProduct(${i})" id="thumb-${i}" class="product-thumb ${i === 0 ? 'active' : ''}" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
@@ -653,21 +794,47 @@
             `).join('');
         }
 
-        function switchProduct(idx) {
-            currentProductIdx = idx;
+        const colors = [
+            { hex: '#4A6741', name_zh: '南阳艾绿', name_en: 'Nanyang Mugwort' },
+            { hex: '#6B8E60', name_zh: '苍青草色', name_en: 'Deep Grass Flora' },
+            { hex: '#8FA984', name_zh: '晨露浅草', name_en: 'Dewy Meadow' },
+            { hex: '#B2C6A8', name_zh: '薄青云雾', name_en: 'Mist Pale Green' },
+            { hex: '#D6E3CF', name_zh: '初荷凝露', name_en: 'Lotus Condensation' },
+            { hex: '#F0F5EF', name_zh: '凝露白', name_en: 'Dewy Alabaster' }
+        ];
+
+        const poetries = [
+            { text_zh: "手持艾叶驱寒气，正气存内百邪除。", text_en: "Holding mugwort leaves to dispel cold; when vital spirit dwells within, no adversity can breach.", source_zh: "—— 医家语", source_en: "— Medical Archives" },
+            { text_zh: "绿叶丛中藏仙草，清风徐来药韵长。", text_en: "Sacred herbs lie hidden amidst verdant leaves; as the gentle breeze arrives, the healing fragrance lingers.", source_zh: "—— 采药人语", source_en: "— Herbalist Whispers" },
+            { text_zh: "晨露凝青如玉润，静守本真待岁长。", text_en: "Morning dew condenses into flawless jade; guard your authentic self quietly through the unfolding years.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" }
+        ];
+
+        function returnToPrevious() {
+            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
+        }
+
+        function updateSliderPosition() {
             const track = document.getElementById('slider-track');
             if (track) {
-                track.style.transform = `translateX(-${idx * 100}%)`;
+                track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
             }
+        }
+
+        function switchProduct(idx) {
+            if (!products[idx]) return;
+            currentProductIdx = idx;
+            updateSliderPosition();
             updateProductInfo(idx);
         }
 
         function nextProduct() {
+            if (products.length === 0) return;
             currentProductIdx = (currentProductIdx + 1) % products.length;
             switchProduct(currentProductIdx);
         }
 
         function prevProduct() {
+            if (products.length === 0) return;
             currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
             switchProduct(currentProductIdx);
         }
@@ -679,23 +846,28 @@
             });
 
             const p = products[idx];
-            document.getElementById('hero-product-title').innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
-            document.getElementById('hero-product-subtitle').innerText = p.sub_en || p.sub_zh;
+            const titleEl = document.getElementById('hero-product-title');
+            const subTitleEl = document.getElementById('hero-product-subtitle');
             const descEl = document.getElementById('hero-product-desc');
+            const priceEl = document.getElementById('hero-price');
+            const oldPriceEl = document.getElementById('hero-old-price');
+
+            if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
+            if (subTitleEl) subTitleEl.innerText = p.sub_en || p.sub_zh;
             if (descEl) {
                 descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+                descEl.setAttribute('data-lang', currentLang);
             }
-            document.getElementById('hero-price').innerText = p.price;
-            document.getElementById('hero-old-price').innerText = p.old_price;
+            if (priceEl) priceEl.innerText = p.price;
+            if (oldPriceEl) oldPriceEl.innerText = p.old_price || '€ 189,00';
 
             const sliderTrack = document.getElementById('slider-track');
             if (sliderTrack) {
-                sliderTrack.innerHTML = products.map((item, i) => `
-                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(${i})">
-                        <img src="${item.img}" alt="${item.title_zh}" style="width:100%; height:100%; object-fit:contain;">
+                sliderTrack.innerHTML = `
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(${idx})">
+                        <img src="${p.img}" alt="${p.title_zh}" style="width:100%; height:100%; object-fit:contain;">
                     </div>
-                `).join('');
-                sliderTrack.style.transform = `translateX(-${idx * 100}%)`;
+                `;
             }
         }
 
@@ -719,35 +891,47 @@
 
         function updateDynamicPad(idx) {
             const c = colors[idx];
-            document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
-            document.getElementById('dynamic-name').innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
-            document.getElementById('dynamic-hex').innerText = c.hex;
+            const pad = document.getElementById('dynamic-pad');
+            const nameEl = document.getElementById('dynamic-name');
+            const hexEl = document.getElementById('dynamic-hex');
+
+            if (pad) pad.style.backgroundColor = c.hex;
+            if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            if (hexEl) hexEl.innerText = c.hex;
         }
 
         function copyHex() {
-            const hexText = document.getElementById('dynamic-hex').innerText;
-            const tempInput = document.createElement('textarea');
-            tempInput.value = hexText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            const badge = document.getElementById('copy-badge');
-            if(badge) {
-                const originalText = badge.innerText;
-                badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
-                setTimeout(() => { badge.innerText = originalText; }, 1500);
+            const hexText = document.getElementById('dynamic-hex')?.innerText;
+            if (hexText) {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = hexText;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                const badge = document.getElementById('copy-badge');
+                if(badge) {
+                    const originalText = badge.innerText;
+                    badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
+                    setTimeout(() => { badge.innerText = originalText; }, 1500);
+                }
             }
         }
 
-        function setLanguage(lang) {
-            currentLang = lang === 'en' ? 'en' : 'zh';
+        function setLanguage(targetLang) {
+            if (targetLang) {
+                currentLang = targetLang;
+            }
+
             document.querySelectorAll('[data-zh]').forEach(el => {
                 const text = el.getAttribute(`data-${currentLang}`);
-                if (text) el.innerHTML = text;
+                if (text) {
+                    el.innerHTML = text;
+                }
                 el.setAttribute('data-lang', currentLang);
             });
-            updateProductInfo(currentProductIdx);
+
+            switchProduct(currentProductIdx);
             renderGrid();
             const slider = document.getElementById('color-slider');
             if (slider) updateDynamicPad(slider.value);
@@ -757,7 +941,7 @@
         function loadYouTubeVideo() {
             const container = document.getElementById('youtube-container');
             const placeholder = document.getElementById('video-placeholder');
-            if (placeholder) placeholder.style.display = 'none';
+            if (placeholder) { placeholder.style.display = 'none'; }
             if (container) {
                 container.innerHTML = `
                     <iframe style="width: 100%; height: 100%; border: none;" 
@@ -770,25 +954,29 @@
         }
 
         function addToCart(idx) {
+            if (!products[idx]) return;
             const p = products[idx];
-            const itemTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
-            const existingIndex = shoppingCart.findIndex(item => item.title === itemTitle);
-            
+
+            const existingIndex = shoppingCart.findIndex(item => item.id === p.id);
             if (existingIndex > -1) {
                 shoppingCart[existingIndex].quantity += 1;
             } else {
                 shoppingCart.push({
                     id: p.id,
-                    title: itemTitle,
+                    title_zh: p.title_zh,
+                    title_en: p.title_en,
                     priceNum: p.priceNum,
                     priceStr: p.price,
                     quantity: 1
                 });
             }
 
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-            updateCartCountBadge();
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
 
+            updateCartCountBadge();
+            
             const feedbackSpan = document.createElement('div');
             feedbackSpan.style.cssText = 'position:fixed; bottom:30px; right:30px; background:#6B8E60; color:#FFFFFF; padding:10px 20px; border-radius:8px; font-size:12px; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
             feedbackSpan.innerText = currentLang === 'zh' ? '✓ 已成功加入购物车' : '✓ Added to Cart';
@@ -828,10 +1016,12 @@
             shoppingCart.forEach((item, i) => {
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
+                const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
+
                 html += `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(107,142,96,0.2); padding-bottom:6px;">
                         <div>
-                            <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${displayTitle}</p>
                             <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
                         </div>
                         <div style="display:flex; align-items:center; gap:6px;">
@@ -850,15 +1040,21 @@
 
         function changeQuantity(index, delta) {
             shoppingCart[index].quantity += delta;
-            if (shoppingCart[index].quantity <= 0) shoppingCart.splice(index, 1);
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            if (shoppingCart[index].quantity <= 0) {
+                shoppingCart.splice(index, 1);
+            }
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
             updateCartCountBadge();
             renderCartItems();
         }
 
         function removeFromCart(index) {
             shoppingCart.splice(index, 1);
-            localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
             updateCartCountBadge();
             renderCartItems();
         }
@@ -876,7 +1072,7 @@
             const zip = document.getElementById('form-zip').value.trim();
             const city = document.getElementById('form-city').value.trim();
             const wristSelect = document.getElementById('cust-wrist');
-            const wrist = wristSelect.options[wristSelect.selectedIndex].text;
+            const wrist = wristSelect ? wristSelect.options[wristSelect.selectedIndex].text : 'Standard';
             const consentCheckbox = document.getElementById('legal-consent');
 
             if (!name || !email || !phone || !address || !zip || !city) {
@@ -891,26 +1087,32 @@
 
             const notes = document.getElementById('form-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
             let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
-            let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join('<br>');
+            let itemsSummary = shoppingCart.map(item => {
+                const title = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
+                return `${title} (×${item.quantity})`;
+            }).join('<br>');
 
             const box = document.getElementById('confirm-details-box');
-            box.innerHTML = `
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
-                <hr style="border:0; border-top:1px solid rgba(107,142,96,0.2); margin:4px 0;">
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
-                <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
-            `;
+            if (box) {
+                box.innerHTML = `
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
+                    <hr style="border:0; border-top:1px solid rgba(107,142,96,0.2); margin:4px 0;">
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
+                    <div><strong style="color:#6B8E60;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
+                `;
+            }
 
-            document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
+            const priceTag = document.getElementById('confirm-price-tag');
+            if (priceTag) priceTag.innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
 
             document.getElementById('modal-step-form').style.display = 'none';
             document.getElementById('modal-step-confirm').style.display = 'block';
 
-            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes });
+            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes, ref: refId });
         }
 
         function backToFormStep() {
@@ -921,26 +1123,69 @@
         function renderPayPalButtons(totalAmount, customerInfo) {
             const container = document.getElementById('paypal-button-container');
             if (!container) return;
-            container.innerHTML = '';
+            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center; padding-top:20px;">${currentLang === 'zh' ? '正在连接安全支付网关...' : 'Loading secure payment gateway...'}</p>`;
 
-            if (typeof paypal !== 'undefined') {
+            ensurePayPalSDKLoaded(() => {
+                container.innerHTML = '';
+
                 paypal.Buttons({
-                    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-                    createOrder: function(data, actions) {
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'paypal'
+                    },
+                    createOrder: async function(data, actions) {
+                        try {
+                            const response = await fetch('/api/orders/create', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    items: shoppingCart,
+                                    customer: customerInfo
+                                })
+                            });
+                            if (response.ok) {
+                                const orderData = await response.json();
+                                if (orderData.id) return orderData.id;
+                            }
+                        } catch (err) {
+                            console.warn('API /api/orders/create unavailable, fallback to client-side order creation.');
+                        }
+
                         return actions.order.create({
                             purchase_units: [{
-                                description: `Rui Palace - Mugwort Green Order: ${customerInfo.name} (${customerInfo.wrist})`,
-                                amount: { currency_code: 'EUR', value: totalAmount.toFixed(2) }
+                                description: `Rui Palace Order - Mugwort Green: ${customerInfo.name}`,
+                                amount: {
+                                    currency_code: PAYPAL_CONFIG.CURRENCY,
+                                    value: totalAmount.toFixed(2)
+                                }
                             }]
                         });
                     },
-                    onApprove: function(data, actions) {
+                    onApprove: async function(data, actions) {
+                        try {
+                            const response = await fetch('/api/orders/capture', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    customer: customerInfo
+                                })
+                            });
+                            if (response.ok) {
+                                const captureData = await response.json();
+                                if (captureData.status === 'SUCCESS' || captureData.status === 'COMPLETED') {
+                                    handleSuccessPayment();
+                                    return;
+                                }
+                            }
+                        } catch (err) {
+                            console.warn('API /api/orders/capture unavailable, fallback to client-side capture.');
+                        }
+
                         return actions.order.capture().then(function(details) {
-                            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
-                            localStorage.removeItem('rui_palace_global_cart');
-                            shoppingCart = [];
-                            updateCartCountBadge();
-                            closeModal();
+                            handleSuccessPayment();
                         });
                     },
                     onError: function(err) {
@@ -948,14 +1193,83 @@
                         alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
                     }
                 }).render('#paypal-button-container');
+            });
+        }
+
+        function ensurePayPalSDKLoaded(callback) {
+            if (typeof paypal !== 'undefined') {
+                if (callback) callback();
+                return;
             }
+
+            let script = document.getElementById('paypal-sdk-script');
+            if (!script) {
+                script = document.createElement('script');
+                script.id = 'paypal-sdk-script';
+                script.src = getPayPalSDKUrl();
+                script.crossOrigin = "anonymous";
+                script.onload = () => { if (callback) callback(); };
+                script.onerror = () => {
+                    const container = document.getElementById('paypal-button-container');
+                    if (container) {
+                        container.innerHTML = `<p style="color:#6B8E60; font-size:12px; text-align:center;">${currentLang === 'zh' ? 'PayPal 网关加载失败，请检查广告拦截插件。' : 'Failed to load PayPal gateway.'}</p>`;
+                    }
+                };
+                document.head.appendChild(script);
+            } else {
+                const checkTimer = setInterval(() => {
+                    if (typeof paypal !== 'undefined') {
+                        clearInterval(checkTimer);
+                        if (callback) callback();
+                    }
+                }, 150);
+            }
+        }
+
+        function handleSuccessPayment() {
+            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+            try {
+                localStorage.removeItem('rui_palace_global_cart');
+            } catch(e) {}
+            shoppingCart = [];
+            updateCartCountBadge();
+            closeModal();
+        }
+
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('rui_cookie_consent') || localStorage.getItem('rui_palace_cookie_consent');
+            if (!consent) {
+                const banner = document.getElementById('cookie-consent');
+                if (banner) banner.style.display = 'flex';
+            } else if (consent === 'all' || consent === 'accepted') {
+                cookieConsentGiven = true;
+            }
+        }
+
+        function acceptCookies(allowAll) {
+            localStorage.setItem('rui_cookie_consent', allowAll ? 'all' : 'essential');
+            localStorage.setItem('rui_palace_cookie_consent', allowAll ? 'accepted' : 'rejected');
+            cookieConsentGiven = allowAll;
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'none';
+        }
+
+        function resetCookieConsent() {
+            localStorage.removeItem('rui_cookie_consent');
+            localStorage.removeItem('rui_palace_cookie_consent');
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'flex';
         }
 
         function initDragEvents() {
             const track = document.getElementById('slider-track');
             if (!track) return;
             
-            track.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
+            track.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+            });
+
             track.addEventListener('mouseup', (e) => {
                 if (!isDragging) return;
                 isDragging = false;
@@ -963,8 +1277,13 @@
                 if (diffX < -50) nextProduct();
                 else if (diffX > 50) prevProduct();
             });
+
             track.addEventListener('mouseleave', () => { isDragging = false; });
-            track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
             track.addEventListener('touchend', (e) => {
                 const diffX = e.changedTouches[0].clientX - startX;
                 if (diffX < -40) nextProduct();
@@ -973,9 +1292,11 @@
         }
 
         function openLightbox(idx = currentProductIdx) {
+            if (!products[idx]) return;
             const currentImgSrc = products[idx].img;
             const lightbox = document.getElementById('imageLightbox');
             const lightboxImg = document.getElementById('lightbox-img');
+            
             if (lightboxImg) lightboxImg.src = currentImgSrc;
             if (lightbox) lightbox.style.display = 'flex';
         }
