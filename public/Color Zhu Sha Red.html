@@ -224,7 +224,7 @@
             border: 1px solid rgba(192, 57, 43, 0.3);
             border-radius: 8px;
             background: #FAFAFA;
-            color: #262626;
+            color: #;
             outline: none;
         }
         .form-input:focus {
@@ -426,15 +426,15 @@
                 <div class="grid-thumbs">
                     <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#C0392B;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">朱砂红 · Cinnabar</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#;">朱砂红 · Cinnabar</span>
                     </div>
                     <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#962D22;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">宫墙红 · Crimson</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#;">宫墙红 · Crimson</span>
                     </div>
                     <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#D98880;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">胭脂红 · Peach</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#2626;">胭脂红 · Peach</span>
                     </div>
                     <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#B03A2E;"></div>
@@ -740,8 +740,8 @@
                 const data = await res.json();
                 
                 if (data.success && data.products && data.products.length > 25) {
-                    // 🌟 精准锁定编号 P25 到 P28（索引 25 到 29）
-                    let rawSlice = data.products.slice(25, 29);
+                    // 🌟 精准锁定编号 P25 到 P28（索引 25 到 28）
+                    let rawSlice = data.products.slice(25, 28);
                     products = rawSlice.map(p => ({
                         id: p.id,
                         title_zh: p.name,
