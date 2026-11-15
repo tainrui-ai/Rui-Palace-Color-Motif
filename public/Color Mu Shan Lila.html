@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>暮山紫 · 紫陌手链典藏推广 | 蕊宫 · RUI PALACE</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>暮山紫 · 月白无尽夏 | 蕊宫 · RUI PALACE</title>
 
     <style>
         *, *::before, *::after {
@@ -73,6 +73,14 @@
         .side-wing-right { right: 32px; }
         @media (min-width: 1024px) {
             .side-wing-left, .side-wing-right { display: flex; }
+        }
+
+        .vertical-wing { 
+            writing-mode: vertical-rl; 
+            text-orientation: upright; 
+            letter-spacing: 0.3em; 
+            font-size: 10px; 
+            color: #8670A0; 
         }
 
         .lang-switch-btn { 
@@ -159,10 +167,10 @@
             display: flex;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: grab;
+            width: 100%;
+            height: 100%;
         }
-        .slider-track:active {
-            cursor: grabbing;
-        }
+        .slider-track:active { cursor: grabbing; }
 
         .product-thumb {
             cursor: pointer;
@@ -185,22 +193,7 @@
             align-items: center;
             justify-content: center;
         }
-        .modal.active {
-            display: flex;
-        }
-
-        .channel-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border: 1px solid rgba(134, 112, 160, 0.3);
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(246, 243, 250, 0.5));
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .channel-link:hover { border-color: rgba(134, 112, 160, 0.7); transform: translateY(-1px); }
+        .modal.active { display: flex; }
 
         .grid-main {
             display: grid;
@@ -220,7 +213,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-        
+
         .form-input {
             width: 100%; 
             padding: 8px 12px; 
@@ -294,16 +287,9 @@
             color: #525252;
             border-color: #d4d4d4;
         }
-        #cookie-consent #reject-btn:hover {
-            background: #f5f5f5;
-        }
-        #cookie-consent #accept-btn {
-            background: #8670A0;
-            color: white;
-        }
-        #cookie-consent #accept-btn:hover {
-            background: #725C8C;
-        }
+        #cookie-consent #reject-btn:hover { background: #f5f5f5; }
+        #cookie-consent #accept-btn { background: #8670A0; color: white; }
+        #cookie-consent #accept-btn:hover { background: #725C8C; }
         #cookie-consent .footer-links {
             font-size: 0.75rem;
             color: #a3a3a3;
@@ -311,14 +297,8 @@
             border-top: 1px solid #f5f5f5;
             padding-top: 12px;
         }
-        #cookie-consent .footer-links a {
-            color: #737373;
-            text-decoration: none;
-            margin: 0 8px;
-        }
-        #cookie-consent .footer-links a:hover {
-            text-decoration: underline;
-        }
+        #cookie-consent .footer-links a { color: #737373; text-decoration: none; margin: 0 8px; }
+        #cookie-consent .footer-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -339,6 +319,7 @@
         </div>
     </div>
 
+    <!-- 海棠窗花剪切定义 -->
     <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
         <defs>
             <clippath id="begonia-clip" clipPathUnits="objectBoundingBox">
@@ -354,7 +335,9 @@
                 <span style="font-size:12px;">⇠</span>
                 <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="en">RETURN</span>
             </button>
-            <div></div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <span class="vertical-wing" data-zh="" data-en="" data-lang="en"></span>
+            </div>
             <div></div>
         </div>
 
@@ -366,14 +349,15 @@
         </div>
 
         <div class="side-wing-right">
-            <!-- 语言切换与购物车快捷入口 -->
             <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
                 <button onclick="openCartModal()" class="lang-switch-btn" style="display:flex; align-items:center; gap:6px; background:rgba(134, 112, 160, 0.15); border-color:#8670A0;">
                     <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="en">🛒 Cart</span>
                     <span id="cart-count-badge" style="background:#8670A0; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">1</span>
                 </button>
             </div>
-            <div></div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <span class="vertical-wing" data-zh="" data-en="" data-lang="en"></span>
+            </div>
             <div></div>
         </div>
     </header>
@@ -398,15 +382,10 @@
 
             <!-- 海棠花窗交互视口 -->
             <div style="position:relative; width:320px; height:320px; margin:16px 0; display:flex; align-items:center; justify-content:center; user-select:none;">
-                
                 <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(134,112,160,0.2) 0%, transparent 70%); filter:blur(24px);"></div>
 
-                <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">
-                    ❮
-                </button>
-                <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">
-                    ❯
-                </button>
+                <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">❮</button>
+                <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#8670A0; border:1px solid rgba(134, 112, 160, 0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">❯</button>
 
                 <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
                     <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
@@ -415,11 +394,11 @@
                 </div>
 
                 <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
-                    <div id="slider-track" class="slider-track" style="width: 100%; height: 100%; align-items: center; transform: translateX(0%);">
-                        <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
-                            <img src="./暮山紫 · 紫陌手链典藏推广1_files/ffffff" alt="紫陌 · 暮山紫手链" style="width:100%; height:100%; object-fit:contain;">
-                        </div>
+                    <div id="slider-track" class="slider-track" style="width:100%; height:100%; align-items:center; transform: translateX(0%);">
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(0)">
+                        <img src="./暮山紫 · 紫陌手链典藏推广 _ 蕊宫 · RUI PALACE_files/ffffff" alt="紫陌 · 暮山紫手链" style="width:100%; height:100%; object-fit:contain;">
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -434,31 +413,31 @@
                     </div>
                     <p style="font-size: 11px; color: #737373; margin-top: 4px;" data-zh="含增值税 | 免运费 (德国及欧盟区域)" data-en="incl. VAT | free shipping (EU)" data-lang="en">incl. VAT | free shipping (EU)</p>
                 </div>
-                <!-- 加入购物车按钮 -->
                 <button onclick="addToCart(currentProductIdx)" style="padding:14px 32px; border-radius:9999px; background:#8670A0; color:white; font-size:12px; letter-spacing:0.15em; border:none; cursor:pointer; display:flex; align-items:center; gap:12px; box-shadow:0 10px 15px -3px rgba(134, 112, 160, 0.4);">
                     <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="en">ADD TO CART / 加入购物车</span>
                     <span style="font-size:14px;">🛒</span>
                 </button>
             </div>
 
-            <div style="margin-top:32px; padding-top:24px; border-top:none; width:100%; max-width:448px;">
-                <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="en">—— SELECT VARIATION ——</p>
-                <div class="grid-thumbs">
+            <div style="margin-top:32px; padding-top:24px; width:100%; max-width:448px;">
+                <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.05em;" data-zh="—— 点击切换 P01-P04 臻选系列 ——" data-en="—— SELECT VARIATION (P01-P04) ——" data-lang="en">—— SELECT VARIATION (P01-P04) ——</p>
+                <!-- 严格限制在 P01 至 P04 范围的缩略图网格 -->
+                <div class="grid-thumbs" style="grid-template-columns: repeat(4, 1fr);">
                     <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#8670A0;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">紫陌 · silent purple</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">P01 · 紫陌</span>
                     </div>
                     <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#E64A65;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">春几许 · spring sprouts</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">P02 · 春几许</span>
                     </div>
                     <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#ABB4C5;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">紫珑 · purple dragon</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">P03 · 紫珑</span>
                     </div>
                     <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
                         <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:#800020;"></div>
-                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">玉棠 · jade white</span>
+                        <span style="font-size:10px; font-family:serif; display:block; color:#262626;">P04 · 玉棠</span>
                     </div>
                 </div>
             </div>
@@ -527,22 +506,11 @@
                     <div class="play-btn">
                         <span style="font-size:14px; margin-left:2px;">▶</span>
                     </div>
-                    <p class="dynamic-text" style="color:white; font-size:12px; margin-bottom:4px;" data-zh="点击加载东阁影像（将连接至 YouTube）" data-en="Click to load video (YouTube)" data-lang="en">Click to load video (YouTube)</p>
-                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表您同意 Google 的隐私政策" data-en="Loading implies Google privacy consent" data-lang="en">Loading implies Google privacy consent</p>
+                    <p class="dynamic-text" style="color:white; font-size:12px; margin-bottom:4px;" data-zh="点击加载东阁影像（连接至 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="en">Load Craftsmanship Video (YouTube)</p>
+                    <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表同意 Google 隐私政策" data-en="Subject to Google Privacy Policy" data-lang="en">Subject to Google Privacy Policy</p>
                 </div>
                 <div id="youtube-container" style="width:100%; height:100%;"></div>
             </div>
-
-            <a href="https://ruipalacede-ptlkjhiql-tainrui-ais-projects.vercel.app/Color%20Apricot%20Blossom_3.html?lang=en" id="channel-link" class="channel-link">
-                <div style="display:flex; align-items:center; gap:12px;">
-                    <span style="width:8px; height:8px; border-radius:50%; background:#8670A0;"></span>
-                    <div>
-                        <h4 class="dynamic-text" style="font-size:12px; font-weight:600; color:#262626;" data-zh="流转通道：琥珀金流光，寻得本真清光" data-en="Channel Switch: Amber Gold" data-lang="en">Channel Switch: Amber Gold</h4>
-                        <p class="dynamic-text" style="font-size:10px; color:#737373; margin-top:2px;" data-zh="流光不掩本真，岁月沉淀清气" data-en="Time cannot obscure true essence." data-lang="en">Time cannot obscure true essence.</p>
-                    </div>
-                </div>
-                <span style="font-size:12px; color:#8670A0; font-weight:bold;">➔</span>
-            </a>
 
             <div style="padding-top:12px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; min-height:80px;">
                 <div id="poetry-container" style="margin-bottom:8px;">
@@ -558,7 +526,7 @@
     <div id="imageLightbox" class="modal" onclick="closeLightbox()">
         <div style="position:relative; width:100%; height:100%; max-width:1280px; max-height:96vh; display:flex; align-items:center; justify-content:center;" onclick="event.stopPropagation()">
             <button onclick="closeLightbox()" style="position:absolute; top:16px; right:16px; z-index:50; color:white; background:rgba(0,0,0,0.6); border:none; border-radius:50%; width:48px; height:48px; font-size:24px; cursor:pointer;">✕</button>
-            <img id="lightbox-img" src="" alt="手链超清大图" style="max-width:95vw; max-height:92vh; object-fit:contain; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
+            <img id="lightbox-img" src="https://www.rui-palace.de/Color%20Mu%20Shan%20Lila?lang=en" alt="手链超清大图" style="max-width:95vw; max-height:92vh; object-fit:contain; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
         </div>
     </div>
 
@@ -567,7 +535,6 @@
         <div style="background:#FFFFFF; border:1px solid rgba(134, 112, 160, 0.4); border-radius:16px; padding:24px; max-width:480px; width:90%; margin:auto; position:relative; box-shadow:0 25px 50px -12px rgba(134, 112, 160, 0.25); color:#262626; max-height:95vh; overflow-y:auto; text-align:left;">
             <button onclick="closeModal()" style="position:absolute; top:16px; right:16px; color:#737373; background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
             
-            <!-- 第一步：商品清单与详细邮寄信息表单 -->
             <div id="modal-step-form" style="display: block;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(134, 112, 160, 0.15); color:#8670A0; font-size:14px; line-height:32px; margin-bottom:8px;">🛒</span>
@@ -575,42 +542,55 @@
                     <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="en">Please enter your shipping address details</p>
                 </div>
 
-                <div id="cart-items-container" style="margin-bottom:16px; max-height:160px; overflow-y:auto; border:1px solid rgba(134,112,160,0.2); border-radius:8px; padding:12px; background:#FAF7F2;"></div>
+                <div id="cart-items-container" style="margin-bottom:16px; max-height:160px; overflow-y:auto; border:1px solid rgba(134,112,160,0.2); border-radius:8px; padding:12px; background:#FAF7F2;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(134,112,160,0.2); padding-bottom:6px;">
+                        <div>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">Zi Mo · Twilight Purple Bracelet</p>
+                            <p style="font-size:10px; color:#737373;">€ 65,00 × 1</p>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <span style="font-size:12px; color:#8670A0; font-weight:bold;">€ 65,00</span>
+                            <button type="button" onclick="changeQuantity(0, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
+                            <button type="button" onclick="changeQuantity(0, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
+                            <button type="button" onclick="removeFromCart(0)" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
+                        </div>
+                    </div>
+                <div style="text-align:right; font-size:12px; font-weight:bold; color:#8670A0; padding-top:2px;">Total: € 65,00</div></div>
 
                 <div style="display:flex; flex-direction:column; gap:10px;">
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="en">Full Name</label>
-                        <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                        <input type="text" id="form-name" required="" placeholder="e.g. Alice Smith" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="en">Email</label>
-                            <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                            <input type="email" id="form-email" required="" placeholder="name@example.com" class="form-input">
                         </div>
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="en">Phone</label>
-                            <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                            <input type="text" id="form-phone" required="" placeholder="Phone Number" class="form-input">
                         </div>
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="en">Street Address &amp; House No.</label>
-                        <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                        <input type="text" id="form-address" required="" placeholder="e.g. Musterstraße 12" class="form-input">
                     </div>
                     <div style="display:flex; gap:10px;">
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="en">Postal Code</label>
-                            <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                            <input type="text" id="form-zip" required="" placeholder="e.g. 10115" class="form-input">
                         </div>
                         <div style="flex:1;">
                             <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="en">City</label>
-                            <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                            <input type="text" id="form-city" required="" placeholder="e.g. Berlin" class="form-input">
                         </div>
                     </div>
                     <div>
                         <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="en">Wrist Size (cm)</label>
                         <select id="cust-wrist" class="form-input" style="cursor: pointer;">
                             <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                            <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                            <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
                             <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
                             <option value="定制专属尺寸">Custom Size</option>
                         </select>
@@ -621,11 +601,9 @@
                     </div>
                    
                     <div style="margin-top: 6px; display: flex; align-items: flex-start; gap: 8px;">
-                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required>
+                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required="">
                         <label for="legal-consent" style="font-size: 11px; color: #737373; line-height: 1.4; cursor: pointer;">
-                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="en">
-                                I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal.
-                            </span>
+                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="en">I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal.</span>
                         </label>
                     </div>
 
@@ -635,7 +613,6 @@
                 </div>
             </div>
 
-            <!-- 第二步：订单确认预览与官方 PayPal 结算 -->
             <div id="modal-step-confirm" style="display:none;">
                 <div style="text-align:center; margin-bottom:16px;">
                     <span style="display:inline-block; width:32px; height:32px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:32px; margin-bottom:8px;">✓</span>
@@ -656,7 +633,7 @@
         </div>
     </div>
 
-    <!-- 恢复原汁原味小巧典雅的 Footer -->
+    <!-- 页脚 Footer -->
     <footer class="container" style="padding-top:24px; padding-bottom:24px; border-top:1px solid rgba(134, 112, 160, 0.2); display:flex; flex-direction:column; justify-content:space-between; align-items:center; font-size:10px; color:#a3a3a3; gap:8px;">
         <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
         <p style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center;">
@@ -682,15 +659,13 @@
         let shoppingCart = [];
         let refId = null;
 
-        // 🌟 PayPal 环境配置大总管 (在此处自由切换 Sandbox 沙盒测试 或 Live 正式收款)
         const PAYPAL_CONFIG = {
-            USE_SANDBOX: false, // true = 开启沙盒测试模式, false = 线上 Live 正式收款模式
+            USE_SANDBOX: false,
             LIVE_CLIENT_ID: "Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5",
             SANDBOX_CLIENT_ID: "AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXw_BP8XjA9_xVwU31i3w9qC-Gv9wXvYf123456789abc",
             CURRENCY: "EUR"
         };
 
-        // 获取当前环境合规的 SDK URL
         function getPayPalSDKUrl() {
             const isSandbox = PAYPAL_CONFIG.USE_SANDBOX;
             const clientId = isSandbox ? PAYPAL_CONFIG.SANDBOX_CLIENT_ID : PAYPAL_CONFIG.LIVE_CLIENT_ID;
@@ -698,7 +673,6 @@
             return `${domain}/sdk/js?client-id=${clientId}&currency=${PAYPAL_CONFIG.CURRENCY}`;
         }
 
-        // 本地购物车读写
         try {
             const stored = localStorage.getItem('rui_palace_global_cart');
             if (stored) shoppingCart = JSON.parse(stored);
@@ -721,7 +695,6 @@
             }
         });
 
-        // 页面加载启动
         window.addEventListener('DOMContentLoaded', async () => {
             checkCookieConsent();
             initDragEvents();
@@ -767,14 +740,15 @@
             }
         });
 
-        // 对接数据库真实数据
+        // 对接数据库真实数据，并严格切片锁定 P01 到 P04 (索引 0 到 3)
         async function fetchProductsFromDatabase() {
             try {
                 const res = await fetch('/api/products');
                 const data = await res.json();
                 
                 if (data.success && data.products && data.products.length > 0) {
-                    products = data.products.map(p => ({
+                    let rawSlice = data.products.slice(0, 4);
+                    products = rawSlice.map(p => ({
                         id: p.id,
                         title_zh: p.name,
                         title_en: p.subtitle || p.title_zh,
@@ -788,13 +762,74 @@
                         color_code: p.color_code || '#8670A0',
                         img: p.image_url
                     }));
-
-                    renderThumbs();
-                    switchProduct(0);
                 }
             } catch (err) {
-                console.error('无法连接 Supabase 商品后端:', err);
+                console.warn('后端连接失败，启用本地保底 P01-P04 数据:', err);
             }
+
+            if (!products || products.length === 0) {
+                products = [
+                    {
+                        id: "P01",
+                        title_zh: "紫陌 · 暮山紫手链",
+                        title_en: "Zi Mo · Twilight Purple Bracelet",
+                        sub_zh: "P01 · 紫陌",
+                        sub_en: "P01 · Silent Purple",
+                        desc_zh: "“烟光凝而暮山紫，无尽夏开月独白。”\n将东方温润水墨意境融入天然晶石手链，呈献典雅独到的腕间灵光。",
+                        desc_en: "“The evening light condenses into purple mountains, while endless summers bloom in solitary white.”\nInfusing oriental ink poetry into fine natural gemstone bracelets.",
+                        price: "€ 65,00",
+                        priceNum: 65.00,
+                        old_price: "€ 105,00",
+                        color_code: "#8670A0",
+                        img: "https://placehold.co/600x600/8670A0/ffffff?text=P01+Twilight+Purple"
+                    },
+                    {
+                        id: "P02",
+                        title_zh: "春几许 · 春生万物手链",
+                        title_en: "Chun Ji Xu · Spring Sprouts Bracelet",
+                        sub_zh: "P02 · 春几许",
+                        sub_en: "P02 · Spring Sprouts",
+                        desc_zh: "“春城无处不飞花，寒食东风御柳斜。”\n捕捉初春草木萌发时的鲜活生机，将一抹灵动的春意凝聚于腕间。",
+                        desc_en: "“Flowers flutter everywhere in the spring city, while eastern winds bend the royal willows.”\nCapturing the vivid vitality of early spring sprouts.",
+                        price: "€ 69,00",
+                        priceNum: 69.00,
+                        old_price: "€ 110,00",
+                        color_code: "#E64A65",
+                        img: "https://placehold.co/600x600/e64a65/ffffff?text=P02+Spring+Sprouts"
+                    },
+                    {
+                        id: "P03",
+                        title_zh: "紫珑 · 紫罗兰翡翠手链",
+                        title_en: "Zi Long · Purple Dragon Bracelet",
+                        sub_zh: "P03 · 紫珑",
+                        sub_en: "P03 · Purple Dragon",
+                        desc_zh: "“紫气东来蕴灵韵，冰种翡翠润无声。”\n精选优质紫罗兰翡翠，质地细腻温润，散发着低调而高贵的东方典雅气息。",
+                        desc_en: "“Purple Qi comes from the east carrying spiritual rhyme; ice jade whispers in absolute silence.”\nSelected premium lavender jadeite with exquisite texture.",
+                        price: "€ 88,00",
+                        priceNum: 88.00,
+                        old_price: "€ 139,00",
+                        color_code: "#ABB4C5",
+                        img: "https://placehold.co/600x600/abb4c5/ffffff?text=P03+Purple+Dragon"
+                    },
+                    {
+                        id: "P04",
+                        title_zh: "玉棠 · 白玉兰与南红手链",
+                        title_en: "Yu Tang · Jade White Bracelet",
+                        sub_zh: "P04 · 玉棠",
+                        sub_en: "P04 · Jade White",
+                        desc_zh: "“霓裳片片胡椒塞，玉兰花开白如雪。”\n白玉兰的冰清与南红的温润交相辉映，呈现出层次丰富的古典东方美学。",
+                        desc_en: "“Magnolias bloom as pure as snow, echoing the warm resonance of top-grade agate.”\nCombining pristine white chalcedony with rich red accents.",
+                        price: "€ 75,00",
+                        priceNum: 75.00,
+                        old_price: "€ 120,00",
+                        color_code: "#800020",
+                        img: "https://placehold.co/600x600/800020/ffffff?text=P04+Jade+White"
+                    }
+                ];
+            }
+
+            renderThumbs();
+            switchProduct(0);
         }
 
         function renderThumbs() {
@@ -947,9 +982,6 @@
                 el.setAttribute('data-lang', currentLang);
             });
 
-            const channelLink = document.getElementById('channel-link');
-            if (channelLink) channelLink.href = `Color Apricot Blossom_3.html?lang=${currentLang}`;
-
             switchProduct(currentProductIdx);
             renderGrid();
             const slider = document.getElementById('color-slider');
@@ -964,7 +996,7 @@
             if (container) {
                 container.innerHTML = `
                     <iframe style="width:100%; height:100%; border:none;" 
-                            src="https://www.youtube.com/embed/OjbyzAyLodc?autoplay=1" 
+                            src="https://www.youtube-nocookie.com/embed/OjbyzAyLodc?autoplay=1&rel=0&modestbranding=1" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                     </iframe>
@@ -1020,11 +1052,6 @@
             document.getElementById('buyModal')?.classList.remove('active');
         }
 
-        // 兼容原有的 closeCartModal 命名
-        function closeCartModal() {
-            closeModal();
-        }
-
         function renderCartItems() {
             const container = document.getElementById('cart-items-container');
             if (!container) return;
@@ -1040,7 +1067,6 @@
             shoppingCart.forEach((item, i) => {
                 const itemTotal = item.priceNum * item.quantity;
                 grandTotal += itemTotal;
-
                 const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
 
                 html += `
@@ -1145,7 +1171,6 @@
             document.getElementById('modal-step-confirm').style.display = 'none';
         }
 
-        // 🌟 统一的 PayPal 动态加载与渲染函数（支持 sandbox/live 切换及自动回退保底）
         function renderPayPalButtons(totalAmount, customerInfo) {
             const container = document.getElementById('paypal-button-container');
             if (!container) return;
@@ -1179,10 +1204,9 @@
                             console.warn('API /api/orders/create unavailable, fallback to client-side order creation.');
                         }
 
-                        // 保底：纯前端客户端创建订单
                         return actions.order.create({
                             purchase_units: [{
-                                description: `Rui Palace Order - ${customerInfo.name}`,
+                                description: `Rui Palace Order - Mushan Purple: ${customerInfo.name}`,
                                 amount: {
                                     currency_code: PAYPAL_CONFIG.CURRENCY,
                                     value: totalAmount.toFixed(2)
@@ -1211,7 +1235,6 @@
                             console.warn('API /api/orders/capture unavailable, fallback to client-side capture.');
                         }
 
-                        // 保底：纯前端捕获订单
                         return actions.order.capture().then(function(details) {
                             handleSuccessPayment();
                         });
@@ -1264,7 +1287,6 @@
             closeModal();
         }
 
-        // Cookie 合规管理
         function checkCookieConsent() {
             const consent = localStorage.getItem('rui_cookie_consent') || localStorage.getItem('rui_palace_cookie_consent');
             if (!consent) {
@@ -1340,5 +1362,5 @@
             if (e.key === 'ArrowLeft') prevProduct();
         });
     </script>
-</body>
-</html>
+
+</body></html>
