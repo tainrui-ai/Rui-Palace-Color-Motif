@@ -1,1141 +1,1323 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)https://www.rui-palace.de/Color%20Distant%20Mountain?lang=zh -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>远山黛 · 烟岚入画</title>
-    
-    <!-- 引入支持 PayPal, SEPA, 信用/借记卡多合一 SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAV8Y2FrorWZpCQpYeyufuvCb0eZvp_GEVJvRXHs2X2O1nyaXr15HYFMJUhvm_uqbp93D7kZB5LxFcj8I&currency=EUR" data-uid-auto="uid_ssouatnaugsxpiqisooecplgayclnm"></script>
+    <title>远山黛 · 烟岚入画 | 蕊宫 · RUI PALACE</title>
 
-<style>
-    *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body { 
-        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
-        background-color: #F7F9FA; 
-        color: #262626;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234A5D6B' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.12'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
-        background-attachment: fixed;
-        user-select: none;
-    }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Songti SC", "SimSun", Arial, sans-serif; 
+            background-color: #F4F7F6; 
+            color: #262626;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234A5D6B' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.15'%3E%3Cpath d='M30,50 C30,35 45,25 60,25 C75,25 85,35 85,45 C85,55 75,60 65,60 C55,60 50,55 50,50 C50,45 55,40 60,40 C65,40 70,45 70,50 M30,50 C15,50 5,60 5,75 C5,90 20,100 40,100 C60,100 70,90 70,75 C70,68 65,62 60,60 M60,25 C60,10 75,2 90,2 C105,2 115,12 115,25 M115,25 C115,35 105,45 90,45 C80,45 75,38 75,30'/%3E%3Cpath d='M120,130 C120,115 135,105 150,105 C165,105 175,115 175,125 C175,135 165,140 155,140 C145,140 140,135 140,130 C140,125 145,120 150,120 C155,120 160,125 160,130 M120,130 C105,130 95,140 95,155 C95,170 110,180 130,180 M150,105 C150,90 165,82 180,82 M150,140 C135,140 125,150 125,165'/%3E%3Cpath d='M120,50 C120,35 135,25 150,25 C165,25 175,35 175,45 C175,55 165,60 155,60 C145,60 140,55 140,50 C140,45 145,40 150,40 C155,40 160,45 160,50 M120,50 C105,50 95,60 95,75 C95,90 110,100 130,100 M150,25 C150,10 165,2 180,2 M150,60 C135,60 125,70 125,85'/%3E%3Cpath d='M30,130 C30,115 45,105 60,105 C75,105 85,115 85,125 C85,135 75,140 65,140 C55,140 50,135 50,130 C50,125 55,120 60,120 C65,120 70,125 70,130 M30,130 C15,130 5,140 5,155 C5,170 20,180 40,180 M60,105 C60,90 75,82 90,82 M60,140 C45,140 35,150 35,165'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .container {
-        width: 100%;
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px;
-    }
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    .chinese-border { 
-        border: 1px solid rgba(74, 93, 107, 0.18); 
-        outline: 3px double rgba(74, 93, 107, 0.1); 
-        outline-offset: -8px; 
-        background: rgba(255, 255, 255, 0.85); 
-        backdrop-filter: blur(10px);
-        border-radius: 24px;
-        padding: 32px;
-        box-shadow: 0 15px 35px -10px rgba(74, 93, 107, 0.12);
-    }
+        .chinese-border { 
+            border: 1px solid rgba(74, 93, 107, 0.25); 
+            outline: 3px double rgba(74, 93, 107, 0.12); 
+            outline-offset: -8px; 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 15px 35px -10px rgba(74, 93, 107, 0.15);
+        }
 
-    .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
-    .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.05em; font-size: 1.9rem; font-weight: 500; }
+        .dynamic-title { letter-spacing: 0.25em; font-weight: 800; font-size: 2.25rem; color: #171717; margin-bottom: 12px; }
+        .dynamic-title[data-lang="en"] { font-family: "Times New Roman", Times, serif; letter-spacing: 0.05em; font-size: 1.9rem; font-weight: 500; }
 
-    .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #4A5D6B; }
-    .dynamic-sub[data-lang="en"] { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7rem; }
+        .dynamic-sub { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.35em; font-size: 0.75rem; color: #4A5D6B; }
+        .dynamic-sub[data-lang="en"] { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7rem; }
 
-    .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
-    .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
+        .dynamic-text { letter-spacing: 0.12em; font-weight: 300; font-size: 0.875rem; color: #525252; }
+        .dynamic-text[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.02em; font-size: 0.85rem; line-height: 1.6; }
 
-    .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
-    .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
+        .poetry-text-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.15em; line-height: 1.7; color: #404040; font-size: 0.95rem; }
+        .poetry-text-style[data-lang="en"] { font-family: "Times New Roman", Times, serif; font-style: italic; letter-spacing: 0.02em; font-size: 0.88rem; color: #333333; }
 
-    .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
-    .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
+        .poetry-source-style { font-family: "Songti SC", "SimSun", serif; letter-spacing: 0.1em; color: #a3a3a3; font-size: 0.75rem; }
+        .poetry-source-style[data-lang="en"] { font-family: Arial, Helvetica, sans-serif; font-style: normal; letter-spacing: 0.05em; font-size: 0.68rem; color: #737373; }
 
-    .side-wing-left, .side-wing-right {
-        display: none;
-        position: absolute;
-        top: 24px;
-        bottom: 24px;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 20;
-    }
-    .side-wing-left { left: 32px; }
-    .side-wing-right { right: 32px; }
+        .side-wing-left, .side-wing-right {
+            display: none;
+            position: absolute;
+            top: 24px;
+            bottom: 24px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+        }
+        .side-wing-left { left: 32px; }
+        .side-wing-right { right: 32px; }
 
-    @media (min-width: 1024px) {
-        .side-wing-left, .side-wing-right { display: flex; }
-    }
+        @media (min-width: 1024px) {
+            .side-wing-left, .side-wing-right { display: flex; }
+        }
 
-    .lang-switch-btn { 
-        font-family: "Times New Roman", Times, serif; 
-        background: rgba(74, 93, 107, 0.12); 
-        border: 1px solid rgba(74, 93, 107, 0.35); 
-        transition: all 0.3s ease; 
-        letter-spacing: 0.1em; 
-        cursor: pointer; 
-        padding: 6px 16px; 
-        border-radius: 9999px; 
-        font-size: 11px; 
-        color: #4A5D6B; 
-    }
-    .lang-switch-btn:hover { background: #4A5D6B; color: white; border-color: #4A5D6B; }
+        .vertical-wing { 
+            writing-mode: vertical-rl; 
+            text-orientation: upright; 
+            letter-spacing: 0.3em; 
+            font-size: 10px; 
+            color: #4A5D6B; 
+        }
 
-    .color-card {
-        cursor: pointer;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.85);
-        border: 1px solid rgba(74, 93, 107, 0.2);
-        border-radius: 12px;
-        transition: all 0.3s ease;
-    }
-    .color-card:hover {
-        border-color: #4A5D6B;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(74, 93, 107, 0.15);
-    }
-    .color-block {
-        height: 40px;
-        border-radius: 8px;
-        margin-bottom: 6px;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
-    }
+        .lang-switch-btn { 
+            font-family: "Times New Roman", Times, serif; 
+            background: rgba(74, 93, 107, 0.12); 
+            border: 1px solid rgba(74, 93, 107, 0.35); 
+            transition: all 0.3s ease; 
+            letter-spacing: 0.1em; 
+            cursor: pointer; 
+            padding: 6px 16px; 
+            border-radius: 9999px; 
+            font-size: 11px; 
+            color: #384854; 
+        }
+        .lang-switch-btn:hover { background: #4A5D6B; color: white; border-color: #4A5D6B; }
 
-    .video-wrapper {
-        aspect-ratio: 16 / 9;
-        background: rgba(0, 0, 0, 0.05);
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-        border: 1px solid rgba(74, 93, 107, 0.2);
-    }
-    .video-placeholder {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        text-align: center;
-        background: rgba(20, 25, 30, 0.88);
-        cursor: pointer;
-        transition: opacity 0.3s;
-        z-index: 10;
-    }
-    .play-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: #4A5D6B;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        margin-bottom: 8px;
-        box-shadow: 0 2px 10px rgba(74,93,107,0.4);
-        transition: transform 0.3s;
-    }
-    .play-btn:hover { transform: scale(1.1); }
+        .color-card {
+            cursor: pointer;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(74, 93, 107, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .color-card:hover {
+            border-color: #4A5D6B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 93, 107, 0.2);
+        }
+        .color-block {
+            height: 40px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
 
-    .hero-podium {
-        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 240, 243, 0.7) 60%, rgba(210, 222, 230, 0.3) 100%);
-        box-shadow: inset 0 0 30px rgba(74, 93, 107, 0.08), 0 20px 40px -15px rgba(74, 93, 107, 0.15);
-    }
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(74, 93, 107, 0.2);
+        }
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: rgba(20, 25, 30, 0.88);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #4A5D6B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 10px rgba(74, 93, 107, 0.4);
+            transition: transform 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.1); }
 
-    .begonia-window-clip {
-        clip-path: url(#begonia-clip);
-    }
+        .hero-podium {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 246, 0.85) 70%, rgba(230, 238, 242, 0.6) 100%);
+            box-shadow: inset 0 0 30px rgba(74, 93, 107, 0.1), 0 20px 40px -15px rgba(74, 93, 107, 0.15);
+        }
 
-    .slider-track {
-        display: flex;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        cursor: grab;
-    }
-    .slider-track:active { cursor: grabbing; }
+        .begonia-window-clip {
+            clip-path: url(#begonia-clip);
+        }
 
-    .product-thumb {
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-    .product-thumb.active {
-        border-color: #4A5D6B;
-        background: rgba(74, 93, 107, 0.08);
-        transform: scale(1.05);
-    }
+        .slider-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: grab;
+            width: 100%;
+            height: 100%;
+        }
+        .slider-track:active { cursor: grabbing; }
 
-    .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(6px);
-        z-index: 100;
-        align-items: center;
-        justify-content: center;
-    }
-    .modal.active { display: flex; }
+        .product-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .product-thumb.active {
+            border-color: #4A5D6B;
+            background: rgba(74, 93, 107, 0.1);
+            transform: scale(1.05);
+        }
 
-    .grid-main {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    @media (min-width: 1024px) {
-        .grid-main { grid-template-columns: 1fr 1fr; }
-    }
-    .grid-thumbs {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-    }
-    .grid-colors {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active { display: flex; }
 
-    .form-input {
-        width: 100%;
-        padding: 8px 12px;
-        font-size: 12px;
-        border: 1px solid rgba(74, 93, 107, 0.3);
-        border-radius: 8px;
-        background: #FAFAFA;
-        color: #262626;
-        outline: none;
-    }
-    .form-input:focus {
-        border-color: #4A5D6B;
-        background: #FFFFFF;
-    }
-</style>
+        .grid-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        @media (min-width: 1024px) {
+            .grid-main { grid-template-columns: 1fr 1fr; }
+        }
+        .grid-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .grid-colors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
 
-<!-- Cookie 弹窗样式 -->
-<style id="rui-cookie-banner-style">
-    #cookie-consent {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.45);
-        z-index: 99999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    #cookie-consent .modal-box {
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 16px;
-        max-width: 450px;
-        width: 90%;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        text-align: left;
-        border: 1px solid rgba(74, 93, 107, 0.3);
-    }
-    #cookie-consent h3 {
-        margin-top: 0;
-        font-size: 1.15rem;
-        color: #171717;
-        margin-bottom: 12px;
-        font-family: serif;
-    }
-    #cookie-consent p {
-        font-size: 0.9rem;
-        color: #525252;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-    #cookie-consent .button-group {
-        display: flex;
-        gap: 12px;
-        justify-content: flex-end;
-        margin-bottom: 15px;
-    }
-    #cookie-consent button {
-        padding: 10px 18px;
-        font-size: 0.85rem;
-        border-radius: 8px;
-        cursor: pointer;
-        border: 1px solid #4A5D6B;
-        transition: all 0.3s;
-    }
-    #cookie-consent #reject-btn {
-        background: transparent;
-        color: #525252;
-        border-color: #d4d4d4;
-    }
-    #cookie-consent #reject-btn:hover { background: #f5f5f5; }
-    #cookie-consent #accept-btn {
-        background: #4A5D6B;
-        color: white;
-    }
-    #cookie-consent #accept-btn:hover { background: #384854; }
-    #cookie-consent .footer-links {
-        font-size: 0.75rem;
-        color: #a3a3a3;
-        text-align: center;
-        border-top: 1px solid #f5f5f5;
-        padding-top: 12px;
-    }
-    #cookie-consent .footer-links a {
-        color: #737373;
-        text-decoration: none;
-        margin: 0 8px;
-    }
-    #cookie-consent .footer-links a:hover { text-decoration: underline; }
-</style>
+        .form-input {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 12px;
+            border: 1px solid rgba(74, 93, 107, 0.3);
+            border-radius: 8px;
+            background: #FAFAFA;
+            color: #262626;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #4A5D6B;
+            background: #FFFFFF;
+        }
+    </style>
+
+    <!-- GDPR / TTDSG 隐私 Cookie 弹窗样式 -->
+    <style id="rui-cookie-banner-style">
+        #cookie-consent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        #cookie-consent .modal-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            text-align: left;
+            border: 1px solid rgba(74, 93, 107, 0.3);
+        }
+        #cookie-consent h3 {
+            margin-top: 0;
+            font-size: 1.15rem;
+            color: #171717;
+            margin-bottom: 12px;
+            font-family: serif;
+        }
+        #cookie-consent p {
+            font-size: 0.9rem;
+            color: #525252;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        #cookie-consent .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        #cookie-consent button {
+            padding: 10px 18px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #4A5D6B;
+            transition: all 0.3s;
+        }
+        #cookie-consent #reject-btn {
+            background: transparent;
+            color: #525252;
+            border-color: #d4d4d4;
+        }
+        #cookie-consent #reject-btn:hover { background: #f5f5f5; }
+        #cookie-consent #accept-btn { background: #4A5D6B; color: white; }
+        #cookie-consent #accept-btn:hover { background: #384854; }
+        #cookie-consent .footer-links {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+            text-align: center;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 12px;
+        }
+        #cookie-consent .footer-links a { color: #737373; text-decoration: none; margin: 0 8px; }
+        #cookie-consent .footer-links a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
-    <defs>
-        <clippath id="begonia-clip" clipPathUnits="objectBoundingBox">
-            <path d="M 0.5,0.02 C 0.63,0.02 0.71,0.09 0.76,0.22 C 0.89,0.27 0.98,0.36 0.98,0.5 C 0.98,0.64 0.89,0.73 0.76,0.78 C 0.71,0.91 0.63,0.98 0.5,0.98 C 0.37,0.98 0.29,0.91 0.24,0.78 C 0.11,0.73 0.02,0.64 0.02,0.5 C 0.02,0.36 0.11,0.27 0.24,0.22 C 0.29,0.09 0.37,0.02 0.5,0.02 Z"></path>
-        </clippath>
-    </defs>
-</svg>
-
-<!-- 顶部 Header（已去除下边框分割线与竖排文案） -->
-<header style="position:relative; padding-top:32px; padding-bottom:24px; text-align:center;" class="container">
-    <!-- 左侧翼：仅保留归隐按钮 -->
-    <div class="side-wing-left">
-        <button onclick="returnToPrevious()" style="background:transparent; border:0; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;">
-            <span style="font-size:12px;">⇠</span>
-            <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="zh">归隐</span>
-        </button>
-        <div></div>
-        <div></div>
-    </div>
-
-    <h1 id="main-title" class="dynamic-title" data-zh="远山黛 · 烟岚入画" data-en="Distant Mountain &amp; Ink Mist" data-lang="zh">远山黛 · 烟岚入画</h1>
-    <p class="dynamic-sub" style="margin-bottom:12px;" data-zh="DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY" data-en="DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY" data-lang="zh">DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY</p>
-    
-    <div style="max-width:576px; margin:0 auto; padding:0 16px;">
-        <p id="main-desc" class="dynamic-text" style="line-height:1.6;" data-zh="“烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。" data-en="“Where the mountain mist rises, thoughts connect across a thousand autumns.”<br>Deep within the vast indigo haze, glimpsing distant clarity and poetry." data-lang="zh">“烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。</p>
-    </div>
-
-    <!-- 右侧翼：仅保留购物车快捷入口 -->
-    <div class="side-wing-right">
-        <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(74,93,107,0.15); border-color:#4A5D6B;">
-            <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="zh">🛒 购物车</span>
-            <span id="cart-count-badge" style="background:#4A5D6B; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">0</span>
-        </button>
-        <div></div>
-        <div></div>
-    </div>
-</header>
-
-<!-- 核心 Hero 产品展示中心（海棠花窗视口） -->
-<section class="container" style="padding-top:32px; padding-bottom:16px;">
-    <div class="chinese-border hero-podium" style="position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 16px;">
-        
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(74,93,107,0.1); padding:4px 16px; border-radius:9999px; border:1px solid rgba(74,93,107,0.2);">
-            <span style="width:8px; height:8px; border-radius:50%; background:#4A5D6B; display:inline-block;"></span>
-            <span class="dynamic-sub" style="font-weight:600; color:#4A5D6B; font-size:11px;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">臻选主打 · 海棠画廊</span>
-        </div>
-
-        <h2 id="hero-product-title" style="font-size:2rem; font-family:serif; font-weight:bold; color:#262626; margin-bottom:8px;" data-zh="远山黛 · 蓝虎眼青金手串" data-en="Distant Mountain · Indigo Quartz Bracelet" data-lang="zh">远山黛 · 蓝虎眼青金手串</h2>
-        <p id="hero-product-subtitle" class="dynamic-sub" style="color:#737373; margin-bottom:16px;" data-zh="Distant Mountain Indigo Gemstone Bracelet" data-en="Distant Mountain Indigo Gemstone Bracelet" data-lang="zh">Distant Mountain Indigo Gemstone Bracelet</p>
-
-        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#4A5D6B; font-size:11px; font-family:serif;">
-            <span>⇠</span>
-            <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="zh">支持左右滑动 / 点击放大全貌</span>
-            <span>⇢</span>
-        </div>
-
-        <!-- 海棠花窗视口展示区 -->
-        <div style="position:relative; width:360px; height:360px; margin:16px 0; display:flex; align-items:center; justify-content:center;">
-            <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(74,93,107,0.2) 0%, transparent 70%); filter:blur(20px);"></div>
-
-            <button onclick="prevProduct()" style="position:absolute; left:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#4A5D6B; border:1px solid rgba(74,93,107,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="上一个款式">❮</button>
-            <button onclick="nextProduct()" style="position:absolute; right:-20px; z-index:30; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.95); color:#4A5D6B; border:1px solid rgba(74,93,107,0.3); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="下一个款式">❯</button>
-
-            <!-- 外边框装饰 -->
-            <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
-                <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
-                    <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#2D3840" stroke-width="2.5" stroke-linejoin="round"></path>
-                </svg>
+    <!-- GDPR / TTDSG 弹窗结构 -->
+    <div id="cookie-consent" style="display:none;">
+        <div class="modal-box">
+            <h3 data-zh="Cookie 隐私提示" data-en="Cookie Privacy Preferences" data-lang="zh">Cookie 隐私提示</h3>
+            <p data-zh="我们使用必要的 Cookie 以确保网站正常运转。如获得您的许可，我们可能会利用可选分析体验提升服务。" data-en="We use essential cookies to provide site functionality. Optional media and scripts require your prior consent under GDPR/TTDSG." data-lang="zh">我们使用必要的 Cookie 以确保网站正常运转。如获得您的许可，我们可能会利用可选分析体验提升服务。</p>
+            <div class="button-group">
+                <button id="reject-btn" onclick="acceptCookies(false)" data-zh="仅保留必要" data-en="Essential Only" data-lang="zh">仅保留必要</button>
+                <button id="accept-btn" onclick="acceptCookies(true)" data-zh="同意全部" data-en="Accept All" data-lang="zh">同意全部</button>
             </div>
-
-            <div class="begonia-window-clip" style="position:relative; width:94%; height:94%; background:#FAF7F2; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
-                <div id="slider-track" class="slider-track" style="width:100%; height:100%; align-items:center; transform: translateX(0%);">
-                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(0)">
-                        <img src="https://placehold.co/600x600/4a5d6b/ffffff?text=Distant+Mountain+Bracelet" alt="远山黛手链" style="width:100%; height:100%; object-fit:contain;">
-                    </div>
-                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(1)">
-                        <img src="https://placehold.co/600x600/5d7382/ffffff?text=Mist+Gray+Bracelet" alt="烟岚灰手链" style="width:100%; height:100%; object-fit:contain;">
-                    </div>
-                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(2)">
-                        <img src="https://placehold.co/600x600/738999/ffffff?text=Cloud+Indigo+Bracelet" alt="云影黛手链" style="width:100%; height:100%; object-fit:contain;">
-                    </div>
-                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:28px; cursor:pointer;" onclick="openLightbox(3)">
-                        <img src="https://placehold.co/600x600/8fa2b0/ffffff?text=Morning+Mist+Bracelet" alt="晨雾白手链" style="width:100%; height:100%; object-fit:contain;">
-                    </div>
-                </div>
+            <div class="footer-links">
+                <a href="https://www.rui-palace.de/Datenschutz.html" target="_blank" data-zh="隐私政策" data-en="Privacy Policy" data-lang="zh">隐私政策</a> | 
+                <a href="https://www.rui-palace.de/impressum.html" target="_blank" data-zh="法律声明" data-en="Impressum" data-lang="zh">法律声明</a>
             </div>
         </div>
+    </div>
 
-        <p id="hero-product-desc" class="poetry-text-style" style="color:#525252; max-width:620px; margin:16px 0; line-height:1.7;" data-zh="“山色空蒙雨亦奇，黛色千重入望迷。” 精选深海蓝虎眼石与阿富汗帝王青金石, 如远山层峦，定心静气。" data-en="“Deep blue tiger-eye quartz paired with royal lapis lazuli, reflecting distant indigo ranges.”" data-lang="zh">“山色空蒙雨亦奇，黛色千重入望迷。” 精选深海蓝虎眼石与阿富汗帝王青金石, 如远山层峦，定心静气。</p>
+    <!-- SVG 海棠窗花路径剪切定义 -->
+    <svg width="0" height="0" style="position:absolute; display:block;" aria-hidden="true">
+        <defs>
+            <clipPath id="begonia-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,0.02 C 0.63,0.02 0.71,0.09 0.76,0.22 C 0.89,0.27 0.98,0.36 0.98,0.5 C 0.98,0.64 0.89,0.73 0.76,0.78 C 0.71,0.91 0.63,0.98 0.5,0.98 C 0.37,0.98 0.29,0.91 0.24,0.78 C 0.11,0.73 0.02,0.64 0.02,0.5 C 0.02,0.36 0.11,0.27 0.24,0.22 C 0.29,0.09 0.37,0.02 0.5,0.02 Z"></path>
+            </clipPath>
+        </defs>
+    </svg>
 
-        <div style="margin-top:12px; display:flex; flex-direction:column; align-items:center; gap:24px;">
-            <div style="text-align:center;">
-                <span style="font-size:10px; color:#a3a3a3; text-transform:uppercase; letter-spacing:0.1em; display:block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="zh">结缘售价 (含典藏木盒)</span>
-                <div style="display:flex; align-items:baseline; justify-content:center; gap:8px; margin-top:4px;">
-                    <span id="hero-price" style="font-size:1.8rem; font-family:serif; font-weight:bold; color:#4A5D6B;">€ 65,00</span>
-                    <span style="font-size:0.85rem; color:#a3a3a3; text-decoration:line-through;">€ 105,00</span>
-                </div>
-            </div>
-
-            <button onclick="addToCart(currentProductIdx)" style="padding:12px 32px; border-radius:9999px; background:#4A5D6B; color:white; border:none; font-size:0.8rem; letter-spacing:0.15em; cursor:pointer; transition:0.3s; display:flex; align-items:center; gap:10px; box-shadow:0 4px 12px rgba(74,93,107,0.3);" onmouseover="this.style.background='#384854'" onmouseout="this.style.background='#4A5D6B'">
-                <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="zh">加入购物车 / Add to Cart</span>
-                <span style="font-size:14px;">🛒</span>
+    <!-- 顶部 Header -->
+    <header class="container" style="padding-top: 32px; padding-bottom: 24px; text-align: center; position: relative;">
+        <div class="side-wing-left">
+            <button onclick="returnToPrevious()" style="background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; color:#a3a3a3; padding:4px;" onmouseover="this.style.color='#4A5D6B'" onmouseout="this.style.color='#a3a3a3'">
+                <span style="font-size:12px;">⇠</span>
+                <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="zh">归隐</span>
             </button>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <span class="vertical-wing" data-zh="远山含翠 烟岚入画" data-en="DISTANT MOUNTAIN" data-lang="zh">远山含翠 烟岚入画</span>
+            </div>
+            <div></div>
         </div>
 
-        <div style="margin-top:32px; padding-top:20px; border-top:1px solid rgba(0,0,0,0.05); width:100%; max-width:440px;">
-            <p style="font-size:11px; color:#a3a3a3; font-family:serif; margin-bottom:12px; letter-spacing:0.1em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="zh">—— 点击切换同系列款式 ——</p>
-            <div class="grid-thumbs">
-                <div onclick="switchProduct(0)" id="thumb-0" class="product-thumb active" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                    <div style="width:24px; height:24px; margin:0 auto 4px auto; border-radius:50%; background:#4A5D6B;"></div>
-                    <span style="font-size:10px; font-family:serif;" data-zh="远山黛" data-en="Mountain" data-lang="zh">远山黛</span>
+        <h1 id="main-title" class="dynamic-title" data-zh="远山黛 · 烟岚入画" data-en="Distant Mountain &amp; Ink Mist" data-lang="zh">远山黛 · 烟岚入画</h1>
+        <p class="dynamic-sub" style="margin-bottom: 12px;" data-zh="DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY" data-en="DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY" data-lang="zh">DISTANT MOUNTAIN INDIGO &amp; FINE JEWELRY</p>
+        
+        <div style="max-width: 576px; margin: 0 auto; padding: 0 16px;">
+            <p id="main-desc" class="dynamic-text" style="line-height: 1.6;" data-zh="“烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。" data-en="“Where the mountain mist rises, thoughts connect across a thousand autumns.”<br>Deep within the vast indigo haze, glimpsing distant clarity and poetry." data-lang="zh">“烟岚起处，思接千载。”<br>于苍茫黛色中，窥见那层峦叠嶂间的清远与诗意。</p>
+        </div>
+
+        <div class="side-wing-right">
+            <button onclick="openCartModal()" class="lang-switch-btn" style="margin-bottom:8px; display:flex; align-items:center; gap:6px; background:rgba(74, 93, 107, 0.15); border-color:#4A5D6B;">
+                <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="zh">🛒 购物车</span>
+                <span id="cart-count-badge" style="background:#4A5D6B; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">1</span>
+            </button>
+            <button onclick="setLanguage(currentLang === 'zh' ? 'en' : 'zh')" class="lang-switch-btn">
+                <span id="lang-btn-text">EN / 中文</span>
+            </button>
+            <div style="display:flex; flex-direction:column; align-items:center; margin-top:16px;">
+                <span class="vertical-wing" data-zh="东方美学 匠心典藏" data-en="AESTHETIC GALLERY" data-lang="zh">东方美学 匠心典藏</span>
+            </div>
+            <div></div>
+        </div>
+    </header>
+
+    <!-- 核心 Hero 产品展示中心（海棠花窗视口） -->
+    <section class="container" style="padding-top: 32px; padding-bottom: 16px;">
+        <div class="chinese-border hero-podium" style="position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 16px;">
+            
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px; background:rgba(74,93,107,0.12); padding:4px 16px; border-radius:9999px; border:1px solid rgba(74,93,107,0.3);">
+                <span style="width:8px; height:8px; border-radius:50%; background:#4A5D6B; display:inline-block; box-shadow:0 0 8px #4A5D6B;"></span>
+                <span class="dynamic-sub" style="font-weight:600; color:#4A5D6B; font-size:12px; letter-spacing:0.15em;" data-zh="臻选主打 · 海棠画廊" data-en="HERO COLLECTION · BEGONIA GALLERY" data-lang="zh">臻选主打 · 海棠画廊</span>
+            </div>
+
+            <h2 id="hero-product-title" style="font-size: 2rem; font-family: serif; font-weight: bold; color: #171717; letter-spacing:0.05em; margin-bottom: 8px;">远山黛 · 蓝虎眼青金手串</h2>
+            <p id="hero-product-subtitle" class="dynamic-sub" style="color: #737373; margin-bottom: 16px; max-width:512px;">Distant Mountain Indigo Gemstone Bracelet</p>
+
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; color:#4A5D6B; font-size:12px; font-family:serif; opacity:0.85;">
+                <span>⇠</span>
+                <span data-zh="支持左右滑动 / 点击放大全貌" data-en="Slide Left &amp; Right / Click to Enlarge" data-lang="zh">支持左右滑动 / 点击放大全貌</span>
+                <span>⇢</span>
+            </div>
+
+            <!-- 海棠花窗视口展示区 -->
+            <div style="position:relative; width:320px; height:320px; margin:16px 0; display:flex; align-items:center; justify-content:center; user-select:none;">
+                <div style="position:absolute; inset:16px; border-radius:50%; background:radial-gradient(circle, rgba(74,93,107,0.2) 0%, transparent 70%); filter:blur(24px);"></div>
+
+                <button onclick="prevProduct()" style="position:absolute; left:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#4A5D6B; border:1px solid rgba(74,93,107,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Previous">❮</button>
+                <button onclick="nextProduct()" style="position:absolute; right:-12px; z-index:30; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.95); color:#4A5D6B; border:1px solid rgba(74,93,107,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.1);" title="Next">❯</button>
+
+                <div style="position:absolute; inset:0; z-index:20; pointer-events:none;">
+                    <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+                        <path d="M 50,2 C 63,2 71,9 76,22 C 89,27 98,36 98,50 C 98,64 89,73 76,78 C 71,91 63,98 50,98 C 37,98 29,91 24,78 C 11,73 2,64 2,50 C 2,36 11,27 24,22 C 29,9 37,2 50,2 Z" fill="none" stroke="#4A5D6B" stroke-width="2.5" stroke-linejoin="round"></path>
+                    </svg>
                 </div>
-                <div onclick="switchProduct(1)" id="thumb-1" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                    <div style="width:24px; height:24px; margin:0 auto 4px auto; border-radius:50%; background:#5D7382;"></div>
-                    <span style="font-size:10px; font-family:serif;" data-zh="烟岚灰" data-en="Mist" data-lang="zh">烟岚灰</span>
-                </div>
-                <div onclick="switchProduct(2)" id="thumb-2" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                    <div style="width:24px; height:24px; margin:0 auto 4px auto; border-radius:50%; background:#738999;"></div>
-                    <span style="font-size:10px; font-family:serif;" data-zh="云影黛" data-en="Indigo" data-lang="zh">云影黛</span>
-                </div>
-                <div onclick="switchProduct(3)" id="thumb-3" class="product-thumb" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
-                    <div style="width:24px; height:24px; margin:0 auto 4px auto; border-radius:50%; background:#8FA2B0;"></div>
-                    <span style="font-size:10px; font-family:serif;" data-zh="晨雾白" data-en="Dawn" data-lang="zh">晨雾白</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- 辅助展示区域 (双阁布局) -->
-<main class="container grid-main" style="padding:24px 24px 48px 24px;">
-
-    <!-- 左侧：西阁 · 远山黛色卡 -->
-    <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:20px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:12px;">
-            <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="西阁 · 远山黛色卡" data-en="West Pavilion • Mountain Palette" data-lang="zh">西阁 · 远山黛色卡</h3>
-            <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click to copy HEX" data-lang="zh">点击色块复制 HEX</span>
-        </div>
-
-        <div class="grid-colors" id="color-grid">
-            <div onclick="selectGridColor(0)" class="color-card">
-                <div class="color-block" style="background-color:#4A5D6B"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">远山黛</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#4A5D6B</p>
-            </div>
-        
-            <div onclick="selectGridColor(1)" class="color-card">
-                <div class="color-block" style="background-color:#5D7382"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">烟岚灰</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#5D7382</p>
-            </div>
-        
-            <div onclick="selectGridColor(2)" class="color-card">
-                <div class="color-block" style="background-color:#738999"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">云影黛</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#738999</p>
-            </div>
-        
-            <div onclick="selectGridColor(3)" class="color-card">
-                <div class="color-block" style="background-color:#8FA2B0"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">暮色浅</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#8FA2B0</p>
-            </div>
-        
-            <div onclick="selectGridColor(4)" class="color-card">
-                <div class="color-block" style="background-color:#B0C0CC"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">清风隐</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#B0C0CC</p>
-            </div>
-        
-            <div onclick="selectGridColor(5)" class="color-card">
-                <div class="color-block" style="background-color:#D6E0E6"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">晨雾白</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">#D6E0E6</p>
-            </div>
-        </div>
-
-        <div id="dynamic-pad" onclick="copyHex()" style="width:100%; height:64px; border-radius:12px; padding:12px; color:white; cursor:pointer; background:#4A5D6B; display:flex; flex-direction:column; justify-content:space-between; transition:background 0.5s;">
-            <p id="dynamic-name" style="font-family:serif; font-size:12px; font-weight:bold;" data-zh="远山黛" data-en="Distant Mountain" data-lang="zh">远山黛</p>
-            <div style="display:flex; align-items:center; justify-content:space-between;">
-                <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9;">#4A5D6B</p>
-                <span id="copy-badge" style="font-size:8px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.1);" data-zh="点击复制" data-en="CLICK TO COPY" data-lang="zh">点击复制</span>
-            </div>
-        </div>
-        
-        <input type="range" id="color-slider" min="0" max="5" value="0" style="width:100%; height:4px; background:#e5e5e5; border-radius:4px; appearance:none; cursor:pointer;">
-    </section>
-
-    <!-- 右侧：东阁 · 听风听雨观象台 -->
-    <section class="chinese-border" style="display:flex; flex-direction:column; justify-content:space-between; gap:20px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:12px;">
-            <h3 class="dynamic-text" style="font-weight:600; color:#262626; display:flex; align-items:center; gap:8px;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion • Audio Observatory" data-lang="zh">东阁 · 听风听雨观象台</h3>
-            <span class="dynamic-text" style="font-size:10px; color:#a3a3a3;" data-zh="黛色流光 · 视听长青" data-en="Indigo Glow &amp; Vision" data-lang="zh">黛色流光 · 视听长青</span>
-        </div>
-
-        <!-- YouTube 视频安全确认与点击加载遮罩外套 -->
-        <div class="video-wrapper" id="video-wrapper">
-            <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
-                <div class="play-btn">
-                    <span style="font-size:14px; margin-left:2px;">▶</span>
-                </div>
-                <p class="dynamic-text" style="color:white; font-size:12px; margin-bottom:4px;" data-zh="点击加载东阁影像（连接至 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="zh">点击加载东阁影像（连接至 YouTube）</p>
-                <p class="dynamic-text" style="font-size:9px; color:#a3a3a3;" data-zh="加载即代表同意 Google 隐私政策" data-en="Subject to Google Privacy Policy" data-lang="zh">加载即代表同意 Google 隐私政策</p>
-            </div>
-            <div id="youtube-container" style="width:100%; height:100%;"></div>
-        </div>
-
-        <div style="border-top:1px solid rgba(0,0,0,0.05); padding-top:16px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1;">
-            <div id="poetry-container" style="margin-bottom:12px; min-height:60px;">
-                <p id="poetry-text" class="poetry-text-style" data-zh="“山色空蒙雨亦奇，黛色千重入望迷。”" data-en="“The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.”" data-lang="zh">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
-                <p id="poetry-source" class="poetry-source-style" style="text-align:right; margin-top:4px;" data-zh="—— 蕊宫原创" data-en="— Rui Palace Original" data-lang="zh">—— 蕊宫原创</p>
-            </div>
-            <button id="next-poetry" class="dynamic-sub" style="text-align:left; font-weight:500; background:none; border:none; cursor:pointer; padding:0; color:#4A5D6B;" data-zh="感悟下一首诗意 ➔" data-en="Next Verse ➔" data-lang="zh">感悟下一首诗意 ➔</button>
-        </div>
-    </section>
-</main>
-
-<!-- 购物车与统一多步骤结缘模态框 -->
-<div id="buyModal" class="modal">
-    <div style="background:#FFFFFF; border:1px solid rgba(74, 93, 107, 0.4); border-radius:24px; padding:32px 24px; max-width:480px; width:100%; margin:0 16px; position:relative; box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.2); color:#262626; max-height:95vh; overflow-y:auto;">
-        <button onclick="closeModal()" style="position:absolute; top:20px; right:20px; color:#737373; background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
-        
-        <!-- 第一步：购物车明细与详细邮寄地址表单 -->
-        <div id="modal-step-form" style="display:block;">
-            <div style="text-align:center; margin-bottom:16px;">
-                <span style="display:inline-block; width:36px; height:36px; border-radius:50%; background:rgba(74,93,107,0.12); color:#4A5D6B; font-size:14px; line-height:36px; margin-bottom:8px;">🛒</span>
-                <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="【远山黛】您的臻藏购物车" data-en="[Distant Mountain] Your Shopping Cart" data-lang="zh">【远山黛】您的臻藏购物车</h3>
-                <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please provide your contact details &amp; shipping address" data-lang="zh">请详细填写您的联系信息与邮寄地址</p>
-            </div>
-
-            <!-- 购物车商品列表渲染区 -->
-            <div id="cart-items-container" style="margin-bottom:16px; max-height:150px; overflow-y:auto; border:1px solid rgba(74,93,107,0.2); border-radius:8px; padding:12px; background:#FAF7F2;"><p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">购物车还是空的，快去挑选款式吧~</p></div>
-
-            <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-                <div>
-                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="zh">尊姓大名</label>
-                    <input type="text" id="cust-name" required="" class="form-input" placeholder="e.g. Alice Smith">
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系邮箱" data-en="Email" data-lang="zh">联系邮箱</label>
-                        <input type="email" id="cust-email" required="" class="form-input" placeholder="name@example.com">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="联系电话" data-en="Phone" data-lang="zh">联系电话</label>
-                        <input type="text" id="cust-phone" required="" class="form-input" placeholder="Phone Number">
+                <div class="begonia-window-clip" style="position:relative; width:92%; height:92%; background:#F4F7F6; overflow:hidden; z-index:10; display:flex; align-items:center; justify-content:center;">
+                    <div id="slider-track" class="slider-track" style="width:100%; height:100%; align-items:center; transform: translateX(0%);">
+                        <!-- 动态渲染手链轮播图片 -->
                     </div>
                 </div>
-                <div>
-                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street &amp; House No." data-lang="zh">邮寄地址：街道与门牌号</label>
-                    <input type="text" id="cust-street" required="" class="form-input" placeholder="e.g. Musterstraße 12">
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="邮政编码" data-en="Zip Code" data-lang="zh">邮政编码</label>
-                        <input type="text" id="cust-zip" required="" class="form-input" placeholder="e.g. 10115">
+            </div>
+
+            <p id="hero-product-desc" class="poetry-text-style" style="font-size: 0.875rem; color: #525252; max-width: 576px; margin: 16px 0; line-height: 1.7;" data-zh="“山色空蒙雨亦奇，黛色千重入望迷。”<br>精选深海蓝虎眼石与阿富汗帝王青金石，如远山层峦。" data-en="“Deep blue tiger-eye quartz paired with royal lapis lazuli, reflecting distant indigo ranges.”" data-lang="zh">“山色空蒙雨亦奇，黛色千重入望迷。”<br>精选深海蓝虎眼石与阿富汗帝王青金石，如远山层峦。</p>
+
+            <div style="margin-top: 8px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
+                <div style="text-align: center;">
+                    <span style="font-size: 10px; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.1em; display: block;" data-zh="结缘售价 (含典藏木盒)" data-en="SPECIAL PRICE (INCL. BOX)" data-lang="zh">结缘售价 (含典藏木盒)</span>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+                        <span id="hero-price" style="font-size: 1.875rem; font-family: serif; font-weight: bold; color: #4A5D6B;">€ 65,00</span>
+                        <span id="hero-old-price" style="font-size: 12px; color: #a3a3a3; text-decoration: line-through;">€ 105,00</span>
                     </div>
-                    <div style="flex:1;">
-                        <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="城市" data-en="City" data-lang="zh">城市</label>
-                        <input type="text" id="cust-city" required="" class="form-input" placeholder="e.g. Berlin">
-                    </div>
-                </div>
-                <div>
-                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="zh">手围尺寸 (cm)</label>
-                    <select id="cust-wrist" class="form-input" style="cursor:pointer;">
-                        <option value="14.0cm - 15.0cm">14.0cm - 15.0cm</option>
-                        <option value="15.0cm - 16.5cm" selected="">15.0cm - 16.5cm</option>
-                        <option value="16.5cm - 18.0cm">16.5cm - 18.0cm</option>
-                        <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="zh">定制专属尺寸</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="display:block; font-size:12px; color:#525252; margin-bottom:4px;" data-zh="其他备注或礼盒需求" data-en="Special Notes" data-lang="zh">其他备注或礼盒需求</label>
-                    <textarea id="cust-notes" rows="2" class="form-input" style="resize:none;" placeholder="Special requirements or gift box options"></textarea>
+                    <p style="font-size: 11px; color: #737373; margin-top: 4px;" data-zh="含增值税 | 免运费 (德国及欧盟区域)" data-en="incl. VAT | free shipping (EU)" data-lang="zh">含增值税 | 免运费 (德国及欧盟区域)</p>
                 </div>
 
-                <button type="button" onclick="goToConfirmStep()" style="width:100%; padding:12px; margin-top:8px; background:#4A5D6B; color:white; font-size:12px; border-radius:12px; letter-spacing:0.1em; border:none; cursor:pointer; font-weight:bold;">
-                    <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="zh">下一步：确认订单信息 ➔</span>
+                <button onclick="addToCart(currentProductIdx)" style="padding: 14px 32px; border-radius: 9999px; background: #4A5D6B; color: white; font-size: 12px; letter-spacing: 0.15em; border: none; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 15px -3px rgba(74, 93, 107, 0.4);">
+                    <span data-zh="加入购物车 / Add to Cart" data-en="ADD TO CART / 加入购物车" data-lang="zh">加入购物车 / Add to Cart</span>
+                    <span style="font-size:14px;">🛒</span>
                 </button>
             </div>
-        </div>
 
-        <!-- 第二步：订单确认预览与 PayPal 支付 SDK -->
-        <div id="modal-step-confirm" style="display:none;">
-            <div style="text-align:center; margin-bottom:16px;">
-                <span style="display:inline-block; width:36px; height:36px; border-radius:50%; background:rgba(16, 185, 129, 0.2); color:#10B981; font-size:14px; line-height:36px; margin-bottom:8px;">✓</span>
-                <h3 style="font-size:1.125rem; font-family:serif; font-weight:bold; color:#171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="zh">请核对您的订单与地址信息</h3>
-                <p style="font-size:12px; color:#737373; margin-top:4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="zh">确认无误后请选择下方支付方式完成结缘</p>
+            <div style="margin-top: 32px; padding-top: 24px; width: 100%; max-width: 448px;">
+                <p style="font-size: 11px; color: #a3a3a3; font-family: serif; margin-bottom: 12px; letter-spacing: 0.05em;" data-zh="—— 点击切换同系列款式 ——" data-en="—— SELECT VARIATION ——" data-lang="zh">—— 点击切换同系列款式 ——</p>
+                <div class="grid-thumbs">
+                    <!-- 动态渲染缩略图 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 双阁主体布局 -->
+    <main class="container grid-main" style="padding-top: 16px; padding-bottom: 16px;">
+        <!-- 西阁：远山黛色卡 -->
+        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px;">
+                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="西阁 · 远山黛色卡" data-en="West Pavilion • Mountain Palette" data-lang="zh">西阁 · 远山黛色卡</h3>
+                <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="点击色块复制 HEX" data-en="Click block to copy HEX" data-lang="zh">点击色块复制 HEX</span>
+            </div>
+            
+            <div class="grid-colors" id="color-grid">
+                <!-- 动态渲染色块 -->
             </div>
 
-            <div id="confirm-details-box" style="background:#FAF7F2; border:1px solid rgba(74,93,107,0.2); border-radius:8px; padding:12px; font-size:12px; color:#525252; display:flex; flex-direction:column; gap:6px; margin-bottom:16px; max-height:200px; overflow-y:auto; text-align:left;">
-                <!-- 动态填充 -->
+            <div id="dynamic-pad" onclick="copyHex()" style="width: 100%; height: 64px; border-radius: 12px; padding: 12px; color: white; cursor: pointer; position: relative; background-color: #4A5D6B; transition: background-color 0.5s; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0, 0, 0, 0.1);">
+                <p id="dynamic-name" style="font-family:serif; font-size:12px; letter-spacing:0.1em; font-weight:bold;">远山黛</p>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <p id="dynamic-hex" style="font-size:10px; font-family:monospace; opacity:0.9;">#4A5D6B</p>
+                    <span id="copy-badge" style="font-size:9px; border:1px solid rgba(255,255,255,0.4); padding:2px 6px; border-radius:4px; background:rgba(0,0,0,0.2);" data-zh="点击复制" data-en="COPY" data-lang="zh">点击复制</span>
+                </div>
+            </div>
+            <input type="range" id="color-slider" min="0" max="5" value="0" style="width: 100%; height: 4px; background: #e5e5e5; border-radius: 4px; cursor: pointer;">
+        </section>
+
+        <!-- 东阁：视听与诗词 -->
+        <section class="chinese-border" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px;">
+                <h3 class="dynamic-text" style="font-weight: 600; color: #262626; display: flex; align-items: center; gap: 8px;" data-zh="东阁 · 听风听雨观象台" data-en="East Pavilion • Observatory" data-lang="zh">东阁 · 听风听雨观象台</h3>
+                <span class="dynamic-text" style="font-size: 12px; color: #a3a3a3;" data-zh="黛色流光 · 视听长青" data-en="Indigo Glow &amp; Vision" data-lang="zh">黛色流光 · 视听长青</span>
             </div>
 
-            <p style="text-align:center; font-size:11px; color:#737373; margin-bottom:12px;">
-                <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="zh">请选择支付结算方式</span> (<span id="confirm-price-tag" style="color:#4A5D6B; font-weight:bold;">€ 0,00</span>)
-            </p>
+            <div class="video-wrapper" id="video-wrapper">
+                <div id="video-placeholder" class="video-placeholder" onclick="loadYouTubeVideo()">
+                    <div class="play-btn">
+                        <span style="font-size: 14px; margin-left: 2px;">▶</span>
+                    </div>
+                    <p class="dynamic-text" style="color: white; font-size: 12px; margin-bottom: 4px;" data-zh="点击加载东阁影像（连接至 YouTube）" data-en="Load Craftsmanship Video (YouTube)" data-lang="zh">点击加载东阁影像（连接至 YouTube）</p>
+                    <p class="dynamic-text" style="font-size: 9px; color: #a3a3a3;" data-zh="加载即代表同意 Google 隐私政策" data-en="Subject to Google Privacy Policy" data-lang="zh">加载即代表同意 Google 隐私政策</p>
+                </div>
+                <div id="youtube-container" style="width: 100%; height: 100%;"></div>
+            </div>
 
-            <div id="paypal-button-container" style="min-height:150px; z-index:0;"></div>
+            <div style="padding-top: 12px; border-top: 1px solid rgba(74, 93, 107, 0.2); display: flex; flex-direction: column; justify-content: space-between; min-height: 80px;">
+                <div id="poetry-container" style="margin-bottom: 8px;">
+                    <p id="poetry-text" class="poetry-text-style" style="font-size: 12px;" data-zh="“山色空蒙雨亦奇，黛色千重入望迷。”" data-en="“The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.”" data-lang="zh">“山色空蒙雨亦奇，黛色千重入望迷。”</p>
+                    <p id="poetry-source" class="poetry-source-style" style="text-align: right; margin-top: 4px;" data-zh="—— 蕊宫原创" data-en="— Rui Palace Original" data-lang="zh">—— 蕊宫原创</p>
+                </div>
+                <button id="next-poetry" class="dynamic-sub" style="text-align: left; font-weight: 500; background: transparent; border: 0; cursor: pointer; padding: 0; color: #4A5D6B; font-size: 11px;" data-zh="换一首诗 ➔" data-en="Next Verse ➔" data-lang="zh">换一首诗 ➔</button>
+            </div>
+        </section>
+    </main>
 
-            <button type="button" onclick="backToFormStep()" style="width:100%; background:transparent; border:none; color:#737373; font-size:11px; cursor:pointer; margin-top:12px; text-align:center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="zh">⇠ 返回修改填写信息</button>
+    <!-- 灯箱弹窗 -->
+    <div id="imageLightbox" class="modal" onclick="closeLightbox()">
+        <div style="position: relative; width: 100%; height: 100%; max-width: 1280px; max-height: 96vh; display: flex; align-items: center; justify-content: center;" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" style="position: absolute; top: 16px; right: 16px; z-index: 50; color: white; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 24px; cursor: pointer;">✕</button>
+            <img id="lightbox-img" src="" alt="手链超清大图" style="max-width: 95vw; max-height: 92vh; object-fit: contain; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15);">
         </div>
     </div>
-</div>
 
-<!-- 超高清图片灯箱 -->
-<div id="imageLightbox" style="display:none; position:fixed; inset:0; z-index:150; background:rgba(0,0,0,0.9); backdrop-filter:blur(10px); align-items:center; justify-content:center; padding:16px; cursor:pointer;" onclick="closeLightbox()">
-    <div style="position:relative; width:100%; height:100%; max-width:1200px; max-height:92vh; display:flex; align-items:center; justify-content:center;" onclick="event.stopPropagation()">
-        <button onclick="closeLightbox()" style="position:absolute; top:10px; right:10px; z-index:50; color:white; background:rgba(0,0,0,0.6); border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
-        <img id="lightbox-img" src="" alt="手链超清大图" style="max-width:95vw; max-height:90vh; object-fit:contain; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
+    <!-- 购物车与统一结算 Modal 弹窗 -->
+    <div id="buyModal" class="modal" onclick="event.stopPropagation()">
+        <div style="background: #FFFFFF; border: 1px solid rgba(74, 93, 107, 0.4); border-radius: 16px; padding: 24px; max-width: 480px; width: 90%; margin: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2); color: #262626; max-height: 95vh; overflow-y: auto; text-align: left;">
+            <button onclick="closeModal()" style="position: absolute; top: 16px; right: 16px; color: #737373; background: none; border: none; font-size: 18px; cursor: pointer;">✕</button>
+            
+            <!-- 第一步：购物车明细与邮寄地址表单 -->
+            <div id="modal-step-form" style="display: block;">
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <span style="display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: rgba(74, 93, 107, 0.15); color: #4A5D6B; font-size: 14px; line-height: 32px; margin-bottom: 8px;">🛒</span>
+                    <h3 style="font-size: 1.125rem; font-family: serif; font-weight: bold; color: #171717;" data-zh="【蕊宫】您的臻藏购物车" data-en="[Rui Palace] Your Shopping Cart" data-lang="zh">【蕊宫】您的臻藏购物车</h3>
+                    <p style="font-size: 12px; color: #737373; margin-top: 4px;" data-zh="请详细填写您的联系信息与邮寄地址" data-en="Please enter your shipping address details" data-lang="zh">请详细填写您的联系信息与邮寄地址</p>
+                </div>
+
+                <div id="cart-items-container" style="margin-bottom: 16px; max-height: 150px; overflow-y: auto; border: 1px solid rgba(74, 93, 107, 0.2); border-radius: 8px; padding: 12px; background: #FAF7F2;">
+                    <!-- 动态渲染购物车条目 -->
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="尊姓大名" data-en="Full Name" data-lang="zh">尊姓大名</label>
+                        <input type="text" id="form-name" required placeholder="e.g. Alice Smith" class="form-input">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系邮箱" data-en="Email" data-lang="zh">联系邮箱</label>
+                            <input type="email" id="form-email" required placeholder="name@example.com" class="form-input">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="联系电话" data-en="Phone" data-lang="zh">联系电话</label>
+                            <input type="text" id="form-phone" required placeholder="Phone Number" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮寄地址：街道与门牌号" data-en="Street Address &amp; House No." data-lang="zh">邮寄地址：街道与门牌号</label>
+                        <input type="text" id="form-address" required placeholder="e.g. Musterstraße 12" class="form-input">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="邮政编码" data-en="Postal Code" data-lang="zh">邮政编码</label>
+                            <input type="text" id="form-zip" required placeholder="e.g. 10115" class="form-input">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="城市" data-en="City" data-lang="zh">城市</label>
+                            <input type="text" id="form-city" required placeholder="e.g. Berlin" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="手围尺寸 (cm)" data-en="Wrist Size (cm)" data-lang="zh">手围尺寸 (cm)</label>
+                        <select id="cust-wrist" class="form-input" style="cursor: pointer;">
+                            <option value="13.0cm - 14.5cm">13.0cm - 14.5cm</option>
+                            <option value="15.0cm - 16.5cm" selected>15.0cm - 16.5cm</option>
+                            <option value="17.0cm - 18.5cm">17.0cm - 18.5cm</option>
+                            <option value="定制专属尺寸" data-zh="定制专属尺寸" data-en="Custom Size" data-lang="zh">定制专属尺寸</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 12px; color: #525252; margin-bottom: 4px;" data-zh="其他备注或礼盒需求" data-en="Notes" data-lang="zh">其他备注或礼盒需求</label>
+                        <textarea id="form-notes" rows="2" placeholder="Special requirements or gift box options" class="form-input"></textarea>
+                    </div>
+
+                    <div style="margin-top: 6px; display: flex; align-items: flex-start; gap: 8px;">
+                        <input type="checkbox" id="legal-consent" style="margin-top: 3px; cursor: pointer;" required>
+                        <label for="legal-consent" style="font-size: 11px; color: #737373; line-height: 1.4; cursor: pointer;">
+                            <span data-zh="我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。" data-en="I have read and agree to the Terms &amp; Conditions (AGB) and the 14-day Right of Withdrawal." data-lang="zh">我已阅读并同意通用商业条款 (AGB) 与 14 天退货撤回权。</span>
+                        </label>
+                    </div>
+
+                    <button type="button" onclick="goToConfirmStep()" style="width: 100%; padding: 12px; margin-top: 8px; background: #4A5D6B; color: white; font-size: 12px; border-radius: 12px; letter-spacing: 0.1em; border: none; cursor: pointer; font-weight: bold;">
+                        <span data-zh="下一步：确认订单信息 ➔" data-en="Next: Confirm Order ➔" data-lang="zh">下一步：确认订单信息 ➔</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 第二步：订单确认预览与官方 PayPal 结算 SDK -->
+            <div id="modal-step-confirm" style="display: none;">
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <span style="display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: #10B981; font-size: 14px; line-height: 32px; margin-bottom: 8px;">✓</span>
+                    <h3 style="font-size: 1.125rem; font-family: serif; font-weight: bold; color: #171717;" data-zh="请核对您的订单与地址信息" data-en="Please Confirm Order Details" data-lang="zh">请核对您的订单与地址信息</h3>
+                    <p style="font-size: 12px; color: #737373; margin-top: 4px;" data-zh="确认无误后请选择下方支付方式完成结缘" data-en="Select payment method below after review" data-lang="zh">确认无误后请选择下方支付方式完成结缘</p>
+                </div>
+
+                <div id="confirm-details-box" style="background: #FAF7F2; border: 1px solid rgba(74, 93, 107, 0.2); border-radius: 8px; padding: 12px; font-size: 12px; color: #525252; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; max-height: 180px; overflow-y: auto;"></div>
+
+                <p style="text-align: center; font-size: 11px; color: #737373; margin-bottom: 12px;">
+                    <span data-zh="请选择支付结算方式" data-en="Please select payment method" data-lang="zh">请选择支付结算方式</span> (<span id="confirm-price-tag" style="color: #4A5D6B; font-weight: bold;">€ 0,00</span>)
+                </p>
+
+                <div id="paypal-button-container" style="min-height: 150px; z-index: 0;"></div>
+
+                <button type="button" onclick="backToFormStep()" style="width: 100%; background: transparent; border: none; color: #737373; font-size: 11px; cursor: pointer; margin-top: 12px; text-align: center;" data-zh="⇠ 返回修改填写信息" data-en="⇠ Back to edit info" data-lang="zh">⇠ 返回修改填写信息</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- 页脚 Footer（已去除顶部上边框横线） -->
-<footer class="container" style="padding:24px; display:flex; flex-direction:column; justify-content:space-between; align-items:center; font-size:10px; color:#a3a3a3; gap:8px;">
-    <p>© 2026 蕊宫 - <span style="font-family:monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
-    <p style="display:flex; gap:6px;">
-        <a href="https://www.rui-palace.de/impressum.html?lang=zh" style="color:inherit; text-decoration:none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="zh">法律声明 (Impressum)</a> 
-        <span>|</span> 
-        <a href="https://www.rui-palace.de/Datenschutz.html?lang=zh" style="color:inherit; text-decoration:none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="zh">隐私政策 (Datenschutz)</a>
-    </p>
-    <span style="margin-left:10px;"> | <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color:inherit; text-decoration:none; cursor:pointer;">Cookie-Einstellungen</a></span>
-</footer>
+    <!-- 页脚 Footer -->
+    <footer class="container" style="padding-top: 24px; padding-bottom: 24px; border-top: 1px solid rgba(74, 93, 107, 0.2); display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 10px; color: #a3a3a3; gap: 8px;">
+        <p>© 2026 蕊宫 - <span style="font-family: monospace;">Rui Palace. All rights reserved.</span> 保持纯粹，珍藏人性。</p>
+        <p style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <a href="https://www.rui-palace.de/impressum.html" style="color: inherit; text-decoration: none;" data-zh="法律声明 (Impressum)" data-en="Legal Notice (Impressum)" data-lang="zh">法律声明 (Impressum)</a> 
+            <span>|</span> 
+            <a href="https://www.rui-palace.de/Datenschutz.html" style="color: inherit; text-decoration: none;" data-zh="隐私政策 (Datenschutz)" data-en="Privacy Policy (Datenschutz)" data-lang="zh">隐私政策 (Datenschutz)</a>
+            <span>|</span>
+            <a href="https://www.rui-palace.de/agb.html" style="color: inherit; text-decoration: none;" data-zh="服务条款 (AGB)" data-en="Terms &amp; Conditions (AGB)" data-lang="zh">服务条款 (AGB)</a>
+            <span>|</span>
+            <a href="javascript:void(0);" onclick="resetCookieConsent()" style="color: inherit; text-decoration: none; cursor: pointer;" data-zh="Cookie 设置" data-en="Cookie Settings" data-lang="zh">Cookie 设置</a>
+        </p>
+    </footer>
 
-<!-- JS 业务交互逻辑 -->
-<script>
-    let currentLang = 'en'; // 默认英文
-    let currentProductIdx = 0;
-    let isDragging = false;
-    let startX = 0;
+    <!-- JS 业务交互逻辑 -->
+    <script>
+        let currentLang = 'zh';
+        let currentProductIdx = 0;
+        let isDragging = false;
+        let startX = 0;
+        let cookieConsentGiven = false;
 
-    // 全局统一购物车存储键 rui_palace_global_cart
-    let shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+        let products = [];
+        let shoppingCart = [];
+        let refId = null;
 
-    // 监听跨页面购物车数据同步
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'rui_palace_global_cart') {
-            shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+        const PAYPAL_CONFIG = {
+            USE_SANDBOX: false,
+            LIVE_CLIENT_ID: "Aclf2IB7gzDSCNGD2iojcV-uxdTi3O9UP05As4Jk51Q06msrzEfAGeOnRSM79uJrIVgtbArUnm5EAwm5",
+            SANDBOX_CLIENT_ID: "AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXw_BP8XjA9_xVwU31i3w9qC-Gv9wXvYf123456789abc",
+            CURRENCY: "EUR"
+        };
+
+        function getPayPalSDKUrl() {
+            const isSandbox = PAYPAL_CONFIG.USE_SANDBOX;
+            const clientId = isSandbox ? PAYPAL_CONFIG.SANDBOX_CLIENT_ID : PAYPAL_CONFIG.LIVE_CLIENT_ID;
+            const domain = isSandbox ? "https://www.sandbox.paypal.com" : "https://www.paypal.com";
+            return `${domain}/sdk/js?client-id=${clientId}&currency=${PAYPAL_CONFIG.CURRENCY}`;
+        }
+
+        try {
+            const stored = localStorage.getItem('rui_palace_global_cart');
+            if (stored) shoppingCart = JSON.parse(stored);
+        } catch(e) {
+            shoppingCart = [];
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'rui_palace_global_cart') {
+                try {
+                    shoppingCart = JSON.parse(localStorage.getItem('rui_palace_global_cart')) || [];
+                } catch(err) {
+                    shoppingCart = [];
+                }
+                updateCartCountBadge();
+                const modal = document.getElementById('buyModal');
+                if (modal && modal.classList.contains('active')) {
+                    renderCartItems();
+                }
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            checkCookieConsent();
+            initDragEvents();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            refId = urlParams.get('ref') || localStorage.getItem('rui_palace_ref_id') || null;
+            if (refId) {
+                try { localStorage.setItem('rui_palace_ref_id', refId); } catch(e) {}
+            }
+
+            await fetchProductsFromDatabase();
+
+            if (urlParams.get('lang') === 'en') {
+                setLanguage('en');
+            } else {
+                setLanguage('zh');
+            }
+
             updateCartCountBadge();
-            const modal = document.getElementById('buyModal');
-            if (modal && modal.classList.contains('active')) {
-                renderCartItems();
+
+            const slider = document.getElementById('color-slider');
+            if (slider) {
+                slider.oninput = function() { updateDynamicPad(this.value); };
             }
-        }
-    });
 
-    const products = [
-        {
-            title_zh: "远山黛 · 蓝虎眼青金手串",
-            title_en: "Distant Mountain · Indigo Quartz Bracelet",
-            sub_zh: "Distant Mountain Indigo Gemstone Bracelet",
-            sub_en: "Distant Mountain Indigo Gemstone Bracelet",
-            desc_zh: "“山色空蒙雨亦奇，黛色千重入望迷。” 精选深海蓝虎眼石与阿富汗帝王青金石, 如远山层峦，定心静气。",
-            desc_en: "&ldquo;Deep blue tiger-eye quartz paired with royal lapis lazuli, reflecting distant indigo ranges.&rdquo;",
-            price: "€ 65,00",
-            img: "https://placehold.co/600x600/4a5d6b/ffffff?text=Distant+Mountain+Bracelet"
-        },
-        {
-            title_zh: "烟岚灰 · 海蓝宝手串",
-            title_en: "Mist Gray · Aquamarine Bracelet",
-            sub_zh: "Mist Gray Aquamarine Gemstone Bracelet",
-            sub_en: "Mist Gray Aquamarine Gemstone Bracelet",
-            desc_zh: "“烟岚微茫水波澄，云深不知归何处。” 冰种灰蓝海蓝宝，澄澈净透，宛若远山晨雾。",
-            desc_en: "&ldquo;Clear icy aquamarine reflecting morning mist among tranquil hills.&rdquo;",
-            price: "€ 58,00",
-            img: "https://placehold.co/600x600/5d7382/ffffff?text=Mist+Gray+Bracelet"
-        },
-        {
-            title_zh: "云影黛 · 蓝月光石手串",
-            title_en: "Cloud Indigo · Moonstone Bracelet",
-            sub_zh: "Cloud Indigo Moonstone Gemstone Bracelet",
-            sub_en: "Cloud Indigo Moonstone Gemstone Bracelet",
-            desc_zh: "“云破月来花弄影，清辉冷艳透心脾。” 强蓝光天然月光石搭配冰青玉，微光隐隐。",
-            desc_en: "&ldquo;Moonlight shining through mountain clouds, bringing quiet wisdom.&rdquo;",
-            price: "€ 72,00",
-            img: "https://placehold.co/600x600/738999/ffffff?text=Cloud+Indigo+Bracelet"
-        },
-        {
-            title_zh: "晨雾白 · 和田青白玉手串",
-            title_en: "Morning Mist · Hetian Jade Bracelet",
-            sub_zh: "Morning Mist Hetian Jade Gemstone Bracelet",
-            sub_en: "Morning Mist Hetian Jade Gemstone Bracelet",
-            desc_zh: "“清风拂面晨雾散，玉润冰清意自闲。” 天然温润和田青白玉，沉稳温润，清心养气。",
-            desc_en: "&ldquo;Smooth Hetian jade with cool luster, fostering serene mindfulness.&rdquo;",
-            price: "€ 78,00",
-            img: "https://placehold.co/600x600/8fa2b0/ffffff?text=Morning+Mist+Bracelet"
-        }
-    ];
-
-    const colors = [
-        { hex: '#4A5D6B', name_zh: '远山黛', name_en: 'Distant Mountain' },
-        { hex: '#5D7382', name_zh: '烟岚灰', name_en: 'Mist Gray' },
-        { hex: '#738999', name_zh: '云影黛', name_en: 'Cloud Indigo' },
-        { hex: '#8FA2B0', name_zh: '暮色浅', name_en: 'Pale Twilight' },
-        { hex: '#B0C0CC', name_zh: '清风隐', name_en: 'Hidden Breeze' },
-        { hex: '#D6E0E6', name_zh: '晨雾白', name_en: 'Morning Mist' }
-    ];
-
-    const poetries = [
-        { text_zh: "山色空蒙雨亦奇，黛色千重入望迷。", text_en: "The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
-        { text_zh: "借得远山烟雨色，点染丹青入画屏。", text_en: "Borrowing the misty hues of distant ranges, to paint the colors of nature onto the unfolding screen.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
-        { text_zh: "空山新雨后，天气晚来秋。", text_en: "After fresh rain on the empty mountain, autumn evening brings its gentle chill.", source_zh: "—— 王维", source_en: "— Wang Wei" }
-    ];
-
-    function returnToPrevious() {
-        window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
-    }
-
-    function updateSliderPosition() {
-        const track = document.getElementById('slider-track');
-        if (track) {
-            track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
-        }
-    }
-
-    function switchProduct(idx) {
-        currentProductIdx = idx;
-        updateSliderPosition();
-        updateProductInfo(idx);
-    }
-
-    function nextProduct() {
-        currentProductIdx = (currentProductIdx + 1) % products.length;
-        switchProduct(currentProductIdx);
-    }
-
-    function prevProduct() {
-        currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
-        switchProduct(currentProductIdx);
-    }
-
-    function updateProductInfo(idx) {
-        document.querySelectorAll('.product-thumb').forEach((el, i) => {
-            if(i === idx) el.classList.add('active');
-            else el.classList.remove('active');
+            const nextPoetryBtn = document.getElementById('next-poetry');
+            if (nextPoetryBtn) {
+                nextPoetryBtn.onclick = () => {
+                    const p = poetries[Math.floor(Math.random() * poetries.length)];
+                    const tEl = document.getElementById('poetry-text');
+                    const sEl = document.getElementById('poetry-source');
+                    if (tEl) {
+                        tEl.setAttribute('data-zh', `“${p.text_zh}”`);
+                        tEl.setAttribute('data-en', `&ldquo;${p.text_en}&rdquo;`);
+                        tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
+                    }
+                    if (sEl) {
+                        sEl.setAttribute('data-zh', p.source_zh);
+                        sEl.setAttribute('data-en', p.source_en);
+                        sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
+                    }
+                };
+            }
         });
 
-        const p = products[idx];
-        document.getElementById('hero-product-title').innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
-        document.getElementById('hero-product-subtitle').innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
-        document.getElementById('hero-product-desc').innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
-        document.getElementById('hero-price').innerText = p.price;
-    }
-
-    function renderGrid() {
-        const grid = document.getElementById('color-grid');
-        if (!grid) return;
-        grid.innerHTML = colors.map((c, idx) => `
-            <div onclick="selectGridColor(${idx})" class="color-card">
-                <div class="color-block" style="background-color:${c.hex}"></div>
-                <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
-                <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">${c.hex}</p>
-            </div>
-        `).join('');
-    }
-
-    function selectGridColor(idx) {
-        const slider = document.getElementById('color-slider');
-        if (slider) slider.value = idx;
-        updateDynamicPad(idx);
-    }
-
-    function updateDynamicPad(idx) {
-        const c = colors[idx];
-        document.getElementById('dynamic-pad').style.backgroundColor = c.hex;
-        const nameEl = document.getElementById('dynamic-name');
-        nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
-        document.getElementById('dynamic-hex').innerText = c.hex;
-    }
-
-    function copyHex() {
-        const hexText = document.getElementById('dynamic-hex').innerText;
-        navigator.clipboard.writeText(hexText);
-        const badge = document.getElementById('copy-badge');
-        if(badge) {
-            const originalText = badge.innerText;
-            badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
-            setTimeout(() => { badge.innerText = originalText; }, 1500);
-        }
-    }
-
-    function setLanguage(lang) {
-        currentLang = lang === 'en' ? 'en' : 'zh';
-
-        document.querySelectorAll('[data-zh]').forEach(el => {
-            const text = el.getAttribute(`data-${currentLang}`);
-            if (text) {
-                el.innerHTML = text;
+        async function fetchProductsFromDatabase() {
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                
+                if (data.success && data.products && data.products.length > 32) {
+                    // 🌟 动态切片锁定编号 P29 到 P32（索引 29 到 33）
+                    let rawSlice = data.products.slice(29, 33);
+                    products = rawSlice.map(p => ({
+                        id: p.id,
+                        title_zh: p.name,
+                        title_en: p.subtitle || p.name,
+                        sub_zh: p.short_name || p.name,
+                        sub_en: p.subtitle || p.name,
+                        desc_zh: p.description || '',
+                        desc_en: p.description_EN || p.description || '',
+                        price: `€ ${parseFloat(p.price).toFixed(2).replace('.', ',')}`,
+                        priceNum: parseFloat(p.price),
+                        old_price: `€ ${parseFloat(p.old_price).toFixed(2).replace('.', ',')}`,
+                        color_code: p.color_code || '#4A5D6B',
+                        img: p.image_url
+                    }));
+                }
+            } catch (err) {
+                console.warn('后端动态加载失败，启用远山黛本地保底数据:', err);
             }
-            el.setAttribute('data-lang', currentLang);
-        });
 
-        switchProduct(currentProductIdx);
-        renderGrid();
-        const slider = document.getElementById('color-slider');
-        if (slider) updateDynamicPad(slider.value);
-        renderCartItems();
-    }
+            if (!products || products.length === 0) {
+                products = [
+                    {
+                        id: 'P29',
+                        title_zh: "远山黛 · 蓝虎眼青金手串",
+                        title_en: "Distant Mountain · Indigo Quartz Bracelet",
+                        sub_zh: "远山黛",
+                        sub_en: "Mountain",
+                        desc_zh: "“山色空蒙雨亦奇，黛色千重入望迷。” 精选深海蓝虎眼石与阿富汗帝王青金石，如远山层峦，定心静气。",
+                        desc_en: "“Deep blue tiger-eye quartz paired with royal lapis lazuli, reflecting distant indigo ranges.”",
+                        price: "€ 65,00",
+                        priceNum: 65.00,
+                        old_price: "€ 105,00",
+                        color_code: "#4A5D6B",
+                        img: "https://placehold.co/600x600/4a5d6b/ffffff?text=Distant+Mountain+Bracelet"
+                    },
+                    {
+                        id: 'P30',
+                        title_zh: "烟岚灰 · 海蓝宝手串",
+                        title_en: "Mist Gray · Aquamarine Bracelet",
+                        sub_zh: "烟岚灰",
+                        sub_en: "Mist",
+                        desc_zh: "“烟岚微茫水波澄，云深不知归何处。” 冰种灰蓝海蓝宝，澄澈净透，宛若远山晨雾。",
+                        desc_en: "“Clear icy aquamarine reflecting morning mist among tranquil hills.”",
+                        price: "€ 58,00",
+                        priceNum: 58.00,
+                        old_price: "€ 95,00",
+                        color_code: "#5D7382",
+                        img: "https://placehold.co/600x600/5d7382/ffffff?text=Mist+Gray+Bracelet"
+                    },
+                    {
+                        id: 'P31',
+                        title_zh: "云影黛 · 蓝月光石手串",
+                        title_en: "Cloud Indigo · Moonstone Bracelet",
+                        sub_zh: "云影黛",
+                        sub_en: "Indigo",
+                        desc_zh: "“云破月来花弄影，清辉冷艳透心脾。” 强蓝光天然月光石搭配冰青玉，微光隐隐。",
+                        desc_en: "“Moonlight shining through mountain clouds, bringing quiet wisdom.”",
+                        price: "€ 72,00",
+                        priceNum: 72.00,
+                        old_price: "€ 125,00",
+                        color_code: "#738999",
+                        img: "https://placehold.co/600x600/738999/ffffff?text=Cloud+Indigo+Bracelet"
+                    },
+                    {
+                        id: 'P32',
+                        title_zh: "晨雾白 · 和田青白玉手串",
+                        title_en: "Morning Mist · Hetian Jade Bracelet",
+                        sub_zh: "晨雾白",
+                        sub_en: "Dawn",
+                        desc_zh: "“清风拂面晨雾散，玉润冰清意自闲。” 天然温润和田青白玉，沉稳温润，清心养气。",
+                        desc_en: "“Smooth Hetian jade with cool luster, fostering serene mindfulness.”",
+                        price: "€ 78,00",
+                        priceNum: 78.00,
+                        old_price: "€ 135,00",
+                        color_code: "#8FA2B0",
+                        img: "https://placehold.co/600x600/8fa2b0/ffffff?text=Morning+Mist+Bracelet"
+                    }
+                ];
+            }
 
-    function loadYouTubeVideo() {
-        const container = document.getElementById('youtube-container');
-        const placeholder = document.getElementById('video-placeholder');
-        if (placeholder) { placeholder.style.display = 'none'; }
-        if (container) {
-            container.innerHTML = `
-                <iframe style="width:100%; height:100%; border:none;" 
-                        src="https://www.youtube.com/embed/lXYTTG5sK1c?autoplay=1" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            `;
+            renderThumbs();
+            switchProduct(0);
+            renderGrid();
         }
-    }
 
-    // --- 购物车与多步骤结算核心逻辑 ---
-    function addToCart(idx) {
-        const p = products[idx];
-        const itemTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
-        const priceNum = parseFloat(p.price.replace('€', '').replace(',', '.').trim());
+        function renderThumbs() {
+            const container = document.querySelector('.grid-thumbs');
+            if (!container || products.length === 0) return;
 
-        const existingIndex = shoppingCart.findIndex(item => item.title === itemTitle);
-        if (existingIndex > -1) {
-            shoppingCart[existingIndex].quantity += 1;
-        } else {
-            shoppingCart.push({
-                title: itemTitle,
-                priceNum: priceNum,
-                priceStr: p.price,
-                quantity: 1
+            container.innerHTML = products.map((p, i) => `
+                <div onclick="switchProduct(${i})" id="thumb-${i}" class="product-thumb ${i === 0 ? 'active' : ''}" style="padding:8px; border-radius:12px; background:rgba(255,255,255,0.9); text-align:center;">
+                    <div style="width:24px; height:24px; margin:0 auto 4px; border-radius:50%; background:${p.color_code};"></div>
+                    <span style="font-size:10px; font-family:serif; display:block; color:#262626;">${currentLang === 'zh' ? p.sub_zh : p.sub_en}</span>
+                </div>
+            `).join('');
+        }
+
+        const colors = [
+            { hex: '#4A5D6B', name_zh: '远山黛', name_en: 'Distant Mountain' },
+            { hex: '#5D7382', name_zh: '烟岚灰', name_en: 'Mist Gray' },
+            { hex: '#738999', name_zh: '云影黛', name_en: 'Cloud Indigo' },
+            { hex: '#8FA2B0', name_zh: '暮色浅', name_en: 'Pale Twilight' },
+            { hex: '#B0C0CC', name_zh: '清风隐', name_en: 'Hidden Breeze' },
+            { hex: '#D6E0E6', name_zh: '晨雾白', name_en: 'Morning Mist' }
+        ];
+
+        const poetries = [
+            { text_zh: "山色空蒙雨亦奇，黛色千重入望迷。", text_en: "The mountains shimmer wrapped in misty rain; thousands of deep indigo ridges blur into the far distance.", source_zh: "—— 蕊宫原创", source_en: "— Rui Palace Original" },
+            { text_zh: "借得远山烟雨色，点染丹青入画屏。", text_en: "Borrowing the misty hues of distant ranges, to paint the colors of nature onto the unfolding screen.", source_zh: "—— 灵犀鉴", source_en: "— Lingxi Insight" },
+            { text_zh: "空山新雨后，天气晚来秋。", text_en: "After fresh rain on the empty mountain, autumn evening brings its gentle chill.", source_zh: "—— 王维", source_en: "— Wang Wei" }
+        ];
+
+        function returnToPrevious() {
+            window.location.href = `https://www.rui-palace.de?lang=${currentLang}`;
+        }
+
+        function updateSliderPosition() {
+            const track = document.getElementById('slider-track');
+            if (track) {
+                track.style.transform = `translateX(-${currentProductIdx * 100}%)`;
+            }
+        }
+
+        function switchProduct(idx) {
+            if (!products[idx]) return;
+            currentProductIdx = idx;
+            updateSliderPosition();
+            updateProductInfo(idx);
+        }
+
+        function nextProduct() {
+            if (products.length === 0) return;
+            currentProductIdx = (currentProductIdx + 1) % products.length;
+            switchProduct(currentProductIdx);
+        }
+
+        function prevProduct() {
+            if (products.length === 0) return;
+            currentProductIdx = (currentProductIdx - 1 + products.length) % products.length;
+            switchProduct(currentProductIdx);
+        }
+
+        function updateProductInfo(idx) {
+            document.querySelectorAll('.product-thumb').forEach((el, i) => {
+                if(i === idx) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+
+            const p = products[idx];
+            const titleEl = document.getElementById('hero-product-title');
+            const subTitleEl = document.getElementById('hero-product-subtitle');
+            const descEl = document.getElementById('hero-product-desc');
+            const priceEl = document.getElementById('hero-price');
+            const oldPriceEl = document.getElementById('hero-old-price');
+
+            if (titleEl) titleEl.innerText = currentLang === 'zh' ? p.title_zh : p.title_en;
+            if (subTitleEl) subTitleEl.innerText = currentLang === 'zh' ? p.sub_zh : p.sub_en;
+            if (descEl) {
+                descEl.innerText = currentLang === 'zh' ? p.desc_zh : p.desc_en;
+                descEl.setAttribute('data-lang', currentLang);
+            }
+            if (priceEl) priceEl.innerText = p.price;
+            if (oldPriceEl) oldPriceEl.innerText = p.old_price || '€ 105,00';
+
+            const sliderTrack = document.getElementById('slider-track');
+            if (sliderTrack) {
+                sliderTrack.innerHTML = products.map((item, i) => `
+                    <div style="width:100%; height:100%; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding:32px; cursor:pointer;" onclick="openLightbox(${i})">
+                        <img src="${item.img}" alt="${item.title_zh}" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+                `).join('');
+                updateSliderPosition();
+            }
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('color-grid');
+            if (!grid) return;
+            grid.innerHTML = colors.map((c, idx) => `
+                <div onclick="selectGridColor(${idx})" class="color-card">
+                    <div class="color-block" style="background-color:${c.hex}"></div>
+                    <p class="dynamic-text" style="font-size:10px; font-weight:bold; color:#262626; line-height:1.2;">${currentLang === 'zh' ? c.name_zh : c.name_en}</p>
+                    <p style="font-size:9px; color:#4A5D6B; font-family:monospace;">${c.hex}</p>
+                </div>
+            `).join('');
+        }
+
+        function selectGridColor(idx) {
+            const slider = document.getElementById('color-slider');
+            if (slider) slider.value = idx;
+            updateDynamicPad(idx);
+        }
+
+        function updateDynamicPad(idx) {
+            const c = colors[idx];
+            const pad = document.getElementById('dynamic-pad');
+            const nameEl = document.getElementById('dynamic-name');
+            const hexEl = document.getElementById('dynamic-hex');
+
+            if (pad) pad.style.backgroundColor = c.hex;
+            if (nameEl) nameEl.innerText = currentLang === 'zh' ? c.name_zh : c.name_en;
+            if (hexEl) hexEl.innerText = c.hex;
+        }
+
+        function copyHex() {
+            const hexText = document.getElementById('dynamic-hex')?.innerText;
+            if (hexText) {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = hexText;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                const badge = document.getElementById('copy-badge');
+                if(badge) {
+                    const originalText = badge.innerText;
+                    badge.innerText = currentLang === 'zh' ? '已复制！' : 'COPIED!';
+                    setTimeout(() => { badge.innerText = originalText; }, 1500);
+                }
+            }
+        }
+
+        function setLanguage(targetLang) {
+            if (targetLang) {
+                currentLang = targetLang;
+            }
+
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+                el.setAttribute('data-lang', currentLang);
+            });
+
+            const langBtnText = document.getElementById('lang-btn-text');
+            if (langBtnText) {
+                langBtnText.innerText = currentLang === 'zh' ? 'EN / 中文' : '中文 / EN';
+            }
+
+            switchProduct(currentProductIdx);
+            renderGrid();
+            renderThumbs();
+            const slider = document.getElementById('color-slider');
+            if (slider) updateDynamicPad(slider.value);
+            renderCartItems();
+        }
+
+        function loadYouTubeVideo() {
+            const container = document.getElementById('youtube-container');
+            const placeholder = document.getElementById('video-placeholder');
+            if (placeholder) { placeholder.style.display = 'none'; }
+            if (container) {
+                container.innerHTML = `
+                    <iframe style="width: 100%; height: 100%; border: none;" 
+                            src="https://www.youtube-nocookie.com/embed/lXYTTG5sK1c?autoplay=1&rel=0&modestbranding=1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                `;
+            }
+        }
+
+        function addToCart(idx) {
+            if (!products[idx]) return;
+            const p = products[idx];
+
+            const existingIndex = shoppingCart.findIndex(item => item.id === p.id);
+            if (existingIndex > -1) {
+                shoppingCart[existingIndex].quantity += 1;
+            } else {
+                shoppingCart.push({
+                    id: p.id,
+                    title_zh: p.title_zh,
+                    title_en: p.title_en,
+                    priceNum: p.priceNum,
+                    priceStr: p.price,
+                    quantity: 1
+                });
+            }
+
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
+
+            updateCartCountBadge();
+            
+            const feedbackSpan = document.createElement('div');
+            feedbackSpan.style.cssText = 'position:fixed; bottom:30px; right:30px; background:#4A5D6B; color:#FFFFFF; padding:10px 20px; border-radius:8px; font-size:12px; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+            feedbackSpan.innerText = currentLang === 'zh' ? '✓ 已成功加入购物车' : '✓ Added to Cart';
+            document.body.appendChild(feedbackSpan);
+            setTimeout(() => feedbackSpan.remove(), 2000);
+        }
+
+        function updateCartCountBadge() {
+            const totalCount = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) badge.innerText = totalCount;
+        }
+
+        function openCartModal() {
+            renderCartItems();
+            document.getElementById('modal-step-form').style.display = 'block';
+            document.getElementById('modal-step-confirm').style.display = 'none';
+            document.getElementById('buyModal')?.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('buyModal')?.classList.remove('active');
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-container');
+            if (!container) return;
+
+            if (shoppingCart.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">${currentLang === 'zh' ? '购物车还是空的，快去挑选款式吧~' : 'Your cart is empty.'}</p>`;
+                return;
+            }
+
+            let html = '';
+            let grandTotal = 0;
+
+            shoppingCart.forEach((item, i) => {
+                const itemTotal = item.priceNum * item.quantity;
+                grandTotal += itemTotal;
+                const displayTitle = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
+
+                html += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(74,93,107,0.2); padding-bottom:6px;">
+                        <div>
+                            <p style="font-size:12px; font-weight:bold; color:#262626;">${displayTitle}</p>
+                            <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <span style="font-size:12px; color:#4A5D6B; font-weight:bold;">€ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                            <button type="button" onclick="changeQuantity(${i}, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
+                            <button type="button" onclick="changeQuantity(${i}, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
+                            <button type="button" onclick="removeFromCart(${i})" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#4A5D6B; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
+            container.innerHTML = html;
+        }
+
+        function changeQuantity(index, delta) {
+            shoppingCart[index].quantity += delta;
+            if (shoppingCart[index].quantity <= 0) {
+                shoppingCart.splice(index, 1);
+            }
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
+            updateCartCountBadge();
+            renderCartItems();
+        }
+
+        function removeFromCart(index) {
+            shoppingCart.splice(index, 1);
+            try {
+                localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
+            } catch(e) {}
+            updateCartCountBadge();
+            renderCartItems();
+        }
+
+        function goToConfirmStep() {
+            if (shoppingCart.length === 0) {
+                alert(currentLang === 'zh' ? '购物车还是空的！' : 'Your cart is empty!');
+                return;
+            }
+
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const address = document.getElementById('form-address').value.trim();
+            const zip = document.getElementById('form-zip').value.trim();
+            const city = document.getElementById('form-city').value.trim();
+            const wristSelect = document.getElementById('cust-wrist');
+            const wrist = wristSelect ? wristSelect.options[wristSelect.selectedIndex].text : 'Standard';
+            const consentCheckbox = document.getElementById('legal-consent');
+
+            if (!name || !email || !phone || !address || !zip || !city) {
+                alert(currentLang === 'zh' ? '请完整填写各项必填联系与地址信息！' : 'Please fill in all required fields.');
+                return;
+            }
+
+            if (!consentCheckbox || !consentCheckbox.checked) {
+                alert(currentLang === 'zh' ? '请先勾选并同意服务条款 (AGB) 与撤回权说明。' : 'Please accept the Terms & Conditions and Right of Withdrawal.');
+                return;
+            }
+
+            const notes = document.getElementById('form-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
+            let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
+            let itemsSummary = shoppingCart.map(item => {
+                const title = currentLang === 'zh' ? (item.title_zh || item.title) : (item.title_en || item.title);
+                return `${title} (×${item.quantity})`;
+            }).join('<br>');
+
+            const box = document.getElementById('confirm-details-box');
+            if (box) {
+                box.innerHTML = `
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
+                    <hr style="border:0; border-top:1px solid rgba(74,93,107,0.2); margin:4px 0;">
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${address}, ${zip} ${city}</div>
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
+                    <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
+                `;
+            }
+
+            const priceTag = document.getElementById('confirm-price-tag');
+            if (priceTag) priceTag.innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
+
+            document.getElementById('modal-step-form').style.display = 'none';
+            document.getElementById('modal-step-confirm').style.display = 'block';
+
+            renderPayPalButtons(grandTotal, { name, email, phone, address, zip, city, wrist, notes, ref: refId });
+        }
+
+        function backToFormStep() {
+            document.getElementById('modal-step-form').style.display = 'block';
+            document.getElementById('modal-step-confirm').style.display = 'none';
+        }
+
+        function renderPayPalButtons(totalAmount, customerInfo) {
+            const container = document.getElementById('paypal-button-container');
+            if (!container) return;
+            container.innerHTML = `<p style="font-size:11px; color:#737373; text-align:center; padding-top:20px;">${currentLang === 'zh' ? '正在连接安全支付网关...' : 'Loading secure payment gateway...'}</p>`;
+
+            ensurePayPalSDKLoaded(() => {
+                container.innerHTML = '';
+
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'paypal'
+                    },
+                    createOrder: async function(data, actions) {
+                        try {
+                            const response = await fetch('/api/orders/create', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    items: shoppingCart,
+                                    customer: customerInfo
+                                })
+                            });
+                            if (response.ok) {
+                                const orderData = await response.json();
+                                if (orderData.id) return orderData.id;
+                            }
+                        } catch (err) {
+                            console.warn('API /api/orders/create unavailable, fallback to client-side order creation.');
+                        }
+
+                        return actions.order.create({
+                            purchase_units: [{
+                                description: `Rui Palace Order - Distant Mountain: ${customerInfo.name}`,
+                                amount: {
+                                    currency_code: PAYPAL_CONFIG.CURRENCY,
+                                    value: totalAmount.toFixed(2)
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: async function(data, actions) {
+                        try {
+                            const response = await fetch('/api/orders/capture', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    customer: customerInfo
+                                })
+                            });
+                            if (response.ok) {
+                                const captureData = await response.json();
+                                if (captureData.status === 'SUCCESS' || captureData.status === 'COMPLETED') {
+                                    handleSuccessPayment();
+                                    return;
+                                }
+                            }
+                        } catch (err) {
+                            console.warn('API /api/orders/capture unavailable, fallback to client-side capture.');
+                        }
+
+                        return actions.order.capture().then(function(details) {
+                            handleSuccessPayment();
+                        });
+                    },
+                    onError: function(err) {
+                        console.error('PayPal Error:', err);
+                        alert(currentLang === 'zh' ? '支付遇到问题，请重试或更换支付方式。' : 'Payment failed, please try again.');
+                    }
+                }).render('#paypal-button-container');
             });
         }
 
-        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-        updateCartCountBadge();
-        
-        // Toast 提示
-        const feedbackSpan = document.createElement('div');
-        feedbackSpan.style.position = 'fixed';
-        feedbackSpan.style.bottom = '30px';
-        feedbackSpan.style.right = '30px';
-        feedbackSpan.style.background = '#4A5D6B';
-        feedbackSpan.style.color = '#FFFFFF';
-        feedbackSpan.style.padding = '10px 20px';
-        feedbackSpan.style.borderRadius = '8px';
-        feedbackSpan.style.fontSize = '12px';
-        feedbackSpan.style.zIndex = '9999';
-        feedbackSpan.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-        feedbackSpan.innerText = currentLang === 'zh' ? '✓ 已成功加入购物车' : '✓ Added to Cart';
-        document.body.appendChild(feedbackSpan);
-        setTimeout(() => feedbackSpan.remove(), 2000);
-    }
-
-    function updateCartCountBadge() {
-        const totalCount = shoppingCart.reduce((sum, item) => sum + item.quantity, 0);
-        const badge = document.getElementById('cart-count-badge');
-        if (badge) badge.innerText = totalCount;
-    }
-
-    function openCartModal() {
-        renderCartItems();
-        document.getElementById('modal-step-form').style.display = 'block';
-        document.getElementById('modal-step-confirm').style.display = 'none';
-        document.getElementById('buyModal').classList.add('active');
-    }
-
-    function closeModal() {
-        document.getElementById('buyModal').classList.remove('active');
-    }
-
-    function renderCartItems() {
-        const container = document.getElementById('cart-items-container');
-        if (!container) return;
-
-        if (shoppingCart.length === 0) {
-            container.innerHTML = `<p style="text-align:center; color:#a3a3a3; font-size:12px; padding:12px;">${currentLang === 'zh' ? '购物车还是空的，快去挑选款式吧~' : 'Your cart is empty.'}</p>`;
-            return;
-        }
-
-        let html = '';
-        let grandTotal = 0;
-
-        shoppingCart.forEach((item, i) => {
-            const itemTotal = item.priceNum * item.quantity;
-            grandTotal += itemTotal;
-            html += `
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px dashed rgba(74,93,107,0.2); padding-bottom:6px;">
-                    <div>
-                        <p style="font-size:12px; font-weight:bold; color:#262626;">${item.title}</p>
-                        <p style="font-size:10px; color:#737373;">${item.priceStr} × ${item.quantity}</p>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:6px;">
-                        <span style="font-size:12px; color:#4A5D6B; font-weight:bold;">€ ${itemTotal.toFixed(2).replace('.', ',')}</span>
-                        <button type="button" onclick="changeQuantity(${i}, -1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">-</button>
-                        <button type="button" onclick="changeQuantity(${i}, 1)" style="background:rgba(0,0,0,0.06); border:none; color:#262626; width:20px; height:20px; border-radius:4px; cursor:pointer;">+</button>
-                        <button type="button" onclick="removeFromCart(${i})" style="background:none; border:none; color:#EF4444; cursor:pointer; margin-left:2px;">🗑️</button>
-                    </div>
-                </div>
-            `;
-        });
-
-        html += `<div style="text-align:right; font-size:12px; font-weight:bold; color:#4A5D6B; padding-top:2px;">${currentLang === 'zh' ? '总计总额' : 'Total'}: € ${grandTotal.toFixed(2).replace('.', ',')}</div>`;
-        container.innerHTML = html;
-    }
-
-    function changeQuantity(index, delta) {
-        shoppingCart[index].quantity += delta;
-        if (shoppingCart[index].quantity <= 0) {
-            shoppingCart.splice(index, 1);
-        }
-        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-        updateCartCountBadge();
-        renderCartItems();
-    }
-
-    function removeFromCart(index) {
-        shoppingCart.splice(index, 1);
-        localStorage.setItem('rui_palace_global_cart', JSON.stringify(shoppingCart));
-        updateCartCountBadge();
-        renderCartItems();
-    }
-
-    function goToConfirmStep() {
-        if (shoppingCart.length === 0) {
-            alert(currentLang === 'zh' ? '购物车还是空的！' : 'Your cart is empty!');
-            return;
-        }
-
-        const name = document.getElementById('cust-name').value.trim();
-        const email = document.getElementById('cust-email').value.trim();
-        const phone = document.getElementById('cust-phone').value.trim();
-        const street = document.getElementById('cust-street').value.trim();
-        const zip = document.getElementById('cust-zip').value.trim();
-        const city = document.getElementById('cust-city').value.trim();
-        const wristSelect = document.getElementById('cust-wrist');
-        const wrist = wristSelect.options[wristSelect.selectedIndex].text;
-
-        if (!name || !email || !phone || !street || !zip || !city) {
-            alert(currentLang === 'zh' ? '请完整填写各项必填联系与地址信息！' : 'Please fill in all required fields.');
-            return;
-        }
-
-        const notes = document.getElementById('cust-notes').value.trim() || (currentLang === 'zh' ? '无' : 'None');
-        let grandTotal = shoppingCart.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
-        let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join('<br>');
-
-        const box = document.getElementById('confirm-details-box');
-        box.innerHTML = `
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '所选商品' : 'Items'}：</strong><br>${itemsSummary}</div>
-            <hr style="border:0; border-top:1px solid rgba(74,93,107,0.2); margin:4px 0;">
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '尊姓大名' : 'Name'}：</strong>${name}</div>
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '联系邮箱' : 'Email'}：</strong>${email}</div>
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '联系电话' : 'Phone'}：</strong>${phone}</div>
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '邮寄地址' : 'Address'}：</strong>${street}, ${zip} ${city}</div>
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '手围尺寸' : 'Wrist Size'}：</strong>${wrist}</div>
-            <div><strong style="color:#4A5D6B;">${currentLang === 'zh' ? '备注需求' : 'Notes'}：</strong>${notes}</div>
-        `;
-
-        document.getElementById('confirm-price-tag').innerText = `€ ${grandTotal.toFixed(2).replace('.', ',')}`;
-
-        document.getElementById('modal-step-form').style.display = 'none';
-        document.getElementById('modal-step-confirm').style.display = 'block';
-
-        renderPayPalButtons(grandTotal, { name, email, phone, street, zip, city, wrist, notes });
-    }
-
-    function backToFormStep() {
-        document.getElementById('modal-step-form').style.display = 'block';
-        document.getElementById('modal-step-confirm').style.display = 'none';
-    }
-
-    function renderPayPalButtons(totalAmount, customerInfo) {
-        const container = document.getElementById('paypal-button-container');
-        if (!container) return;
-        container.innerHTML = '';
-
-        if (typeof paypal !== 'undefined') {
-            paypal.Buttons({
-                style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: `Rui Palace - Distant Mountain Order: ${customerInfo.name} (${customerInfo.wrist})`,
-                            amount: { currency_code: 'EUR', value: totalAmount.toFixed(2) }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        sendOrderEmail(customerInfo, totalAmount);
-                        alert(currentLang === 'zh' ? '支付成功！您的订单已记录并同步。' : 'Payment successful! Order recorded.');
-                        localStorage.removeItem('rui_palace_global_cart');
-                        shoppingCart = [];
-                        updateCartCountBadge();
-                        closeModal();
-                    });
-                },
-                onCancel: function(data) {
-                    alert(currentLang === 'zh' ? '您已取消交易支付。' : 'Payment cancelled.');
-                },
-                onError: function(err) {
-                    console.error('PayPal 支付异常：', err);
-                    alert(currentLang === 'zh' ? '支付遇到问题，请检查表单填写是否完整。' : 'Payment error. Please check form fields.');
-                }
-            }).render('#paypal-button-container');
-        }
-    }
-
-    function sendOrderEmail(customerData, totalAmount) {
-        let itemsSummary = shoppingCart.map(item => `${item.title} (×${item.quantity})`).join(', ');
-        const formData = new FormData();
-        formData.append('_subject', '【灵犀鉴官网】远山黛手链新订单通知');
-        formData.append('_template', 'table');
-        formData.append('_captcha', 'false');
-        formData.append('客户姓名', customerData.name);
-        formData.append('联系邮箱', customerData.email);
-        formData.append('电话', customerData.phone);
-        formData.append('街道门牌号', customerData.street);
-        formData.append('邮政编码', customerData.zip);
-        formData.append('城市', customerData.city);
-        formData.append('手围尺寸', customerData.wrist);
-        formData.append('所选商品', itemsSummary);
-        formData.append('订单总额', `€ ${totalAmount.toFixed(2)}`);
-        formData.append('其他备注', customerData.notes);
-
-        fetch('https://formsubmit.co/ajax/mai@rui-palace.de', {
-            method: 'POST',
-            body: formData
-        }).catch(err => console.log('邮件发送提示:', err));
-    }
-
-    function initDragEvents() {
-        const track = document.getElementById('slider-track');
-        if (!track) return;
-        
-        track.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-        });
-
-        track.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            const diffX = e.clientX - startX;
-            if (diffX < -50) nextProduct();
-            else if (diffX > 50) prevProduct();
-        });
-
-        track.addEventListener('mouseleave', () => { isDragging = false; });
-
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        track.addEventListener('touchend', (e) => {
-            const diffX = e.changedTouches[0].clientX - startX;
-            if (diffX < -40) nextProduct();
-            else if (diffX > 40) prevProduct();
-        });
-    }
-
-    function openLightbox(idx = currentProductIdx) {
-        const currentImgSrc = products[idx].img;
-        const lightbox = document.getElementById('imageLightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        
-        if (lightboxImg) lightboxImg.src = currentImgSrc;
-        if (lightbox) lightbox.style.display = 'flex';
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('imageLightbox');
-        if (lightbox) lightbox.style.display = 'none';
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const langParam = urlParams.get('lang');
-        const resolvedLang = langParam === 'zh' ? 'zh' : 'en';
-        setLanguage(resolvedLang);
-
-        initDragEvents();
-        updateCartCountBadge();
-
-        // 自动为站内链接带上当前语言状态
-        document.querySelectorAll('a').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.endsWith('.html') && !href.includes('lang=')) {
-                link.setAttribute('href', `${href}?lang=${resolvedLang}`);
+        function ensurePayPalSDKLoaded(callback) {
+            if (typeof paypal !== 'undefined') {
+                if (callback) callback();
+                return;
             }
+
+            let script = document.getElementById('paypal-sdk-script');
+            if (!script) {
+                script = document.createElement('script');
+                script.id = 'paypal-sdk-script';
+                script.src = getPayPalSDKUrl();
+                script.crossOrigin = "anonymous";
+                script.onload = () => { if (callback) callback(); };
+                script.onerror = () => {
+                    const container = document.getElementById('paypal-button-container');
+                    if (container) {
+                        container.innerHTML = `<p style="color:#4A5D6B; font-size:12px; text-align:center;">${currentLang === 'zh' ? 'PayPal 网关加载失败，请检查广告拦截插件。' : 'Failed to load PayPal gateway.'}</p>`;
+                    }
+                };
+                document.head.appendChild(script);
+            } else {
+                const checkTimer = setInterval(() => {
+                    if (typeof paypal !== 'undefined') {
+                        clearInterval(checkTimer);
+                        if (callback) callback();
+                    }
+                }, 150);
+            }
+        }
+
+        function handleSuccessPayment() {
+            alert(currentLang === 'zh' ? '支付成功！非常感谢您的支持。' : 'Payment successful! Thank you for your order.');
+            try {
+                localStorage.removeItem('rui_palace_global_cart');
+            } catch(e) {}
+            shoppingCart = [];
+            updateCartCountBadge();
+            closeModal();
+        }
+
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('rui_cookie_consent') || localStorage.getItem('rui_palace_cookie_consent');
+            if (!consent) {
+                const banner = document.getElementById('cookie-consent');
+                if (banner) banner.style.display = 'flex';
+            } else if (consent === 'all' || consent === 'accepted') {
+                cookieConsentGiven = true;
+            }
+        }
+
+        function acceptCookies(allowAll) {
+            localStorage.setItem('rui_cookie_consent', allowAll ? 'all' : 'essential');
+            localStorage.setItem('rui_palace_cookie_consent', allowAll ? 'accepted' : 'rejected');
+            cookieConsentGiven = allowAll;
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'none';
+        }
+
+        function resetCookieConsent() {
+            localStorage.removeItem('rui_cookie_consent');
+            localStorage.removeItem('rui_palace_cookie_consent');
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'flex';
+        }
+
+        function initDragEvents() {
+            const track = document.getElementById('slider-track');
+            if (!track) return;
+            
+            track.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+            });
+
+            track.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diffX = e.clientX - startX;
+                if (diffX < -50) nextProduct();
+                else if (diffX > 50) prevProduct();
+            });
+
+            track.addEventListener('mouseleave', () => { isDragging = false; });
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            track.addEventListener('touchend', (e) => {
+                const diffX = e.changedTouches[0].clientX - startX;
+                if (diffX < -40) nextProduct();
+                else if (diffX > 40) prevProduct();
+            });
+        }
+
+        function openLightbox(idx = currentProductIdx) {
+            if (!products[idx]) return;
+            const currentImgSrc = products[idx].img;
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            if (lightboxImg) lightboxImg.src = currentImgSrc;
+            if (lightbox) lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            if (lightbox) lightbox.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextProduct();
+            if (e.key === 'ArrowLeft') prevProduct();
         });
-
-        const slider = document.getElementById('color-slider');
-        if (slider) {
-            slider.oninput = function() { updateDynamicPad(this.value); };
-        }
-
-        const nextPoetryBtn = document.getElementById('next-poetry');
-        if (nextPoetryBtn) {
-            nextPoetryBtn.onclick = () => {
-                const p = poetries[Math.floor(Math.random() * poetries.length)];
-                const tEl = document.getElementById('poetry-text');
-                const sEl = document.getElementById('poetry-source');
-                
-                if (tEl) {
-                    tEl.setAttribute('data-zh', `“${p.text_zh}”`);
-                    tEl.setAttribute('data-en', `&ldquo;${p.text_en}&rdquo;`);
-                    tEl.innerHTML = currentLang === 'zh' ? `“${p.text_zh}”` : `&ldquo;${p.text_en}&rdquo;`;
-                }
-                if (sEl) {
-                    sEl.setAttribute('data-zh', p.source_zh);
-                    sEl.setAttribute('data-en', p.source_en);
-                    sEl.innerText = currentLang === 'zh' ? p.source_zh : p.source_en;
-                }
-            };
-        }
-    });
-</script>
-
-<!-- Cookie 横幅 -->
-<div id="cookie-consent" style="display:none;">
-    <div class="modal-box">
-        <h3>蕊宫隐私说明 / Privacy Notice</h3>
-        <p>蕊宫尊重并珍视您的隐私。为了提供安全的服务，本站使用必要的 Cookie 与技术。点击“全部同意”即代表您许可我们为您提供更顺畅的体验。<br><span style="font-size:0.8rem; color:#a3a3a3;">Rui Palace values your privacy. By clicking 'Accept All', you consent to our use of cookies.</span></p>
-        <div class="button-group">
-            <button id="reject-btn" onclick="document.getElementById('cookie-consent').style.display='none';">全部拒绝 / Reject All</button>
-            <button id="accept-btn" onclick="document.getElementById('cookie-consent').style.display='none';">全部同意 / Accept All</button>
-        </div>
-        <div class="footer-links">
-            <a href="https://www.rui-palace.de/impressum.html?lang=zh">Impressum</a> | 
-            <a href="https://www.rui-palace.de/Datenschutz.html?lang=zh">Datenschutz</a>
-        </div>
-    </div>
-</div>
-<script>
-    function resetCookieConsent() {
-        document.getElementById('cookie-consent').style.display = 'flex';
-    }
-</script>
-</body></html>
+    </script>
+</body>
+</html>
