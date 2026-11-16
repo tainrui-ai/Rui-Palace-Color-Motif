@@ -692,7 +692,7 @@
                 const res = await fetch('/api/products');
                 const data = await res.json();
                 
-                if (data.success && data.products && data.products.length >= 44) {
+                if (data.success && data.products && data.products.length >40) {
                     // 🌟 动态切片锁定编号 P41 到 P44（索引 40 到 44）
                     let rawSlice = data.products.slice(40, 44);
                     products = rawSlice.map(p => ({
