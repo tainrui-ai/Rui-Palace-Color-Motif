@@ -350,9 +350,6 @@
                 <span style="font-size:12px;">⇠</span>
                 <span class="dynamic-sub" data-zh="归隐" data-en="RETURN" data-lang="zh">归隐</span>
             </button>
-            <div style="display:flex; flex-direction:column; align-items:center;">
-                <span class="vertical-wing" data-zh="琥珀金泽 流光溢彩" data-en="AMBER GOLD GLOW" data-lang="zh">琥珀金泽 流光溢彩</span>
-            </div>
             <div></div>
         </div>
 
@@ -368,12 +365,6 @@
                 <span data-zh="🛒 购物车" data-en="🛒 Cart" data-lang="zh">🛒 购物车</span>
                 <span id="cart-count-badge" style="background:#D4A017; color:white; border-radius:9999px; padding:1px 6px; font-size:10px;">1</span>
             </button>
-            <button onclick="setLanguage(currentLang === 'zh' ? 'en' : 'zh')" class="lang-switch-btn">
-                <span id="lang-btn-text">EN / 中文</span>
-            </button>
-            <div style="display:flex; flex-direction:column; align-items:center; margin-top:16px;">
-                <span class="vertical-wing" data-zh="宫廷美学 匠心典藏" data-en="IMPERIAL GALLERY" data-lang="zh">宫廷美学 匠心典藏</span>
-            </div>
             <div></div>
         </div>
     </header>
@@ -720,8 +711,8 @@
                 const data = await res.json();
                 
                 if (data.success && data.products && data.products.length > 36) {
-                    // 🌟 精准切片锁定编号 P33 到 P35（索引 33 到 36）
-                    let rawSlice = data.products.slice(33, 36);
+                    // 🌟 精准切片锁定编号 P37 到 P40（索引 36 到 40）
+                    let rawSlice = data.products.slice(36, 40);
                     products = rawSlice.map(p => ({
                         id: p.id,
                         title_zh: p.name,
