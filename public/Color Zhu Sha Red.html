@@ -741,7 +741,7 @@
                 
                 if (data.success && data.products && data.products.length > 24) {
                     // 🌟 精准锁定编号 P25 到 P28（索引 25 到 28）
-                    let rawSlice = data.products.slice(25, 28);
+                    let rawSlice = data.products.slice(25, 29);
                     products = rawSlice.map(p => ({
                         id: p.id,
                         title_zh: p.name,
